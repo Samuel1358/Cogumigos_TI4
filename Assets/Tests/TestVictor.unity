@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 446022466}
   - component: {fileID: 446022465}
   - component: {fileID: 446022464}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,6 +285,12 @@ MonoBehaviour:
       <Radius>k__BackingField: 0.2
     <SlopeData>k__BackingField:
       <StepHeightPercentege>k__BackingField: 0.25
+      <FloatRayDistance>k__BackingField: 2
+      <StepReachForce>k__BackingField: 25
+  <LayerData>k__BackingField:
+    <GroundLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 64
 --- !u!114 &661793360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +337,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661793357}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2e39f0602a234994490db478102ecdb5, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

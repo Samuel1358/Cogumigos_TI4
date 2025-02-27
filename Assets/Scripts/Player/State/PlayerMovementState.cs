@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace Victor {
     public class PlayerMovementState : IState {
         protected PlayerMovementStateMachine StateMovementMachine;
 
@@ -23,7 +22,6 @@ namespace Victor {
         }
 
         public virtual void Enter() {
-            //Debug.Log("State: " + StateMachine.PlayerGet);
             AddInputActionsCallbacks();
         }
 
@@ -91,14 +89,18 @@ namespace Victor {
             return new Vector3(StateMovementMachine.ReusableData.MovementInput.x, 0f, StateMovementMachine.ReusableData.MovementInput.y);
         }
 
-        private float GetMovementSpeed() {
-            return MovementData.BaseSpeed * StateMovementMachine.ReusableData.MovementSpeedModifier;
+        public float GetMovementSpeed() {
+            return MovementData.BaseSpeed * StateMovementMachine.ReusableData.MovementSpeedModifier * StateMovementMachine.ReusableData.MovementOnSlopeSpeedModifier;
         }
 
         private Vector3 GetPlayerHorizontalVelocity() {
             Vector3 playerHorizontalVelocity = StateMovementMachine.PlayerGet.PlayerRigidbody.linearVelocity;
             playerHorizontalVelocity.y = 0;
             return playerHorizontalVelocity;
+        }
+
+        protected Vector3 GetPlayerVerticalVelocity() {
+            return new Vector3(0f, StateMovementMachine.PlayerGet.PlayerRigidbody.linearVelocity.y, 0f);
         }
 
         protected void RotateTowardsTargetRotation() {
@@ -151,4 +153,3 @@ namespace Victor {
         }
         #endregion
     }
-}
