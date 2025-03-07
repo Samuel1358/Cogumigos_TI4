@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     [Header("External Access")]
     [SerializeField] private CinemachineCamera unlockedCamera;
     [SerializeField] private CinemachineCamera lockedCamera;
-    [SerializeField] private CinemachineInputAxisController test;
+    [SerializeField] private CinemachineInputAxisController inputController;
 
     [Header("Zoom")]
     [SerializeField] private float zoomRate;
@@ -27,45 +27,20 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        LockedCamera();
+        LockCamera();
         fieldOfView = Camera.main.fieldOfView;
     }
 
-    public void LockedCamera()
+    public void LockCamera()
     {
-
-        test.enabled = !test.enabled;
-        //unlockedCamera.Priority = 0;
-        //lockedCamera.Priority = 10;
+        inputController.enabled = false;
     }
 
     public void MoveCamera()
     {
-        test.enabled = !test.enabled;
-        //unlockedCamera.Priority = 10;
-        //lockedCamera.Priority = 0;
+        inputController.enabled = true;
     }
 
-
-    public void SetOffset(Vector3 targetPosition)
-    {
-        lockedCamera.transform.position = unlockedCamera.transform.position;
-        lockedCamera.transform.rotation = unlockedCamera.transform.rotation;
-
-
-        /*
-        CinemachineOrbitalFollow lockedFollowComponent = lockedCamera.GetComponent<CinemachineOrbitalFollow>();
-        CinemachineOrbitalFollow unlockedFollowComponent = unlockedCamera.GetComponent<CinemachineOrbitalFollow>();
-
-        if (lockedFollowComponent != null && unlockedFollowComponent != null)
-        {
-            Debug.Log(lockedFollowComponent);
-            Debug.Log(unlockedFollowComponent);
-        }
-        */
-
-
-    }
 
     public void UpdateFOV(float scrollInput)
     {

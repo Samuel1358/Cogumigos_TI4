@@ -51,8 +51,7 @@ public class TEMP_InputManager : MonoBehaviour
         else if (Input.GetMouseButtonUp(1))
         {
             isFreeLookActive = false;
-            cameraController.SetOffset(playerTransform.position);
-            cameraController.LockedCamera(); 
+            cameraController.LockCamera(); 
         }
     }
 }
