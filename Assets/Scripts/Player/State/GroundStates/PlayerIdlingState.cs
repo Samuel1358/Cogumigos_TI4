@@ -10,14 +10,16 @@ public class PlayerIdlingState : PlayerGroundState {
     public override void Enter() {
         base.Enter();
 
-        StateMovementMachine.ReusableData.MovementSpeedModifier = 0f;
+        StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
+
+        StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StationaryForce;
 
         ResetVelocity();
     }
     public override void Update() {
         base.Update();
 
-        if (StateMovementMachine.ReusableData.MovementInput == Vector2.zero) {
+        if (StateMachineMovement.ReusableData.MovementInput == Vector2.zero) {
             return;
         }
 

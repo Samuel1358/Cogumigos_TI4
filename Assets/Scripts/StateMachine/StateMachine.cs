@@ -21,4 +21,18 @@ public abstract class StateMachine {
     public void PhysicsUpdate() {
         _currentState?.PhysicsUpdate();
     }
+    public void OnAnimationEnterEvent() {
+        _currentState?.OnAnimationEnterEvent();
+    }
+    public void OnAnimationExitEvent() {
+        _currentState?.OnAnimationExitEvent();
+    }
+    public void OnAnimationTransitionEvent() {
+        _currentState?.OnAnimationTransitionEvent();
+    }
+    public void OntriggerEnter(Collider collider) {
+        _currentState?.OnTriggerEnter(collider);
+    }public void OntriggerExit(Collider collider) {
+        _currentState?.OnTriggerExit(collider);
+    }
 }

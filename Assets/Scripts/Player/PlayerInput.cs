@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour {
     public PlayerInputActions InputActions { get; private set; }
     public PlayerInputActions.PlayerActions PlayerActions { get; private set; }
@@ -15,5 +15,13 @@ public class PlayerInput : MonoBehaviour {
     }
     private void OnDisable() {
         PlayerActions.Disable();
+    }
+    public void DisableActionFor(InputAction action, float seconds) {
+        StartCoroutine(DiableAction(action, seconds));
+    }
+    private IEnumerator DiableAction(InputAction action, float seconds) {
+        action.Disable();
+        yield return new WaitForSeconds(seconds);
+        action.Enable();
     }
 }
