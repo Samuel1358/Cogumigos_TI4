@@ -8,8 +8,8 @@ using UnityEngine.Events;
 public class CameraController : MonoBehaviour
 {
     [Header("External Access")]
-    [SerializeField] private CinemachineCamera unlockedCamera;
-    [SerializeField] private CinemachineCamera lockedCamera;
+    //[SerializeField] private CinemachineCamera unlockedCamera;
+    [SerializeField] private CinemachineCamera cameraObj;
     [SerializeField] private CinemachineInputAxisController inputController;
 
     [Header("Zoom")]
@@ -17,13 +17,13 @@ public class CameraController : MonoBehaviour
     [SerializeField, Min(50)] private float zoomMaxDis = 50;
     [SerializeField, Min(10)] private float zoomMinDis = 10;
 
-    private Vector3 offset;
+    //private Vector3 offset;
     private float fieldOfView;
 
-    private void Awake()
+    /*private void Awake()
     {
         offset = transform.position;
-    }
+    }*/
 
     private void Start()
     {
@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
         fieldOfView += zoomRate * -scrollInput * 0.1f;
         fieldOfView = Mathf.Clamp(fieldOfView, zoomMinDis, zoomMaxDis);
 
-        unlockedCamera.Lens.FieldOfView = fieldOfView;
-        lockedCamera.Lens.FieldOfView = fieldOfView;
+        //unlockedCamera.Lens.FieldOfView = fieldOfView;
+        cameraObj.Lens.FieldOfView = fieldOfView;
     }
 }
