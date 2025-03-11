@@ -107,7 +107,7 @@ public class PlayerMovementState : IState {
         return directionAngle;
     }
 
-    private Vector3 GetInputDirection() {
+    public Vector3 GetInputDirection() {
         return new Vector3(StateMachineMovement.ReusableData.MovementInput.x, 0f, StateMachineMovement.ReusableData.MovementInput.y);
     }
 

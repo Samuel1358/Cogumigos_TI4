@@ -19,7 +19,7 @@ public class PlayerDashingState : PlayerGroundState {
         StateMachineMovement.ReusableData.RotationData = _dashData.RotationData;
         StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StrongForce;
 
-        AddForceToTransitionToStationaryState();
+        Dash();
         _shouldKeepRotating = StateMachineMovement.ReusableData.MovementInput == Vector2.zero;
 
         UpdateConsecutiveDashes();
@@ -69,14 +69,16 @@ public class PlayerDashingState : PlayerGroundState {
         return Time.time < _startTime + _dashData.TimeToBeConsideredConsecutive;
     }
 
-    private void AddForceToTransitionToStationaryState() {
-        if (StateMachineMovement.ReusableData.MovementInput != Vector2.zero) {
-            return;
-        }
-
+    private void Dash() {
         Vector3 characterRotationDirection = StateMachineMovement.PlayerGet.transform.forward;
         characterRotationDirection.y = 0f;
         UpdateTargetRotation(characterRotationDirection, false);
+
+        if (StateMachineMovement.ReusableData.MovementInput != Vector2.zero) {
+            UpdateTargetRotation(GetInputDirection());
+            characterRotationDirection = GetTargetRotationDirection(StateMachineMovement.ReusableData.CurrentTargetRotation.y);
+        }
+
         StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = characterRotationDirection * GetMovementSpeed();
     }
 

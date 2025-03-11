@@ -10,7 +10,7 @@ public class PlayerAirState : PlayerMovementState {
     protected override void OnContactWithGround(Collider collider) {
         base.OnContactWithGround(collider);
 
-        StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
+        StateMachineMovement.ChangeState(StateMachineMovement.LightLandingState);
     }
     protected virtual void ResetSpringState() {
         StateMachineMovement.ReusableData.ShouldSprint = false;
