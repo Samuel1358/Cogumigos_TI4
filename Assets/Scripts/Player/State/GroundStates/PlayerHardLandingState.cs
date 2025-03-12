@@ -14,10 +14,15 @@ public class PlayerHardLandingState : PlayerLandingState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
 
         ResetVelocity();
+
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.HardLandParameterHash);
+
     }
 
     public override void Exit() {
         base.Exit();
+
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.HardLandParameterHash);
 
         StateMachineMovement.PlayerGet.Input.PlayerActions.Move.Enable();
     }

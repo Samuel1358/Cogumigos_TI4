@@ -7,10 +7,12 @@ public abstract class StateMachine {
 
     public void ChangeState(IState newState) {
         _currentState?.Exit();
+        Debug.Log("Exiting: " + _currentState);
 
         _currentState = newState;
 
         _currentState.Enter();
+        Debug.Log("Entring: " + _currentState);
     }
     public void HandleInput() {
         _currentState?.HandleInput();

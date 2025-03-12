@@ -111,8 +111,12 @@ public class PlayerMovementState : IState {
         return new Vector3(StateMachineMovement.ReusableData.MovementInput.x, 0f, StateMachineMovement.ReusableData.MovementInput.y);
     }
 
-    public float GetMovementSpeed() {
-        return MovementData.BaseSpeed * StateMachineMovement.ReusableData.MovementSpeedModifier * StateMachineMovement.ReusableData.MovementOnSlopeSpeedModifier;
+    public float GetMovementSpeed(bool shouldConsidererSlopers = true) {
+        float movementSpeed = MovementData.BaseSpeed * StateMachineMovement.ReusableData.MovementSpeedModifier;
+        if (shouldConsidererSlopers) {
+            movementSpeed *= StateMachineMovement.ReusableData.MovementOnSlopeSpeedModifier;
+        }
+        return movementSpeed;
     }
 
     private Vector3 GetPlayerHorizontalVelocity() {
@@ -166,6 +170,12 @@ public class PlayerMovementState : IState {
         Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
 
         StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = playerHorizontalVelocity;
+    }
+
+    protected void StartAnimation(int animationHash) {
+        StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, true);
+    }protected void StopAnimation(int animationHash) {
+        StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, false);
     }
 
     protected void SetBaseRotationData() {

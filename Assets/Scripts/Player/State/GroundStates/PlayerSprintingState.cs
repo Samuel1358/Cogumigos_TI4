@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerSprintingState : PlayerGroundState {
+public class PlayerSprintingState : PlayerMovingState {
 
     private PlayerSprintData _sprintData;
     private float _startTime;
@@ -15,6 +15,7 @@ public class PlayerSprintingState : PlayerGroundState {
         StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StrongForce;
         _shouldResetSprintState = true;
         _startTime = Time.time;
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.SprintParameterHash);
     }
     public override void Update() {
         base.Update();
@@ -28,6 +29,7 @@ public class PlayerSprintingState : PlayerGroundState {
     }
     public override void Exit() {
         base.Exit();
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.SprintParameterHash);
         _keepSprinting = false;
         if (_shouldResetSprintState) {
             _keepSprinting = false;

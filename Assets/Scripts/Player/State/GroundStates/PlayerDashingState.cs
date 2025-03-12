@@ -14,6 +14,8 @@ public class PlayerDashingState : PlayerGroundState {
     public override void Enter() {
         base.Enter();
 
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.DashParameterHash);
+
         StateMachineMovement.ReusableData.MovementSpeedModifier = _dashData.SpeedModifier;
 
         StateMachineMovement.ReusableData.RotationData = _dashData.RotationData;
@@ -36,6 +38,8 @@ public class PlayerDashingState : PlayerGroundState {
         base.Exit();
 
         SetBaseRotationData();
+
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.DashParameterHash);
     }
     protected override void AddInputActionsCallbacks() {
         base.AddInputActionsCallbacks();
@@ -70,16 +74,16 @@ public class PlayerDashingState : PlayerGroundState {
     }
 
     private void Dash() {
-        Vector3 characterRotationDirection = StateMachineMovement.PlayerGet.transform.forward;
-        characterRotationDirection.y = 0f;
-        UpdateTargetRotation(characterRotationDirection, false);
+        Vector3 dashDirection = StateMachineMovement.PlayerGet.transform.forward;
+        dashDirection.y = 0f;
+        UpdateTargetRotation(dashDirection, false);
 
         if (StateMachineMovement.ReusableData.MovementInput != Vector2.zero) {
             UpdateTargetRotation(GetInputDirection());
-            characterRotationDirection = GetTargetRotationDirection(StateMachineMovement.ReusableData.CurrentTargetRotation.y);
+            dashDirection = GetTargetRotationDirection(StateMachineMovement.ReusableData.CurrentTargetRotation.y);
         }
 
-        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = characterRotationDirection * GetMovementSpeed();
+        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = dashDirection * GetMovementSpeed(false);
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context) {

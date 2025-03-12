@@ -9,7 +9,15 @@ public class PlayerStoppingState : PlayerGroundState {
         base.Enter();
 
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
+
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.StoppingParameterHash);
     }
+
+    public override void Exit() {
+        base.Exit();
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.StoppingParameterHash);
+    }
+
     public override void PhysicsUpdate() {
         base.PhysicsUpdate();
         RotateTowardsTargetRotation();

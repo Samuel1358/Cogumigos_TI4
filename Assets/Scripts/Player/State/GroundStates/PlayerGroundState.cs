@@ -12,7 +12,17 @@ public class PlayerGroundState : PlayerMovementState {
     public override void Enter() {
         base.Enter();
 
+        AirData.JumpData.EnableDoubleJump();
+
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
+
         UpdateShouldSprintState();
+    }
+
+    public override void Exit() {
+        base.Exit();
+
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
     }
 
     private void UpdateShouldSprintState() {
@@ -67,7 +77,7 @@ public class PlayerGroundState : PlayerMovementState {
     private bool IsThereGroundUnderneath() {
         BoxCollider groundCheckCollider = StateMachineMovement.PlayerGet.ColliderUtility.TriggerColliderData.GroundCheckCollider;
         Vector3 groundColliderCenterInWorldSpace = groundCheckCollider.bounds.center;
-        Collider[] overlapGroundCollider = Physics.OverlapBox(groundColliderCenterInWorldSpace, groundCheckCollider.bounds.center, groundCheckCollider.transform.rotation, StateMachineMovement.PlayerGet.LayerData.GroundLayerMask, QueryTriggerInteraction.Ignore);
+        Collider[] overlapGroundCollider = Physics.OverlapBox(groundColliderCenterInWorldSpace, StateMachineMovement.PlayerGet.ColliderUtility.TriggerColliderData.GroundCheckColliderExtents, groundCheckCollider.transform.rotation, StateMachineMovement.PlayerGet.LayerData.GroundLayerMask, QueryTriggerInteraction.Ignore);
 
         return overlapGroundCollider.Length > 0;
     }

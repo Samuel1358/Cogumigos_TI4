@@ -13,6 +13,14 @@ public class PlayerRollingState : PlayerLandingState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = _rollData.SpeedModifier;
 
         StateMachineMovement.ReusableData.ShouldSprint = false;
+
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.RollParameterHash);
+    }
+
+    public override void Exit() {
+        base.Exit();
+
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.RollParameterHash);
     }
 
     public override void PhysicsUpdate() {

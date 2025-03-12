@@ -16,13 +16,21 @@ public class PlayerFallingState : PlayerAirState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
 
         ResetVerticalVelocity();
+
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.FallParameterHash);
+    }
+
+    public override void Exit() {
+        base.Exit();
+
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.FallParameterHash);
     }
 
     protected override void ResetSpringState() {
     }
 
     protected override void OnContactWithGround(Collider collider) {
-        float fallDistance = MathF.Abs(_playerPositionOnEnter.y - StateMachineMovement.PlayerGet.transform.position.y);
+        float fallDistance = _playerPositionOnEnter.y - StateMachineMovement.PlayerGet.transform.position.y;
 
         if (fallDistance < _fallData.MinimumDistanceToBeConsideredHardFall) {
             StateMachineMovement.ChangeState(StateMachineMovement.LightLandingState);
@@ -52,5 +60,11 @@ public class PlayerFallingState : PlayerAirState {
         Vector3 limitedVelocity = new Vector3(0f, -_fallData.FallSpeedLimit - playerVerticalvelocity.y, 0f);
 
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(limitedVelocity, ForceMode.VelocityChange);
+    }
+
+    protected override void DoubleJump() {
+        base.DoubleJump();
+
+        StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
     }
 }

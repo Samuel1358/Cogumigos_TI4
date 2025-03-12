@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerRunningState : PlayerGroundState {
+public class PlayerRunningState : PlayerMovingState {
     private PlayerRunData _runData;
     private float _startTime;
     public PlayerRunningState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
@@ -16,6 +13,12 @@ public class PlayerRunningState : PlayerGroundState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = _runData.SpeedModifier;
         StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.MediumForce;
         _startTime = Time.time;
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.RunParameterHash);
+    }
+
+    public override void Exit() {
+        base.Exit();
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.RunParameterHash);
     }
     public override void Update() {
         base.Update();

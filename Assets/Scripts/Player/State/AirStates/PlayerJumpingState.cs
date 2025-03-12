@@ -14,7 +14,7 @@ public class PlayerJumpingState : PlayerAirState {
         base.Enter();
 
         Jump();
-        StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
+        StateMachineMovement.ReusableData.MovementSpeedModifier = _jumpData.SpeedModifier; ;
         StateMachineMovement.ReusableData.MovementDecelerationForce = _jumpData.DecelerationForce;
         _shouldKeepRotating = StateMachineMovement.ReusableData.MovementInput != Vector2.zero;
     }
@@ -51,6 +51,7 @@ public class PlayerJumpingState : PlayerAirState {
         Vector3 jumpForce = StateMachineMovement.ReusableData.CurrentJumpforce;
         Vector3 jumpDirection = StateMachineMovement.PlayerGet.transform.forward;
         if (_shouldKeepRotating) {
+            UpdateTargetRotation(GetInputDirection());
             jumpDirection = GetTargetRotationDirection(StateMachineMovement.ReusableData.CurrentTargetRotation.y);
         }
         jumpForce.x *= jumpDirection.x;
@@ -75,6 +76,10 @@ public class PlayerJumpingState : PlayerAirState {
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(jumpForce, ForceMode.VelocityChange);
         Debug.Log(StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity);
     }
+    protected override void DoubleJump() {
+        Jump();
+    }
+
     protected override void ResetSpringState() {
     }
 }
