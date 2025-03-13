@@ -1,15 +1,14 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 
-public class FriendshroomArmy : MonoBehaviour
+public class CoguArmy : MonoBehaviour
 {
+    [HideInInspector] public static CoguArmy instance;
+
     [Header("External Access")]
-    [SerializeField] private Transform followTarget;
-    [SerializeField] public Transform targetCursor {  get; private set; }
+    [SerializeField] private Transform followTarget;// { get; private set; }
+    [SerializeField] private Transform targetCursor;// { get; private set; }
 
     [Header("Settings")]
     [SerializeField] private float recruitDistance;
@@ -17,31 +16,44 @@ public class FriendshroomArmy : MonoBehaviour
 
     [Header("Attributes")]
 
-    [SerializeField] private List<Friendshroom> army;
+    [SerializeField] private List<Cogu> army;
     [SerializeField] private List<FriendshroomType> typesInArmy;
     [SerializeField] private int selectedTypeIndex;
 
-    private List<Friendshroom>[] armyList = new List<Friendshroom>[3];
-    private List<Friendshroom> basicList = new List<Friendshroom>();
-    private List<Friendshroom> trampolineList = new List<Friendshroom>();
-    private List<Friendshroom> plataformList = new List<Friendshroom>();
+    private List<Cogu>[] armyList = new List<Cogu>[3];
+    private List<Cogu> basicList = new List<Cogu>();
+    private List<Cogu> trampolineList = new List<Cogu>();
+    private List<Cogu> plataformList = new List<Cogu>();
 
     [HideInInspector] public UnityEvent onSelectedTypeChanges;
 
     private void Awake()
     {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
         armyList[0] = basicList;
         armyList[1] = trampolineList;
         armyList[2] = plataformList;
     }
 
     // Get & Set
-    public List<Friendshroom> GetArmy()
+    public Transform GetFollowTarget()
+    {
+        return followTarget;
+    }
+
+    public Transform GetTargetCursor() 
+    {  
+        return targetCursor; 
+    }
+
+    public List<Cogu> GetArmy()
     {
         return army;
     }
 
-    public List<Friendshroom>[] GetArmyList()
+    public List<Cogu>[] GetArmyList()
     {
         return armyList;
     }
@@ -60,36 +72,36 @@ public class FriendshroomArmy : MonoBehaviour
     }
 
     // Metodos Publicos
-    public void AttractFriendshroom(Friendshroom friendshroom)
+    public void AttractCogu(Cogu cogu)
     {
-        army.Add(friendshroom);
-        friendshroom.ArmieAttract(followTarget);
+        army.Add(cogu);
+        cogu.ArmieAttract(followTarget);
 
-        AddArmyList(friendshroom);
+        AddArmyList(cogu);
 
         UpdateTypesInArmy(true);
     }
 
-    public void RecruitFrienshroom(Friendshroom friendshroom)
+    public void RecruitFrienshroom(Cogu cogu)
     {
-        friendshroom.JoinArmie(followTarget);
+        cogu.JoinArmie(followTarget);
     }
 
-    public void ThrowFriendshroom(Friendshroom friendshroom)
+    public void ThrowFriendshroom(Cogu cogu)
     {
-        army.Remove(friendshroom);
-        friendshroom.Throw(targetCursor);
+        army.Remove(cogu);
+        cogu.stateMachine.ChangeState(cogu.stateMachine.throwState);
 
-        RemoveArmyList(friendshroom);
+        RemoveArmyList(cogu);
 
         UpdateTypesInArmy(false);
     }
 
-    public void UpdateArmie(Friendshroom friendshroom)
+    public void UpdateArmy(Cogu cogu)
     {
-        if (Vector3.Distance(transform.position, friendshroom.transform.position) <= recruitDistance)
+        if (Vector3.Distance(transform.position, cogu.transform.position) <= recruitDistance)
         {
-            RecruitFrienshroom(friendshroom);
+            RecruitFrienshroom(cogu);
         }
     }
 
@@ -97,9 +109,9 @@ public class FriendshroomArmy : MonoBehaviour
     {
         if (army.Count > 0)
         {
-            foreach (Friendshroom friendshroom in army)
+            foreach (Cogu cogu in army)
             {
-                friendshroom.Stop();
+                cogu.Stop();
             }
 
             army.Clear();
@@ -121,34 +133,34 @@ public class FriendshroomArmy : MonoBehaviour
     }
 
     // Metodos Privados
-    private void AddArmyList(Friendshroom friendshroom)
+    private void AddArmyList(Cogu cogu)
     {
-        switch (friendshroom.GetFriendshroomType())
+        switch (cogu.GetFriendshroomType())
         {
             case FriendshroomType.Basic:
-                basicList.Add(friendshroom);
+                basicList.Add(cogu);
                 break;
             case FriendshroomType.Trampoline:
-                trampolineList.Add(friendshroom);
+                trampolineList.Add(cogu);
                 break;
             case FriendshroomType.Plataform:
-                plataformList.Add(friendshroom);
+                plataformList.Add(cogu);
                 break;
         }
     }
 
-    private void RemoveArmyList(Friendshroom friendshroom)
+    private void RemoveArmyList(Cogu cogu)
     {
-        switch (friendshroom.GetFriendshroomType())
+        switch (cogu.GetFriendshroomType())
         {
             case FriendshroomType.Basic:
-                basicList.Remove(friendshroom);
+                basicList.Remove(cogu);
                 break;
             case FriendshroomType.Trampoline:
-                trampolineList.Remove(friendshroom);
+                trampolineList.Remove(cogu);
                 break;
             case FriendshroomType.Plataform:
-                plataformList.Remove(friendshroom);
+                plataformList.Remove(cogu);
                 break;
         }
     }
@@ -159,11 +171,11 @@ public class FriendshroomArmy : MonoBehaviour
         {
             if (army.Count > 0)
             {
-                foreach (Friendshroom friendshroom in army)
+                foreach (Cogu cogu in army)
                 {
-                    if (!typesInArmy.Contains(friendshroom.GetFriendshroomType()))
+                    if (!typesInArmy.Contains(cogu.GetFriendshroomType()))
                     {
-                        typesInArmy.Add(friendshroom.GetFriendshroomType());
+                        typesInArmy.Add(cogu.GetFriendshroomType());
                     }
                 }
             }
@@ -180,9 +192,9 @@ public class FriendshroomArmy : MonoBehaviour
                 int count = 0;
                 foreach (FriendshroomType type in typesInArmy)
                 {
-                    foreach (Friendshroom friendshroom in army)
+                    foreach (Cogu cogu in army)
                     {
-                        if (friendshroom.GetFriendshroomType() == type)
+                        if (cogu.GetFriendshroomType() == type)
                             count++;
                     }
 

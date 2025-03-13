@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class PlayerMovementStateMachine : StateMachine {
+
     public Player PlayerGet { get; private set; }
     public PlayerStateReusableData ReusableData { get; private set; }
     public PlayerIdlingState IdlingState { get; private set; }

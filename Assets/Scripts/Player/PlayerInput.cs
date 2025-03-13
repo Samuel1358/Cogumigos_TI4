@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour {
     private void Awake() {
         InputActions = new PlayerInputActions();
         PlayerActions = InputActions.Player;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
     private void OnEnable() {

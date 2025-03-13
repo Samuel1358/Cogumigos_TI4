@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Friendshroom : MonoBehaviour
+public class Cogu : MonoBehaviour
 {
     [Header("Attributes")]
     protected FriendshroomType _type = FriendshroomType.Basic;
-    [SerializeField] protected FriendshroomStates state = FriendshroomStates.Idle;
+    //[SerializeField] protected FriendshroomStates state = FriendshroomStates.Idle;
     [SerializeField] protected Vector3 target;
     [SerializeField] protected Transform targetFollow;
     [SerializeField] protected InteractiveObject interactiveObject;
@@ -22,12 +22,16 @@ public class Friendshroom : MonoBehaviour
     [SerializeField] protected float avoidenceDistance;
 
     protected NavMeshAgent _agent;
+    public CoguStateMachine stateMachine { get; private set; }
+
+    private void Awake()
+    {
+        stateMachine = new CoguStateMachine(this);
+    }
 
     protected virtual void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-
-        //Debug.Log(_type);
     }
 
     // Get & Set
@@ -36,10 +40,10 @@ public class Friendshroom : MonoBehaviour
         return _type;
     }
 
-    public FriendshroomStates GetState()
+    /*public FriendshroomStates GetState()
     {
         return state;
-    }
+    }*/
 
     #region
 
@@ -83,7 +87,7 @@ public class Friendshroom : MonoBehaviour
 
     #endregion
 
-    protected virtual void SetState(FriendshroomStates _state)
+    /*protected virtual void SetState(FriendshroomStates _state)
     {
         this.state = _state;
 
@@ -114,7 +118,7 @@ public class Friendshroom : MonoBehaviour
                 _agent.enabled = false;
                 break;
         }
-    }
+    }*/
 
     // Metodos Publicos
     #region // Updates
@@ -139,7 +143,7 @@ public class Friendshroom : MonoBehaviour
                 obj.AssingFriendshroom();
                 obj.PositionFriendshroom(transform);
 
-                switch (obj.GetInteractiveType())
+                /*switch (obj.GetInteractiveType())
                 {
                     case InteractiveObjectType.Carry:
                         Carry();
@@ -147,7 +151,7 @@ public class Friendshroom : MonoBehaviour
                     case InteractiveObjectType.Convey:
                         Convey();
                         break;
-                }
+                }*/
 
                 break;
             }
@@ -184,38 +188,28 @@ public class Friendshroom : MonoBehaviour
     {
         target = default;
         targetFollow = null;
-        SetState(FriendshroomStates.Idle);
+        stateMachine.ChangeState(stateMachine.idleState);
     }
 
     public void ArmieAttract(Transform _targetFollow) //
     {
         target = default;
         this.targetFollow = _targetFollow;
-        SetState(FriendshroomStates.Attract);
+        stateMachine.ChangeState(stateMachine.attractState);
     }
 
     public void JoinArmie(Transform _targetFollow)
     {
         target = default;
         this.targetFollow = _targetFollow;
-        SetState(FriendshroomStates.Follow);
+        stateMachine.ChangeState(stateMachine.followState);
     }
 
     public void Throw(Transform targetThrow) //
     {
         target = targetThrow.position;
         targetFollow = null;
-        SetState(FriendshroomStates.Throw);
-    }
-
-    public void Carry()
-    {
-        SetState(FriendshroomStates.Carry);
-    }
-
-    public void Convey()
-    {
-        SetState(FriendshroomStates.Convey);
+        stateMachine.ChangeState(stateMachine.throwState);
     }
 
     #endregion
