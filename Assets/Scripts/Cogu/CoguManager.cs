@@ -33,18 +33,14 @@ public class CoguManager : MonoBehaviour
     {
         if (input)
         {
-            //Debug.Log(CoguArmy.instance.GetArmy().Count);
             if (CoguArmy.instance.GetArmy().Count > 0)
             {
-                Debug.Log("1");
                 foreach (Cogu cogu in CoguArmy.instance.GetArmy())
                 {
                     //if (cogu.GetFriendshroomType() == CoguArmy.instance.GetSelectedType())
                     //{
-                        Debug.Log("2");
                         if (cogu.stateMachine.GetCurrentState() == cogu.stateMachine.followState && Vector3.Distance(cogu.transform.position, playerTrasnform.position) < CoguArmy.instance.throwMinDistance)
                         {
-                            Debug.Log("3");
                             CoguArmy.instance.ThrowFriendshroom(cogu);
                             break;
                         }

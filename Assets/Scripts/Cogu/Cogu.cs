@@ -27,6 +27,7 @@ public class Cogu : MonoBehaviour
     private void Awake()
     {
         stateMachine = new CoguStateMachine(this);
+        stateMachine.ChangeState(stateMachine.idleState);
     }
 
     protected virtual void Start()

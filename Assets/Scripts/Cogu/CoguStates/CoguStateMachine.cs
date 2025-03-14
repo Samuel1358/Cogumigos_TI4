@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CoguStateMachine : StateMachine
 {
-    public Cogu cogu {  get; private set; }
+    public Cogu cogu { get; private set; }
 
     // States
     public CoguIdleState idleState { get; private set; }
