@@ -74,14 +74,6 @@ public class PlayerGroundState : PlayerMovementState {
         return slopeSpeedModifier;
     }
 
-    private bool IsThereGroundUnderneath() {
-        BoxCollider groundCheckCollider = StateMachineMovement.PlayerGet.ColliderUtility.TriggerColliderData.GroundCheckCollider;
-        Vector3 groundColliderCenterInWorldSpace = groundCheckCollider.bounds.center;
-        Collider[] overlapGroundCollider = Physics.OverlapBox(groundColliderCenterInWorldSpace, StateMachineMovement.PlayerGet.ColliderUtility.TriggerColliderData.GroundCheckColliderExtents, groundCheckCollider.transform.rotation, StateMachineMovement.PlayerGet.LayerData.GroundLayerMask, QueryTriggerInteraction.Ignore);
-
-        return overlapGroundCollider.Length > 0;
-    }
-
     protected override void AddInputActionsCallbacks() {
         base.AddInputActionsCallbacks();
         StateMachineMovement.PlayerGet.Input.PlayerActions.Move.canceled += OnMovementCanceled;
@@ -117,13 +109,8 @@ public class PlayerGroundState : PlayerMovementState {
         StateMachineMovement.ChangeState(StateMachineMovement.RunningState);
     }
 
-    protected override void OnContactWithGroundExited(Collider collider) {
-        base.OnContactWithGroundExited(collider);
-
-        if (IsThereGroundUnderneath()) {
-            return;
-
-        }
+    protected override void OnContactWithGroundExited() {
+        base.OnContactWithGroundExited();
 
         Vector3 capsuleColliderCenterInWorldSpace = StateMachineMovement.PlayerGet.ColliderUtility.CapsuleColliderData.Collider.bounds.center;
 

@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 public class PlayerMovementState : IState {
     protected PlayerMovementStateMachine StateMachineMovement;
 
     protected PlayerGroundedData MovementData;
     protected PlayerAirData AirData;
+
+    private Collider[] _groundColliders;
+    private float _radiusSphere = 0.15f;
+    private bool _isGrounded;
 
     public PlayerMovementState(PlayerMovementStateMachine playerMovementStateMachine) {
         StateMachineMovement = playerMovementStateMachine;
@@ -37,6 +42,23 @@ public class PlayerMovementState : IState {
 
     public virtual void PhysicsUpdate() {
         Move();
+        if (IsThereGroundUnderneath()) {
+            if (!_isGrounded) {
+                _isGrounded = true;
+                OnContactWithGround();
+            }
+        }
+        else {
+            if (_isGrounded) {
+                OnContactWithGroundExited();
+                _isGrounded = false;
+            }
+        }
+    }
+
+    protected bool IsThereGroundUnderneath() {
+        _groundColliders = Physics.OverlapSphere(StateMachineMovement.PlayerGet.transform.position, _radiusSphere, StateMachineMovement.PlayerGet.LayerData.GroundLayerMask, QueryTriggerInteraction.Ignore);
+        return _groundColliders.Length > 0;
     }
 
     public virtual void Update() {
@@ -45,6 +67,7 @@ public class PlayerMovementState : IState {
 
     private void ReadMovementInput() {
         StateMachineMovement.ReusableData.MovementInput = StateMachineMovement.PlayerGet.Input.PlayerActions.Move.ReadValue<Vector2>();
+        Debug.Log(StateMachineMovement.ReusableData.MovementInput);
     }
 
     public virtual void OnAnimationEnterEvent() {
@@ -57,18 +80,6 @@ public class PlayerMovementState : IState {
 
     public virtual void OnAnimationTransitionEvent() {
 
-    }
-
-    public void OnTriggerEnter(Collider collider) {
-        if (StateMachineMovement.PlayerGet.LayerData.IsGroundLayer(collider.gameObject.layer)) {
-            OnContactWithGround(collider);
-            return;
-        }
-    }
-    public void OnTriggerExit(Collider collider) {
-        if (StateMachineMovement.PlayerGet.LayerData.IsGroundLayer(collider.gameObject.layer)) {
-            OnContactWithGroundExited(collider);
-        }
     }
 
     private void Move() {
@@ -174,7 +185,8 @@ public class PlayerMovementState : IState {
 
     protected void StartAnimation(int animationHash) {
         StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, true);
-    }protected void StopAnimation(int animationHash) {
+    }
+    protected void StopAnimation(int animationHash) {
         StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, false);
     }
 
@@ -183,11 +195,13 @@ public class PlayerMovementState : IState {
         StateMachineMovement.ReusableData.TimeToReachTargetRoation = StateMachineMovement.ReusableData.RotationData.TargetRotationReachTime;
     }
 
-    protected virtual void OnContactWithGround(Collider collider) {
+    private
+
+    protected virtual void OnContactWithGround() {
 
     }
-    protected virtual void OnContactWithGroundExited(Collider collider) {
-        
+    protected virtual void OnContactWithGroundExited() {
+
     }
 
     protected virtual void AddInputActionsCallbacks() {
@@ -200,7 +214,8 @@ public class PlayerMovementState : IState {
     protected void DeceleationHorizontally() {
         Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(-playerHorizontalVelocity * StateMachineMovement.ReusableData.MovementDecelerationForce, ForceMode.Acceleration);
-    }protected void DeceleationVertically() {
+    }
+    protected void DeceleationVertically() {
         Vector3 playerVerticalVelocity = GetPlayerVerticalVelocity();
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(-playerVerticalVelocity * StateMachineMovement.ReusableData.MovementDecelerationForce, ForceMode.Acceleration);
     }
@@ -210,7 +225,7 @@ public class PlayerMovementState : IState {
         return playerHorizontalMovement.magnitude > minimunMagnitude;
     }
 
-    protected bool IsMovingUp(float minimumVelocity = 0.1f) {
+    protected bool IsMovingUp(float minimumVelocity = 0.4f) {
         return GetPlayerVerticalVelocity().y > minimumVelocity;
     }
 

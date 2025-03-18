@@ -11,8 +11,9 @@ public abstract class StateMachine {
 
         _currentState = newState;
 
-        _currentState.Enter();
         Debug.Log("Entring: " + _currentState);
+
+        _currentState.Enter();
     }
     public void HandleInput() {
         _currentState?.HandleInput();
@@ -31,10 +32,5 @@ public abstract class StateMachine {
     }
     public void OnAnimationTransitionEvent() {
         _currentState?.OnAnimationTransitionEvent();
-    }
-    public void OntriggerEnter(Collider collider) {
-        _currentState?.OnTriggerEnter(collider);
-    }public void OntriggerExit(Collider collider) {
-        _currentState?.OnTriggerExit(collider);
     }
 }

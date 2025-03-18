@@ -10,6 +10,8 @@ public class PlayerStoppingState : PlayerGroundState {
 
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
 
+        ResetVelocity();
+
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.StoppingParameterHash);
     }
 

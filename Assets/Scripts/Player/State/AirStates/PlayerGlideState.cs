@@ -12,7 +12,14 @@ public class PlayerGlideState : PlayerAirState {
         base.Enter();
         StateMachineMovement.ReusableData.MovementSpeedModifier = _glideData.SpeedModifier;
         ResetVerticalVelocity();
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
     }
+
+    public override void Exit() {
+        base.Exit();
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
+    }
+
     public override void Update() {
         base.Update();
     }
@@ -48,6 +55,6 @@ public class PlayerGlideState : PlayerAirState {
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(limitedVelocity, ForceMode.VelocityChange);
     }
 
-    protected override void OnGlideStarted(InputAction.CallbackContext context) {
+    protected override void OnGlidePerformed(InputAction.CallbackContext context) {
     }
 }
