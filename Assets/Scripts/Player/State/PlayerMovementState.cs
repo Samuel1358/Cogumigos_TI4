@@ -67,7 +67,6 @@ public class PlayerMovementState : IState {
 
     private void ReadMovementInput() {
         StateMachineMovement.ReusableData.MovementInput = StateMachineMovement.PlayerGet.Input.PlayerActions.Move.ReadValue<Vector2>();
-        Debug.Log(StateMachineMovement.ReusableData.MovementInput);
     }
 
     public virtual void OnAnimationEnterEvent() {
