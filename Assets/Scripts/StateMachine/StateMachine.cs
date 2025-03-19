@@ -7,11 +7,8 @@ public abstract class StateMachine {
 
     public void ChangeState(IState newState) {
         _currentState?.Exit();
-        Debug.Log("Exiting: " + _currentState);
 
         _currentState = newState;
-
-        Debug.Log("Entring: " + _currentState);
 
         _currentState.Enter();
     }
