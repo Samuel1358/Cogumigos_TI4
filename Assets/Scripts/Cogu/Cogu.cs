@@ -1,12 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum CoguType
+{
+    None,
+    Trampoline,
+    Plataform,
+}
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class Cogu : MonoBehaviour
 {
     [Header("Attributes")]
-    protected FriendshroomType _type = FriendshroomType.Basic;
-    //[SerializeField] protected FriendshroomStates state = FriendshroomStates.Idle;
+    protected CoguType _type = CoguType.None;
     [SerializeField] protected Vector3 target;
     [SerializeField] protected Transform targetFollow;
     [SerializeField] protected InteractiveObject interactiveObject;
@@ -36,130 +42,59 @@ public class Cogu : MonoBehaviour
     }
 
     // Get & Set
-    public FriendshroomType GetFriendshroomType()
+    public CoguType GetCoguType()
     {
         return _type;
     }
 
-    /*public FriendshroomStates GetState()
-    {
-        return state;
-    }*/
+    // Metodos Publicos
+    #region // State Enters
 
-    #region
+    public void Stop()
+    {
+        target = default;
+        targetFollow = null;
 
-    public Vector3 GetTarget()
-    {
-        return target;
-    }
-    public void SetTarget(Vector3 target)
-    {
-        this.target = target;
+        target = default;
+        targetFollow = null;
     }
 
-    public Transform GetTargetFollow()
+    public void ArmyAttract(Transform _targetFollow) 
     {
-        return targetFollow;
-    }
-    public void SetTargetFollow(Transform targetFollow)
-    {
-        this.targetFollow = targetFollow;
+        target = default;
+        this.targetFollow = _targetFollow;
+
+        _agent.enabled = true;
+        _agent.speed = attractSpd;
     }
 
-    public float GetAttractSpd()
+    public void JoinArmy(Transform _targetFollow)
     {
-        return attractSpd;
+        target = default;
+        this.targetFollow = _targetFollow;
+
+        _agent.enabled = true;
+        _agent.stoppingDistance = 1.5f;
+        _agent.speed = followSpd;
     }
 
-    public float GetFollowSpd()
+    public void Throw(Transform targetThrow)
     {
-        return followSpd;
-    }
+        target = targetThrow.position;
+        targetFollow = null;
 
-    public float GetThrowSpd()
-    {
-        return throwSpd;
-    }
-
-    public NavMeshAgent GetAgent()
-    {
-        return _agent;
+        _agent.enabled = true;
+        _agent.stoppingDistance = 0f;
+        _agent.speed = throwSpd;
     }
 
     #endregion
 
-    /*protected virtual void SetState(FriendshroomStates _state)
-    {
-        this.state = _state;
+    #region // State Updates
 
-        switch (_state)
-        {
-            case FriendshroomStates.Idle:
-                // _agent.enabled = false;
-                break;
-            case FriendshroomStates.Attract:
-                _agent.enabled = true;
-                _agent.speed = attractSpd;
+    public virtual void Chillin() { }
 
-                break;
-            case FriendshroomStates.Follow:
-                _agent.enabled = true;
-                _agent.stoppingDistance = 1.5f;
-                _agent.speed = followSpd;
-                break;
-            case FriendshroomStates.Throw:
-                _agent.enabled = true;
-                _agent.stoppingDistance = 0f;
-                _agent.speed = throwSpd;
-                break;
-            case FriendshroomStates.Carry:
-                _agent.enabled = false;
-                break;
-            case FriendshroomStates.Convey:
-                _agent.enabled = false;
-                break;
-        }
-    }*/
-
-    // Metodos Publicos
-    #region // Updates
-
-    public void Chillin()
-    {
-        Collider[] around = Physics.OverlapSphere(transform.position, interactRadius, interactIncludeLayers);
-
-        if (around.Length == 0)
-            return;
-
-        foreach (var item in around)
-        {
-            if (InheritChillinItem(item))
-                break;
-
-            var obj = item.GetComponent<InteractiveObject>();
-            if (obj != null)
-            {
-                interactiveObject = obj;
-
-                obj.AssingFriendshroom();
-                obj.PositionFriendshroom(transform);
-
-                /*switch (obj.GetInteractiveType())
-                {
-                    case InteractiveObjectType.Carry:
-                        Carry();
-                        break;
-                    case InteractiveObjectType.Convey:
-                        Convey();
-                        break;
-                }*/
-
-                break;
-            }
-        }
-    }
-
-    public void Follow() //
+    public void Follow()
     {
         if (target != null)
         {
@@ -167,10 +102,11 @@ public class Cogu : MonoBehaviour
         }
     }
 
-    public void Move() //
+    public void Move()
     {
         if (target != null)
             _agent.SetDestination(target);
+        else stateMachine.ChangeState(stateMachine.idleState);
     }
 
     public bool ArrivedDestination()
@@ -183,47 +119,8 @@ public class Cogu : MonoBehaviour
 
     #endregion
 
-    #region // State Shifters
-
-    public void Stop() //
-    {
-        target = default;
-        targetFollow = null;
-        stateMachine.ChangeState(stateMachine.idleState);
-    }
-
-    public void ArmieAttract(Transform _targetFollow) //
-    {
-        target = default;
-        this.targetFollow = _targetFollow;
-        stateMachine.ChangeState(stateMachine.attractState);
-    }
-
-    public void JoinArmie(Transform _targetFollow)
-    {
-        target = default;
-        this.targetFollow = _targetFollow;
-        stateMachine.ChangeState(stateMachine.followState);
-    }
-
-    public void Throw(Transform targetThrow) //
-    {
-        target = targetThrow.position;
-        targetFollow = null;
-        stateMachine.ChangeState(stateMachine.throwState);
-    }
-
-    #endregion
-
-    public void StopCarry()
-    {
-        transform.SetParent(transform);
-
-        interactiveObject.RealeaseFriendshroom();
-        interactiveObject = null;
-    }
-
-    public Vector3 Avoidence(Vector3 originalMove)
+    // Private Methods
+    private Vector3 Avoidence(Vector3 originalMove)
     {
         Collider[] nearby = Physics.OverlapSphere(transform.position, neighborPercieveRadius, neighborIncludeLayers);
 
@@ -246,8 +143,4 @@ public class Cogu : MonoBehaviour
 
         return originalMove + avoidenceMove;
     }
-
-    // Metodos Privados
-
-    protected virtual bool InheritChillinItem(Collider item) { return false; }
 }

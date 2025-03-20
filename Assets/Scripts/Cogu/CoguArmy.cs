@@ -17,7 +17,7 @@ public class CoguArmy : MonoBehaviour
     [Header("Attributes")]
 
     [SerializeField] private List<Cogu> army;
-    [SerializeField] private List<FriendshroomType> typesInArmy;
+    [SerializeField] private List<CoguType> typesInArmy;
     [SerializeField] private int selectedTypeIndex;
 
     private List<Cogu>[] armyList = new List<Cogu>[3];
@@ -58,7 +58,7 @@ public class CoguArmy : MonoBehaviour
         return armyList;
     }
 
-    public FriendshroomType GetSelectedType()
+    public CoguType GetSelectedType()
     {
         return typesInArmy[selectedTypeIndex];
     }
@@ -75,16 +75,13 @@ public class CoguArmy : MonoBehaviour
     public void AttractCogu(Cogu cogu)
     {
         army.Add(cogu);
-        cogu.ArmieAttract(followTarget);
+
+        cogu.stateMachine.ChangeState(cogu.stateMachine.attractState);
+        //cogu.ArmieAttract(followTarget);
 
         AddArmyList(cogu);
 
         UpdateTypesInArmy(true);
-    }
-
-    public void RecruitFrienshroom(Cogu cogu)
-    {
-        cogu.JoinArmie(followTarget);
     }
 
     public void ThrowFriendshroom(Cogu cogu)
@@ -101,7 +98,8 @@ public class CoguArmy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, cogu.transform.position) <= recruitDistance)
         {
-            RecruitFrienshroom(cogu);
+            cogu.stateMachine.ChangeState(cogu.stateMachine.followState);
+            //cogu.JoinArmie(followTarget);
         }
     }
 
@@ -111,7 +109,8 @@ public class CoguArmy : MonoBehaviour
         {
             foreach (Cogu cogu in army)
             {
-                cogu.Stop();
+                cogu.stateMachine.ChangeState(cogu.stateMachine.idleState);
+                //cogu.Stop();
             }
 
             army.Clear();
@@ -135,15 +134,15 @@ public class CoguArmy : MonoBehaviour
     // Metodos Privados
     private void AddArmyList(Cogu cogu)
     {
-        switch (cogu.GetFriendshroomType())
+        switch (cogu.GetCoguType())
         {
-            case FriendshroomType.Basic:
+            case CoguType.None:
                 basicList.Add(cogu);
                 break;
-            case FriendshroomType.Trampoline:
+            case CoguType.Trampoline:
                 trampolineList.Add(cogu);
                 break;
-            case FriendshroomType.Plataform:
+            case CoguType.Plataform:
                 plataformList.Add(cogu);
                 break;
         }
@@ -151,15 +150,15 @@ public class CoguArmy : MonoBehaviour
 
     private void RemoveArmyList(Cogu cogu)
     {
-        switch (cogu.GetFriendshroomType())
+        switch (cogu.GetCoguType())
         {
-            case FriendshroomType.Basic:
+            case CoguType.None:
                 basicList.Remove(cogu);
                 break;
-            case FriendshroomType.Trampoline:
+            case CoguType.Trampoline:
                 trampolineList.Remove(cogu);
                 break;
-            case FriendshroomType.Plataform:
+            case CoguType.Plataform:
                 plataformList.Remove(cogu);
                 break;
         }
@@ -173,9 +172,9 @@ public class CoguArmy : MonoBehaviour
             {
                 foreach (Cogu cogu in army)
                 {
-                    if (!typesInArmy.Contains(cogu.GetFriendshroomType()))
+                    if (!typesInArmy.Contains(cogu.GetCoguType()))
                     {
-                        typesInArmy.Add(cogu.GetFriendshroomType());
+                        typesInArmy.Add(cogu.GetCoguType());
                     }
                 }
             }
@@ -190,11 +189,11 @@ public class CoguArmy : MonoBehaviour
             else
             {
                 int count = 0;
-                foreach (FriendshroomType type in typesInArmy)
+                foreach (CoguType type in typesInArmy)
                 {
                     foreach (Cogu cogu in army)
                     {
-                        if (cogu.GetFriendshroomType() == type)
+                        if (cogu.GetCoguType() == type)
                             count++;
                     }
 

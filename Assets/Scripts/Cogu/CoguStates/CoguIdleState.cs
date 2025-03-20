@@ -10,8 +10,7 @@ public class CoguIdleState : CoguState
     {
         base.Enter();
 
-        stateMachine.cogu.SetTarget(default);
-        stateMachine.cogu.SetTargetFollow(null);
+        stateMachine.cogu.Stop();
     }
 
     //public override void Exit() { }  

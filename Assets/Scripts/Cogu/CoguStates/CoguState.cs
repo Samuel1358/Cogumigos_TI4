@@ -7,6 +7,7 @@ public abstract class CoguState : IState
     public string name { get; protected set; }
     protected CoguStateMachine stateMachine;
 
+    // GoguStatesDebug
     public event Action enter;
     public event Action exit;
     public event Action handleInput;

@@ -11,12 +11,7 @@ public class CoguThrowState : CoguState
     {
         base.Enter();
 
-        stateMachine.cogu.SetTarget(CoguArmy.instance.GetTargetCursor().position);
-        stateMachine.cogu.SetTargetFollow(null);
-
-        stateMachine.cogu.GetAgent().enabled = true;
-        stateMachine.cogu.GetAgent().stoppingDistance = 0f;
-        stateMachine.cogu.GetAgent().speed = stateMachine.cogu.GetThrowSpd();
+        stateMachine.cogu.Throw(CoguArmy.instance.GetTargetCursor());
     }
 
     //public override void Exit() { }
@@ -27,9 +22,7 @@ public class CoguThrowState : CoguState
     {
         base.Update();
 
-        if (stateMachine.cogu.GetTarget() != null)
-            stateMachine.cogu.GetAgent().SetDestination(stateMachine.cogu.GetTarget());
-        else stateMachine.ChangeState(stateMachine.idleState);
+        stateMachine.cogu.Move();
 
         if (stateMachine.cogu.ArrivedDestination())
         {

@@ -10,9 +10,7 @@ public class CoguFollowState : CoguState
     {
         base.Enter();
 
-        stateMachine.cogu.GetAgent().enabled = true;
-        stateMachine.cogu.GetAgent().stoppingDistance = 1.5f;
-        stateMachine.cogu.GetAgent().speed = stateMachine.cogu.GetFollowSpd();
+        stateMachine.cogu.JoinArmy(CoguArmy.instance.GetFollowTarget());
     }
 
     //public override void Exit() { }
@@ -23,10 +21,7 @@ public class CoguFollowState : CoguState
     {
         base.Update();
 
-        if (stateMachine.cogu.GetTarget() != null)
-        {
-            stateMachine.cogu.GetAgent().SetDestination(stateMachine.cogu.Avoidence(stateMachine.cogu.GetTargetFollow().position));
-        }
+        stateMachine.cogu.Follow();
     }
 
     //public override void PhysicsUpdate() { }
