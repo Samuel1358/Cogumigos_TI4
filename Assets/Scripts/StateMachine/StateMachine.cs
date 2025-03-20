@@ -30,9 +30,4 @@ public abstract class StateMachine {
     public void OnAnimationTransitionEvent() {
         _currentState?.OnAnimationTransitionEvent();
     }
-    public void OntriggerEnter(Collider collider) {
-        _currentState?.OnTriggerEnter(collider);
-    }public void OntriggerExit(Collider collider) {
-        _currentState?.OnTriggerExit(collider);
-    }
 }

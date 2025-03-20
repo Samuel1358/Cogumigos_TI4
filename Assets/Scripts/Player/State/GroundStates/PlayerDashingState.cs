@@ -14,12 +14,14 @@ public class PlayerDashingState : PlayerGroundState {
     public override void Enter() {
         base.Enter();
 
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.DashParameterHash);
+
         StateMachineMovement.ReusableData.MovementSpeedModifier = _dashData.SpeedModifier;
 
         StateMachineMovement.ReusableData.RotationData = _dashData.RotationData;
         StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StrongForce;
 
-        AddForceToTransitionToStationaryState();
+        Dash();
         _shouldKeepRotating = StateMachineMovement.ReusableData.MovementInput == Vector2.zero;
 
         UpdateConsecutiveDashes();
@@ -36,6 +38,8 @@ public class PlayerDashingState : PlayerGroundState {
         base.Exit();
 
         SetBaseRotationData();
+
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.DashParameterHash);
     }
     protected override void AddInputActionsCallbacks() {
         base.AddInputActionsCallbacks();
@@ -69,15 +73,17 @@ public class PlayerDashingState : PlayerGroundState {
         return Time.time < _startTime + _dashData.TimeToBeConsideredConsecutive;
     }
 
-    private void AddForceToTransitionToStationaryState() {
+    private void Dash() {
+        Vector3 dashDirection = StateMachineMovement.PlayerGet.transform.forward;
+        dashDirection.y = 0f;
+        UpdateTargetRotation(dashDirection, false);
+
         if (StateMachineMovement.ReusableData.MovementInput != Vector2.zero) {
-            return;
+            UpdateTargetRotation(GetInputDirection());
+            dashDirection = GetTargetRotationDirection(StateMachineMovement.ReusableData.CurrentTargetRotation.y);
         }
 
-        Vector3 characterRotationDirection = StateMachineMovement.PlayerGet.transform.forward;
-        characterRotationDirection.y = 0f;
-        UpdateTargetRotation(characterRotationDirection, false);
-        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = characterRotationDirection * GetMovementSpeed();
+        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = dashDirection * GetMovementSpeed(false);
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context) {

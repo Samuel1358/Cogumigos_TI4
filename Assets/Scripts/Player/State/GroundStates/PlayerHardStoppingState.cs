@@ -5,6 +5,12 @@ public class PlayerHardStoppingState : PlayerStoppingState {
         base.Enter();
         StateMachineMovement.ReusableData.MovementDecelerationForce = MovementData.StopData.HardDecelerationForce;
         StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StrongForce;
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.HardStopParameterHash);
+    }
+
+    public override void Exit() {
+        base.Exit();
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.HardStopParameterHash);
     }
     protected override void OnMove() {
         if (StateMachineMovement.ReusableData.ShouldWalk) {
