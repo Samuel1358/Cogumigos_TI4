@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3234053382805387167}
   - component: {fileID: 4517211730995357911}
   - component: {fileID: 2548863033677939250}
-  - component: {fileID: 4116701908822995421}
+  - component: {fileID: 1878235922387898266}
   m_Layer: 31
   m_Name: Cogu
   m_TagString: Friendshroom
@@ -80,7 +80,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4116701908822995421
+--- !u!114 &1878235922387898266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,19 +89,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 521227491317938765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4e846602228f354fa4bbc76ea4f9604, type: 3}
+  m_Script: {fileID: 11500000, guid: fc3e9d34cacfacd4fb0f777789e4e71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
-  targetFollow: {fileID: 0}
-  interactiveObject: {fileID: 0}
   attractSpd: 10
   followSpd: 6
   throwSpd: 15
   neighborPercieveRadius: 3
   neighborIncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2147483648
   avoidenceDistance: 3
 --- !u!1001 &6887026325889754117
 PrefabInstance:

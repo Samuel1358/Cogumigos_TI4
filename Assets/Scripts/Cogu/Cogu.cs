@@ -9,13 +9,13 @@ public enum CoguType
 }
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Cogu : MonoBehaviour
+public abstract class Cogu : MonoBehaviour
 {
-    [Header("Attributes")]
+    //[Header("Attributes")]
     protected CoguType _type = CoguType.None;
-    [SerializeField] protected Vector3 target;
-    [SerializeField] protected Transform targetFollow;
-    [SerializeField] protected InteractiveObject interactiveObject;
+    protected Vector3 target;
+    protected Transform targetFollow;
+    // protected InteractiveObject interactiveObject;
 
     [Header("Settings")]
     [SerializeField] protected float attractSpd;
@@ -92,7 +92,7 @@ public class Cogu : MonoBehaviour
 
     #region // State Updates
 
-    public virtual void Chillin() { }
+    public abstract void Chillin();
 
     public void Follow()
     {
