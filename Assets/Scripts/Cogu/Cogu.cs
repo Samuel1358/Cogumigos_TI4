@@ -21,8 +21,8 @@ public class Cogu : MonoBehaviour
     [SerializeField] protected float attractSpd;
     [SerializeField] protected float followSpd;
     [SerializeField] protected float throwSpd;
-    [SerializeField] protected float interactRadius;
-    [SerializeField] protected LayerMask interactIncludeLayers;
+    /*[SerializeField] protected float interactRadius;
+    [SerializeField] protected LayerMask interactIncludeLayers;*/
     [SerializeField] protected float neighborPercieveRadius;
     [SerializeField] protected LayerMask neighborIncludeLayers;
     [SerializeField] protected float avoidenceDistance;
