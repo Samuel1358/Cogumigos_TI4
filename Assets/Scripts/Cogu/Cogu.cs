@@ -18,14 +18,7 @@ public abstract class Cogu : MonoBehaviour
     // protected InteractiveObject interactiveObject;
 
     [Header("Settings")]
-    [SerializeField] protected float attractSpd;
-    [SerializeField] protected float followSpd;
-    [SerializeField] protected float throwSpd;
-    /*[SerializeField] protected float interactRadius;
-    [SerializeField] protected LayerMask interactIncludeLayers;*/
-    [SerializeField] protected float neighborPercieveRadius;
-    [SerializeField] protected LayerMask neighborIncludeLayers;
-    [SerializeField] protected float avoidenceDistance;
+    [SerializeField] protected CoguSO data;
 
     protected NavMeshAgent _agent;
     public CoguStateMachine stateMachine { get; private set; }
@@ -65,7 +58,7 @@ public abstract class Cogu : MonoBehaviour
         this.targetFollow = _targetFollow;
 
         _agent.enabled = true;
-        _agent.speed = attractSpd;
+        _agent.speed = data.attractSpd;
     }
 
     public void JoinArmy(Transform _targetFollow)
@@ -75,7 +68,7 @@ public abstract class Cogu : MonoBehaviour
 
         _agent.enabled = true;
         _agent.stoppingDistance = 1.5f;
-        _agent.speed = followSpd;
+        _agent.speed = data.followSpd;
     }
 
     public void Throw(Transform targetThrow)
@@ -85,7 +78,7 @@ public abstract class Cogu : MonoBehaviour
 
         _agent.enabled = true;
         _agent.stoppingDistance = 0f;
-        _agent.speed = throwSpd;
+        _agent.speed = data.throwSpd;
     }
 
     #endregion
@@ -122,7 +115,7 @@ public abstract class Cogu : MonoBehaviour
     // Private Methods
     private Vector3 Avoidence(Vector3 originalMove)
     {
-        Collider[] nearby = Physics.OverlapSphere(transform.position, neighborPercieveRadius, neighborIncludeLayers);
+        Collider[] nearby = Physics.OverlapSphere(transform.position, data.neighborPercieveRadius, data.neighborIncludeLayers);
 
         if (nearby.Length == 0)
             return originalMove;
@@ -132,7 +125,7 @@ public abstract class Cogu : MonoBehaviour
 
         foreach (Collider neighbor in nearby)
         {
-            if (Vector3.SqrMagnitude(neighbor.transform.position - transform.position) < avoidenceDistance)
+            if (Vector3.SqrMagnitude(neighbor.transform.position - transform.position) < data.avoidenceDistance)
             {
                 nAvoid++;
                 avoidenceMove += transform.position - neighbor.transform.position;
