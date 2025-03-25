@@ -12,6 +12,12 @@ public class Player : MonoBehaviour {
     public Rigidbody PlayerRigidbody { get; private set; }
     private PlayerMovementStateMachine _movementStateMachine;
 
+    #region TesteRespawn
+    private int CoguCount = 0;
+    private int _lastCount = 0;
+    #endregion
+
+
     public Transform MainCameraTransform { get; private set; }
     private void Awake() {
         Input = GetComponent<PlayerInput>();
@@ -25,6 +31,7 @@ public class Player : MonoBehaviour {
         ColliderUtility.CalculateCapsuleColliderDimensions();
         _movementStateMachine.ChangeState(_movementStateMachine.IdlingState);
         MainCameraTransform = Camera.main.transform;
+        RespawnController.OnPlayerRespawn += ResetPlayer;
     }
     private void OnValidate() {
         ColliderUtility.Initialize(gameObject);
@@ -33,6 +40,7 @@ public class Player : MonoBehaviour {
     private void Update() {
         _movementStateMachine.HandleInput();
         _movementStateMachine.Update();
+        Debug.Log(CoguCount.ToString("000"));
     }
     private void FixedUpdate() {
         _movementStateMachine.PhysicsUpdate();
@@ -44,5 +52,16 @@ public class Player : MonoBehaviour {
         _movementStateMachine.OnAnimationExitEvent();
     }public void OnMovementStateAnimationTransitionEvent() {
         _movementStateMachine.OnAnimationTransitionEvent();
+    }
+
+    public void ResetPlayer() {
+        CoguCount = _lastCount;
+        transform.position = RespawnController.Instance.PlayerActiveCheckPoint.transform.position;
+        transform.rotation = RespawnController.Instance.PlayerActiveCheckPoint.transform.rotation;
+    }
+
+    public void SetCheckpoint(int coguToAdd) {
+        CoguCount += coguToAdd;
+        _lastCount = CoguCount;
     }
 }
