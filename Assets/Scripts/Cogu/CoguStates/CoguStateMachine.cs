@@ -13,6 +13,8 @@ public class CoguStateMachine : StateMachine
 
     public CoguThrowState throwState { get; private set; }
 
+    public CoguInteractingState interactingState { get; private set; }
+
     // Constructor
     public CoguStateMachine(Cogu cogu)
     {

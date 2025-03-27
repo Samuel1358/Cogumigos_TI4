@@ -13,26 +13,10 @@ public class CoguFollowState : CoguState
         stateMachine.cogu.JoinArmy(CoguArmy.instance.GetFollowTarget());
     }
 
-    //public override void Exit() { }
-
-    //public override void HandleInput() { }
-
     public override void Update() 
     {
         base.Update();
 
         stateMachine.cogu.Follow();
     }
-
-    //public override void PhysicsUpdate() { }
-
-    //public override void OnAnimationEnterEvent() { }
-
-    //public override void OnAnimationExitEvent() { }
-
-    //public override void OnAnimationTransitionEvent() { }
-
-    //public override void OnTriggerEnter(Collider collider) { }
-
-    //public override void OnTriggerExit(Collider collider) { }
 }

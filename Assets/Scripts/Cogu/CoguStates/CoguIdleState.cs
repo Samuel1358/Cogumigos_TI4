@@ -13,26 +13,10 @@ public class CoguIdleState : CoguState
         stateMachine.cogu.Stop();
     }
 
-    //public override void Exit() { }  
-
-    //public override void HandleInput() { }
-
     public override void Update() 
     {
         base.Update();
 
         stateMachine.cogu.Chillin();
     }
-
-    //public override void PhysicsUpdate() { }
-
-    //public override void OnAnimationEnterEvent() { }
-
-    //public override void OnAnimationExitEvent() { }
-
-    //public override void OnAnimationTransitionEvent() { }
-
-    //public override void OnTriggerEnter(Collider collider) { }
-
-    //public override void OnTriggerExit(Collider collider) { }
 }
