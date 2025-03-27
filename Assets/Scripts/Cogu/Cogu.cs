@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,7 +10,7 @@ public enum CoguType
 }
 
 [RequireComponent(typeof(NavMeshAgent))]
-public abstract class Cogu : MonoBehaviour
+public class Cogu : MonoBehaviour
 {
     //[Header("Attributes")]
     protected CoguType _type = CoguType.None;
@@ -85,7 +86,18 @@ public abstract class Cogu : MonoBehaviour
 
     #region // State Updates
 
-    public abstract void Chillin();
+    public void Chillin()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, data.interactRadius, data.interactIncludeLayers, QueryTriggerInteraction.Collide);
+        foreach (Collider obj in colliders)
+        {
+            if (obj.TryGetComponent<IInteractable>(out IInteractable interactable))
+            {
+                stateMachine.ChangeState(StartInteracting(interactable));
+                return;
+            }
+        }
+    }
 
     public void Follow()
     {
@@ -112,6 +124,11 @@ public abstract class Cogu : MonoBehaviour
 
     #endregion
 
+    public void EndInteracting(Action act)
+    {
+        stateMachine.interactingState.EndInteracting(act);
+    }
+
     // Private Methods
     private Vector3 Avoidence(Vector3 originalMove)
     {
@@ -135,5 +152,10 @@ public abstract class Cogu : MonoBehaviour
             avoidenceMove /= nAvoid;
 
         return originalMove + avoidenceMove;
+    }
+
+    private CoguState StartInteracting(IInteractable interactable)
+    {
+        return stateMachine.interactingState.StartInteracting(interactable.Interact(this));
     }
 }

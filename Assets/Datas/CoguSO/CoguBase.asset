@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5a1a82365b2fec4fa3195761a1b6acf, type: 3}
   m_Name: CoguBase
   m_EditorClassIdentifier: 
-  attractSpd: 0
-  followSpd: 0
-  throwSpd: 0
-  neighborPercieveRadius: 0
+  attractSpd: 10
+  followSpd: 6
+  throwSpd: 15
+  neighborPercieveRadius: 2
   neighborIncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
-  avoidenceDistance: 0
+    m_Bits: 2147483648
+  avoidenceDistance: 3

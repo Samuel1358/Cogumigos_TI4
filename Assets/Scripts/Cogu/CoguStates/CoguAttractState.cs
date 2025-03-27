@@ -10,17 +10,8 @@ public class CoguAttractState : CoguState
     {
         base.Enter();
 
-        /*stateMachine.cogu.SetTarget(default);
-        stateMachine.cogu.SetTargetFollow(CoguArmy.instance.GetFollowTarget());
-
-        stateMachine.cogu.GetAgent().enabled = true;
-        stateMachine.cogu.GetAgent().speed = stateMachine.cogu.GetAttractSpd();*/
         stateMachine.cogu.ArmyAttract(CoguArmy.instance.GetFollowTarget());
     }
-
-    //public override void Exit() { }
-
-    //public override void HandleInput() { }
 
     public override void Update() 
     {
@@ -30,16 +21,4 @@ public class CoguAttractState : CoguState
 
         CoguArmy.instance.UpdateArmy(stateMachine.cogu);
     }
-
-    //public override void PhysicsUpdate() { }
-
-    //public override void OnAnimationEnterEvent() { }
-
-    //public override void OnAnimationExitEvent() { }
-
-    //public override void OnAnimationTransitionEvent() { }
-
-    //public override void OnTriggerEnter(Collider collider) { }
-
-    //public override void OnTriggerExit(Collider collider) { }
 }
