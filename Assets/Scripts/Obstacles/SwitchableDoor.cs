@@ -1,9 +1,17 @@
 using UnityEngine;
 
-public class SwitchableDoor : /*MonoBehaviour,*/ ISwitchable
+[RequireComponent(typeof(Animation))]
+public class SwitchableDoor : MonoBehaviour, ISwitchable
 {
-    [SerializeField] Animation openAnimation;
-    [SerializeField] Animation closeAnimation;
+    [SerializeField] AnimationClip openAnimation;
+    [SerializeField] AnimationClip closeAnimation;
+
+    private Animation anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animation>();
+    }
 
     // Public Interface Methods
     public void Activate()
@@ -19,11 +27,13 @@ public class SwitchableDoor : /*MonoBehaviour,*/ ISwitchable
     // Private Methods
     private void OpenAnimation()
     {
-        openAnimation.Play();
+        anim.clip = openAnimation;
+        anim?.Play();
     }
 
     private void CloseAnimation()
     {
-        closeAnimation.Play();
+        anim.clip = closeAnimation;
+        anim?.Play();
     }
 }

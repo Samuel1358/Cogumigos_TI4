@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PressurePlate : Switch
 {
-    [SerializeField] LayerMask includeLayers;
-    [SerializeField] ISwitchable switchableObj;
+    [SerializeField] private LayerMask includeLayers;
+    [SerializeReference] private ISwitchable switchableObj;
 
     // Private Methods
     protected override void Activate(ISwitchable obj)

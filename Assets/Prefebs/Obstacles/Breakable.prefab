@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7482152467434240323}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fracturedPrefab: {fileID: 12074014911306131, guid: 5b073719ab187924d919dbef15157b9e, type: 3}
+  _linkedCheckpoint: {fileID: 0}
 --- !u!65 &4977438201317191208
 BoxCollider:
   m_ObjectHideFlags: 0
