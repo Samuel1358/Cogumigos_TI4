@@ -9,7 +9,7 @@ public class BreakTest : MonoBehaviour {
             Collider[] list = Physics.OverlapSphere(transform.position, ExplosionRadius, WhatExplodes, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < list.Length; i++) {
                 if (list[i].TryGetComponent<Breakable>(out Breakable b)) {
-                    b.OnBreak(ExplosionForce, transform.position, ExplosionRadius);
+                    //b.OnBreak(ExplosionForce, transform.position, ExplosionRadius);
                 }
             }
         }

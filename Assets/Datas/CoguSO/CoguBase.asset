@@ -15,8 +15,14 @@ MonoBehaviour:
   attractSpd: 10
   followSpd: 6
   throwSpd: 15
+  interactRadius: 5
+  interactIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 512
   neighborPercieveRadius: 2
   neighborIncludeLayers:
     serializedVersion: 2
     m_Bits: 2147483648
   avoidenceDistance: 3
+  ExplosionRadius: 5
+  ExplosionForce: 20

@@ -11,4 +11,7 @@ public class CoguSO : ScriptableObject
     public float neighborPercieveRadius;
     public LayerMask neighborIncludeLayers;
     public float avoidenceDistance;
+    [Header("ExplosionCogu")]
+    public float ExplosionRadius;
+    public float ExplosionForce;
 }

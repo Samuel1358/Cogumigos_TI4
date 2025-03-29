@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Breakable : MonoBehaviour, IResetable {
+public class Breakable : MonoBehaviour, IResetable, IInteractable {
     [SerializeField] private GameObject _fracturedPrefab;
     [SerializeField] private Checkpoint _linkedCheckpoint;
     private List<Transform> _parts;
@@ -19,15 +20,6 @@ public class Breakable : MonoBehaviour, IResetable {
     private void OnDisable() {
         RespawnController.OnPlayerChangeCheckPoint -= VerifyReset;
         RespawnController.Instance.TurnTrapNonResetable(this);
-    }
-    public void OnBreak(float explosionForce, Vector3 explosionPoint, float explosionRadius) {
-        DeactivateWall();
-        Transform father = Instantiate(_fracturedPrefab, transform).transform;
-        Rigidbody[] aux = father.GetComponentsInChildren<Rigidbody>();
-        foreach (Rigidbody t in aux) {
-            _parts.Add(t.gameObject.transform);
-            t.AddExplosionForce(explosionForce, explosionPoint, explosionRadius);
-        }
     }
 
     private void DeactivateWall() {
@@ -57,5 +49,16 @@ public class Breakable : MonoBehaviour, IResetable {
         if (RespawnController.Instance.PlayerLastCheckPoint == _linkedCheckpoint) {
             RespawnController.Instance.TurnTrapNonResetable(this);
         }
+    }
+
+    public Action Interact(Cogu cogu) {
+        DeactivateWall();
+        Transform father = Instantiate(_fracturedPrefab, transform).transform;
+        Rigidbody[] aux = father.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody t in aux) {
+            _parts.Add(t.gameObject.transform);
+            t.AddExplosionForce(cogu.GetCoguData().ExplosionForce, cogu.transform.position, cogu.GetCoguData().ExplosionRadius);
+        }
+        return () => { Destroy(cogu.gameObject); };
     }
 }

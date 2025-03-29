@@ -39,6 +39,9 @@ public class Cogu : MonoBehaviour
     public CoguType GetCoguType()
     {
         return _type;
+    }public CoguSO GetCoguData()
+    {
+        return data;
     }
 
     // Metodos Publicos
