@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5797887987998391272}
   - component: {fileID: 6977610906909576471}
   - component: {fileID: 9099654869404957054}
+  - component: {fileID: 7197633542103103606}
   m_Layer: 0
   m_Name: ArmRestPillar
   m_TagString: Untagged
@@ -86,6 +87,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7197633542103103606
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292190008407270344}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4104868000847801807, guid: 79adbdf050253324db18d00201222c97, type: 3}
 --- !u!1 &1024007811926421833
 GameObject:
   m_ObjectHideFlags: 0
@@ -97,6 +120,7 @@ GameObject:
   - component: {fileID: 5247765975274446324}
   - component: {fileID: 8833836661226185344}
   - component: {fileID: 1353917009331915016}
+  - component: {fileID: 1514896952126724749}
   m_Layer: 0
   m_Name: SittingPlank
   m_TagString: Untagged
@@ -172,6 +196,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1514896952126724749
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024007811926421833}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.6282957, y: 0.5902558, z: 0.7338887}
+  m_Center: {x: 0, y: 0.30959877, z: 0.029484034}
 --- !u!1 &1609649872865198386
 GameObject:
   m_ObjectHideFlags: 0

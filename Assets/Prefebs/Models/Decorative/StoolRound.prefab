@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4505324025835083364}
   - component: {fileID: 8285367900932669648}
   - component: {fileID: 5120325685137223271}
+  - component: {fileID: 1913888263021493103}
   m_Layer: 0
   m_Name: StoolRound
   m_TagString: Untagged
@@ -119,3 +120,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1913888263021493103
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907043783421069803}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5964468, y: 0.5885314, z: 0.65627635}
+  m_Center: {x: 0, y: 0.28757685, z: -0.029914752}

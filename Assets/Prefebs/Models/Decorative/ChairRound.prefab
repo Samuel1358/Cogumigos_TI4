@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4633521596975844427}
   - component: {fileID: 6375753133710745686}
   - component: {fileID: 5373428669511513898}
+  - component: {fileID: 8170935522623975560}
   m_Layer: 0
   m_Name: ChairRound
   m_TagString: Untagged
@@ -120,3 +121,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8170935522623975560
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122742342011752150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5567035828688602029, guid: a90d014c35e66024b85a6c6698ba1f32, type: 3}
