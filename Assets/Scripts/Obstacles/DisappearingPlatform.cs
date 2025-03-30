@@ -4,13 +4,13 @@ using UnityEngine;
 public class DisappearingPlatform : MonoBehaviour
 {
     public float disappearTime = 2f; 
-    private Renderer platformRenderer; 
+    [SerializeField] private Renderer platformRenderer; 
     private Collider platformCollider; 
     private bool isActive = true; 
 
     void Start()
     {
-        platformRenderer = GetComponent<Renderer>(); 
+        //platformRenderer = GetComponent<Renderer>(); 
         platformCollider = GetComponent<Collider>(); 
     }
 
