@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class Trampoline : MonoBehaviour
+public class Trampolo : MonoBehaviour
 {
     public float bounceForce = 10f;             
     public float bounceCooldown = 0.2f;      
@@ -12,6 +12,7 @@ public class Trampoline : MonoBehaviour
     {
         if (collision.collider.CompareTag("TriggerCheck"))
         {
+            Debug.Log("colidindo");
             Rigidbody playerRb = collision.transform.GetComponentInParent<Rigidbody>();
 
             if (playerRb != null && Time.time >= lastBounceTime + bounceCooldown)
