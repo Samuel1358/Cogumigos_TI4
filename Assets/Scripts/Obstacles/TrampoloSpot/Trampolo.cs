@@ -10,12 +10,15 @@ public class Trampoline : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+        Debug.Log(collision.gameObject);
         if (collision.collider.CompareTag("TriggerCheck"))
         {
+            Debug.Log("2");
             Rigidbody playerRb = collision.transform.GetComponentInParent<Rigidbody>();
-
+            Debug.Log("3");
             if (playerRb != null && Time.time >= lastBounceTime + bounceCooldown)
             {
+                Debug.Log("4");
                 Vector3 currentVelocity = playerRb.linearVelocity;
                 playerRb.linearVelocity = new Vector3(currentVelocity.x, 0f, currentVelocity.z);
 

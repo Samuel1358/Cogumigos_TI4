@@ -95,7 +95,7 @@ public class Cogu : MonoBehaviour
         foreach (Collider obj in colliders)
         {
             if (obj.TryGetComponent<IInteractable>(out IInteractable interactable))
-            {
+            {     
                 stateMachine.ChangeState(StartInteracting(interactable));
                 return;
             }
@@ -160,5 +160,11 @@ public class Cogu : MonoBehaviour
     private CoguState StartInteracting(IInteractable interactable)
     {
         return stateMachine.interactingState.StartInteracting(interactable.Interact(this));
+    }
+
+    private void OnDestroy()
+    {
+        CoguManager.instance.coguList.Remove(this);
+        CoguArmy.instance.GetArmy().Remove(this);
     }
 }

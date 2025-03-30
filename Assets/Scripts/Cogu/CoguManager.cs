@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CoguManager : MonoBehaviour
@@ -7,7 +8,7 @@ public class CoguManager : MonoBehaviour
     [Header("External Access")]
     [SerializeField] private Transform playerTrasnform;
 
-    public Cogu[] coguList;
+    public List<Cogu> coguList;
 
     private void Awake()
     {
@@ -17,14 +18,28 @@ public class CoguManager : MonoBehaviour
 
     private void Start()
     {
-        coguList = FindObjectsByType<Cogu>(FindObjectsSortMode.None);
+        UpdateList();
+
+        RespawnController.OnPlayerRespawn += UpdateList;
     }
 
     private void FixedUpdate()
     {
-        foreach (Cogu cogu in coguList)
+        for (int i = 0; i < coguList.Count; i++)
         {
-            cogu.stateMachine.Update();
+            coguList[i].stateMachine.Update();
+        }
+    }
+
+    public void UpdateList()
+    {
+        coguList.Clear();
+
+        Cogu[] aux = FindObjectsByType<Cogu>(FindObjectsSortMode.None);
+
+        foreach (Cogu cogu in aux)
+        {
+            coguList.Add(cogu);
         }
     }
 

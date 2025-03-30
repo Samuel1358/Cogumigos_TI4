@@ -23,5 +23,6 @@ public class CoguStateMachine : StateMachine
         this.attractState = new CoguAttractState(this);
         this.followState = new CoguFollowState(this);
         this.throwState = new CoguThrowState(this);
+        this.interactingState = new CoguInteractingState(this);
     }
 }
