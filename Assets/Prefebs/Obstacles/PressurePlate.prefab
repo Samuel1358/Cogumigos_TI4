@@ -49,12 +49,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5, y: 0.1, z: 1.5}
-  m_Center: {x: 0, y: 0.05, z: 0}
+  m_Size: {x: 1.5, y: 0.3, z: 1.5}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!114 &2414012939652132187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
   includeLayers:
     serializedVersion: 2
     m_Bits: 8
+  switchableObj: {fileID: 0}
 --- !u!1 &1102076529784817923
 GameObject:
   m_ObjectHideFlags: 0

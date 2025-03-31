@@ -1,16 +1,18 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Animation))]
+//[RequireComponent(typeof(Animation))]
 public class SwitchableDoor : MonoBehaviour, ISwitchable
 {
-    [SerializeField] AnimationClip openAnimation;
-    [SerializeField] AnimationClip closeAnimation;
+    [SerializeField] private Animation anim;
+    [SerializeField] private AnimationClip openAnimation;
+    [SerializeField] private AnimationClip closeAnimation;
 
-    private Animation anim;
 
     private void Start()
     {
-        anim = GetComponent<Animation>();
+        openAnimation.legacy = true;
+        closeAnimation.legacy = true;
+        //anim = GetComponent<Animation>();
     }
 
     // Public Interface Methods
