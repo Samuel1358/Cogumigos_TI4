@@ -8,6 +8,7 @@ public class TEMP_InputManager : MonoBehaviour
     [SerializeField] private TargetCursor targetCursor;
     //[SerializeField] private FriendshroomManager friendshroomManager;
     [SerializeField] private CameraController cameraController;
+    [SerializeField] private TEMP_UIController uiController;
 
     //private bool isFreeLookActive = false;
 
@@ -34,6 +35,15 @@ public class TEMP_InputManager : MonoBehaviour
 
         CoguManager.instance.DisbandArmy(Input.GetKeyDown(KeyCode.R));
         CoguManager.instance.ChangeArmySelectedType(Input.GetKeyDown(KeyCode.Tab));
+
+        // UIController
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (uiController.painel.active)
+                uiController.Desable();
+            else
+                uiController.Active();
+        }
     }
 
     private void LateUpdate()
