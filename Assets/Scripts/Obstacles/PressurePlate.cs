@@ -4,20 +4,14 @@ public class PressurePlate : Switch
 {
     [SerializeField] private LayerMask includeLayers;
     [SerializeReference] private GameObject switchableObj;
-    /*private ISwitchable _switchableObj;
-
-    private void Start()
-    {
-        if 
-    }*/
 
     // Private Methods
-    protected override void Activate(ISwitchable obj)
+    protected override void Activate(Switchable obj)
     {
         obj.Activate();
     }
 
-    protected override void Disable(ISwitchable obj)
+    protected override void Disable(Switchable obj)
     {
         obj.Disable();
     }
@@ -25,13 +19,11 @@ public class PressurePlate : Switch
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.gameObject.layer);
-        //Debug.Log(includeLayers.value);
         if (other.CompareTag("Player") || other.CompareTag("TriggerCheck") || other.CompareTag("Friendshroom"))
         {
             Debug.Log("2");
             
-            if (switchableObj.TryGetComponent(out ISwitchable obj))
+            if (switchableObj.TryGetComponent(out Switchable obj))
                 Activate(obj);
         }
     }
@@ -42,7 +34,7 @@ public class PressurePlate : Switch
         if (other.CompareTag("Player") || other.CompareTag("TriggerCheck") || other.CompareTag("Friendshroom"))
         {
             Debug.Log("4");
-            if (switchableObj.TryGetComponent(out ISwitchable obj))
+            if (switchableObj.TryGetComponent(out Switchable obj))
                 Disable(obj);
         }
     }
