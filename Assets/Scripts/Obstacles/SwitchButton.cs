@@ -16,7 +16,7 @@ public class SwitchButton : Switch
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == includeLayers)
+        if ((includeLayers & (1 << other.gameObject.layer)) != 0)
         {
             Activate(switchableObj);
         }

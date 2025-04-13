@@ -3,7 +3,7 @@ using UnityEngine;
 public class PressurePlate : Switch
 {
     [SerializeField] private LayerMask includeLayers;
-    [SerializeReference] private GameObject switchableObj;
+    [SerializeReference] private Switchable switchableObj;
 
     // Private Methods
     protected override void Activate(Switchable obj)
@@ -19,23 +19,22 @@ public class PressurePlate : Switch
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("TriggerCheck") || other.CompareTag("Friendshroom"))
+        Debug.Log("1");
+        if ((includeLayers & (1 << other.gameObject.layer)) != 0)
         {
             Debug.Log("2");
-            
-            if (switchableObj.TryGetComponent(out Switchable obj))
-                Activate(obj);
+
+            Activate(switchableObj);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("3");
-        if (other.CompareTag("Player") || other.CompareTag("TriggerCheck") || other.CompareTag("Friendshroom"))
+        if ((includeLayers & (1 << other.gameObject.layer)) != 0)
         {
             Debug.Log("4");
-            if (switchableObj.TryGetComponent(out Switchable obj))
-                Disable(obj);
+            Disable(switchableObj);
         }
     }
 }
