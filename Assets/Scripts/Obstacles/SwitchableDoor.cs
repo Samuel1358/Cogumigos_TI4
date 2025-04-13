@@ -1,31 +1,57 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
 
-//[RequireComponent(typeof(Animation))]
 public class SwitchableDoor : Switchable
 {
-    [SerializeField] public List<DoorTweenAnimation> animationList { get; private set; } = new List<DoorTweenAnimation>();
-    private List<DoorTweenAnimation> animationCloseList = new List<DoorTweenAnimation>();
-    [SerializeField] public int selectedIndex = 0;
+    private List<DoorTweenAnimation> openAnimationList = new List<DoorTweenAnimation>();
+    private List<DoorTweenAnimation> closeAnimationList = new List<DoorTweenAnimation>();
+    public int selectedIndex = 0;
+
+    #region // Inspector properties
 
     [SerializeField] public float value;
+    [SerializeField] public float durationTime;
+
+    #endregion
+
+    #region // DoorTweenAnimation
+
+    private DoorTweenAnimation moveOpenAnimation;
+    private DoorTweenAnimation rotateOpenAnimation;
+    private DoorTweenAnimation moveCloseAnimation;
+    private DoorTweenAnimation rotateCloseAnimation;
+
+    #endregion
 
     public void OnEnable()
     {
-        BasicOpenAnimation basicOpenAnimation = new BasicOpenAnimation(this);
-        RotateOpenAnimation rotateOpenAnimation = new RotateOpenAnimation(this);
+        #region // DoorTweenAnimation enable
 
-        BasicCloseAnimation basicCloseAnimation = new BasicCloseAnimation();
-        RotateCloseAnimation rotateCloseAnimation = new RotateCloseAnimation();
+        moveOpenAnimation = new DoorTweenAnimation("Move Open Animation", MoveOpenBounce);
+        rotateOpenAnimation = new DoorTweenAnimation("Rotate Open Animation", RotateOpenBounce);
 
-        animationList.Add(basicOpenAnimation);
-        animationList.Add(rotateOpenAnimation);
+        moveCloseAnimation = new DoorTweenAnimation("Move Close Animation", MoveCloseBounce);
+        rotateCloseAnimation = new DoorTweenAnimation("Rotate Close Animation", RotateCloseBounce);
 
-        animationCloseList.Add(basicCloseAnimation);
-        animationCloseList.Add(rotateCloseAnimation);
+        #endregion
+
+        openAnimationList = new List<DoorTweenAnimation>
+        {
+            moveOpenAnimation,
+            rotateOpenAnimation
+        };
+
+        closeAnimationList = new List<DoorTweenAnimation>
+        {
+            moveCloseAnimation,
+            rotateCloseAnimation
+        };
     }
+
+    #region // SwitchableDoor Methods
 
     // Public Inherit Methods
     public override void Activate()
@@ -38,120 +64,77 @@ public class SwitchableDoor : Switchable
         CloseAnimation();
     }
 
+    // public Methods
+    public string[] GetAnimationsNames()
+    {
+        List<string> names = new List<string>();
+        foreach (DoorTweenAnimation aux in openAnimationList)
+        {
+            names.Add(aux.ToString());
+        }
+
+        return names.ToArray();
+    }
+
     // Private Methods
     [ContextMenu("OpenAnimation")]
     private void OpenAnimation()
     {
-        animationList[selectedIndex].TweenAnimation(transform);       
+        openAnimationList[selectedIndex].TweenAnimation();
     }
 
     [ContextMenu("CloseAnimation")]
     private void CloseAnimation()
     {
-        animationCloseList[selectedIndex].TweenAnimation(transform);
-    }
-
-    #region // Animations
-
-    internal class BasicOpenAnimation : DoorTweenAnimation
-    {
-        private SwitchableDoor _switchableDoor;
-        private SerializedObject _serializedObject;
-
-        private SerializedProperty _value;
-
-        public BasicOpenAnimation(SwitchableDoor obj) : base("BasicOpenAnimation")
-        {
-            _switchableDoor = obj;
-            _serializedObject = new SerializedObject(_switchableDoor);
-
-            _value = _serializedObject.FindProperty("value");
-        }
-
-        public override void TweenAnimation(Transform transform)
-        {
-            transform.DOMoveY(_switchableDoor.value, 1.5f).SetEase(Ease.InBounce);
-        }
-
-        public override void InspectorGUI()
-        {
-            _serializedObject.Update();
-
-            GUILayout.Label("Move");
-            EditorGUILayout.PropertyField(_value);
-
-            _serializedObject.ApplyModifiedProperties();
-        }
-    }
-
-    internal class BasicCloseAnimation : DoorTweenAnimation
-    {
-        public BasicCloseAnimation() : base("BasicClosenAnimation") { }
-
-        public override void TweenAnimation(Transform transform)
-        {
-            transform.DOMoveY(0f, 1.5f).SetEase(Ease.InBounce);
-        }
-
-        public override void InspectorGUI() { }
-    }
-
-    internal class RotateOpenAnimation : DoorTweenAnimation
-    {
-        private SwitchableDoor _switchableDoor;
-        private SerializedObject _serializedObject;
-
-        private SerializedProperty _value;
-
-        public RotateOpenAnimation(SwitchableDoor obj) : base("RotateOpenAnimation")
-        {
-            _switchableDoor = obj;
-            _serializedObject = new SerializedObject(_switchableDoor);
-
-            _value = _serializedObject.FindProperty("value");
-        }
-
-        public override void TweenAnimation(Transform transform)
-        {
-            transform.DORotate(new Vector3(0f, _switchableDoor.value, 0f), 1.5f).SetEase(Ease.InBounce);
-        }
-
-        public override void InspectorGUI()
-        {
-            _serializedObject.Update();
-
-            GUILayout.Label("Rotate");
-            EditorGUILayout.PropertyField(_value);
-
-            _serializedObject.ApplyModifiedProperties();
-        }
-    }
-
-    internal class RotateCloseAnimation : DoorTweenAnimation
-    {
-        public RotateCloseAnimation() : base("RotateClosenAnimation") { }
-
-        public override void TweenAnimation(Transform transform)
-        {
-            transform.DORotate(new Vector3(0f, 0f, 0f), 1.5f).SetEase(Ease.InBounce);
-        }
-
-        public override void InspectorGUI() { }
+        closeAnimationList[selectedIndex].TweenAnimation();
     }
 
     #endregion
 
-    public abstract class DoorTweenAnimation
-    {
-        public string name;
 
-        public DoorTweenAnimation(string name)
+    #region // TweenAnimation
+
+    private void MoveOpenBounce()
+    {
+        transform.DOMoveY(value, durationTime).SetEase(Ease.InBounce);
+    }
+    private void RotateOpenBounce()
+    {
+        transform.DORotate(new Vector3(0f, value, 0f), durationTime).SetEase(Ease.InBounce);
+    }
+
+    private void MoveCloseBounce()
+    {
+        transform.DOMoveY(0, durationTime).SetEase(Ease.InBounce);
+    }
+    private void RotateCloseBounce()
+    {
+        transform.DORotate(new Vector3(0f, 0f, 0f), durationTime).SetEase(Ease.InBounce);
+    }
+
+    #endregion 
+
+
+    internal class DoorTweenAnimation
+    {
+        private string name;
+        private Action tweenAnimation;
+
+        public DoorTweenAnimation(string name, Action tweenAnimation)
         {
             this.name = name;
+            this.tweenAnimation = tweenAnimation;
         }
 
-        public abstract void TweenAnimation(Transform transform);
-        public abstract void InspectorGUI();
+        public void TweenAnimation()
+        {
+            tweenAnimation?.Invoke();
+        }
+
+        public override string ToString()
+        {
+            return name;
+        }
     }
 }
 
@@ -159,28 +142,37 @@ public class SwitchableDoor : Switchable
 public class SwitchableDoorInspector : Editor
 {
     private SwitchableDoor _switchableDoor;
+    private SerializedObject _serializedObject;
+
+    private SerializedProperty _value;
+    private SerializedProperty _durationTime;
 
     private void OnEnable()
     {
         _switchableDoor = target as SwitchableDoor;
         _switchableDoor.OnEnable();
+
+        _serializedObject = new SerializedObject(_switchableDoor);
+
+        _value = _serializedObject.FindProperty("value");
+        _durationTime = _serializedObject.FindProperty("durationTime");
     }
 
     public override void OnInspectorGUI()
     {
-        _switchableDoor.selectedIndex = EditorGUILayout.Popup("", _switchableDoor.selectedIndex, GetAnimationsNames());
+        GUILayout.BeginHorizontal();
 
-        _switchableDoor.animationList[_switchableDoor.selectedIndex].InspectorGUI();
-    }
+        GUILayout.Label("Animation Mode");
 
-    public string[] GetAnimationsNames()
-    {
-        List<string> names = new List<string>();
-        foreach (SwitchableDoor.DoorTweenAnimation aux in _switchableDoor.animationList)
-        {
-            names.Add(aux.name);
-        }
+        _switchableDoor.selectedIndex = EditorGUILayout.Popup("", _switchableDoor.selectedIndex, _switchableDoor.GetAnimationsNames());
 
-        return names.ToArray();
-    }
+        GUILayout.EndHorizontal();
+
+        _serializedObject.Update();
+
+        EditorGUILayout.PropertyField(_value);
+        EditorGUILayout.PropertyField(_durationTime);
+
+        _serializedObject.ApplyModifiedProperties();
+    }   
 }
