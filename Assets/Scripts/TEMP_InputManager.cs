@@ -39,6 +39,7 @@ public class TEMP_InputManager : MonoBehaviour
         // UIController
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+#pragma warning disable CS0618 // 'GameObject.active' é obsoleto
             if (uiController.painel.active)
                 uiController.Desable();
             else
