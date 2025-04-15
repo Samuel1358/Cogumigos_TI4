@@ -96,7 +96,7 @@ public class CoguArmy : MonoBehaviour
 
     public void UpdateArmy(Cogu cogu)
     {
-        if (Vector3.Distance(transform.position, cogu.transform.position) <= recruitDistance)
+        if (Vector3.Distance(followTarget.position, cogu.transform.position) <= recruitDistance)
         {
             cogu.stateMachine.ChangeState(cogu.stateMachine.followState);
             //cogu.JoinArmie(followTarget);

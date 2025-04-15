@@ -26,7 +26,8 @@ public class RemovableObstacle : MonoBehaviour, IInteractable
 
     public Action Interact(Cogu cogu)
     {
-        return () => { };
+        Walk();
+        return () => { Destroy(cogu.gameObject); };
     }
 
     // Gizmo
