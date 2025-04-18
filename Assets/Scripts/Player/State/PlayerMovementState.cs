@@ -210,14 +210,6 @@ public class PlayerMovementState : IState {
     protected virtual void RemoveInputActionsCallbacks() {
         StateMachineMovement.PlayerGet.Input.PlayerActions.WalkTogle.started -= OnWalkToggleStarted;
     }
-    protected void DeceleationHorizontally() {
-        Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
-        StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(-playerHorizontalVelocity * StateMachineMovement.ReusableData.MovementDecelerationForce, ForceMode.Acceleration);
-    }
-    protected void DeceleationVertically() {
-        Vector3 playerVerticalVelocity = GetPlayerVerticalVelocity();
-        StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(-playerVerticalVelocity * StateMachineMovement.ReusableData.MovementDecelerationForce, ForceMode.Acceleration);
-    }
     protected bool IsMovingHorizontally(float minimunMagnitude = 0.1f) {
         Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
         Vector2 playerHorizontalMovement = new Vector2(playerHorizontalVelocity.x, playerHorizontalVelocity.z);

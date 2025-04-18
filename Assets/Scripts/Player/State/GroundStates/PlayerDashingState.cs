@@ -19,7 +19,6 @@ public class PlayerDashingState : PlayerGroundState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = _dashData.SpeedModifier;
 
         StateMachineMovement.ReusableData.RotationData = _dashData.RotationData;
-        StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StrongForce;
 
         Dash();
         _shouldKeepRotating = StateMachineMovement.ReusableData.MovementInput == Vector2.zero;
@@ -53,7 +52,7 @@ public class PlayerDashingState : PlayerGroundState {
     }
     public override void OnAnimationTransitionEvent() {
         if (StateMachineMovement.ReusableData.MovementInput == Vector2.zero) {
-            StateMachineMovement.ChangeState(StateMachineMovement.HardStoppingState);
+            StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
             return;
         }
         StateMachineMovement.ChangeState(StateMachineMovement.SprintingState);

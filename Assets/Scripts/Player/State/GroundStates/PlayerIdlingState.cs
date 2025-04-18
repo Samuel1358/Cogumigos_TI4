@@ -12,8 +12,6 @@ public class PlayerIdlingState : PlayerGroundState {
 
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
 
-        StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StationaryForce;
-
         ResetVelocity();
 
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.IdleParameterHash);

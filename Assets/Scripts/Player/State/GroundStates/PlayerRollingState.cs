@@ -34,7 +34,7 @@ public class PlayerRollingState : PlayerLandingState {
 
     public override void OnAnimationTransitionEvent() {
         if (StateMachineMovement.ReusableData.MovementInput == Vector2.zero) {
-            StateMachineMovement.ChangeState(StateMachineMovement.MediumStoppingState);
+            StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
             return;
         }
         OnMove();
