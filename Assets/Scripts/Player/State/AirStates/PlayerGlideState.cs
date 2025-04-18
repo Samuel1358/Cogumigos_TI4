@@ -54,7 +54,4 @@ public class PlayerGlideState : PlayerAirState {
 
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(limitedVelocity, ForceMode.VelocityChange);
     }
-
-    protected override void OnGlidePerformed(InputAction.CallbackContext context) {
-    }
 }

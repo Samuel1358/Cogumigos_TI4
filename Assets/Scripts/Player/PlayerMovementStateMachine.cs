@@ -10,9 +10,6 @@ public class PlayerMovementStateMachine : StateMachine {
     public PlayerWalkingState WalkingState { get; private set; }
     public PlayerRunningState RunningState { get; private set; }
     public PlayerSprintingState SprintingState { get; private set; }
-    public PlayerLightStoppingState LightStoppingState { get; private set; }
-    public PlayerMediumStoppingState MediumStoppingState { get; private set; }
-    public PlayerHardStoppingState HardStoppingState { get; private set; }
     public PlayerJumpingState JumpingState { get; private set; }
     public PlayerFallingState FallingState { get; private set; }
     public PlayerGlideState GlideState { get; private set; }
@@ -28,9 +25,6 @@ public class PlayerMovementStateMachine : StateMachine {
         WalkingState = new PlayerWalkingState(this);
         RunningState = new PlayerRunningState(this);
         SprintingState = new PlayerSprintingState(this);
-        LightStoppingState = new PlayerLightStoppingState(this);
-        MediumStoppingState = new PlayerMediumStoppingState(this);
-        HardStoppingState = new PlayerHardStoppingState(this);
         JumpingState = new PlayerJumpingState(this);
         FallingState = new PlayerFallingState(this);
         GlideState = new PlayerGlideState(this);

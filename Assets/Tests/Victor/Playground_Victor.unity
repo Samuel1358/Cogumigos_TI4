@@ -368,7 +368,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6f74a367d4fde8f4a90b345bf9b724df, type: 2}
   m_BuildHeightMesh: 0
@@ -640,6 +640,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 622194383}
     m_Modifications:
+    - target: {fileID: 471983202795356733, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 471983202795356733, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1529555395882149241, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -871,6 +879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCursor: {fileID: 1337940494}
   cameraController: {fileID: 1546732318}
+  uiController: {fileID: 0}
 --- !u!1001 &1475396435
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,7 +12,6 @@ public class PlayerSprintingState : PlayerMovingState {
     public override void Enter() {
         base.Enter();
         StateMachineMovement.ReusableData.MovementSpeedModifier = _sprintData.SpeedModifier;
-        StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.StrongForce;
         _shouldResetSprintState = true;
         _startTime = Time.time;
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.SprintParameterHash);
@@ -63,7 +62,7 @@ public class PlayerSprintingState : PlayerMovingState {
         StateMachineMovement.ChangeState(StateMachineMovement.RunningState);
     }
     protected override void OnMovementCanceled(InputAction.CallbackContext context) {
-        StateMachineMovement.ChangeState(StateMachineMovement.HardStoppingState);
+        StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
     }
     protected override void OnJumpStarted(InputAction.CallbackContext context) {
         _shouldResetSprintState = false;

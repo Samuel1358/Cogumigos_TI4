@@ -40,7 +40,6 @@ public class Player : MonoBehaviour {
     private void Update() {
         _movementStateMachine.HandleInput();
         _movementStateMachine.Update();
-        //Debug.Log(CoguCount.ToString("000"));
     }
     private void FixedUpdate() {
         _movementStateMachine.PhysicsUpdate();
