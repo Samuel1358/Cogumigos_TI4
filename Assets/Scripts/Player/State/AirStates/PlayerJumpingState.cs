@@ -15,11 +15,14 @@ public class PlayerJumpingState : PlayerAirState {
         StateMachineMovement.ReusableData.RotationData = AirData.JumpData.RotationData;
         _shouldKeepRotating = StateMachineMovement.ReusableData.MovementInput != Vector2.zero;
         Jump();
-
     }
 
     private void Jump() {
-        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = new Vector3(StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity.x, InitialJumpVelocity, StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity.z);
+        Vector3 jumpForce = new Vector3(StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity.x, InitialJumpVelocity, StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity.z);
+        jumpForce = GetJumpForceOnSlope(jumpForce);
+        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = jumpForce;
+        StateMachineMovement.ReusableData.SetJumpBuffer(0f);
+        StateMachineMovement.ReusableData.SetCoyoteTime(0f);
     }
 
     public override void Exit() {
@@ -38,7 +41,6 @@ public class PlayerJumpingState : PlayerAirState {
         }
     }
 
-    
     private Vector3 GetJumpForceOnSlope(Vector3 jumpForce) {
         Vector3 capsuleColliderCenterInWorldSpace = StateMachineMovement.PlayerGet.ColliderUtility.CapsuleColliderData.Collider.bounds.center;
 
@@ -64,10 +66,9 @@ public class PlayerJumpingState : PlayerAirState {
         return jumpForce;
     }
 
-    
-
     protected override void DoubleJump() {
-        
+        base.DoubleJump();
+        Jump();
     }
 
     protected override void ResetSpringState() {

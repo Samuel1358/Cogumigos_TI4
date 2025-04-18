@@ -3,11 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerFallingState : PlayerAirState {
-    private PlayerFallData _fallData;
     private Vector3 _playerPositionOnEnter;
 
     public PlayerFallingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
-        _fallData = AirData.FallData;
     }
 
     public override void Enter() {
@@ -22,6 +20,7 @@ public class PlayerFallingState : PlayerAirState {
         ResetVerticalVelocity();
 
 
+        StateMachineMovement.ReusableData.SetGravity(StateMachineMovement.ReusableData.Gravity * AirData.FallData.FallMultiplier);
         if (IsThereGroundUnderneath()) {
             OnContactWithGround();
         }
@@ -51,7 +50,7 @@ public class PlayerFallingState : PlayerAirState {
     private protected override void OnContactWithGround() {
         float fallDistance = _playerPositionOnEnter.y - StateMachineMovement.PlayerGet.transform.position.y;
 
-        if (fallDistance < _fallData.MinimumDistanceToBeConsideredHardFall) {
+        if (fallDistance < AirData.FallData.MinimumDistanceToBeConsideredHardFall) {
             StateMachineMovement.ChangeState(StateMachineMovement.LightLandingState);
 
             return;
@@ -64,13 +63,19 @@ public class PlayerFallingState : PlayerAirState {
         StateMachineMovement.ChangeState(StateMachineMovement.RollingState);
     }
 
+    protected override void OnJumpStarted(InputAction.CallbackContext context) {
+        base.OnJumpStarted(context);
+
+        if (StateMachineMovement.ReusableData.CoyoteTimeCount > 0) {
+            StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
+        }
+    }
+
     protected override void DoubleJump() {
         base.DoubleJump();
-
         StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
     }
 
-    protected virtual void OnGlidePerformed(InputAction.CallbackContext context) {
-        //StateMachineMovement.ChangeState(StateMachineMovement.GlideState);
+    protected void OnGlidePerformed(InputAction.CallbackContext context) {
     }
 }

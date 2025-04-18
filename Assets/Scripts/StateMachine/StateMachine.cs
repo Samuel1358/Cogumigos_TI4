@@ -3,7 +3,6 @@ using UnityEngine;
 public abstract class StateMachine {
     protected IState _currentState;
 
-    // Get & Set
     public IState GetCurrentState()
     {
         return _currentState;

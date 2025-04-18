@@ -5,9 +5,13 @@ public class PlayerStateReusableData {
     public Vector2 MovementInput { get; set; }
     public float MovementSpeedModifier { get; set; } = 1f;
     public float MovementOnSlopeSpeedModifier { get; set; } = 1f;
+    public float Gravity { get; private set; }
+    public float CoyoteTimeCount { get; private set; }
+    public float JumpBufferCount { get; private set; }
     public bool ShouldWalk { get; set; }
     public bool ShouldSprint { get; set; }
-    public bool ShouldFallByGravity { get; set; }
+    public bool CanDoubleJump { get; private set; }
+
     private Vector3 _currentTargetRotation;
     private Vector3 _timeToReachtargetRotation;
     private Vector3 _dampedTargetRotationCurrentVelocity;
@@ -34,4 +38,20 @@ public class PlayerStateReusableData {
         }
     }
     public PlayerRotationData RotationData { get; set; }
+
+    public void SetGravity(float value) {
+        Gravity = value;
+    }
+    public void SetCoyoteTime(float value) {
+        CoyoteTimeCount = value;
+    }
+    public void SetJumpBuffer(float value) {
+        JumpBufferCount = value;
+    }
+    public void EnableDoubleJump() {
+        CanDoubleJump = true;
+    }
+    public void DisableDoubleJump() {
+        CanDoubleJump = false;
+    }
 }

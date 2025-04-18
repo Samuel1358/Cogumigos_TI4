@@ -12,11 +12,16 @@ public class PlayerGroundState : PlayerMovementState {
     public override void Enter() {
         base.Enter();
 
-        AirData.JumpData.EnableDoubleJump();
+        StateMachineMovement.ReusableData.EnableDoubleJump();
+        StateMachineMovement.ReusableData.SetCoyoteTime(AirData.JumpData.CoyoteTime);
 
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
 
         UpdateShouldSprintState();
+
+        if (StateMachineMovement.ReusableData.JumpBufferCount > 0) {
+            StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
+        }
     }
 
     public override void Exit() {
@@ -79,8 +84,6 @@ public class PlayerGroundState : PlayerMovementState {
         StateMachineMovement.PlayerGet.Input.PlayerActions.Move.canceled += OnMovementCanceled;
 
         StateMachineMovement.PlayerGet.Input.PlayerActions.Dash.started += OnDashStarted;
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started += OnJumpStarted;
     }
 
     protected override void RemoveInputActionsCallbacks() {
@@ -88,8 +91,6 @@ public class PlayerGroundState : PlayerMovementState {
         StateMachineMovement.PlayerGet.Input.PlayerActions.Move.canceled -= OnMovementCanceled;
 
         StateMachineMovement.PlayerGet.Input.PlayerActions.Dash.started -= OnDashStarted;
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started -= OnJumpStarted;
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context) {
@@ -128,7 +129,8 @@ public class PlayerGroundState : PlayerMovementState {
         StateMachineMovement.ChangeState(StateMachineMovement.DashingState);
     }
 
-    protected virtual void OnJumpStarted(InputAction.CallbackContext context) {
+    protected override void OnJumpStarted(InputAction.CallbackContext context) {
+        base.OnJumpStarted(context);
         StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
     }
 }

@@ -171,9 +171,11 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       <MaxJumpTime>k__BackingField: 0.8
-      <MaxJumpHeight>k__BackingField: 1.2
+      <MaxJumpHeight>k__BackingField: 2
+      <CoyoteTime>k__BackingField: 0.2
+      <JumpBuffer>k__BackingField: 0.2
     <FallData>k__BackingField:
-      <FallSpeedLimit>k__BackingField: 5
+      <FallMultiplier>k__BackingField: 4
       <MinimumDistanceToBeConsideredHardFall>k__BackingField: 3
     <GlideData>k__BackingField:
       <SpeedModifier>k__BackingField: 0.7
