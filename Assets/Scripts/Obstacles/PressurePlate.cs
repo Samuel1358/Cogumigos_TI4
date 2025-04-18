@@ -3,21 +3,15 @@ using UnityEngine;
 public class PressurePlate : Switch
 {
     [SerializeField] private LayerMask includeLayers;
-    [SerializeReference] private GameObject switchableObj;
-    /*private ISwitchable _switchableObj;
-
-    private void Start()
-    {
-        if 
-    }*/
+    [SerializeReference] private Switchable switchableObj;
 
     // Private Methods
-    protected override void Activate(ISwitchable obj)
+    protected override void Activate(Switchable obj)
     {
         obj.Activate();
     }
 
-    protected override void Disable(ISwitchable obj)
+    protected override void Disable(Switchable obj)
     {
         obj.Disable();
     }
@@ -25,25 +19,22 @@ public class PressurePlate : Switch
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.gameObject.layer);
-        //Debug.Log(includeLayers.value);
-        if (other.CompareTag("Player") || other.CompareTag("TriggerCheck") || other.CompareTag("Friendshroom"))
+        Debug.Log("1");
+        if ((includeLayers & (1 << other.gameObject.layer)) != 0)
         {
             Debug.Log("2");
-            
-            if (switchableObj.TryGetComponent(out ISwitchable obj))
-                Activate(obj);
+
+            Activate(switchableObj);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("3");
-        if (other.CompareTag("Player") || other.CompareTag("TriggerCheck") || other.CompareTag("Friendshroom"))
+        if ((includeLayers & (1 << other.gameObject.layer)) != 0)
         {
             Debug.Log("4");
-            if (switchableObj.TryGetComponent(out ISwitchable obj))
-                Disable(obj);
+            Disable(switchableObj);
         }
     }
 }
