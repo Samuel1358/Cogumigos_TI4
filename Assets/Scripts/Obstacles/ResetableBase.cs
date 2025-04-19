@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class ResetableBase : MonoBehaviour, IResetable
@@ -7,7 +8,7 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
     protected bool NeedReset;
 
     private void OnEnable() {
-        RespawnController.OnPlayerChangeCheckPoint += VerifyReset;
+        StartCoroutine(ActivateResetable());
     }
 
     private void OnDisable() {
@@ -23,6 +24,13 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
         if (RespawnController.Instance.PlayerLastCheckPoint == _linkedCheckpoint) {
             RespawnController.Instance.TurnNonResetable(this);
         }
+    }
+
+    //REMENDO RETIRAR APÓS CONVERSA SOBRE RESETABLE
+    IEnumerator ActivateResetable() {
+        yield return new WaitForSeconds(Time.deltaTime * 4);
+        RespawnController.OnPlayerChangeCheckPoint += VerifyReset;
+        RespawnController.Instance.TurnResetable(this);
     }
 
     public virtual void ResetObject() {

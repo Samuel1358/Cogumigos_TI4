@@ -30,6 +30,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
 
     public void CollectKey(KeyTypes keyCollected) {
         Keys.Add(keyCollected);
+        DebugTest();
     }
 
     public bool VerifyKey(KeyTypes keyToVerify) {
@@ -48,6 +49,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
 
     public void CollectIngredient(IngredientTypes ingredientCollected) {
         Ingredients.Add(ingredientCollected);
+        DebugTest();
     }
 
     public bool VerifyIngredient(IngredientTypes ingredientToVerify) {
@@ -65,12 +67,39 @@ public class PlayerInventory : MonoBehaviour, IResetable {
     }
 
     public void SaveResetState(Checkpoint checkpoint) {
-        _keysHoldedAtCheckpoint = Keys;
-        _ingredientsHoldedAtCheckpoint = Ingredients;
+        _keysHoldedAtCheckpoint = new List<KeyTypes>();
+        foreach (KeyTypes key in Keys) {
+            _keysHoldedAtCheckpoint.Add(key);
+        }
+
+        _ingredientsHoldedAtCheckpoint = new List<IngredientTypes>();
+        foreach (IngredientTypes ingredient in Ingredients) {
+            _ingredientsHoldedAtCheckpoint.Add(ingredient);
+        }
     }
 
     public void ResetObject() {
-        Keys = _keysHoldedAtCheckpoint;
-        Ingredients = _ingredientsHoldedAtCheckpoint;
+        Keys = new List<KeyTypes>();
+        foreach (KeyTypes key in _keysHoldedAtCheckpoint) {
+            Keys.Add(key);
+        }
+
+        Ingredients = new List<IngredientTypes>();
+        foreach (IngredientTypes ingredient in _ingredientsHoldedAtCheckpoint) {
+            Ingredients.Add(ingredient);
+        }
+        DebugTest();
+    }
+
+    private void DebugTest() {
+        Debug.Log("-----------------------------------------");
+        Debug.Log("Keys Collecteds: ");
+        foreach (KeyTypes key in Keys) {
+            Debug.Log("Key: " + key);
+        }
+        Debug.Log("Ingredients Collecteds: ");
+        foreach (IngredientTypes ingredient in Ingredients) {
+            Debug.Log("Ingredient: " + ingredient);
+        }
     }
 }
