@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5707661675702529796}
   - component: {fileID: 6206302121836136054}
   - component: {fileID: 6817530893392911586}
+  - component: {fileID: 763782506595356418}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -271,6 +272,18 @@ MonoBehaviour:
     <StepHeightPercentege>k__BackingField: 0.25
     <FloatRayDistance>k__BackingField: 2
     <StepReachForce>k__BackingField: 25
+--- !u!114 &763782506595356418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689632240873968646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f6cabd8094e0d469b02b8f589fd26c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1138960029606524136
 PrefabInstance:
   m_ObjectHideFlags: 0

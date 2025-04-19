@@ -26,12 +26,12 @@ public class RespawnController : MonoBehaviour {
         }
         ResetablesTraps = new List<IResetable>();
         CheckpointCount = 0;
-        OnPlayerRespawn += ResetTraps;
+        OnPlayerRespawn += ResetObjects;
     }
 
-    private void ResetTraps() {
+    private void ResetObjects() {
         foreach (IResetable trap in ResetablesTraps) {
-            trap.ResetTrap();
+            trap.ResetObject();
         }
     }
 
@@ -40,10 +40,10 @@ public class RespawnController : MonoBehaviour {
         PlayerActiveCheckPoint = newCheckpoint;
     }
 
-    public void TurnTrapResetable(IResetable trap) {
+    public void TurnResetable(IResetable trap) {
         ResetablesTraps.Add(trap);
     }
-    public void TurnTrapNonResetable(IResetable trap) {
+    public void TurnNonResetable(IResetable trap) {
         ResetablesTraps.Remove(trap);
     }
 }

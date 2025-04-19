@@ -16,7 +16,6 @@ public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersisten
     public void LoadData(GameData data) {
         data.Colectables.TryGetValue(_id, out WasCollected);
         if (WasCollected) {
-            Debug.Log("Colected: " + gameObject.name);
             SetCollectableInactive();
         }
     }
@@ -26,7 +25,6 @@ public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersisten
             data.Colectables.Remove(_id);
         }
         data.Colectables.Add(_id, WasCollected);
-        Debug.Log("Saved: " + gameObject.name + " ID: " + _id + " Collected: " + WasCollected);
     }
 
     private void OnValidate() {
