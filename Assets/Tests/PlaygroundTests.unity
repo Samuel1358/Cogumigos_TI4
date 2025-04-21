@@ -381,7 +381,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6f74a367d4fde8f4a90b345bf9b724df, type: 2}
   m_BuildHeightMesh: 0
@@ -823,6 +823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCursor: {fileID: 1337940494}
   cameraController: {fileID: 1546732318}
+  uiController: {fileID: 0}
 --- !u!1 &1393208796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2029,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1561167550}
     m_Modifications:
+    - target: {fileID: 1409018953151318707, guid: c41e945169640d241bb7f8bfd45acac4, type: 3}
+      propertyPath: bounceForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409018953151318707, guid: c41e945169640d241bb7f8bfd45acac4, type: 3}
+      propertyPath: bounceCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1430219559909428686, guid: c41e945169640d241bb7f8bfd45acac4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.68
