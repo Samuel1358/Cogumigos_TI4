@@ -1,5 +1,5 @@
 using UnityEngine;
 
 public interface IResetable {
-    public void ResetTrap();
+    public void ResetObject();
 }
