@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 
 public class TrampoloCoguSpot : ResetableBase, IInteractable {
-    [SerializeField] private Checkpoint _linkedCheckpoint;
     [SerializeField] private GameObject _trampoloPrefab;
     private bool _canActive;
 
