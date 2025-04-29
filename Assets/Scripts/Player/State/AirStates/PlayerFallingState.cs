@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerFallingState : PlayerAirState {
-    private PlayerFallData _fallData;
     private Vector3 _playerPositionOnEnter;
 
     public PlayerFallingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
-        _fallData = AirData.FallData;
     }
 
     public override void Enter() {
@@ -16,10 +15,12 @@ public class PlayerFallingState : PlayerAirState {
 
         _playerPositionOnEnter = StateMachineMovement.PlayerGet.transform.position;
 
-        StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
+        StateMachineMovement.ReusableData.MovementSpeedModifier = AirData.JumpData.SpeedModifier;
 
         ResetVerticalVelocity();
-        
+
+
+        StateMachineMovement.ReusableData.SetGravity(StateMachineMovement.ReusableData.Gravity * AirData.FallData.FallMultiplier);
         if (IsThereGroundUnderneath()) {
             OnContactWithGround();
         }
@@ -31,13 +32,25 @@ public class PlayerFallingState : PlayerAirState {
         StopAnimation(StateMachineMovement.PlayerGet.AnimationData.FallParameterHash);
     }
 
+    protected override void AddInputActionsCallbacks() {
+        base.AddInputActionsCallbacks();
+
+        StateMachineMovement.PlayerGet.Input.PlayerActions.Glide.performed += OnGlidePerformed;
+    }
+
+    protected override void RemoveInputActionsCallbacks() {
+        base.RemoveInputActionsCallbacks();
+
+        StateMachineMovement.PlayerGet.Input.PlayerActions.Glide.performed -= OnGlidePerformed;
+    }
+
     protected override void ResetSpringState() {
     }
 
     private protected override void OnContactWithGround() {
         float fallDistance = _playerPositionOnEnter.y - StateMachineMovement.PlayerGet.transform.position.y;
 
-        if (fallDistance < _fallData.MinimumDistanceToBeConsideredHardFall) {
+        if (fallDistance < AirData.FallData.MinimumDistanceToBeConsideredHardFall) {
             StateMachineMovement.ChangeState(StateMachineMovement.LightLandingState);
 
             return;
@@ -50,27 +63,19 @@ public class PlayerFallingState : PlayerAirState {
         StateMachineMovement.ChangeState(StateMachineMovement.RollingState);
     }
 
-    public override void PhysicsUpdate() {
-        base.PhysicsUpdate();
+    protected override void OnJumpStarted(InputAction.CallbackContext context) {
+        base.OnJumpStarted(context);
 
-        LimitVerticalVelocity();
-
-    }
-
-    private void LimitVerticalVelocity() {
-        Vector3 playerVerticalvelocity = GetPlayerVerticalVelocity();
-
-        if (playerVerticalvelocity.y >= -_fallData.FallSpeedLimit) {
-            return;
+        if (StateMachineMovement.ReusableData.CoyoteTimeCount > 0) {
+            StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
         }
-        Vector3 limitedVelocity = new Vector3(0f, -_fallData.FallSpeedLimit - playerVerticalvelocity.y, 0f);
-
-        StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(limitedVelocity, ForceMode.VelocityChange);
     }
 
     protected override void DoubleJump() {
         base.DoubleJump();
-
         StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
+    }
+
+    protected void OnGlidePerformed(InputAction.CallbackContext context) {
     }
 }

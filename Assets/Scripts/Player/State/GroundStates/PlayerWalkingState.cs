@@ -8,7 +8,6 @@ public class PlayerWalkingState : PlayerMovingState {
     public override void Enter() {
         base.Enter();
         StateMachineMovement.ReusableData.MovementSpeedModifier = MovementData.WalkData.SpeedModifier;
-        StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.WeakForce;
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.WalkParameterHash);
     }
 
@@ -24,6 +23,6 @@ public class PlayerWalkingState : PlayerMovingState {
         StateMachineMovement.ChangeState(StateMachineMovement.RunningState);
     }
     protected override void OnMovementCanceled(InputAction.CallbackContext context) {
-        StateMachineMovement.ChangeState(StateMachineMovement.LightStoppingState);
+        StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
     }
 }

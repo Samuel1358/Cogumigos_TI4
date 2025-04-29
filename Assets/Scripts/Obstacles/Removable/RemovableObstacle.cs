@@ -5,7 +5,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class RemovableObstacle : MonoBehaviour, IInteractable
 {
-    [SerializeField] private NavMeshAgent _agent;
+    private NavMeshAgent _agent;
     [SerializeField] public Vector3 destiny = Vector3.forward;
     [SerializeField] public bool positionated;
 

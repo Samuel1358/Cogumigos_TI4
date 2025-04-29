@@ -1,14 +1,19 @@
 using System;
+using System.Text;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAirState : PlayerMovementState {
+    protected float InitialJumpVelocity;
+    Vector3 _gravityDir;
     public PlayerAirState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
+        _gravityDir = new Vector3();
     }
     public override void Enter() {
         base.Enter();
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.AirborneParameterHash);
         ResetSpringState();
+        SetUpJump();
     }
 
     public override void Exit() {
@@ -18,51 +23,31 @@ public class PlayerAirState : PlayerMovementState {
 
     public override void Update() {
         base.Update();
-
-
+        StateMachineMovement.ReusableData.SetCoyoteTime(StateMachineMovement.ReusableData.CoyoteTimeCount - Time.deltaTime);
     }
 
     public override void PhysicsUpdate() {
         base.PhysicsUpdate();
+        _gravityDir = new Vector3(0, StateMachineMovement.ReusableData.Gravity, 0);
+        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity += _gravityDir * Time.deltaTime;
     }
 
-    protected override void AddInputActionsCallbacks() {
-        base.AddInputActionsCallbacks();
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Glide.performed += OnGlidePerformed;
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started += OnJumpStarted;
-    }
-
-    protected override void RemoveInputActionsCallbacks() {
-        base.RemoveInputActionsCallbacks();
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Glide.performed -= OnGlidePerformed;
-
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started -= OnJumpStarted;
-    }
-
-    private void OnJumpStarted(InputAction.CallbackContext context) {
-        if (AirData.JumpData.CanDoubleJump) {
-            AirData.JumpData.DisableDoubleJump();
+    protected override void OnJumpStarted(InputAction.CallbackContext context) {
+        base.OnJumpStarted(context);
+        if (StateMachineMovement.ReusableData.CoyoteTimeCount <= 0 && StateMachineMovement.ReusableData.CanDoubleJump) {
             DoubleJump();
         }
     }
 
     protected virtual void DoubleJump() {
-    }
-
-    private protected override void OnContactWithGround() {
-        base.OnContactWithGround();
-
-        StateMachineMovement.ChangeState(StateMachineMovement.LightLandingState);
+        StateMachineMovement.ReusableData.DisableDoubleJump();
     }
     protected virtual void ResetSpringState() {
         StateMachineMovement.ReusableData.ShouldSprint = false;
     }
-
-    protected virtual void OnGlidePerformed(InputAction.CallbackContext context) {
-        StateMachineMovement.ChangeState(StateMachineMovement.GlideState);
+    private void SetUpJump() {
+        float timeToApex = AirData.JumpData.MaxJumpTime / 2.0f;
+        StateMachineMovement.ReusableData.SetGravity((-2.0f * AirData.JumpData.MaxJumpHeight) / MathF.Pow(timeToApex, 2.0f));
+        InitialJumpVelocity = (2.0f * AirData.JumpData.MaxJumpHeight) / timeToApex;
     }
 }

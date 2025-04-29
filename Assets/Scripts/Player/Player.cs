@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
 
     public PlayerInput Input { get; private set; }
+    public PlayerInventory Inventory { get; private set; }
     public Animator PlayerAnimator { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
     private PlayerMovementStateMachine _movementStateMachine;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour {
     public Transform MainCameraTransform { get; private set; }
     private void Awake() {
         Input = GetComponent<PlayerInput>();
+        Inventory = GetComponent<PlayerInventory>();
         PlayerRigidbody = GetComponent<Rigidbody>();
         PlayerAnimator = GetComponentInChildren<Animator>();
         _movementStateMachine = new PlayerMovementStateMachine(this);
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour {
     private void Start() {
         AnimationData.Initialize();
         ColliderUtility.Initialize(gameObject);
+        Inventory.Initialize();
         ColliderUtility.CalculateCapsuleColliderDimensions();
         _movementStateMachine.ChangeState(_movementStateMachine.IdlingState);
         MainCameraTransform = Camera.main.transform;
@@ -40,7 +43,6 @@ public class Player : MonoBehaviour {
     private void Update() {
         _movementStateMachine.HandleInput();
         _movementStateMachine.Update();
-        //Debug.Log(CoguCount.ToString("000"));
     }
     private void FixedUpdate() {
         _movementStateMachine.PhysicsUpdate();

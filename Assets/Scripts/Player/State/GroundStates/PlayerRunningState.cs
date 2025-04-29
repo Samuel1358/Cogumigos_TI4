@@ -11,7 +11,6 @@ public class PlayerRunningState : PlayerMovingState {
         base.Enter();
 
         StateMachineMovement.ReusableData.MovementSpeedModifier = _runData.SpeedModifier;
-        StateMachineMovement.ReusableData.CurrentJumpforce = AirData.JumpData.MediumForce;
         _startTime = Time.time;
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.RunParameterHash);
     }
@@ -44,6 +43,6 @@ public class PlayerRunningState : PlayerMovingState {
         StateMachineMovement.ChangeState(StateMachineMovement.WalkingState);
     }
     protected override void OnMovementCanceled(InputAction.CallbackContext context) {
-        StateMachineMovement.ChangeState(StateMachineMovement.MediumStoppingState);
+        StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
     }
 }

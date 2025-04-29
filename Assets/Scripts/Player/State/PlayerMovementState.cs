@@ -205,18 +205,14 @@ public class PlayerMovementState : IState {
 
     protected virtual void AddInputActionsCallbacks() {
         StateMachineMovement.PlayerGet.Input.PlayerActions.WalkTogle.started += OnWalkToggleStarted;
+
+        StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started += OnJumpStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks() {
         StateMachineMovement.PlayerGet.Input.PlayerActions.WalkTogle.started -= OnWalkToggleStarted;
-    }
-    protected void DeceleationHorizontally() {
-        Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
-        StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(-playerHorizontalVelocity * StateMachineMovement.ReusableData.MovementDecelerationForce, ForceMode.Acceleration);
-    }
-    protected void DeceleationVertically() {
-        Vector3 playerVerticalVelocity = GetPlayerVerticalVelocity();
-        StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(-playerVerticalVelocity * StateMachineMovement.ReusableData.MovementDecelerationForce, ForceMode.Acceleration);
+
+        StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started -= OnJumpStarted;
     }
     protected bool IsMovingHorizontally(float minimunMagnitude = 0.1f) {
         Vector3 playerHorizontalVelocity = GetPlayerHorizontalVelocity();
@@ -235,6 +231,9 @@ public class PlayerMovementState : IState {
     #region Input methods
     protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context) {
         StateMachineMovement.ReusableData.ShouldWalk = !StateMachineMovement.ReusableData.ShouldWalk;
+    }
+    protected virtual void OnJumpStarted(InputAction.CallbackContext context) {
+        StateMachineMovement.ReusableData.SetJumpBuffer(AirData.JumpData.JumpBuffer);
     }
     #endregion
 }

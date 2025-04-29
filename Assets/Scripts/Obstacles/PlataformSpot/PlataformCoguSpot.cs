@@ -1,22 +1,13 @@
 using System;
 using UnityEngine;
 
-public class PlataformCoguSpot : MonoBehaviour, IResetable, IInteractable {
-    [SerializeField] private Checkpoint _linkedCheckpoint;
+public class PlataformCoguSpot : ResetableBase, IInteractable {
     [SerializeField] private GameObject _plataformPrefab;
     private bool _canActive;
 
     private void Awake() {
         _plataformPrefab.SetActive(false);
         _canActive = true;
-    }
-    private void OnEnable() {
-        RespawnController.OnPlayerChangeCheckPoint += VerifyReset;
-    }
-
-    private void OnDisable() {
-        RespawnController.OnPlayerChangeCheckPoint -= VerifyReset;
-        RespawnController.Instance.TurnTrapNonResetable(this);
     }
 
     public Action Interact(Cogu cogu) {
@@ -27,17 +18,10 @@ public class PlataformCoguSpot : MonoBehaviour, IResetable, IInteractable {
         }
         return () => {};
     }
-    private void VerifyReset(Checkpoint checkpoint) {
-        if (RespawnController.Instance.PlayerLastCheckPoint == null) {
-            RespawnController.Instance.TurnTrapResetable(this);
-            return;
-        }
-        if (RespawnController.Instance.PlayerLastCheckPoint == _linkedCheckpoint) {
-            RespawnController.Instance.TurnTrapNonResetable(this);
-        }
-    }
 
-    public void ResetTrap() {
+    public override void ResetObject() {
+        base.ResetObject();
+
         _plataformPrefab.SetActive(false);
         _canActive = true;
     }
