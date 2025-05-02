@@ -3,27 +3,67 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Trampoline : MonoBehaviour
 {
-    public float bounceForce = 100f;             
-    public float bounceCooldown = 0.2f;      
+    [Header("Bounce Settings")]
+    [SerializeField] private float bounceForce = 30f;             
+    [SerializeField] private float bounceCooldown = 0.2f;      
+    [SerializeField] private float jumpDuration = 1f;
+    [SerializeField] private bool useLocalUpDirection = true; // Usar direção local do trampolim ou global
+
+    [Header("Effects")]
+    [SerializeField] private AudioClip bounceSound;
+    [SerializeField] private ParticleSystem bounceEffect;
 
     private float lastBounceTime;               
+    private AudioSource audioSource;
+    private Collider trampolineCollider;
 
-    private void OnCollisionStay(Collision collision)
+    private void Awake()
     {
-        Debug.Log(collision.gameObject);
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        trampolineCollider = GetComponent<Collider>();
+        audioSource = GetComponent<AudioSource>();
+        
+        if (audioSource == null)
         {
-            Debug.Log("2");
-            Rigidbody playerRb = collision.transform.GetComponentInParent<Rigidbody>();
-            Debug.Log("3");
-            if (playerRb != null && Time.time >= lastBounceTime + bounceCooldown)
-            {
-                Debug.Log("4");
-                Vector3 bounceVelocity = new Vector3(0, bounceForce, 0);
-                playerRb.AddForce(bounceVelocity, ForceMode.VelocityChange);
-
-                lastBounceTime = Time.time;
-            }
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
+
+        // Garantir que o collider está configurado corretamente
+        if (trampolineCollider != null)
+        {
+            trampolineCollider.isTrigger = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
+        if (Time.time < lastBounceTime + bounceCooldown) return;
+
+        Player player = other.GetComponentInParent<Player>();
+        if (player == null) return;
+
+        // Mudar para o estado de pulo do trampolim e passar os parâmetros
+        player.ChangeToTrampolineJumpState(bounceForce, jumpDuration);
+
+        // Tocar som e efeito
+        if (bounceSound != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(bounceSound);
+        }
+
+        if (bounceEffect != null)
+        {
+            bounceEffect.Play();
+        }
+
+        lastBounceTime = Time.time;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Desenhar gizmo para visualizar a direção do pulo
+        Gizmos.color = Color.green;
+        Vector3 direction = useLocalUpDirection ? transform.up : Vector3.up;
+        Gizmos.DrawRay(transform.position, direction * 2f);
     }
 }
