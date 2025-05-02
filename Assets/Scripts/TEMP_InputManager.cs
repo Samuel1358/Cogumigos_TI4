@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TEMP_InputManager : MonoBehaviour
@@ -11,6 +12,9 @@ public class TEMP_InputManager : MonoBehaviour
     //[SerializeField] private TEMP_UIController uiController;
 
     //private bool isFreeLookActive = false;
+
+    // Events
+    public Action onInteractInput;
 
     private void Awake()
     {
@@ -46,6 +50,11 @@ public class TEMP_InputManager : MonoBehaviour
             else
                 uiController.Active();
         }*/
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {           
+            onInteractInput?.Invoke();
+        }
     }
 
     private void LateUpdate()
