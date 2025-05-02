@@ -44,6 +44,7 @@ public class Trampoline : MonoBehaviour
 
         // Mudar para o estado de pulo do trampolim e passar os parâmetros
         player.ChangeToTrampolineJumpState(bounceForce, jumpDuration);
+        AudioManager.Instance.PlaySFX("Teste");
 
         // Tocar som e efeito
         if (bounceSound != null && audioSource != null)
