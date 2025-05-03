@@ -47,6 +47,16 @@ public class PlayerInventory : MonoBehaviour, IResetable {
         return keyCount == keysToVerify.Count && keyCount > 0;
     }
 
+    public bool TryUseKey(KeyTypes keyToVerify)
+    {
+        if (Keys.Contains(keyToVerify))
+        {
+            Keys.Remove(keyToVerify);
+            return true;
+        }
+        return false;
+    }
+
     public void CollectIngredient(IngredientTypes ingredientCollected) {
         Ingredients.Add(ingredientCollected);
         DebugTest();

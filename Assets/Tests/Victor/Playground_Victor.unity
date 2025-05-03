@@ -1206,7 +1206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetCursor: {fileID: 1337940494}
   cameraController: {fileID: 1546732318}
-  uiController: {fileID: 0}
 --- !u!1 &1425618541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2525,8 +2524,6 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 873176171}
   _timeToExplode: 0.3
   _visual: {fileID: 204738175}
-  _willExplodePlayer: 0
-  _wasExploded: 0
 --- !u!1 &1962416897
 GameObject:
   m_ObjectHideFlags: 2
@@ -2858,17 +2855,9 @@ PrefabInstance:
       value: KeyCollectable
       objectReference: {fileID: 0}
     - target: {fileID: 1894874271550446980, guid: 00c9c3da83b269c49831a1950a5996e3, type: 3}
-      propertyPath: _collider
-      value: 
-      objectReference: {fileID: 8107412229168839340}
-    - target: {fileID: 1894874271550446980, guid: 00c9c3da83b269c49831a1950a5996e3, type: 3}
       propertyPath: _linkedCheckpoint
       value: 
       objectReference: {fileID: 873176171}
-    - target: {fileID: 2811777461703742233, guid: 00c9c3da83b269c49831a1950a5996e3, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4002333705310099581, guid: 00c9c3da83b269c49831a1950a5996e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.85
@@ -2917,11 +2906,6 @@ PrefabInstance:
 --- !u!4 &8107412229168839339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4002333705310099581, guid: 00c9c3da83b269c49831a1950a5996e3, type: 3}
-  m_PrefabInstance: {fileID: 8107412229168839338}
-  m_PrefabAsset: {fileID: 0}
---- !u!136 &8107412229168839340 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 2811777461703742233, guid: 00c9c3da83b269c49831a1950a5996e3, type: 3}
   m_PrefabInstance: {fileID: 8107412229168839338}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

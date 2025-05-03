@@ -138,11 +138,13 @@ public class SwitchableDoor : Switchable
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(SwitchableDoor))]
 public class SwitchableDoorInspector : Editor
 {
     private SwitchableDoor _switchableDoor;
     private SerializedObject _serializedObject;
+    private SerializedProperty _script;
 
     private SerializedProperty _value;
     private SerializedProperty _durationTime;
@@ -153,12 +155,31 @@ public class SwitchableDoorInspector : Editor
         _switchableDoor.OnEnable();
 
         _serializedObject = new SerializedObject(_switchableDoor);
+        _script = _serializedObject.FindProperty("m_Script");
 
         _value = _serializedObject.FindProperty("value");
         _durationTime = _serializedObject.FindProperty("durationTime");
     }
 
     public override void OnInspectorGUI()
+    {
+        ScriptReferance();
+
+        SerializedFields();
+    }
+
+    #region // OnInspectorGUI
+
+    private void ScriptReferance()
+    {
+        EditorGUI.BeginDisabledGroup(true);
+
+        EditorGUILayout.PropertyField(_script);
+
+        EditorGUI.EndDisabledGroup();
+    }
+
+    private void SerializedFields()
     {
         GUILayout.BeginHorizontal();
 
@@ -174,5 +195,8 @@ public class SwitchableDoorInspector : Editor
         EditorGUILayout.PropertyField(_durationTime);
 
         _serializedObject.ApplyModifiedProperties();
-    }   
+    }
+
+    #endregion
 }
+#endif
