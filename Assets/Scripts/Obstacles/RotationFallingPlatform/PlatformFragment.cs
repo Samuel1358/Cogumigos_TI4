@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlatformFragment : MovingPlatform
+public class PlatformFragment : CollisionHandlerChild
 {
     [SerializeField] private float _fallDelay = 0.2f;
     [SerializeField] private float _restoreDelay = 2f;
@@ -11,8 +11,10 @@ public class PlatformFragment : MovingPlatform
     private Quaternion _initialRotation;
     private Rigidbody _rb;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         _initialPosition = transform.localPosition;
         _initialRotation = transform.localRotation;
         _rb = GetComponent<Rigidbody>();
@@ -20,30 +22,20 @@ public class PlatformFragment : MovingPlatform
         _rb.isKinematic = true;
     }
 
-    [ContextMenu("Fall")]
-    public void Fall()
+    // Inherited public Methods
+    public override void ParentCollisionEnter(Collision other)
     {
         StartCoroutine(FallAndRestore());
     }
 
-    protected override void CollisionEnter(Collision collision)
-    {
-        StartCoroutine(FallAndRestore());
-    }
-
-    protected override void TriggerEnter(Collider other)
-    {
-        StartCoroutine(FallAndRestore());
-    }
-
-    IEnumerator FallAndRestore()
+    // Private Methods
+    private IEnumerator FallAndRestore()
     {
         // prestes a cair
 
         yield return new WaitForSeconds(_fallDelay);
 
         // caindo
-        child = null;
         _rb.isKinematic = false;
 
         yield return new WaitForSeconds(_restoreDelay);
