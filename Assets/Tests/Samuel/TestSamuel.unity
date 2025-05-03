@@ -650,6 +650,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 560369840106889722, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1529555395882149241, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -699,12 +703,20 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3482175048102924009, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482175048102924009, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
       propertyPath: m_Center.y
-      value: 1.125
+      value: 10.125
       objectReference: {fileID: 0}
     - target: {fileID: 5689632240873968646, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689632240873968646, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7760245463331106293, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
       propertyPath: m_Height
@@ -784,6 +796,7 @@ GameObject:
   - component: {fileID: 758880447}
   - component: {fileID: 758880452}
   - component: {fileID: 758880451}
+  - component: {fileID: 758880453}
   m_Layer: 6
   m_Name: Petal (4)
   m_TagString: Untagged
@@ -892,11 +905,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7423ebec057e36d4cb64fad798ac90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collideMode: 1
+  _collideMode: 2
   _includeLayers:
     serializedVersion: 2
     m_Bits: 128
-  _fallDelay: 1
+  _fallDelay: 0.1
   _restoreDelay: 3.5
 --- !u!54 &758880452
 Rigidbody:
@@ -925,6 +938,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &758880453
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758880446}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.65, z: 0}
 --- !u!1 &779458998
 GameObject:
   m_ObjectHideFlags: 2
@@ -973,6 +1007,7 @@ GameObject:
   - component: {fileID: 831991482}
   - component: {fileID: 831991487}
   - component: {fileID: 831991486}
+  - component: {fileID: 831991488}
   m_Layer: 6
   m_Name: Petal (1)
   m_TagString: Untagged
@@ -1081,11 +1116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7423ebec057e36d4cb64fad798ac90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collideMode: 1
+  _collideMode: 2
   _includeLayers:
     serializedVersion: 2
     m_Bits: 128
-  _fallDelay: 1
+  _fallDelay: 0.1
   _restoreDelay: 3.5
 --- !u!54 &831991487
 Rigidbody:
@@ -1114,6 +1149,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &831991488
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831991481}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.65, z: 0}
 --- !u!1001 &880704181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1197,6 +1253,7 @@ GameObject:
   - component: {fileID: 900160825}
   - component: {fileID: 900160830}
   - component: {fileID: 900160829}
+  - component: {fileID: 900160831}
   m_Layer: 6
   m_Name: Petal (2)
   m_TagString: Untagged
@@ -1305,11 +1362,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7423ebec057e36d4cb64fad798ac90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collideMode: 1
+  _collideMode: 2
   _includeLayers:
     serializedVersion: 2
     m_Bits: 128
-  _fallDelay: 1
+  _fallDelay: 0.1
   _restoreDelay: 3.5
 --- !u!54 &900160830
 Rigidbody:
@@ -1338,6 +1395,135 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &900160831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900160824}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.65, z: 0}
+--- !u!1 &961759099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 961759103}
+  - component: {fileID: 961759102}
+  - component: {fileID: 961759101}
+  - component: {fileID: 961759100}
+  m_Layer: 6
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &961759100
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961759099}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &961759101
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961759099}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &961759102
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961759099}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &961759103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961759099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6, y: 0.5, z: 0}
+  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1064722679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2184,6 +2370,7 @@ GameObject:
   - component: {fileID: 1930687673}
   - component: {fileID: 1930687678}
   - component: {fileID: 1930687677}
+  - component: {fileID: 1930687679}
   m_Layer: 6
   m_Name: Petal (3)
   m_TagString: Untagged
@@ -2292,11 +2479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7423ebec057e36d4cb64fad798ac90f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collideMode: 1
+  _collideMode: 2
   _includeLayers:
     serializedVersion: 2
     m_Bits: 128
-  _fallDelay: 1
+  _fallDelay: 0.1
   _restoreDelay: 3.5
 --- !u!54 &1930687678
 Rigidbody:
@@ -2325,6 +2512,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1930687679
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930687672}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.65, z: 0}
 --- !u!1 &1947643283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,3 +2921,4 @@ SceneRoots:
   - {fileID: 1765323565}
   - {fileID: 1075363425}
   - {fileID: 549916351}
+  - {fileID: 961759103}

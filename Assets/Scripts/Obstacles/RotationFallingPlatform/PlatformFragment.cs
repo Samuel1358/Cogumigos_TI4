@@ -43,6 +43,7 @@ public class PlatformFragment : MovingPlatform
         yield return new WaitForSeconds(_fallDelay);
 
         // caindo
+        child = null;
         _rb.isKinematic = false;
 
         yield return new WaitForSeconds(_restoreDelay);
