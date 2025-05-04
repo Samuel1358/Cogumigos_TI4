@@ -66,4 +66,9 @@ public class Player : MonoBehaviour {
         CoguCount += coguToAdd;
         _lastCount = CoguCount;
     }
+
+    public void ChangeToTrampolineJumpState(float bounceForce) {
+        _movementStateMachine.TrampolineJumpState.SetTrampolineForce(bounceForce);
+        _movementStateMachine.ChangeState(_movementStateMachine.TrampolineJumpState);
+    }
 }

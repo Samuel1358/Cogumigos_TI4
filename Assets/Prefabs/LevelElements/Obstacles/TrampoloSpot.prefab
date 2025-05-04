@@ -135,7 +135,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -153,9 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 123a76b815595da4f9c0d5e2916108a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceForce: 20
+  bounceForce: 30
   bounceCooldown: 0.2
-  playerRb: {fileID: 0}
+  jumpDuration: 1
+  useLocalUpDirection: 1
+  bounceSound: {fileID: 0}
+  bounceEffect: {fileID: 0}
 --- !u!1 &8149564483729675558
 GameObject:
   m_ObjectHideFlags: 0

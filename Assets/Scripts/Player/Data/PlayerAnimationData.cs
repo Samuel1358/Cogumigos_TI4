@@ -20,6 +20,7 @@ public class PlayerAnimationData {
     [Header("Air Parameter Names")]
     [SerializeField] private string fallParameterName = "isFalling";
     [SerializeField] private string glideParameterName = "IsGliding";
+    [SerializeField] private string trampolineJumpParameterName = "isTrampolineJumping";
 
     public int GroundedParameterHash { get; private set; }
     public int MovingParameterHash { get; private set; }
@@ -36,6 +37,7 @@ public class PlayerAnimationData {
 
     public int FallParameterHash { get; private set; }
     public int GlideParameterHash { get; private set; }
+    public int TrampolineJumpParameterHash { get; private set; }
 
     public void Initialize() {
         GroundedParameterHash = Animator.StringToHash(groundedParameterName);
@@ -53,6 +55,6 @@ public class PlayerAnimationData {
 
         FallParameterHash = Animator.StringToHash(fallParameterName);
         GlideParameterHash = Animator.StringToHash(glideParameterName);
-
+        TrampolineJumpParameterHash = Animator.StringToHash(trampolineJumpParameterName);
     }
 }
