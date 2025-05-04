@@ -20,12 +20,10 @@ public class PlayerTrampolineJumpState : PlayerAirState
         
         StateMachineMovement.ReusableData.MovementSpeedModifier = AirData.JumpData.SpeedModifier;
         
-        // Aplicar força vertical do trampolim
         Vector3 currentVelocity = StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity;
         currentVelocity.y = trampolineForce;
         StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = currentVelocity;
         
-        // Iniciar animação do pulo do trampolim
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.TrampolineJumpParameterHash);
     }
 
@@ -40,7 +38,6 @@ public class PlayerTrampolineJumpState : PlayerAirState
     {
         base.Update();
 
-        // Mudar para o estado de queda quando o jogador começar a cair
         if (!IsMovingUp())
         {
             StateMachineMovement.ChangeState(StateMachineMovement.FallingState);
@@ -54,6 +51,5 @@ public class PlayerTrampolineJumpState : PlayerAirState
 
     protected override void OnJumpStarted(InputAction.CallbackContext context)
     {
-        // Não permitir pulo duplo durante o pulo do trampolim
     }
 } 

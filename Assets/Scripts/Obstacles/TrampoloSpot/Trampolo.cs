@@ -5,7 +5,7 @@ public class Trampoline : MonoBehaviour
 {
     [Header("Bounce Settings")]
     [SerializeField] private float bounceForce = 30f;             
-    [SerializeField] private LayerMask includeLayers; // Layers que ativam o trampolim
+    [SerializeField] private LayerMask includeLayers;
 
     private Collider trampolineCollider;
 
@@ -25,7 +25,6 @@ public class Trampoline : MonoBehaviour
         Player player = other.GetComponentInParent<Player>();
         if (player == null) return;
 
-        // Mudar para o estado de pulo do trampolim e passar apenas a força
         player.ChangeToTrampolineJumpState(bounceForce);
     }
 }
