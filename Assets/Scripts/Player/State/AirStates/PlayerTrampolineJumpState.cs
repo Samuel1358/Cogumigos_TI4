@@ -3,31 +3,27 @@ using UnityEngine.InputSystem;
 
 public class PlayerTrampolineJumpState : PlayerAirState
 {
-    private float jumpDuration;
-    private float jumpStartTime;
     private float trampolineForce;
-    private AnimationCurve jumpCurve = new AnimationCurve(
-        new Keyframe(0f, 0f),
-        new Keyframe(0.5f, 1f),
-        new Keyframe(1f, 0f)
-    );
 
     public PlayerTrampolineJumpState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine)
     {
     }
 
-    public void SetTrampolineParameters(float force, float duration)
+    public void SetTrampolineForce(float force)
     {
         trampolineForce = force;
-        jumpDuration = duration;
     }
 
     public override void Enter()
     {
         base.Enter();
         
-        jumpStartTime = Time.time;
         StateMachineMovement.ReusableData.MovementSpeedModifier = AirData.JumpData.SpeedModifier;
+        
+        // Aplicar força vertical do trampolim
+        Vector3 currentVelocity = StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity;
+        currentVelocity.y = trampolineForce;
+        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = currentVelocity;
         
         // Iniciar animação do pulo do trampolim
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.TrampolineJumpParameterHash);
@@ -44,20 +40,11 @@ public class PlayerTrampolineJumpState : PlayerAirState
     {
         base.Update();
 
-        float elapsedTime = Time.time - jumpStartTime;
-        float normalizedTime = elapsedTime / jumpDuration;
-
-        if (normalizedTime >= 1f)
+        // Mudar para o estado de queda quando o jogador começar a cair
+        if (!IsMovingUp())
         {
             StateMachineMovement.ChangeState(StateMachineMovement.FallingState);
-            return;
         }
-
-        // Aplicar força vertical baseada na curva e na força do trampolim
-        float jumpForce = jumpCurve.Evaluate(normalizedTime) * trampolineForce;
-        Vector3 currentVelocity = StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity;
-        currentVelocity.y = jumpForce;
-        StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = currentVelocity;
     }
 
     public override void PhysicsUpdate()
