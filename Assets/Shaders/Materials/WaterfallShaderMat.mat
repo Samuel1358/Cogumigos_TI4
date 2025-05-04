@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7002788738173911227
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WaterShaderMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: e8b5eeac9f171e54ead0c1bf41602082, type: 3}
+  m_Name: WaterfallShaderMat
+  m_Shader: {fileID: -6465566751694194690, guid: 6c49d596ce74f8148b7e70fc1267dfa9, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -51,25 +38,38 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Agitation: 0.5
+    - _Agitation: 10.54
     - _CellIntensity: 7
-    - _CellScale: 30
-    - _DeformFrequency: 50
-    - _DeformVelocity: 1
-    - _Distance: 0.02
+    - _CellScale: 10
+    - _DeformFrequency: 100
+    - _DeformVelocity: 5
+    - _Distance: 0.9
     - _Intensity: 1
     - _Metalic: 0
-    - _NormalMapForce: 0.2
-    - _NormalMapSize: 30
+    - _NormalMapForce: 0.01
+    - _NormalMapSize: 10
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smooth: 0
-    - _Transparency: 0.7
-    - _TransparencyMask: 0
+    - _Transparency: 0.75
+    - _TransparencyMask: 1
     m_Colors:
-    - _NormalMapVelocity: {r: 0, g: 0, b: 0, a: 0}
-    - _ReflectionColor: {r: 0, g: 0.10230433, b: 0.254717, a: 0}
-    - _WaterColor: {r: 0.0473478, g: 0.23914857, b: 0.5283019, a: 0}
-    - _WaterVelocity: {r: -0.05, g: 0, b: 0, a: 0}
+    - _NormalMapVelocity: {r: 0, g: 0.2, b: 0, a: 0}
+    - _ReflectionColor: {r: 0, g: 0.101960786, b: 0.25490198, a: 0}
+    - _WaterColor: {r: 0.047058824, g: 0.23921569, b: 0.5294118, a: 0}
+    - _WaterVelocity: {r: 0, g: 0.2, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+--- !u!114 &1259131055722492070
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
