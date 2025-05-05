@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class TEST_DisappearWildCoguState : TEST_WildCoguState
 {
-    private TEST_CoguAssignPoint _assingPoint;
+    private TEST_CoguCastPoint _assingPoint;
 
     // Inerited Constructor
     public TEST_DisappearWildCoguState(TEST_WildCoguStateMachine stateMachine) : base(stateMachine) { }
 
     // Public Methods
-    public TEST_DisappearWildCoguState Setup(TEST_CoguAssignPoint assingPoint)
+    public TEST_DisappearWildCoguState Setup(TEST_CoguCastPoint assingPoint)
     {
         this._assingPoint = assingPoint;
         return this;

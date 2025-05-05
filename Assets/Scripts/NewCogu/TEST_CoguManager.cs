@@ -9,6 +9,7 @@ public class TEST_CoguManager : MonoBehaviour
     // Fields
     [SerializeField] private List<TEST_CastCoguData> _coguVariants = new List<TEST_CastCoguData>();
 
+    private Dictionary<string, TEST_Cogu> _coguDictionary;
     private List<TEST_WildCogu> _wildCoguList = new List<TEST_WildCogu>();
 
     // Properties
@@ -20,11 +21,16 @@ public class TEST_CoguManager : MonoBehaviour
             instance = this;
         else
             Destroy(this);
+
+        foreach (TEST_CastCoguData castData in _coguVariants)
+        {
+            _coguDictionary.Add(castData.keyName, castData.cogu);
+        }
     }
 
     private void Start()
     {
-        UpdateList();
+        UpdateWildCoguList();
     }
 
     private void FixedUpdate()
@@ -35,7 +41,17 @@ public class TEST_CoguManager : MonoBehaviour
         }
     }
 
-    // Private Methods
+    // Get & Set
+    public TEST_Cogu GetCoguVariant(string keyName)
+    {
+        if (_coguDictionary.TryGetValue(keyName, out TEST_Cogu cogu))
+            return cogu;
+
+        Debug.LogWarning($"{keyName} isn't a assigned key name to a existent cogu variant!");
+        return null;
+    }
+
+    // Public Methods
     public void AssingWildCogu(TEST_WildCogu wildCogu)
     {
         _wildCoguList.Add(wildCogu);
@@ -46,7 +62,8 @@ public class TEST_CoguManager : MonoBehaviour
         _wildCoguList.Remove(wildCogu);
     }
 
-    private void UpdateList()
+    // Private Methods
+    private void UpdateWildCoguList()
     {
         _wildCoguList.Clear();
 

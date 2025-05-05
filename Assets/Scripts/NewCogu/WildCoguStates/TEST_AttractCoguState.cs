@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class TEST_AttractWildCoguState : TEST_WildCoguState
 {
-    private TEST_CoguAssignPoint _assingPoint;
+    private TEST_CoguCastPoint _assingPoint;
 
     // Inerited Constructor
     public TEST_AttractWildCoguState(TEST_WildCoguStateMachine stateMachine) : base(stateMachine) { }
 
     // Public Methods
-    public TEST_AttractWildCoguState Setup(TEST_CoguAssignPoint assingPoint)
+    public TEST_AttractWildCoguState Setup(TEST_CoguCastPoint assingPoint)
     {
         this._assingPoint = assingPoint;
         _stateMachine.WildCogu.Agent.speed = _stateMachine.WildCogu.Data.attractSpd;

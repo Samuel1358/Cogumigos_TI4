@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TEST_CoguAssignPoint : MonoBehaviour
+public class TEST_CoguCastPoint : MonoBehaviour
 {
     [SerializeField] private TEST_CoguCastter _coguCastter;
 

@@ -3,11 +3,23 @@ using UnityEngine;
 public class TEST_CoguCastter : MonoBehaviour, IResetable
 {
     // Fields
-    public int _coguCount;
+    [SerializeField] private TEST_CoguCastPoint _castPoint;
+
+    private int _coguCount;
     private int _coguHoldedAtCheckpoint;
 
     // Properties
     public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
+
+    // Public Methods
+    public void CastCogu(string keyName)
+    {
+        TEST_Cogu variant = TEST_CoguManager.instance.GetCoguVariant(keyName);
+        TEST_Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<TEST_Cogu>();
+        cogu.Initialize();
+    }
+
+    #region // IResetable
 
     // PLAYER.START() - mudar depois
     private void Start()
@@ -38,4 +50,6 @@ public class TEST_CoguCastter : MonoBehaviour, IResetable
     {
         _coguCount = _coguHoldedAtCheckpoint;
     }
+
+    #endregion
 }

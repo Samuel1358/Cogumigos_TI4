@@ -4,7 +4,7 @@ using UnityEngine;
 public class TEST_CoguAttractor : MonoBehaviour
 {
     [Header("External Accesses")]
-    [SerializeField] private TEST_CoguAssignPoint _coguAssingPoint;
+    [SerializeField] private TEST_CoguCastPoint _assingPoint;
 
     [Header("Settings")]
     [SerializeField] private float _maxExpand;
@@ -57,7 +57,7 @@ public class TEST_CoguAttractor : MonoBehaviour
     {
         if (other.TryGetComponent(out TEST_WildCogu wildCogu))
         {
-            wildCogu.Attract(_coguAssingPoint);
+            wildCogu.Attract(_assingPoint);
         }
     }
 }

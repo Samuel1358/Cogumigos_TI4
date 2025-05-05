@@ -27,7 +27,7 @@ public class TEST_WildCogu : MonoBehaviour
     }
 
     // Public Methods
-    public void Attract(TEST_CoguAssignPoint assingPoint)
+    public void Attract(TEST_CoguCastPoint assingPoint)
     {
         //Debug.Log("1");
         if (_stateMachine.GetCurrentState() == _stateMachine.IdleState)

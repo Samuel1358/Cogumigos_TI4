@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class TEST_WildCoguState: IState
+public class TEST_CoguState : IState
 {
     // Fields
-    protected TEST_WildCoguStateMachine _stateMachine;
+    protected TEST_CoguStateMachine _stateMachine;
 
     // Constructor
-    public TEST_WildCoguState(TEST_WildCoguStateMachine stateMachine)
+    public TEST_CoguState(TEST_CoguStateMachine stateMachine)
     {
         this._stateMachine = stateMachine;
     }
