@@ -4,7 +4,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class Breakable : ResetableBase, IInteractable {
+public class Breakable : CoguInteractable
+{
     [SerializeField] private GameObject _fracturedPrefab;
     private List<Transform> _parts;
     private void Awake() {
@@ -27,13 +28,26 @@ public class Breakable : ResetableBase, IInteractable {
         NeedReset = false;
     }
 
-    public Action Interact(Cogu cogu) {
+    public override Action Interact(Cogu cogu) {
         DeactivateWall();
         Transform father = Instantiate(_fracturedPrefab, transform).transform;
         Rigidbody[] aux = father.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody t in aux) {
             _parts.Add(t.gameObject.transform);
             t.AddExplosionForce(cogu.GetCoguData().ExplosionForce, cogu.transform.position, cogu.GetCoguData().ExplosionRadius);
+        }
+        return () => { Destroy(cogu.gameObject); };
+    }
+
+    public override Action TEST_Interact(TEST_Cogu cogu)
+    {
+        DeactivateWall();
+        Transform father = Instantiate(_fracturedPrefab, transform).transform;
+        Rigidbody[] aux = father.GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody t in aux)
+        {
+            _parts.Add(t.gameObject.transform);
+            //t.AddExplosionForce(cogu.GetCoguData().ExplosionForce, cogu.transform.position, cogu.GetCoguData().ExplosionRadius);
         }
         return () => { Destroy(cogu.gameObject); };
     }

@@ -11,7 +11,7 @@ public class TEST_AttractWildCoguState : TEST_WildCoguState
     public TEST_AttractWildCoguState Setup(TEST_CoguCastPoint assingPoint)
     {
         this._assingPoint = assingPoint;
-        _stateMachine.WildCogu.Agent.speed = _stateMachine.WildCogu.Data.attractSpd;
+        _stateMachine.WildCogu.Agent.speed = _stateMachine.WildCogu.Data.moveSpd;
         return this;
     }
 
@@ -25,18 +25,11 @@ public class TEST_AttractWildCoguState : TEST_WildCoguState
     {
         _stateMachine.WildCogu.Agent.SetDestination(_assingPoint.transform.position);
 
-        if (ArrivedDestination())
+        if (_stateMachine.WildCogu.ArrivedDestination())
         {
             _stateMachine.ChangeState(_stateMachine.DisappearState.Setup(_assingPoint));
         }
     }
 
-    // Private Methods
-    private bool ArrivedDestination()
-    {
-        if (Vector3.Distance(_stateMachine.WildCogu.transform.position, _assingPoint.transform.position) <= _stateMachine.WildCogu.Data.minDistance)
-            return true;
-        else
-            return false;
-    }
+    
 }

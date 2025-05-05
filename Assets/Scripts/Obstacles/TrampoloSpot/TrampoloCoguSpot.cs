@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-public class TrampoloCoguSpot : ResetableBase, IInteractable {
+public class TrampoloCoguSpot : CoguInteractable
+{
     [SerializeField] private GameObject _trampoloPrefab;
     private bool _canActive;
 
@@ -10,13 +11,24 @@ public class TrampoloCoguSpot : ResetableBase, IInteractable {
         _canActive = true;
     }
 
-    public Action Interact(Cogu cogu) {
+    public override Action Interact(Cogu cogu) {
         if (_canActive) {
             _trampoloPrefab.SetActive(true);
             _canActive = false;
             return () => { Destroy(cogu.gameObject); };
         }
         return () => {};
+    }
+
+    public override Action TEST_Interact(TEST_Cogu cogu)
+    {
+        if (_canActive)
+        {
+            _trampoloPrefab.SetActive(true);
+            _canActive = false;
+            return () => { Destroy(cogu.gameObject); };
+        }
+        return () => { };
     }
 
     public override void ResetObject() {

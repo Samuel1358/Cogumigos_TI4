@@ -58,10 +58,13 @@ public class TEST_TargetCursor : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRadius, _interactIncludeLayers, QueryTriggerInteraction.Collide);
         foreach (Collider obj in colliders)
         {
-            if (obj.TryGetComponent(out IInteractable interactable))
+            if (obj.TryGetComponent(out CoguInteractable interactable))
             {
-                //_coguCastter.CastCogu();
-                return;
+                if (interactable.IsAvailable)
+                {
+                    _coguCastter.CastCogu(interactable.AssignedCoguName, transform.position, interactable);
+                    return;
+                }               
             }
         }
     }

@@ -8,6 +8,6 @@ public class TEST_CoguCastPoint : MonoBehaviour
     public void AssingWildCogu(TEST_WildCogu wildCogu)
     {
         _coguCastter.CoguCount++;
-        wildCogu.SelfDestruction();
+        Destroy(wildCogu.gameObject);
     }
 }

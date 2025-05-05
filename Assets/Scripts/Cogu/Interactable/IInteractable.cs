@@ -1,7 +1,29 @@
 using System;
 using UnityEngine;
 
-public interface IInteractable
+public abstract class CoguInteractable : ResetableBase
 {
-    public Action Interact(Cogu cogu);
+    // Fields
+    [SerializeField] string _assignedCoguName;
+    private bool _isAvailable = true;
+
+    // Properties
+    public string AssignedCoguName { get { return _assignedCoguName; } }
+    public bool IsAvailable {  get { return _isAvailable; } }
+
+    // Public Methods
+    public virtual void EnableInteract()
+    {
+        _isAvailable = true;
+    }
+
+    public virtual void DisableInteract()
+    {
+        _isAvailable = false;
+    }
+
+    // Inherit Public Methods
+    public abstract Action Interact(Cogu cogu);
+
+    public abstract Action TEST_Interact(TEST_Cogu cogu);
 }

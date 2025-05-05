@@ -29,16 +29,22 @@ public class TEST_WildCogu : MonoBehaviour
     // Public Methods
     public void Attract(TEST_CoguCastPoint assingPoint)
     {
-        //Debug.Log("1");
         if (_stateMachine.GetCurrentState() == _stateMachine.IdleState)
         {
             _stateMachine.ChangeState(_stateMachine.AttracState.Setup(assingPoint));
         }
     }
 
-    public void SelfDestruction()
+    public bool ArrivedDestination()
+    {
+        if (Vector3.Distance(transform.position, _agent.destination) <= _stateMachine.WildCogu.Data.minDistance)
+            return true;
+        else
+            return false;
+    }
+
+    private void OnDestroy()
     {
         TEST_CoguManager.instance.RemoveWildCogu(this);
-        Destroy(gameObject);
     }
 }

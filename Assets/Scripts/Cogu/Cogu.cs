@@ -95,7 +95,7 @@ public class Cogu : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, data.interactRadius, data.interactIncludeLayers, QueryTriggerInteraction.Collide);
         foreach (Collider obj in colliders)
         {
-            if (obj.TryGetComponent(out IInteractable interactable))
+            if (obj.TryGetComponent(out CoguInteractable interactable))
             {     
                 stateMachine.ChangeState(StartInteracting(interactable));
                 return;
@@ -158,7 +158,7 @@ public class Cogu : MonoBehaviour
         return originalMove + avoidenceMove;
     }
 
-    private CoguState StartInteracting(IInteractable interactable)
+    private CoguState StartInteracting(CoguInteractable interactable)
     {
         return stateMachine.interactingState.StartInteracting(interactable.Interact(this));
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewCoguData", menuName = "TEST/NewCoguData")]
 public class TEST_CoguData : ScriptableObject
 {
-    public float attractSpd;
+    public float moveSpd;
     public float minDistance;
 
     /*public float followSpd;

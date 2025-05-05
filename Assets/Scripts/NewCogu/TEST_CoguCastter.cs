@@ -5,18 +5,32 @@ public class TEST_CoguCastter : MonoBehaviour, IResetable
     // Fields
     [SerializeField] private TEST_CoguCastPoint _castPoint;
 
-    private int _coguCount;
+    public int _coguCount;
     private int _coguHoldedAtCheckpoint;
+    private bool _isAbleCast = true;
 
     // Properties
     public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
+    public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
 
     // Public Methods
-    public void CastCogu(string keyName)
+    public void CastCogu(string keyName, Vector3 interactSpot, CoguInteractable interactable)
     {
-        TEST_Cogu variant = TEST_CoguManager.instance.GetCoguVariant(keyName);
-        TEST_Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<TEST_Cogu>();
-        cogu.Initialize();
+        if (_coguCount > 0 && _isAbleCast)
+        {
+            if(TEST_CoguManager.instance.TryGetCoguVariant(keyName, out TEST_Cogu variant))
+            {
+                TEST_Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<TEST_Cogu>();
+                cogu.Initialize(interactSpot, interactable, this);
+                _coguCount--;
+                _isAbleCast = false;
+                Debug.LogWarning("Casted");
+            }          
+        }
+        else
+        {
+            Debug.LogWarning("You can't cast!");
+        }
     }
 
     #region // IResetable
