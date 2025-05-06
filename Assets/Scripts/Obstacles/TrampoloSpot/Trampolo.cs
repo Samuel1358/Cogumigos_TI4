@@ -12,10 +12,6 @@ public class Trampoline : MonoBehaviour
     private void Awake()
     {
         trampolineCollider = GetComponent<Collider>();
-        if (trampolineCollider != null)
-        {
-            trampolineCollider.isTrigger = true;
-        }
     }
 
     private void OnTriggerEnter(Collider other)

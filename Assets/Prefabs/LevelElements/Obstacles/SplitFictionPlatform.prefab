@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6774412394353596014}
   - {fileID: 7806649867744434793}
@@ -75,7 +75,7 @@ MonoBehaviour:
   _includeLayers:
     serializedVersion: 2
     m_Bits: 128
-  _rotationSpeed: 15
+  _rotationSpeed: 30
 --- !u!1 &7248776140753039079
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f593a63af2bbf840b93adeee0b76792, type: 2}
+  - {fileID: 2100000, guid: 96dc62edf8387fa4c91cedd1b7caa272, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,6 +170,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1085280132004153387}
     m_Modifications:
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _fallDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _restoreDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (2)
@@ -232,6 +240,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1085280132004153387}
     m_Modifications:
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _fallDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _restoreDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (4)
@@ -294,6 +310,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1085280132004153387}
     m_Modifications:
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _fallDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _restoreDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (1)
@@ -356,6 +380,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1085280132004153387}
     m_Modifications:
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _fallDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 45734811944675857, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: _restoreDelay
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (3)
