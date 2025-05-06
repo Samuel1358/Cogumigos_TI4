@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class RemovableObstacle : MonoBehaviour, IInteractable
+public class RemovableObstacle : CoguInteractable
 {
     private NavMeshAgent _agent;
     [SerializeField] public Vector3 destiny = Vector3.forward;
@@ -24,7 +24,7 @@ public class RemovableObstacle : MonoBehaviour, IInteractable
         }
     }
 
-    public Action Interact(Cogu cogu)
+    public override Action Interact(Cogu cogu)
     {
         Walk();
         return () => { Destroy(cogu.gameObject); };
