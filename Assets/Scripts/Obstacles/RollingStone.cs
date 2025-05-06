@@ -1,22 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngineInternal;
 
-public class AirTunnel : MonoBehaviour {
+public class RollingStone : MonoBehaviour
+{
     [SerializeField] private List<Transform> _pathPoints;
+    [SerializeField] private Transform _objToMove;
     [Header("Speed Based")]
     [SerializeField] private float _speed = 5f;
     [Header("Time Based")]
     [SerializeField] private bool _moveByTime = false;
     [SerializeField] private float _totalTime = 10f;
 
-    private Transform _objToMove;
     private bool _isActive;
-    private Player player;
 
     private int _currentIndex = 0;
     private float _journeyLength = 0f;
     private float _calculatedSpeed;
+    private bool _once = true;
 
     private Vector3 _startPoint;
     private Vector3 _targetPoint;
@@ -38,6 +38,8 @@ public class AirTunnel : MonoBehaviour {
             _calculatedSpeed = _journeyLength / _totalTime;
         }
         SetupNextSegment();
+
+        _startPoint = _objToMove.position;
     }
 
     void Update()
@@ -57,22 +59,11 @@ public class AirTunnel : MonoBehaviour {
         }
     }
 
-    // Private Methods
-    private void ResetTunnel()
-    {
-        _isActive = false;
-        player.SetGlide(false);
-        _objToMove = null;
-        _currentIndex = 0;
-        _segmentProgress = 0f;
-    }
-
     private void SetupNextSegment()
     {
         if (_currentIndex >= _pathPoints.Count - 1)
         {
-            _currentIndex = _pathPoints.Count;
-            ResetTunnel();
+            _isActive = false;
             return;
         }
 
@@ -89,12 +80,29 @@ public class AirTunnel : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.transform.parent.TryGetComponent<Player>(out player))
+        if (_once)
+            if (collider.transform.parent.TryGetComponent(out Player player))
+            {
+                _currentIndex = 0;
+                for (int i = 0; i < _pathPoints.Count - 1; i++)
+                {
+                    if (Vector3.Distance(_pathPoints[i].position, _startPoint) < Vector3.Distance(_pathPoints[_currentIndex].position, _startPoint))
+                    {
+                        _currentIndex = i;
+                    }
+                }
+                _targetPoint = _pathPoints[_currentIndex].position;
+                _isActive = true;
+                _once = false;
+            }
+    }
+
+    // TESTE
+    [ContextMenu("Teste")]
+    public void Teste()
+    {
+        if (_once)
         {
-            Debug.Log("Colided player");
-            _objToMove = player.transform;
-            _startPoint = player.transform.position;
-            player.SetGlide(true);
             _currentIndex = 0;
             for (int i = 0; i < _pathPoints.Count - 1; i++)
             {
@@ -105,6 +113,11 @@ public class AirTunnel : MonoBehaviour {
             }
             _targetPoint = _pathPoints[_currentIndex].position;
             _isActive = true;
+            _once = false;
+        }
+        else
+        {
+            Debug.LogWarning("Não pode!");
         }
     }
 
@@ -112,6 +125,9 @@ public class AirTunnel : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Vector3? oldVec = null;
+        if (_objToMove != null)
+            oldVec = _objToMove.position;
+
         foreach (var pathPoint in _pathPoints)
         {
             if (pathPoint != null)
