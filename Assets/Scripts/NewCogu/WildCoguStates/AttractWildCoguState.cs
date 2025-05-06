@@ -18,7 +18,7 @@ public class AttractWildCoguState : WildCoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Attract");
+        //Debug.Log("Enter - Attract");
     }
 
     public override void Update()

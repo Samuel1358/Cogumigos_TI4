@@ -35,7 +35,6 @@ public class KeyedDoorInteract : MonoBehaviour
         {
             if (other.CompareTag(_tagTrigger))
             {
-                Debug.Log("Keyed Enter");
                 TEMP_InputManager.instance.onInteractInput += Interact;
 
                 // visual
@@ -69,7 +68,6 @@ public class KeyedDoorInteract : MonoBehaviour
         {
             if (other.CompareTag(_tagTrigger))
             {
-                Debug.Log("Keyed Exit");
                 TEMP_InputManager.instance.onInteractInput -= Interact;
 
                 // visual

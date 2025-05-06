@@ -17,7 +17,7 @@ public class CastCoguState : CoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Cast");
+        //Debug.Log("Enter - Cast");
     }
 
     public override void Update()

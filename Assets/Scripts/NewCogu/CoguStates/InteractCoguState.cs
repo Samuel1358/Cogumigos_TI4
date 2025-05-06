@@ -11,7 +11,7 @@ public class InteractCoguState : CoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Interact");
+        //Debug.Log("Enter - Interact");
         _interacting += _stateMachine.Cogu.StartInteracting();
         _stateMachine.Cogu.ResetAnableCast();
     }
