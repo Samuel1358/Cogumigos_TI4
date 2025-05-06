@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 538715858095983618}
   - component: {fileID: 4580790469226933076}
   - component: {fileID: 1575437945606018139}
+  - component: {fileID: 5939175310510668843}
   m_Layer: 6
   m_Name: Leaf Plataform
   m_TagString: Untagged
@@ -109,6 +110,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3528443636850553465, guid: 0857777e705847c429a38e51aa86f31d, type: 3}
+--- !u!114 &5939175310510668843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654905036841697765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8904716a17cdae24299886c9440168c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disappearTime: 2
+  platformRenderer: {fileID: 4580790469226933076}
 --- !u!1 &4216553753905320973
 GameObject:
   m_ObjectHideFlags: 0
