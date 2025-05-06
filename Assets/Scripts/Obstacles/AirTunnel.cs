@@ -97,7 +97,7 @@ public class AirTunnel : MonoBehaviour {
     }
 
     // Gizmo
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Vector3? oldVec = null;
         foreach (var pathPoint in _pathPoints)
