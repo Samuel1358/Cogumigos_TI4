@@ -204,14 +204,10 @@ public class PlayerMovementState : IState {
     }
 
     protected virtual void AddInputActionsCallbacks() {
-        StateMachineMovement.PlayerGet.Input.PlayerActions.WalkTogle.started += OnWalkToggleStarted;
-
         StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started += OnJumpStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks() {
-        StateMachineMovement.PlayerGet.Input.PlayerActions.WalkTogle.started -= OnWalkToggleStarted;
-
         StateMachineMovement.PlayerGet.Input.PlayerActions.Jump.started -= OnJumpStarted;
     }
     protected bool IsMovingHorizontally(float minimunMagnitude = 0.1f) {
@@ -229,9 +225,6 @@ public class PlayerMovementState : IState {
     }
 
     #region Input methods
-    protected virtual void OnWalkToggleStarted(InputAction.CallbackContext context) {
-        StateMachineMovement.ReusableData.ShouldWalk = !StateMachineMovement.ReusableData.ShouldWalk;
-    }
     protected virtual void OnJumpStarted(InputAction.CallbackContext context) {
         StateMachineMovement.ReusableData.SetJumpBuffer(AirData.JumpData.JumpBuffer);
     }

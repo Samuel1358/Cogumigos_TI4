@@ -6,11 +6,13 @@ public class Player : MonoBehaviour {
     [field: SerializeField] public ResizableCapsuleCollider ColliderUtility { get; private set; }
     [field: SerializeField] public PlayerLayerData LayerData { get; private set; }
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
+    [field: SerializeField] public bool ShouldWalk { get; private set; }
 
     public PlayerInput Input { get; private set; }
     public PlayerInventory Inventory { get; private set; }
     public Animator PlayerAnimator { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
+    public Rigidbody ShouldGlide { get; private set; }
     private PlayerMovementStateMachine _movementStateMachine;
 
     #region TesteRespawn

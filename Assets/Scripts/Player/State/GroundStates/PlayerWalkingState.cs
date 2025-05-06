@@ -16,12 +16,6 @@ public class PlayerWalkingState : PlayerMovingState {
 
         StopAnimation(StateMachineMovement.PlayerGet.AnimationData.WalkParameterHash);
     }
-
-    protected override void OnWalkToggleStarted(InputAction.CallbackContext context) {
-        base.OnWalkToggleStarted(context);
-
-        StateMachineMovement.ChangeState(StateMachineMovement.RunningState);
-    }
     protected override void OnMovementCanceled(InputAction.CallbackContext context) {
         StateMachineMovement.ChangeState(StateMachineMovement.IdlingState);
     }

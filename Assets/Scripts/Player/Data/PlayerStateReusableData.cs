@@ -8,8 +8,6 @@ public class PlayerStateReusableData {
     public float Gravity { get; private set; }
     public float CoyoteTimeCount { get; private set; }
     public float JumpBufferCount { get; private set; }
-    public bool ShouldWalk { get; set; }
-    public bool ShouldSprint { get; set; }
     public bool CanDoubleJump { get; private set; }
 
     private Vector3 _currentTargetRotation;

@@ -12,7 +12,6 @@ public class PlayerAirState : PlayerMovementState {
     public override void Enter() {
         base.Enter();
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.AirborneParameterHash);
-        ResetSpringState();
         SetUpJump();
     }
 
@@ -41,9 +40,6 @@ public class PlayerAirState : PlayerMovementState {
 
     protected virtual void DoubleJump() {
         StateMachineMovement.ReusableData.DisableDoubleJump();
-    }
-    protected virtual void ResetSpringState() {
-        StateMachineMovement.ReusableData.ShouldSprint = false;
     }
     private void SetUpJump() {
         float timeToApex = AirData.JumpData.MaxJumpTime / 2.0f;

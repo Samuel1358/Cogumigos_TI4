@@ -17,7 +17,6 @@ public class PlayerGroundState : PlayerMovementState {
 
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
 
-        UpdateShouldSprintState();
 
         if (StateMachineMovement.ReusableData.JumpBufferCount > 0) {
             StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
@@ -28,16 +27,6 @@ public class PlayerGroundState : PlayerMovementState {
         base.Exit();
 
         StopAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
-    }
-
-    private void UpdateShouldSprintState() {
-        if (!StateMachineMovement.ReusableData.ShouldSprint) {
-            return;
-        }
-        if (StateMachineMovement.ReusableData.MovementInput != Vector2.zero) {
-            return;
-        }
-        StateMachineMovement.ReusableData.ShouldSprint = false;
     }
 
     public override void PhysicsUpdate() {
@@ -82,15 +71,11 @@ public class PlayerGroundState : PlayerMovementState {
     protected override void AddInputActionsCallbacks() {
         base.AddInputActionsCallbacks();
         StateMachineMovement.PlayerGet.Input.PlayerActions.Move.canceled += OnMovementCanceled;
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Dash.started += OnDashStarted;
     }
 
     protected override void RemoveInputActionsCallbacks() {
         base.RemoveInputActionsCallbacks();
         StateMachineMovement.PlayerGet.Input.PlayerActions.Move.canceled -= OnMovementCanceled;
-
-        StateMachineMovement.PlayerGet.Input.PlayerActions.Dash.started -= OnDashStarted;
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context) {
@@ -98,16 +83,7 @@ public class PlayerGroundState : PlayerMovementState {
     }
 
     protected virtual void OnMove() {
-        if (StateMachineMovement.ReusableData.ShouldSprint) {
-            StateMachineMovement.ChangeState(StateMachineMovement.SprintingState);
-
-            return;
-        }
-        if (StateMachineMovement.ReusableData.ShouldWalk) {
-            StateMachineMovement.ChangeState(StateMachineMovement.WalkingState);
-            return;
-        }
-        StateMachineMovement.ChangeState(StateMachineMovement.RunningState);
+        StateMachineMovement.ChangeState(StateMachineMovement.SprintingState);
     }
 
     protected override void OnContactWithGroundExited() {
@@ -123,10 +99,6 @@ public class PlayerGroundState : PlayerMovementState {
 
     protected virtual void OnFall() {
         StateMachineMovement.ChangeState(StateMachineMovement.FallingState);
-    }
-
-    protected virtual void OnDashStarted(InputAction.CallbackContext context) {
-        StateMachineMovement.ChangeState(StateMachineMovement.DashingState);
     }
 
     protected override void OnJumpStarted(InputAction.CallbackContext context) {

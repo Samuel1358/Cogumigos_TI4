@@ -70,7 +70,4 @@ public class PlayerJumpingState : PlayerAirState {
         base.DoubleJump();
         Jump();
     }
-
-    protected override void ResetSpringState() {
-    }
 }
