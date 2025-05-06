@@ -20,17 +20,6 @@ public class TrampoloCoguSpot : CoguInteractable
         return () => {};
     }
 
-    public override Action TEST_Interact(TEST_Cogu cogu)
-    {
-        if (_canActive)
-        {
-            _trampoloPrefab.SetActive(true);
-            _canActive = false;
-            return () => { Destroy(cogu.gameObject); };
-        }
-        return () => { };
-    }
-
     public override void ResetObject() {
         base.ResetObject();
 

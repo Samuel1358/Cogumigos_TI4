@@ -30,12 +30,6 @@ public class RemovableObstacle : CoguInteractable
         return () => { Destroy(cogu.gameObject); };
     }
 
-    public override Action TEST_Interact(TEST_Cogu cogu)
-    {
-        Walk();
-        return () => { Destroy(cogu.gameObject); };
-    }
-
     // Gizmo
     private void OnDrawGizmosSelected()
     {
