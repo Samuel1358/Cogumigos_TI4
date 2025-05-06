@@ -1,3 +1,4 @@
+using UnityEditor.XR;
 using UnityEngine;
 [RequireComponent(typeof(PlayerInput))]
 [RequireComponent(typeof(Rigidbody))]
@@ -12,7 +13,7 @@ public class Player : MonoBehaviour {
     public PlayerInventory Inventory { get; private set; }
     public Animator PlayerAnimator { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
-    public Rigidbody ShouldGlide { get; private set; }
+    public bool ShouldGlide { get; private set; }
     private PlayerMovementStateMachine _movementStateMachine;
 
     #region TesteRespawn
@@ -67,6 +68,10 @@ public class Player : MonoBehaviour {
     public void SetCheckpoint(int coguToAdd) {
         CoguCount += coguToAdd;
         _lastCount = CoguCount;
+    }
+
+    public void SetGlide(bool state) {
+        ShouldGlide = state;
     }
 
     public void ChangeToTrampolineJumpState(float bounceForce) {

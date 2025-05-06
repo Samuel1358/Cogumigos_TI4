@@ -54,6 +54,7 @@ public class PlayerMovementState : IState {
                 _isGrounded = false;
             }
         }
+        OnGlideVerify();
     }
 
     protected bool IsThereGroundUnderneath() {
@@ -201,6 +202,12 @@ public class PlayerMovementState : IState {
     }
     protected virtual void OnContactWithGroundExited() {
 
+    }
+
+    protected virtual void OnGlideVerify() {
+        if (StateMachineMovement.PlayerGet.ShouldGlide) {
+            StateMachineMovement.ChangeState(StateMachineMovement.GlideState);
+        }
     }
 
     protected virtual void AddInputActionsCallbacks() {
