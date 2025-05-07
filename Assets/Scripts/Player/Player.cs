@@ -1,7 +1,7 @@
-using UnityEditor.XR;
 using UnityEngine;
-[RequireComponent(typeof(PlayerInput))]
-[RequireComponent(typeof(Rigidbody))]
+
+[RequireComponent(typeof(PlayerInput), typeof(PlayerInventory))]
+[RequireComponent(typeof(CoguCastter), typeof(Rigidbody))]
 public class Player : MonoBehaviour {
     [field: SerializeField] public PlayerSO Data { get; private set; }
     [field: SerializeField] public ResizableCapsuleCollider ColliderUtility { get; private set; }
@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
 
     public PlayerInput Input { get; private set; }
     public PlayerInventory Inventory { get; private set; }
+    public CoguCastter CoguCast { get; private set; }
     public Animator PlayerAnimator { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
     public bool ShouldGlide { get; private set; }
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour {
     private void Awake() {
         Input = GetComponent<PlayerInput>();
         Inventory = GetComponent<PlayerInventory>();
+        CoguCast = GetComponent<CoguCastter>();
         PlayerRigidbody = GetComponent<Rigidbody>();
         PlayerAnimator = GetComponentInChildren<Animator>();
         _movementStateMachine = new PlayerMovementStateMachine(this);
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour {
         AnimationData.Initialize();
         ColliderUtility.Initialize(gameObject);
         Inventory.Initialize();
+        CoguCast.Initialize();
         ColliderUtility.CalculateCapsuleColliderDimensions();
         _movementStateMachine.ChangeState(_movementStateMachine.IdlingState);
         MainCameraTransform = Camera.main.transform;

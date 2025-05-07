@@ -7,6 +7,11 @@ public class DisappearWildCoguState : WildCoguState
     // Inerited Constructor
     public DisappearWildCoguState(WildCoguStateMachine stateMachine) : base(stateMachine) { }
 
+    public override void Reset()
+    {
+        _assingPoint = null;
+    }
+
     // Public Methods
     public DisappearWildCoguState Setup(CoguCastPoint assingPoint)
     {
@@ -18,10 +23,6 @@ public class DisappearWildCoguState : WildCoguState
     public override void Enter()
     {
         //Debug.Log("Enter - Disappear");
-    }
-
-    public override void Update()
-    {
         _assingPoint.AssingWildCogu(_stateMachine.WildCogu);
     }
 }

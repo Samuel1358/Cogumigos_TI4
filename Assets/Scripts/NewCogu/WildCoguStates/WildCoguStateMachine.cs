@@ -1,3 +1,4 @@
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class WildCoguStateMachine : StateMachine
@@ -31,5 +32,15 @@ public class WildCoguStateMachine : StateMachine
         this._idleState = new IdleWildCoguState(this);
         this._attracState = new AttractWildCoguState(this);
         this._disappearState = new DisappearWildCoguState(this);
+    }
+
+    // Public Methods
+    public void Reset()
+    {
+        IdleState.Reset();
+        AttracState.Reset();
+        DisappearState.Reset();
+
+        ChangeState(IdleState);
     }
 }

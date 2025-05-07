@@ -15,15 +15,23 @@ public class PlataformCoguSpot : CoguInteractable
         if (_canActive) {
             _plataformPrefab.SetActive(true);
             _canActive = false;
+
+            _isAvailable = false;
+            NeedReset = true;
             return () => { Destroy(cogu.gameObject); };
         }
         return () => {};
     }
 
-    public override void ResetObject() {
-        base.ResetObject();
+    public override void ResetObject() 
+    {
+        if (NeedReset)
+        {
+            _plataformPrefab.SetActive(false);
+            _canActive = true;
 
-        _plataformPrefab.SetActive(false);
-        _canActive = true;
+            _isAvailable = true;
+            NeedReset = false;
+        }       
     }
 }

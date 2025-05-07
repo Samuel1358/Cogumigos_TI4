@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollingStone : MonoBehaviour
+public class RollingStone : ResetableBase
 {
     [SerializeField] private List<Transform> _pathPoints;
     [SerializeField] private Transform _objToMove;
@@ -23,6 +23,8 @@ public class RollingStone : MonoBehaviour
     private float _segmentDuration;
     private float _segmentProgress;
 
+    private Vector3 _initialPosition;
+
 
     private void Awake()
     {
@@ -39,6 +41,8 @@ public class RollingStone : MonoBehaviour
         SetupNextSegment();
 
         _startPoint = _objToMove.position;
+
+        _initialPosition = transform.position;
     }
 
     void Update()
@@ -90,6 +94,21 @@ public class RollingStone : MonoBehaviour
         }
         _targetPoint = _pathPoints[_currentIndex].position;
         _isActive = true;
+
+        NeedReset = true;
+    }
+
+    public override void ResetObject()
+    {
+        if (NeedReset)
+        {
+            _isActive = false;
+            _currentIndex = 0;
+            transform.position = _initialPosition;
+            _startPoint = _initialPosition;
+
+            NeedReset = false;
+        }
     }
 
     // Gizmo

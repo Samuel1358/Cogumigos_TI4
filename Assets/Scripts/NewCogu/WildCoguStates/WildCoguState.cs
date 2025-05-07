@@ -11,6 +11,9 @@ public class WildCoguState: IState
         this._stateMachine = stateMachine;
     }
 
+    // Public 
+    public virtual void Reset() { }
+
     // Interface public Methods
     public virtual void Enter() { }
 

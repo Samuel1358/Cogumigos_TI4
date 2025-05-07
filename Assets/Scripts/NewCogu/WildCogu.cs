@@ -1,14 +1,18 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class WildCogu : MonoBehaviour
+[RequireComponent(typeof(Collider), typeof(NavMeshAgent))]
+public class WildCogu : ResetableBase
 {
     // Fields
     [SerializeField] private CoguData _data;
+    [SerializeField] private GameObject _visual;
 
     private WildCoguStateMachine _stateMachine;
+    private Collider _collider;
     private NavMeshAgent _agent;
+
+    private Vector3 _initialPosition;
 
     // Properties
     public CoguData Data { get { return _data; } }
@@ -19,11 +23,15 @@ public class WildCogu : MonoBehaviour
     {
         _stateMachine = new WildCoguStateMachine(this);
         _stateMachine.ChangeState(_stateMachine.IdleState);
+
+        _initialPosition = transform.position;
     }
 
     private void Start()
     {
-        _agent = GetComponent<NavMeshAgent>();
+        _collider = GetComponent<Collider>();
+        _collider.isTrigger = true;
+        _agent = GetComponent<NavMeshAgent>();       
     }
 
     // Public Methods
@@ -41,6 +49,30 @@ public class WildCogu : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    public void Disable()
+    {
+        _visual.SetActive(false);
+        _collider.enabled = false;
+
+        NeedReset = true;
+    }
+
+    public override void ResetObject()
+    {
+        Debug.Log("WildCoguReset");
+        if (NeedReset)
+        {
+            transform.position = _initialPosition;
+            _agent.enabled = true;
+            _agent.SetDestination(transform.position);
+            _visual.SetActive(true);
+            _collider.enabled = true;
+            _stateMachine.Reset();
+
+            NeedReset = false;
+        }        
     }
 
     private void OnDestroy()

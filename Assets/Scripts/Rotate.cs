@@ -7,6 +7,8 @@ public class Rotate : MonoBehaviour
     [SerializeField] private Vector3 _direction;
     [SerializeField] private Space _space;
 
+    private Vector3 _initialRotation;
+
     private void Update()
     {
         if (_active)
@@ -17,5 +19,11 @@ public class Rotate : MonoBehaviour
     public void SetActive(bool value)
     {
         _active = value;
+    }
+
+    // Public Methods
+    public void ResetRotation()
+    {
+        transform.rotation = Quaternion.Euler(_initialRotation);
     }
 }
