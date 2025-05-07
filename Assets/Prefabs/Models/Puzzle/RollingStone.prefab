@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7688422324693621743}
   - component: {fileID: 6709546283440591946}
   - component: {fileID: 8861377084100190336}
+  - component: {fileID: 8536574555529231279}
   m_Layer: 0
   m_Name: RollingStone
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7059695821255311701}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86,6 +87,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8536574555529231279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059695821255311701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6ad932d11a84a40b40d3a97486685b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _active: 0
+  _rotateSpeed: 60
+  _direction: {x: -0.5, y: 0, z: 1}
+  _space: 1
 --- !u!1 &9197795299663384452
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,6 +113,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6316853322191477893}
   - component: {fileID: 5258017637906592893}
+  - component: {fileID: 2643927345590174500}
+  - component: {fileID: 1052050998622210702}
   m_Layer: 0
   m_Name: RollingStone
   m_TagString: Untagged
@@ -113,8 +132,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7688422324693621743}
   m_Father: {fileID: 0}
@@ -140,3 +159,47 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.4
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &2643927345590174500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197795299663384452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41d0c2b23ebe4f4a912751765219cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _linkedCheckpoint: {fileID: 0}
+  _pathPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _rotateStone: {fileID: 8536574555529231279}
+  _objToMove: {fileID: 6316853322191477893}
+  _speed: 5
+  _moveByTime: 0
+  _totalTime: 10
+--- !u!114 &1052050998622210702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197795299663384452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e37c7fc3aadb5f947bfa8c8ce57c92b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

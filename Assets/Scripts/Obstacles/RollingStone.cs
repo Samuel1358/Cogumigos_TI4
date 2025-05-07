@@ -4,6 +4,7 @@ using UnityEngine;
 public class RollingStone : ResetableBase
 {
     [SerializeField] private List<Transform> _pathPoints;
+    [SerializeField] private Rotate _rotateStone;
     [SerializeField] private Transform _objToMove;
     [Header("Speed Based")]
     [SerializeField] private float _speed = 5f;
@@ -67,6 +68,7 @@ public class RollingStone : ResetableBase
         if (_currentIndex >= _pathPoints.Count - 1)
         {
             _isActive = false;
+            _rotateStone.SetActive(false);
             return;
         }
 
