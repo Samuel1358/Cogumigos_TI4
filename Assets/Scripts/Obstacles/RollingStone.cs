@@ -16,7 +16,6 @@ public class RollingStone : MonoBehaviour
     private int _currentIndex = 0;
     private float _journeyLength = 0f;
     private float _calculatedSpeed;
-    private bool _once = true;
 
     private Vector3 _startPoint;
     private Vector3 _targetPoint;
@@ -77,48 +76,20 @@ public class RollingStone : MonoBehaviour
 
         _currentIndex++;
     }
-
-    private void OnTriggerEnter(Collider collider)
+    
+    // Public Methods
+    public void Rool()
     {
-        if (_once)
-            if (collider.transform.parent.TryGetComponent(out Player player))
-            {
-                _currentIndex = 0;
-                for (int i = 0; i < _pathPoints.Count - 1; i++)
-                {
-                    if (Vector3.Distance(_pathPoints[i].position, _startPoint) < Vector3.Distance(_pathPoints[_currentIndex].position, _startPoint))
-                    {
-                        _currentIndex = i;
-                    }
-                }
-                _targetPoint = _pathPoints[_currentIndex].position;
-                _isActive = true;
-                _once = false;
-            }
-    }
-
-    // TESTE
-    [ContextMenu("Teste")]
-    public void Teste()
-    {
-        if (_once)
+        _currentIndex = 0;
+        for (int i = 0; i < _pathPoints.Count - 1; i++)
         {
-            _currentIndex = 0;
-            for (int i = 0; i < _pathPoints.Count - 1; i++)
+            if (Vector3.Distance(_pathPoints[i].position, _startPoint) < Vector3.Distance(_pathPoints[_currentIndex].position, _startPoint))
             {
-                if (Vector3.Distance(_pathPoints[i].position, _startPoint) < Vector3.Distance(_pathPoints[_currentIndex].position, _startPoint))
-                {
-                    _currentIndex = i;
-                }
+                _currentIndex = i;
             }
-            _targetPoint = _pathPoints[_currentIndex].position;
-            _isActive = true;
-            _once = false;
         }
-        else
-        {
-            Debug.LogWarning("Não pode!");
-        }
+        _targetPoint = _pathPoints[_currentIndex].position;
+        _isActive = true;
     }
 
     // Gizmo
