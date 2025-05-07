@@ -95,9 +95,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8500328215801815831}
-  - component: {fileID: 7024989620850836155}
   - component: {fileID: 7764028694299347192}
   - component: {fileID: 45734811944675857}
+  - component: {fileID: 7704210407280308282}
   m_Layer: 6
   m_Name: FragmentFallingPlatform
   m_TagString: Untagged
@@ -121,27 +121,6 @@ Transform:
   - {fileID: 7249658140509413246}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7024989620850836155
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721136977149749671}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.96593237, y: 0.036917776, z: 0.8741098}
-  m_Center: {x: 0.0039545298, y: 0.018458888, z: 0.41383287}
 --- !u!54 &7764028694299347192
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,3 +162,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallDelay: 2
   _restoreDelay: 3.5
+--- !u!64 &7704210407280308282
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721136977149749671}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6154004108357814518, guid: dc188774100cfdd4cab93a6a14d29195, type: 3}
