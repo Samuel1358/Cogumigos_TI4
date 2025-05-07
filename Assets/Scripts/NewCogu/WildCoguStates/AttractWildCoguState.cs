@@ -7,6 +7,11 @@ public class AttractWildCoguState : WildCoguState
     // Inerited Constructor
     public AttractWildCoguState(WildCoguStateMachine stateMachine) : base(stateMachine) { }
 
+    public override void Reset()
+    {
+        _assingPoint = null;
+    }
+
     // Public Methods
     public AttractWildCoguState Setup(CoguCastPoint assingPoint)
     {

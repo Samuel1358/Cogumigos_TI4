@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Breakable : CoguInteractable
 {
@@ -10,6 +8,7 @@ public class Breakable : CoguInteractable
     [SerializeField] private float _explosionForce;
     [SerializeField] private float _explosionRadius;
     private List<Transform> _parts;
+
     private void Awake() {
         _parts = new List<Transform>();
         NeedReset = false;
@@ -43,6 +42,10 @@ public class Breakable : CoguInteractable
 
     public override void ResetObject() {
         base.ResetObject();
-        if (NeedReset) ActivateWall();
+        if (NeedReset) 
+        { 
+            ActivateWall();
+            _isAvailable = true;
+        }
     }
 }

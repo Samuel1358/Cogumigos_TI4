@@ -8,12 +8,16 @@ public class SwitchableDoor : Switchable
 {
     private List<DoorTweenAnimation> openAnimationList = new List<DoorTweenAnimation>();
     private List<DoorTweenAnimation> closeAnimationList = new List<DoorTweenAnimation>();
-    public int selectedIndex = 0;
+
+    private Vector3 _initialTransform;
+
+    // Inspector
+    [HideInInspector] public int selectedIndex = 0;
 
     #region // Inspector properties
 
-    [SerializeField] public float value;
-    [SerializeField] public float durationTime;
+    [SerializeField] private float value;
+    [SerializeField] private float durationTime;
 
     #endregion
 
@@ -26,29 +30,15 @@ public class SwitchableDoor : Switchable
 
     #endregion
 
-    public void OnEnable()
+    protected override void OnEnable()
     {
-        #region // DoorTweenAnimation enable
+        base.OnEnable();
+        EnableAnimationLists();
+    }
 
-        moveOpenAnimation = new DoorTweenAnimation("Move Open Animation", MoveOpenBounce);
-        rotateOpenAnimation = new DoorTweenAnimation("Rotate Open Animation", RotateOpenBounce);
-
-        moveCloseAnimation = new DoorTweenAnimation("Move Close Animation", MoveCloseBounce);
-        rotateCloseAnimation = new DoorTweenAnimation("Rotate Close Animation", RotateCloseBounce);
-
-        #endregion
-
-        openAnimationList = new List<DoorTweenAnimation>
-        {
-            moveOpenAnimation,
-            rotateOpenAnimation
-        };
-
-        closeAnimationList = new List<DoorTweenAnimation>
-        {
-            moveCloseAnimation,
-            rotateCloseAnimation
-        };
+    private void Start()
+    {
+        _initialTransform = transform.position;
     }
 
     #region // SwitchableDoor Methods
@@ -57,11 +47,13 @@ public class SwitchableDoor : Switchable
     public override void Activate()
     {
         OpenAnimation();
+        NeedReset = true;
     }
 
     public override void Disable()
     {
         CloseAnimation();
+        NeedReset = true;
     }
 
     // public Methods
@@ -114,6 +106,44 @@ public class SwitchableDoor : Switchable
 
     #endregion 
 
+    // Public Methods
+    public void EnableAnimationLists()
+    {
+        #region // DoorTweenAnimation enable
+
+        moveOpenAnimation = new DoorTweenAnimation("Move Open Animation", MoveOpenBounce);
+        rotateOpenAnimation = new DoorTweenAnimation("Rotate Open Animation", RotateOpenBounce);
+
+        moveCloseAnimation = new DoorTweenAnimation("Move Close Animation", MoveCloseBounce);
+        rotateCloseAnimation = new DoorTweenAnimation("Rotate Close Animation", RotateCloseBounce);
+
+        #endregion
+
+        openAnimationList = new List<DoorTweenAnimation>
+        {
+            moveOpenAnimation,
+            rotateOpenAnimation
+        };
+
+        closeAnimationList = new List<DoorTweenAnimation>
+        {
+            moveCloseAnimation,
+            rotateCloseAnimation
+        };
+    }
+
+    // Resetable
+    public override void ResetObject()
+    {
+        
+        if (NeedReset)
+        {
+            Debug.Log("DoorReset");
+            transform.position = _initialTransform;
+
+            NeedReset = false;
+        }
+    }
 
     internal class DoorTweenAnimation
     {
@@ -143,41 +173,21 @@ public class SwitchableDoor : Switchable
 public class SwitchableDoorInspector : Editor
 {
     private SwitchableDoor _switchableDoor;
-    private SerializedObject _serializedObject;
-    private SerializedProperty _script;
-
-    private SerializedProperty _value;
-    private SerializedProperty _durationTime;
 
     private void OnEnable()
     {
         _switchableDoor = target as SwitchableDoor;
-        _switchableDoor.OnEnable();
-
-        _serializedObject = new SerializedObject(_switchableDoor);
-        _script = _serializedObject.FindProperty("m_Script");
-
-        _value = _serializedObject.FindProperty("value");
-        _durationTime = _serializedObject.FindProperty("durationTime");
+        _switchableDoor.EnableAnimationLists();
     }
 
     public override void OnInspectorGUI()
     {
-        ScriptReferance();
+        base.OnInspectorGUI();
 
         SerializedFields();
     }
 
     #region // OnInspectorGUI
-
-    private void ScriptReferance()
-    {
-        EditorGUI.BeginDisabledGroup(true);
-
-        EditorGUILayout.PropertyField(_script);
-
-        EditorGUI.EndDisabledGroup();
-    }
 
     private void SerializedFields()
     {
@@ -188,13 +198,6 @@ public class SwitchableDoorInspector : Editor
         _switchableDoor.selectedIndex = EditorGUILayout.Popup("", _switchableDoor.selectedIndex, _switchableDoor.GetAnimationsNames());
 
         GUILayout.EndHorizontal();
-
-        _serializedObject.Update();
-
-        EditorGUILayout.PropertyField(_value);
-        EditorGUILayout.PropertyField(_durationTime);
-
-        _serializedObject.ApplyModifiedProperties();
     }
 
     #endregion

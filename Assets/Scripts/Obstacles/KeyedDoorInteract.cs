@@ -2,7 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class KeyedDoorInteract : MonoBehaviour
+public class KeyedDoorInteract : ResetableBase
 {
     [Header("Esternal Accesses")]
     [SerializeField] private Switchable _switchable;
@@ -26,6 +26,17 @@ public class KeyedDoorInteract : MonoBehaviour
     private void Interact()
     {
         _isInteracting = true;
+    }
+
+    public override void ResetObject()
+    {
+        if (NeedReset)
+        {
+            _isInteracting = false;
+            _isInteracted = false;
+
+            NeedReset = false;
+        }
     }
 
     // MonoBehaviour Methods
@@ -56,6 +67,8 @@ public class KeyedDoorInteract : MonoBehaviour
                     {
                         _switchable.Activate();
                         _isInteracted = true;
+
+                        NeedReset = true;
                     }
                 }
             }

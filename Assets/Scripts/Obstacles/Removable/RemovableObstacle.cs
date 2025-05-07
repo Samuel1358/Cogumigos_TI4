@@ -9,18 +9,22 @@ public class RemovableObstacle : CoguInteractable
     [SerializeField] public Vector3 destiny = Vector3.forward;
     [SerializeField] public bool positionated;
 
+    private Vector3 _inictialPosition;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         destiny = transform.TransformPoint(destiny);
+
+        _inictialPosition = transform.position;
     }
 
-    [ContextMenu("Walk")]
     public void Walk()
     {
         if (positionated)
         {
             _agent.SetDestination(destiny);
+            NeedReset = true;
         }
     }
 
@@ -28,6 +32,18 @@ public class RemovableObstacle : CoguInteractable
     {
         Walk();
         return () => { Destroy(cogu.gameObject); };
+    }
+
+    // Resetable
+    public override void ResetObject()
+    {
+        if (NeedReset)
+        {
+            transform.position = _inictialPosition;
+            _agent.SetDestination(transform.position);
+            _isAvailable = true;
+            NeedReset = false;
+        }
     }
 
     // Gizmo

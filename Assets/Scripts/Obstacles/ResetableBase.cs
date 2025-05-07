@@ -7,7 +7,8 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
 
     protected bool NeedReset;
 
-    private void OnEnable() {
+    protected virtual void OnEnable() 
+    {
         StartCoroutine(ActivateResetable());
     }
 

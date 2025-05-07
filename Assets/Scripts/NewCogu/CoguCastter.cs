@@ -20,6 +20,7 @@ public class CoguCastter : MonoBehaviour, IResetable
         {
             if(CoguManager.instance.TryGetCoguVariant(keyName, out Cogu variant))
             {
+                Debug.Log(_castPoint);
                 Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
                 cogu.Initialize(interactSpot, interactable, this);
                 _coguCount--;
@@ -34,13 +35,6 @@ public class CoguCastter : MonoBehaviour, IResetable
     }
 
     #region // IResetable
-
-    // PLAYER.START() - mudar depois
-    private void Start()
-    {
-        Initialize();
-    }
-
     private void OnDisable() 
     {
         RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;

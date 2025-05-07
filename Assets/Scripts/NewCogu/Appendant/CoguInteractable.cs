@@ -5,7 +5,7 @@ public abstract class CoguInteractable : ResetableBase
 {
     // Fields
     [SerializeField] string _assignedCoguName;
-    private bool _isAvailable = true;
+    protected bool _isAvailable = true;
 
     // Properties
     public string AssignedCoguName { get { return _assignedCoguName; } }

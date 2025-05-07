@@ -16,7 +16,21 @@ public class SwitchableAppearing : Switchable
     {
         _visual.SetActive(true);
         _collider.enabled = true;
+
+        NeedReset = true;
     }
 
     public override void Disable() { }
+
+    // Resetable
+    public override void ResetObject()
+    {
+        if (NeedReset)
+        {
+            _visual.SetActive(false);
+            _collider.enabled = false;
+
+            NeedReset = false;
+        }
+    }
 }

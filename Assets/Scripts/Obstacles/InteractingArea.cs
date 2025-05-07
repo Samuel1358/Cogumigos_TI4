@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Collider))]
-public class InteractingArea : MonoBehaviour
+public class InteractingArea : ResetableBase
 {
     [SerializeField] private InputActionAsset _inputActions;
     private InputAction _interact;
@@ -12,13 +12,14 @@ public class InteractingArea : MonoBehaviour
     [SerializeField] private GameObject _visualInfo;
     [SerializeField, TagField] private string _tagTrigger;
 
-
     private Collider _collider;
     private Player _player;
     private bool _isInteracted = false;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         _inputActions.FindActionMap("Player").Enable();
 
         _interact = _inputActions.FindAction("Interact");       
@@ -51,7 +52,21 @@ public class InteractingArea : MonoBehaviour
         {
             _interaction.Interact(_player);
             _isInteracted = true;
+            _interact.started -= InteractAction;
+
+            NeedReset = true;
         }       
+    }
+
+    // Ressetable
+    public override void ResetObject()
+    {
+        if (NeedReset)
+        {
+            _isInteracted = false;
+
+            NeedReset = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
