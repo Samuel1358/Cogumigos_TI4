@@ -101,7 +101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8910908372795661872}
+  - {fileID: 7118649184217351706}
   m_Father: {fileID: 6557041262745437410}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &8732474422817744398
@@ -125,7 +125,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 516296572621884329, guid: 9653c23751ff0ff4398a64b55d24a677, type: 3}
+  m_Mesh: {fileID: 610570822625923759, guid: 22e6bfd5e9a5c20429f4fbfc7dbb9c0f, type: 3}
 --- !u!114 &6022517842947715184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   includeLayers:
     serializedVersion: 2
     m_Bits: 128
---- !u!1 &6682130815954211788
+--- !u!1 &6709573026717770973
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,23 +150,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8910908372795661872}
-  - component: {fileID: 8873231259810597450}
-  - component: {fileID: 3910799694671118588}
-  m_Layer: 6
-  m_Name: TrampolinePudim
+  - component: {fileID: 7118649184217351706}
+  - component: {fileID: 5469252551159941397}
+  - component: {fileID: 5566134817494155363}
+  m_Layer: 0
+  m_Name: TrampolineCogu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8910908372795661872
+--- !u!4 &7118649184217351706
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682130815954211788}
+  m_GameObject: {fileID: 6709573026717770973}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -175,21 +175,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3850954396659651033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8873231259810597450
+--- !u!33 &5469252551159941397
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682130815954211788}
-  m_Mesh: {fileID: -2640000822599253930, guid: 22e6bfd5e9a5c20429f4fbfc7dbb9c0f, type: 3}
---- !u!23 &3910799694671118588
+  m_GameObject: {fileID: 6709573026717770973}
+  m_Mesh: {fileID: -6122355316854101624, guid: 22e6bfd5e9a5c20429f4fbfc7dbb9c0f, type: 3}
+--- !u!23 &5566134817494155363
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682130815954211788}
+  m_GameObject: {fileID: 6709573026717770973}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -206,7 +206,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: adbd66f01bc56484b8d42d658b619413, type: 2}
+  - {fileID: 2100000, guid: adbd66f01bc56484b8d42d658b619413, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
