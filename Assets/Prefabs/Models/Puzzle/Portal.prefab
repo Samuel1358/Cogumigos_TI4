@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732243825917976543}
+  - component: {fileID: 1574904565542825349}
+  - component: {fileID: 2215225172564286804}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -35,6 +37,47 @@ Transform:
   - {fileID: 3780027669165239302}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574904565542825349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585801044921168799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906267fbb2e7f3643a95db7e7c7ab636, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnterPortal:
+    m_PersistentCalls:
+      m_Calls: []
+  ExitPortal:
+    m_PersistentCalls:
+      m_Calls: []
+  _linkedPortal: {fileID: 0}
+  _timeToActivate: 0
+--- !u!65 &2215225172564286804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585801044921168799}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1140447, y: 2.6044297, z: 1.4215012}
+  m_Center: {x: -0.048200607, y: 0.80221486, z: 0.2107506}
 --- !u!1 &5586642811785671917
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +261,7 @@ GameObject:
   - component: {fileID: 1028189306772616169}
   - component: {fileID: 8544024916956790206}
   - component: {fileID: 7440520397223078107}
+  - component: {fileID: 5256353840929356555}
   m_Layer: 0
   m_Name: LPPortalTree
   m_TagString: Untagged
@@ -293,6 +337,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5256353840929356555
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707685515840567970}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1160027855659488712, guid: 7f4f1efa791f7fc4db636712506869e2, type: 3}
 --- !u!1 &8630656763792141651
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +370,8 @@ GameObject:
   - component: {fileID: 8072668719263720848}
   - component: {fileID: 3177415579050217415}
   - component: {fileID: 2474454771742053886}
-  m_Layer: 0
+  - component: {fileID: 6114314310561065372}
+  m_Layer: 6
   m_Name: LPPortalBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,3 +448,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6114314310561065372
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630656763792141651}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4475652192973243168, guid: 7f4f1efa791f7fc4db636712506869e2, type: 3}
