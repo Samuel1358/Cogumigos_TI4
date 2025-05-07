@@ -8,6 +8,6 @@ public class IdleWildCoguState : WildCoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Idle");
+        //Debug.Log("Enter - Idle");
     }
 }

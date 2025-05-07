@@ -17,7 +17,7 @@ public class DisappearWildCoguState : WildCoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Disappear");
+        //Debug.Log("Enter - Disappear");
     }
 
     public override void Update()

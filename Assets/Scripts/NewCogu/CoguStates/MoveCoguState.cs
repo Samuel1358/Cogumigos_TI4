@@ -16,7 +16,7 @@ public class MoveCoguState : CoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Move");
+        //Debug.Log("Enter - Move");
     }
 
     public override void Update()

@@ -17,7 +17,7 @@ public class ThrowCoguState : CoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        Debug.Log("Enter - Throw");
+        //Debug.Log("Enter - Throw");
     }
 
     public override void Update()
