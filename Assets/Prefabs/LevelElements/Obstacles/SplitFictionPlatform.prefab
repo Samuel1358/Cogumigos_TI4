@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1085280132004153387}
-  - component: {fileID: 2512633747729621427}
   - component: {fileID: 3669372384987142168}
+  - component: {fileID: 7084436071825953276}
   m_Layer: 6
   m_Name: SplitFictionPlatform
   m_TagString: Untagged
@@ -38,7 +38,24 @@ Transform:
   - {fileID: 8410919952552775588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2512633747729621427
+--- !u!114 &3669372384987142168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3162804577264435035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c7a9fa916c93d46ac6d86833eb4a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collideMode: 9
+  _includeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  _rotationSpeed: 30
+--- !u!65 &7084436071825953276
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,25 +74,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.15, z: 0.5}
-  m_Center: {x: 0, y: 0.04, z: 0}
---- !u!114 &3669372384987142168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3162804577264435035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5c7a9fa916c93d46ac6d86833eb4a3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collideMode: 9
-  _includeLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  _rotationSpeed: 30
+  m_Size: {x: 0.512231, y: 0.109291606, z: 0.49405384}
+  m_Center: {x: 0.0015147686, y: 0.018177724, z: 0.004544556}
 --- !u!1 &7248776140753039079
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +321,10 @@ PrefabInstance:
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7704210407280308282, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8500328215801815831, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_LocalPosition.x
