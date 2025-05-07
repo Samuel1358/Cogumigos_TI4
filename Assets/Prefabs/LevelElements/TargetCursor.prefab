@@ -46,13 +46,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5edfe2b27c8dc0e41805bd5684db4f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTrasnform: {fileID: 0}
-  coguAttractor: {fileID: 3714427063535190245}
-  includeLayers:
+  _playerTrasnform: {fileID: 0}
+  _coguAttractor: {fileID: 3714427063535190245}
+  _coguCastter: {fileID: 0}
+  _includeLayers:
     serializedVersion: 2
     m_Bits: 64
-  maxDiatance: 10
-  offset: {x: 0, y: 0, z: 0}
+  _maxDiatance: 10
+  _offset: {x: 0, y: 0, z: 0}
+  _interactRadius: 2
+  _interactIncludeLayers:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &4713421414676022219
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 741c7b1bb998d954cba908ecc8e67262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attractPoint: {fileID: 0}
+  _assingPoint: {fileID: 0}
   _maxExpand: 5
   _expandSpd: 5
   _colapseSpd: 10
