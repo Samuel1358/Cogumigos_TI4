@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 946856101842312980}
   - component: {fileID: 1590356368668707059}
-  - component: {fileID: 2755168462354484367}
+  - component: {fileID: 8749110542598095655}
   m_Layer: 6
   m_Name: Trunk
   m_TagString: Untagged
@@ -114,8 +114,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1013802781469149756}
   m_Father: {fileID: 0}
@@ -132,15 +132,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00c76d2c24fd0d43b7ed623b453003c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
-  pushForce: 25
+  rotationSpeed: 100
+  pushForce: 150
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
   visualChild: {fileID: 0}
   pushToRight: 1
---- !u!65 &2755168462354484367
-BoxCollider:
+--- !u!64 &8749110542598095655
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,6 +157,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.772073, y: 1.1357832, z: 6.376403}
-  m_Center: {x: 0.0064641237, y: 1.3099608, z: -0.008253574}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5668788170693331272, guid: 0b2fef2e2083f7040b9a1b76ca7d4304, type: 3}
