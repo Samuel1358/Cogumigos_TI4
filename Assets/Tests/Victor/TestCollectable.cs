@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.XR;
 using UnityEngine;
 
 public class TestCollectable : MonoBehaviour, IDataPersistence {

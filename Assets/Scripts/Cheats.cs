@@ -28,10 +28,11 @@ public class Cheats : MonoBehaviour
             SceneManager.LoadScene(1);
         if (Input.GetKeyDown(KeyCode.F3))
             SceneManager.LoadScene(2);
-        if (Input.GetKeyDown(KeyCode.F4))
-            SceneManager.LoadScene(3);
-        if (Input.GetKeyDown(KeyCode.F5))
-            SceneManager.LoadScene(4);
+
+        if (Input.GetKeyDown(KeyCode.F11))
+            _infinityJump = !_infinityJump;
+        if (Input.GetKeyDown(KeyCode.F12))
+            imortal = !imortal;
     }
 
     // Get & Set
