@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class FallingAxe : MonoBehaviour
 {
+    [SerializeField] private bool _startFall;
     [SerializeField] private float fallSpeed = 300f;
     [SerializeField] private float waitTime = 3f;
 
@@ -14,6 +15,11 @@ public class FallingAxe : MonoBehaviour
     {
         startRotation = transform.rotation;
         targetRotation = startRotation * Quaternion.Euler(0, 0, 90f);
+
+        if (_startFall)
+        {
+            isWaiting = true;
+        }
     }
 
     private void Update()
