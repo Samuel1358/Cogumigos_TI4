@@ -61,7 +61,6 @@ public class WildCogu : ResetableBase
 
     public override void ResetObject()
     {
-        Debug.Log("WildCoguReset");
         if (NeedReset)
         {
             transform.position = _initialPosition;
