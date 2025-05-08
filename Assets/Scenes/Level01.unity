@@ -14761,7 +14761,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &262985747
 Transform:
   m_ObjectHideFlags: 2
@@ -115126,6 +115126,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963284222}
   m_Mesh: {fileID: -7391463826708824962, guid: ef29d3310635e1249803dfc5f10ebf80, type: 3}
+--- !u!114 &1963619476 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2103010604124182890, guid: 3fb834e2d4233e841aafcfc9238d6423, type: 3}
+  m_PrefabInstance: {fileID: 1530958686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6e08582d53d7e459e6abeebe584e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1964428492
 GameObject:
   m_ObjectHideFlags: 0
@@ -116764,6 +116775,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 158957937}
     m_Modifications:
+    - target: {fileID: 3714427063535190245, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
+      propertyPath: _assingPoint
+      value: 
+      objectReference: {fileID: 1963619476}
     - target: {fileID: 3874326084757005434, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
       propertyPath: m_Name
       value: TargetCursor
