@@ -8,7 +8,8 @@ public class PlayerStateReusableData {
     public float Gravity { get; private set; }
     public float CoyoteTimeCount { get; private set; }
     public float JumpBufferCount { get; private set; }
-    public bool CanDoubleJump { get; private set; }
+    // TORNAR PRIVATE SET DEPOIS
+    public bool CanDoubleJump { get; set; }
 
     private Vector3 _currentTargetRotation;
     private Vector3 _timeToReachtargetRotation;

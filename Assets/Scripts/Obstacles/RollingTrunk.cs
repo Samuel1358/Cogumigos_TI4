@@ -39,7 +39,7 @@ public class RollingTrunk : MonoBehaviour
             Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
             if (playerRb != null)
             {
-                playerRb.AddForce(rotationDirection * pushForce, ForceMode.Force);
+                playerRb.AddForce((pushToRight? transform.right : -transform.right ) * pushForce, ForceMode.Force);
             }
         }
     }

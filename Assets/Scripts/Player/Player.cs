@@ -22,6 +22,9 @@ public class Player : MonoBehaviour {
     private int _lastCount = 0;
     #endregion
 
+    // TEMP
+    public PlayerMovementStateMachine GetStateMachine() { return _movementStateMachine; }
+
 
     public Transform MainCameraTransform { get; private set; }
     private void Awake() {
