@@ -15,12 +15,14 @@ public class PlayerGlideState : PlayerAirState {
         // gravidade? StateMachineMovement.ReusableData.SetGravity(0f);
         ResetVerticalVelocity();
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
+        AudioManager.Instance.PlaySFX("AirTunnel");
     }
 
     public override void Exit() {
         base.Exit();
         Debug.Log("No more gliding");
         StopAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
+        AudioManager.Instance.StopSFX();
     }
 
     protected override void OnGlideVerify() {

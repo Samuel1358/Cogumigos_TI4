@@ -10,6 +10,7 @@ public class CollectablePage : CollectablePersistenceBase {
 
     private void OnTriggerEnter(Collider collider) {
         if (!WasCollected) {
+            AudioManager.Instance.PlaySFX("Collectable");
             SetCollectableInactive();
         }
     }

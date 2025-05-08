@@ -1,26 +1,34 @@
 public static class SoundEffectNames
 {
-    // Player
-    public const string PLAYER_JUMP = "PlayerJump";
-    public const string PLAYER_LAND = "PlayerLand";
-    public const string PLAYER_DASH = "PlayerDash";
-    public const string PLAYER_HURT = "PlayerHurt";
-    public const string PLAYER_DEATH = "PlayerDeath";
+    public const string UI_INTERACTION = "UIInteraction";
 
-    // Trampoline
+    public const string PLAYER_JUMP = "PlayerJump";
+
+    public const string PUZZLE_SOLVED = "PuzzleSolved";
+
+    public const string TP_IN = "TPIn";
+    public const string TP_OUT = "TPOut";
+
     public const string TRAMPOLINE_BOUNCE = "TrampolineBounce";
 
-    // Collectibles
-    public const string COIN_COLLECT = "CoinCollect";
-    public const string POWERUP_COLLECT = "PowerupCollect";
+    public const string TRAMPOLINE_BOUNCE2 = "TrampolineBounce2";
 
-    // UI
-    public const string BUTTON_CLICK = "ButtonClick";
-    public const string MENU_OPEN = "MenuOpen";
-    public const string MENU_CLOSE = "MenuClose";
+    public const string AIR_TUNNEL = "AirTunnel";
 
-    // Environment
-    public const string DOOR_OPEN = "DoorOpen";
-    public const string DOOR_CLOSE = "DoorClose";
-    public const string CHECKPOINT_ACTIVATE = "CheckpointActivate";
+    public const string COGU_JUMP = "CoguJump";
+    public const string COGU_TRANSFORM = "CoguTransform";
+    public const string COGU_THROW = "CoguThrow";
+
+    public const string COLLECTIBLE_COLLECT = "CollectibleCollect";
+
+    public const string DEATH = "Death";
+
+    public const string PLATFORM_BREAK = "PlatformBreak";
+
+
+
+
+
+
+
 } 
