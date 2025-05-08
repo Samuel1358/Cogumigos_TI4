@@ -14,6 +14,7 @@ public class PlayerJumpingState : PlayerAirState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = AirData.JumpData.SpeedModifier;
         StateMachineMovement.ReusableData.RotationData = AirData.JumpData.RotationData;
         _shouldKeepRotating = StateMachineMovement.ReusableData.MovementInput != Vector2.zero;
+        AudioManager.Instance.PlaySFX("PlayerJump");
         Jump();
     }
 

@@ -17,7 +17,7 @@ public class ThrowCoguState : CoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        //Debug.Log("Enter - Throw");
+        AudioManager.Instance.PlaySFX("CoguThrow");
     }
 
     public override void Update()

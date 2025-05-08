@@ -22,5 +22,7 @@ public class Trampoline : MonoBehaviour
         if (player == null) return;
 
         player.ChangeToTrampolineJumpState(bounceForce);
+    
+        AudioManager.Instance.PlaySFX("TrampolineBounce2");
     }
 }

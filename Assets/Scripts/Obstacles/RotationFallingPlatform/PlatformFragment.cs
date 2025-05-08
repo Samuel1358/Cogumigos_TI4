@@ -32,18 +32,18 @@ public class PlatformFragment : CollisionHandlerChild
     private IEnumerator FallAndRestore()
     {
         // prestes a cair
-
+        AudioManager.Instance.PlaySFX("PlatformBreak");
         yield return new WaitForSeconds(_fallDelay);
 
         // caindo
         _rb.isKinematic = false;
-
+        AudioManager.Instance.StopSFX();
         yield return new WaitForSeconds(_restoreDelay);
 
         // respawn
-#pragma warning disable CS0618 // O tipo ou membro é obsoleto
+#pragma warning disable CS0618 // O tipo ou membro ï¿½ obsoleto
         _rb.velocity = Vector3.zero;
-#pragma warning restore CS0618 // O tipo ou membro é obsoleto
+#pragma warning restore CS0618 // O tipo ou membro ï¿½ obsoleto
         _rb.angularVelocity = Vector3.zero;
         _rb.isKinematic = true;
 

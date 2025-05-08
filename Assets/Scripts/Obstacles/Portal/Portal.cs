@@ -21,7 +21,9 @@ public class Portal : MonoBehaviour {
         if (collider.gameObject.TryGetComponent<Player>(out Player player)) {
             _travelObject = player.transform;
             EnterPortal.Invoke();
+
             StartCoroutine(StartTravel());
+            
         }
     }
 
@@ -39,8 +41,9 @@ public class Portal : MonoBehaviour {
         }
     }
 
-    private IEnumerator StartTravel() {
+    private IEnumerator StartTravel() {      
         yield return new WaitForSeconds(_timeToActivate);
+        AudioManager.Instance.PlaySFX("TPIn");
         if (_travelObject != null) {
             Teleport();
         }
@@ -49,6 +52,7 @@ public class Portal : MonoBehaviour {
     public virtual void Teleport() {
         _travelObject.position = _linkedPortal.transform.position;
         _travelObject.rotation = _linkedPortal.transform.rotation;
+        AudioManager.Instance.PlaySFX("TPOut");
     }
 
 }
