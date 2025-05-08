@@ -9,7 +9,7 @@ public class AttractWildCoguState : WildCoguState
 
     public override void Reset()
     {
-        _assingPoint = null;
+        //_assingPoint = null;
     }
 
     // Public Methods
@@ -28,6 +28,7 @@ public class AttractWildCoguState : WildCoguState
 
     public override void Update()
     {
+        Debug.Log(_assingPoint);
         _stateMachine.WildCogu.Agent.SetDestination(_assingPoint.transform.position);
 
         if (_stateMachine.WildCogu.ArrivedDestination())
