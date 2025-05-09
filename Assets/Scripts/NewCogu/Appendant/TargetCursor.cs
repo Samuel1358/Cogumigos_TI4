@@ -62,7 +62,7 @@ public class TargetCursor : MonoBehaviour
             {
                 if (interactable.IsAvailable)
                 {
-                    _coguCastter.CastCogu(interactable.AssignedCoguName, transform.position, interactable);
+                    _coguCastter.CastCogu(interactable.AssignedCoguType, transform.position, interactable);
                     return;
                 }               
             }

@@ -13,10 +13,10 @@ public class DeathFloor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (!Cheats.instance.imortal)
-        {
+        //if (!Cheats.instance.imortal)
+        //{
             RespawnController.OnPlayerRespawn.Invoke();
             AudioManager.Instance.PlaySFX("Death");
-        }
+        //}
     }
 }

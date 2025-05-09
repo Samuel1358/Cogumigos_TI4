@@ -8,7 +8,7 @@ public class CoguManager : MonoBehaviour
     // Fields
     [SerializeField] private List<CastCoguData> _coguVariants = new List<CastCoguData>();
 
-    private Dictionary<string, Cogu> _coguDictionary = new Dictionary<string, Cogu>();
+    private Dictionary<CoguType, Cogu> _coguDictionary = new Dictionary<CoguType, Cogu>();
     private List<WildCogu> _wildCoguList = new List<WildCogu>();
     private List<Cogu> _coguList = new List<Cogu>();
 
@@ -24,7 +24,7 @@ public class CoguManager : MonoBehaviour
 
         foreach (CastCoguData castData in _coguVariants)
         {
-            _coguDictionary.Add(castData.keyName, castData.cogu);
+            _coguDictionary.Add(castData.type, castData.cogu);
         }
     }
 
@@ -47,12 +47,12 @@ public class CoguManager : MonoBehaviour
     }
 
     // Get & Set
-    public bool TryGetCoguVariant(string keyName, out Cogu cogu)
+    public bool TryGetCoguVariant(CoguType type, out Cogu cogu)
     {
-        if (_coguDictionary.TryGetValue(keyName, out cogu))
+        if (_coguDictionary.TryGetValue(type, out cogu))
             return true;
 
-        Debug.LogError($"'{keyName}' isn't a assigned key name to a existent cogu variant!");
+        Debug.LogError($"'{type}' isn't a assigned key name to a existent cogu variant!");
         return false;
     }
 

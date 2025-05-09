@@ -100,8 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4c640fea0c5484299752c5f83ea5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fracturedPrefab: {fileID: 12074014911306131, guid: 5b073719ab187924d919dbef15157b9e, type: 3}
   _linkedCheckpoint: {fileID: 0}
+  _assignedCoguType: 4
+  _fracturedPrefab: {fileID: 12074014911306131, guid: 5b073719ab187924d919dbef15157b9e, type: 3}
+  _explosionForce: 0
+  _explosionRadius: 0
 --- !u!65 &4977438201317191208
 BoxCollider:
   m_ObjectHideFlags: 0

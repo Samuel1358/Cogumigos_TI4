@@ -3,6 +3,6 @@ using UnityEngine;
 [System.Serializable]
 public class CastCoguData
 {
-    [SerializeField] public string keyName;
+    [SerializeField] public CoguType type;
     [SerializeField] public Cogu cogu;
 }

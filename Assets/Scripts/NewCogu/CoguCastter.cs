@@ -14,11 +14,11 @@ public class CoguCastter : MonoBehaviour, IResetable
     public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
 
     // Public Methods
-    public void CastCogu(string keyName, Vector3 interactSpot, CoguInteractable interactable)
+    public void CastCogu(CoguType type, Vector3 interactSpot, CoguInteractable interactable)
     {
         if (_coguCount > 0 && _isAbleCast)
         {
-            if(CoguManager.instance.TryGetCoguVariant(keyName, out Cogu variant))
+            if(CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
             {
                 Debug.Log(_castPoint);
                 Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();

@@ -154,11 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 30
-  bounceCooldown: 0.2
-  jumpDuration: 1
-  useLocalUpDirection: 1
-  bounceSound: {fileID: 0}
-  bounceEffect: {fileID: 0}
+  includeLayers:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &8149564483729675558
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,4 +312,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
+  _assignedCoguType: 2
   _trampoloPrefab: {fileID: 6850008389479978055}

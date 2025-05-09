@@ -55,7 +55,7 @@ public class RemovableObstacle : CoguInteractable
         Color oldGizmoColor = Gizmos.color;
 
         Gizmos.color = Color.white;
-        Gizmos.DrawLine(new Vector3(transform.position.x, transform.position.y - (transform.localScale.y / 2), transform.position.z), transform.TransformPoint(destiny));
+        Gizmos.DrawLine(transform.position, transform.TransformPoint(destiny));
 
         Gizmos.color = oldGizmoColor;
     }
