@@ -34,10 +34,10 @@ public class TEMP_InputManager : MonoBehaviour
         //targetCursor.UpdatePosition(Input.mousePosition);
 
         // UIController
-        // Ignorar está mudança para as outras branches
+        // Ignorar estï¿½ mudanï¿½a para as outras branches
         /*if (Input.GetKeyDown(KeyCode.Escape))
         {
-#pragma warning disable CS0618 // 'GameObject.active' é obsoleto
+#pragma warning disable CS0618 // 'GameObject.active' ï¿½ obsoleto
             if (uiController.painel.active)
                 uiController.Desable();
             else
@@ -52,16 +52,16 @@ public class TEMP_InputManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Câmera dinâmica
-        if (Input.GetMouseButtonDown(1))
-        {
+        // Cï¿½mera dinï¿½mica
+        // if (Input.GetMouseButtonDown(1))
+        // {
             //isFreeLookActive = true;
             cameraController.MoveCamera();
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
+        // }
+        // else if (Input.GetMouseButtonUp(1))
+        //{
             //isFreeLookActive = false;
-            cameraController.LockCamera();
-        }
+            //cameraController.LockCamera();
+        //}
     }
 }
