@@ -30,7 +30,6 @@ public class DeathFloor : MonoBehaviour
         {
             isDeathSoundPlaying = true;
             AudioManager.Instance.PlaySFX("Death");
-            // Reset the flag after the sound duration (assuming it's around 2 seconds)
             Invoke(nameof(ResetDeathSoundFlag), 3.5f);
         }
     }
