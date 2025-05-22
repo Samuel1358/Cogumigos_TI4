@@ -21,7 +21,7 @@ public class CollisionHandler : MonoBehaviour
     }
 
     [SerializeField, HideInInspector] protected CollideMode _collideMode;
-    [SerializeField, HideInInspector] protected LayerMask _includeLayers;
+    //[SerializeField, HideInInspector] protected LayerMask _includeLayers;
 
     public virtual bool lockColliderMode { get {  return false; } }
 
@@ -46,11 +46,11 @@ public class CollisionHandler : MonoBehaviour
         if (_collideMode == CollideMode.ParentCollision || _collideMode == CollideMode.ParentBoth || _collideMode == CollideMode.ParentCollisionChildTrigger || _collideMode == CollideMode.BothColision || _collideMode == CollideMode.All)
         {
             //CollisionDebug("Collision Enter", collision.gameObject.name, collision.collider.name);
-            if ((_includeLayers & (1 << collision.collider.gameObject.layer)) != 0)
-            {
+            //if ((_includeLayers & (1 << collision.collider.gameObject.layer)) != 0)
+            //{
                 ValideLayerDebug();
                 action.Invoke(collision);
-            }
+            //}
         }
     }
 
@@ -59,11 +59,11 @@ public class CollisionHandler : MonoBehaviour
         if (_collideMode == CollideMode.ParentTrigger || _collideMode == CollideMode.ParentBoth || _collideMode == CollideMode.ParentTriggerChildCollision || _collideMode == CollideMode.BothTrigger || _collideMode == CollideMode.All)
         {
             //CollisionDebug("Trigger Enter", other.gameObject.name, other.name);
-            if ((_includeLayers & (1 << other.gameObject.layer)) != 0)
-            {
+            //if ((_includeLayers & (1 << other.gameObject.layer)) != 0)
+            //{
                 ValideLayerDebug();
                 action.Invoke(other);
-            }
+            //}
         }
     }
 
@@ -72,12 +72,12 @@ public class CollisionHandler : MonoBehaviour
         if (_collideMode == CollideMode.ChildCollision || _collideMode == CollideMode.ChildBoth || _collideMode == CollideMode.ParentTriggerChildCollision || _collideMode == CollideMode.BothColision || _collideMode == CollideMode.All)
         {
             //CollisionDebug("Child Collision Enter", collision.gameObject.name, collision.collider.name);
-            if ((_includeLayers & (1 << collision.collider.gameObject.layer)) != 0)
-            {
+            //if ((_includeLayers & (1 << collision.collider.gameObject.layer)) != 0)
+            //{
                 ValideLayerDebug();
                 action.Invoke(collision);
                 childAction.Invoke(collision);
-            }
+            //}
         }             
     }
 
@@ -86,12 +86,12 @@ public class CollisionHandler : MonoBehaviour
         if (_collideMode == CollideMode.ChildTrigger || _collideMode == CollideMode.ChildBoth || _collideMode == CollideMode.ParentCollisionChildTrigger || _collideMode == CollideMode.BothTrigger || _collideMode == CollideMode.All)
         {
             //CollisionDebug("Child Trigger Enter", other.gameObject.name, other.name);
-            if ((_includeLayers & (1 << other.gameObject.layer)) != 0)
-            {
+            //if ((_includeLayers & (1 << other.gameObject.layer)) != 0)
+            //{
                 ValideLayerDebug();
                 action.Invoke(other);
                 childAction.Invoke(other);
-            }
+            //}
         }       
     }
 
@@ -179,7 +179,7 @@ public class CollisionHandlerInspector : Editor
     private SerializedObject _serializedObject;
 
     private SerializedProperty _collideMode;
-    private SerializedProperty _includeLayers;
+    //private SerializedProperty _includeLayers;
 
     private void OnEnable()
     {
@@ -187,7 +187,7 @@ public class CollisionHandlerInspector : Editor
         _serializedObject = new SerializedObject(_collisionHandler);
 
         _collideMode = _serializedObject.FindProperty("_collideMode");
-        _includeLayers = _serializedObject.FindProperty("_includeLayers");
+        //_includeLayers = _serializedObject.FindProperty("_includeLayers");
     }
 
     public override void OnInspectorGUI()
@@ -203,10 +203,12 @@ public class CollisionHandlerInspector : Editor
     {
         _serializedObject.Update();
 
-        Header("Collision Handler");
         if (!_collisionHandler.lockColliderMode)
+        {
+            Header("Collision Handler");
             EditorGUILayout.PropertyField(_collideMode);
-        EditorGUILayout.PropertyField(_includeLayers);
+        }
+        //EditorGUILayout.PropertyField(_includeLayers);
 
         _serializedObject.ApplyModifiedProperties();
     }

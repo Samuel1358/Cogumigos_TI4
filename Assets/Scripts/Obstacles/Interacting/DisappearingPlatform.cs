@@ -16,7 +16,7 @@ public class DisappearingPlatform : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") && isActive)
+        if (isActive)
         {
             StartCoroutine(DisappearAfterTime());
         }

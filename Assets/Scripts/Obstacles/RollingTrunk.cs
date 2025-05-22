@@ -4,7 +4,6 @@ public class RollingTrunk : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 50f;
     [SerializeField] private float pushForce = 5f;
-    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private Transform visualChild;
     [SerializeField] private bool pushToRight = false;
     private Vector3 rotationDirection;
@@ -34,13 +33,10 @@ public class RollingTrunk : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (((1 << collision.gameObject.layer) & playerLayer) != 0)
+        Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
+        if (playerRb != null)
         {
-            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
-            if (playerRb != null)
-            {
-                playerRb.AddForce((pushToRight? transform.right : -transform.right ) * pushForce, ForceMode.Force);
-            }
+            playerRb.AddForce((pushToRight ? transform.right : -transform.right) * pushForce, ForceMode.Force);
         }
     }
 }

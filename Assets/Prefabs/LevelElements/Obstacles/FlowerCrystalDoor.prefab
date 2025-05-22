@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5435089859159426371}
   - component: {fileID: 2629257589796134204}
   - component: {fileID: 6272252775391473557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeDoorLow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8926106697600689156}
   - component: {fileID: 8999166506393980774}
   - component: {fileID: 8779084635467972620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DoorCrystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b426484043384241ada52615a2c1072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedCheckpoint: {fileID: 0}
   selectedIndex: 0
   value: -4
   durationTime: 2
@@ -219,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2587209938207307808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlowerCrystalDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +257,7 @@ GameObject:
   - component: {fileID: 468226262337763347}
   - component: {fileID: 5243784400152471400}
   - component: {fileID: 7789566084830515877}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TreeDoorRightLow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +343,7 @@ GameObject:
   - component: {fileID: 7698440557441149652}
   - component: {fileID: 9149531882531505574}
   - component: {fileID: 6779906242882564093}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: InteractableArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,6 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5705644d764856046b780246c863b7b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedCheckpoint: {fileID: 0}
   _switchable: {fileID: 8999166506393980774}
   _visualInfo: {fileID: 0}
   _keyAccepted: 0

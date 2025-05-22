@@ -57,7 +57,7 @@ public class CoguAttractor : MonoBehaviour
     {
         if (other.TryGetComponent(out WildCogu wildCogu))
         {
-            Debug.Log(_assingPoint);
+            //Debug.Log(_assingPoint);
             wildCogu.Attract(_assingPoint);
         }
     }
