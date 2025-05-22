@@ -6,9 +6,20 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance { get; private set; }
 
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource bgmSource;
     [SerializeField] private List<SoundEffect> soundEffects = new List<SoundEffect>();
 
     private Dictionary<string, AudioClip> soundEffectDictionary = new Dictionary<string, AudioClip>();
+
+    // Volume settings
+    private float masterVolume = 1f;
+    private float sfxVolume = 1f;
+    private float bgmVolume = 1f;
+
+    // PlayerPrefs keys
+    private const string MASTER_VOLUME_KEY = "MasterVolume";
+    private const string SFX_VOLUME_KEY = "SFXVolume";
+    private const string BGM_VOLUME_KEY = "BGMVolume";
 
     private void Awake()
     {
@@ -17,6 +28,7 @@ public class AudioManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             InitializeAudioManager();
+            LoadVolumeSettings();
         }
         else
         {
@@ -31,6 +43,12 @@ public class AudioManager : MonoBehaviour
             sfxSource = gameObject.AddComponent<AudioSource>();
         }
 
+        if (bgmSource == null)
+        {
+            bgmSource = gameObject.AddComponent<AudioSource>();
+            bgmSource.loop = true;
+        }
+
         // Inicializa o dicionário com os efeitos sonoros
         foreach (var sound in soundEffects)
         {
@@ -41,12 +59,51 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void LoadVolumeSettings()
+    {
+        masterVolume = PlayerPrefs.GetFloat(MASTER_VOLUME_KEY, 1f);
+        sfxVolume = PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 1f);
+        bgmVolume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, 1f);
+        
+        ApplyVolumeSettings();
+    }
+
+    private void ApplyVolumeSettings()
+    {
+        sfxSource.volume = masterVolume * sfxVolume;
+        bgmSource.volume = masterVolume * bgmVolume;
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = volume;
+        PlayerPrefs.SetFloat(MASTER_VOLUME_KEY, volume);
+        PlayerPrefs.Save();
+        ApplyVolumeSettings();
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
+        PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
+        PlayerPrefs.Save();
+        ApplyVolumeSettings();
+    }
+
+    public void SetBGMVolume(float volume)
+    {
+        bgmVolume = volume;
+        PlayerPrefs.SetFloat(BGM_VOLUME_KEY, volume);
+        PlayerPrefs.Save();
+        ApplyVolumeSettings();
+    }
+
     public void PlaySFX(string soundName, float volume = 1f, float pitch = 1f)
     {
         if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip))
         {
             sfxSource.pitch = pitch;
-            sfxSource.PlayOneShot(clip, volume);
+            sfxSource.PlayOneShot(clip, 1f);
         }
         else
         {
@@ -58,7 +115,8 @@ public class AudioManager : MonoBehaviour
     {
         if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip))
         {
-            AudioSource.PlayClipAtPoint(clip, position, volume);
+            float totalVolume = masterVolume * sfxVolume;
+            AudioSource.PlayClipAtPoint(clip, position, totalVolume);
         }
         else
         {
@@ -66,18 +124,32 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayBGM(AudioClip bgmClip)
+    {
+        if (bgmClip != null)
+        {
+            bgmSource.clip = bgmClip;
+            bgmSource.Play();
+        }
+    }
+
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
     public void StopSFX()
     {
         sfxSource.Stop();
-    }
-
-    public void SetSFXVolume(float volume)
-    {
-        sfxSource.volume = volume;
     }
 
     public void SetSFXPitch(float pitch)
     {
         sfxSource.pitch = pitch;
     }
+
+    // Getters for current volume values
+    public float GetMasterVolume() => masterVolume;
+    public float GetSFXVolume() => sfxVolume;
+    public float GetBGMVolume() => bgmVolume;
 } 
