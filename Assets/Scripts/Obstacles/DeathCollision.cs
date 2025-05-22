@@ -6,7 +6,7 @@ public class DeathCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!Cheats.instance.imortal)
+        if ((Cheats.instance != null) ? !Cheats.instance.Imortal : true)
         {
             RespawnController.OnPlayerRespawn.Invoke();
             PlayDeathSound();

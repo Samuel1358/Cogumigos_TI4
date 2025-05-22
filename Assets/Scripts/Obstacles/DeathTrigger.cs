@@ -6,7 +6,7 @@ public class DeathTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        if (!Cheats.instance.imortal)
+        if ((Cheats.instance != null) ? !Cheats.instance.Imortal : true)
         {
             RespawnController.OnPlayerRespawn.Invoke();
             PlayDeathSound();

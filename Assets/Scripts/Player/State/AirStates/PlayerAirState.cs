@@ -33,9 +33,14 @@ public class PlayerAirState : PlayerMovementState {
 
     protected override void OnJumpStarted(InputAction.CallbackContext context) {
         base.OnJumpStarted(context);
-        if (StateMachineMovement.ReusableData.CoyoteTimeCount <= 0 && StateMachineMovement.ReusableData.CanDoubleJump) {
+        if (StateMachineMovement.ReusableData.CoyoteTimeCount <= 0 && (Cheats.instance != null) ? CheatInfinityJump() : StateMachineMovement.ReusableData.CanDoubleJump) {
             DoubleJump();
         }
+    }
+
+    private bool CheatInfinityJump()
+    {
+        return (!Cheats.instance.InfinityJump) ? StateMachineMovement.ReusableData.CanDoubleJump : true;
     }
 
     protected virtual void DoubleJump() {
