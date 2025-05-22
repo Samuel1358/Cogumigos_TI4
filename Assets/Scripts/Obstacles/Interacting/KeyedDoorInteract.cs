@@ -10,7 +10,6 @@ public class KeyedDoorInteract : ResetableBase
 
     [Header("Settings")]
     [SerializeField] private KeyTypes _keyAccepted;
-    [SerializeField, TagField] private string _tagTrigger;
 
     private bool _isInteracting = false;
     private bool _isInteracted = false;
@@ -44,14 +43,11 @@ public class KeyedDoorInteract : ResetableBase
     {
         if (!_isInteracted)
         {
-            if (other.CompareTag(_tagTrigger))
-            {
-                TEMP_InputManager.instance.onInteractInput += Interact;
+            TEMP_InputManager.instance.onInteractInput += Interact;
 
-                // visual
-                if (_visualInfo != null)
-                    _visualInfo.SetActive(true);
-            }
+            // visual
+            if (_visualInfo != null)
+                _visualInfo.SetActive(true);
         }
     }
 
@@ -59,18 +55,16 @@ public class KeyedDoorInteract : ResetableBase
     {
         if (!_isInteracted && _isInteracting)
         {
-            if (other.CompareTag(_tagTrigger))
-            {
-                if (other.TryGetComponent(out Player player))
-                {
-                    if (player.Inventory.TryUseKey(_keyAccepted))
-                    {
-                        _switchable.Activate();
-                        _isInteracted = true;
+            Player player = other.GetComponentInParent<Player>();
+            if (player == null)
+                return;
 
-                        NeedReset = true;
-                    }
-                }
+            if (player.Inventory.TryUseKey(_keyAccepted))
+            {
+                _switchable.Activate();
+                _isInteracted = true;
+
+                NeedReset = true;
             }
         }       
     }
@@ -79,14 +73,11 @@ public class KeyedDoorInteract : ResetableBase
     {
         if (!_isInteracted)
         {
-            if (other.CompareTag(_tagTrigger))
-            {
-                TEMP_InputManager.instance.onInteractInput -= Interact;
+            TEMP_InputManager.instance.onInteractInput -= Interact;
 
-                // visual
-                if (_visualInfo != null)
-                    _visualInfo.SetActive(false);
-            }
+            // visual
+            if (_visualInfo != null)
+                _visualInfo.SetActive(false);
         }
     }
 }

@@ -10,7 +10,6 @@ public class InteractingArea : ResetableBase
 
     [SerializeField] private Interaction _interaction;
     [SerializeField] private GameObject _visualInfo;
-    [SerializeField, TagField] private string _tagTrigger;
 
     private Collider _collider;
     private Player _player;
@@ -73,18 +72,16 @@ public class InteractingArea : ResetableBase
     {
         if ((_interaction.InteractJustOnce) ? !_isInteracted : true)
         {
-            if (other.CompareTag(_tagTrigger))
-            {
-                // visual
-                if (_visualInfo != null)
-                    _visualInfo.SetActive(true);
+            // visual
+            if (_visualInfo != null)
+                _visualInfo.SetActive(true);
 
-                if (other.TryGetComponent(out Player player))
-                {
-                    _interact.started += InteractAction;
-                    _player = player;
-                }
-            }
+            Player player = other.GetComponentInParent<Player>();
+            if (player == null)
+                return;
+
+            _interact.started += InteractAction;
+            _player = player;
         }
     }
 
@@ -92,15 +89,12 @@ public class InteractingArea : ResetableBase
     {
         if ((_interaction.InteractJustOnce) ? !_isInteracted : true)
         {
-            if (other.CompareTag(_tagTrigger))
-            {
-                // visual
-                if (_visualInfo != null)
-                    _visualInfo.SetActive(false);
+            // visual
+            if (_visualInfo != null)
+                _visualInfo.SetActive(false);
 
-                _interact.started -= InteractAction;
-                _player = null;
-            }
+            _interact.started -= InteractAction;
+            _player = null;
         }
     }
 }

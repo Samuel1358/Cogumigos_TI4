@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4825082772989531274}
   - component: {fileID: 80091164561245635}
   - component: {fileID: 3843611674088410698}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5e07c14e799cc4aa6aa6e775625bf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _linkedCheckpoint: {fileID: 0}
   _inputActions: {fileID: -944628639613478452, guid: 1d5326077d8cca442b5cb36dc368fe44, type: 3}
   _interaction: {fileID: 0}
   _visualInfo: {fileID: 0}
