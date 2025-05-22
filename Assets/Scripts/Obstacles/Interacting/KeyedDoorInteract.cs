@@ -46,7 +46,11 @@ public class KeyedDoorInteract : ResetableBase
             TEMP_InputManager.instance.onInteractInput += Interact;
 
             // visual
-            if (_visualInfo != null)
+            Player player = other.GetComponentInParent<Player>();
+            if (player == null)
+                return;
+
+            if (_visualInfo != null && player.Inventory.VerifyKey(_keyAccepted))
                 _visualInfo.SetActive(true);
         }
     }
@@ -57,12 +61,19 @@ public class KeyedDoorInteract : ResetableBase
         {
             Player player = other.GetComponentInParent<Player>();
             if (player == null)
+            {
+                _isInteracting = false;
                 return;
+            }
 
             if (player.Inventory.TryUseKey(_keyAccepted))
             {
                 _switchable.Activate();
                 _isInteracted = true;
+
+                // visual
+                if (_visualInfo != null)
+                    _visualInfo.SetActive(false);
 
                 NeedReset = true;
             }

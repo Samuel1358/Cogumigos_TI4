@@ -53,6 +53,10 @@ public class InteractingArea : ResetableBase
             _isInteracted = true;
             _interact.started -= InteractAction;
 
+            // visual
+            if (_visualInfo != null)
+                _visualInfo.SetActive(false);
+
             NeedReset = true;
         }       
     }
