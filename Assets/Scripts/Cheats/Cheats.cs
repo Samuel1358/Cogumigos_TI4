@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.InputSystem.InputAction;
@@ -12,6 +13,9 @@ public class Cheats : MonoBehaviour
     // Fields
     private bool _infinityJump;
     private bool _imortal;
+
+    public Action onShiftInfinityJump;
+    public Action onShiftImortal;
 
     // Properties
     public bool InfinityJump { get { return _infinityJump; } }
@@ -92,11 +96,13 @@ public class Cheats : MonoBehaviour
     public void ShiftInfinityJump()
     {
         _infinityJump = !_infinityJump;
+        onShiftInfinityJump.Invoke();
     }
 
     public void ShiftImortal()
     {
         _imortal = !_imortal;
+        onShiftImortal.Invoke();
     }
 
     #endregion
