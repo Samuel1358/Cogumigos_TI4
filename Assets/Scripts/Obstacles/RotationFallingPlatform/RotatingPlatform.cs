@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class RotatingPlatform : ParentagePlatform
+public class RotatingPlatform : SychroningRotatePlatform
 {
     // Fields
     [SerializeField] private float _rotationSpeed = 30f;
 
     // Properties
-    public float rotationSpeed {  get { return _rotationSpeed; } set {  _rotationSpeed = value; } }
+    public float rotationSpeed { get { return _rotationSpeed; } set { _rotationSpeed = value; } }
 
     // Inherited Public Properties
     public override bool lockColliderMode { get { return true; } }
