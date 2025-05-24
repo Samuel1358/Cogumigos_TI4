@@ -1796,6 +1796,7 @@ MonoBehaviour:
     cogu: {fileID: 8022511791218490478, guid: 62be612ecf951d14ba58062d5f03bf58, type: 3}
   - type: 4
     cogu: {fileID: -7771825683777624374, guid: 84fbc2ac63d90fa498e7d08b57e89829, type: 3}
+  _coguList: []
 --- !u!1001 &1352385406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1875,6 +1876,10 @@ PrefabInstance:
     - target: {fileID: 7588883787091607037, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
       propertyPath: m_Name
       value: RemovableObstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7588883787091607037, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2096,6 +2101,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1655408133}
     m_Modifications:
+    - target: {fileID: 3009521864569439988, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 08da857e2f9b4884b8b3490884e6553e, type: 2}
     - target: {fileID: 3714427063535190245, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
       propertyPath: _assingPoint
       value: 
@@ -2123,7 +2132,7 @@ PrefabInstance:
     - target: {fileID: 5576526820060468419, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
       propertyPath: _coguAttractor
       value: 
-      objectReference: {fileID: 1766193320}
+      objectReference: {fileID: 0}
     - target: {fileID: 5576526820060468419, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
       propertyPath: _interactRadius
       value: 2
@@ -2194,17 +2203,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8679557095022969989, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
   m_PrefabInstance: {fileID: 1766193318}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1766193320 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3714427063535190245, guid: fae79f166d986da4b98ab2cbe3e37b39, type: 3}
-  m_PrefabInstance: {fileID: 1766193318}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 741c7b1bb998d954cba908ecc8e67262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1823860896
 PrefabInstance:
   m_ObjectHideFlags: 0

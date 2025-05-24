@@ -10,7 +10,7 @@ public class CoguManager : MonoBehaviour
 
     private Dictionary<CoguType, Cogu> _coguDictionary = new Dictionary<CoguType, Cogu>();
     private List<WildCogu> _wildCoguList = new List<WildCogu>();
-    private List<Cogu> _coguList = new List<Cogu>();
+    public List<Cogu> _coguList = new List<Cogu>();
 
     // Properties
     public List<CastCoguData> CoguVariants {  get { return _coguVariants; } }

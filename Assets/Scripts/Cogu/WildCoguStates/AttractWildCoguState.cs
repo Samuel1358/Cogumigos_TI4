@@ -13,12 +13,12 @@ public class AttractWildCoguState : WildCoguState
     }
 
     // Public Methods
-    public AttractWildCoguState Setup(CoguCastPoint assingPoint)
+    /*public AttractWildCoguState Setup(CoguCastPoint assingPoint)
     {
         this._assingPoint = assingPoint;
         _stateMachine.WildCogu.Agent.speed = _stateMachine.WildCogu.Data.moveSpd;
         return this;
-    }
+    }*/
 
     // Inherited Public Methods
     public override void Enter()
@@ -28,12 +28,12 @@ public class AttractWildCoguState : WildCoguState
 
     public override void Update()
     {       
-        _stateMachine.WildCogu.Agent.SetDestination(_assingPoint.transform.position);
+        /*_stateMachine.WildCogu.Agent.SetDestination(_assingPoint.transform.position);
 
         if (_stateMachine.WildCogu.ArrivedDestination())
         {
             _stateMachine.ChangeState(_stateMachine.DisappearState.Setup(_assingPoint));
-        }
+        }*/
     }
 
     

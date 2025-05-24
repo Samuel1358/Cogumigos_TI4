@@ -10,6 +10,7 @@ public class CoguCastter : MonoBehaviour, IResetable
     private bool _isAbleCast = true;
 
     // Properties
+    public CoguCastPoint CastPoint { get { return _castPoint; } }
     public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
     public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
 

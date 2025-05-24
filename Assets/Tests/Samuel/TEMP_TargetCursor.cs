@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TargetCursor : MonoBehaviour
+public class TEMP_TargetCursor : MonoBehaviour
 {
     [Header("External Access")]
     [SerializeField] private Transform _playerTrasnform;
@@ -64,7 +64,7 @@ public class TargetCursor : MonoBehaviour
                 {
                     _coguCastter.CastCogu(interactable.AssignedCoguType, transform.position, interactable);
                     return;
-                }               
+                }
             }
         }
     }
@@ -76,5 +76,4 @@ public class TargetCursor : MonoBehaviour
         transform.position = _hitPoint + _offset;
         transform.up = Vector3.Lerp(transform.up, hit.normal, 0.3f);
     }
-
 }
