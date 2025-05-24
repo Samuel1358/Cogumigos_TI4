@@ -62,7 +62,7 @@ public class TEMP_TargetCursor : MonoBehaviour
             {
                 if (interactable.IsAvailable)
                 {
-                    _coguCastter.CastCogu(interactable.AssignedCoguType, transform.position, interactable);
+                    _coguCastter.CastCogu(interactable.AssignedCoguType, interactable);
                     return;
                 }
             }

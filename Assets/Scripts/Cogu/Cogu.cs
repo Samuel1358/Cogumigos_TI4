@@ -24,10 +24,10 @@ public class Cogu : MonoBehaviour
     }
 
     // Public Methods
-    public void Initialize(Vector3 interactSpot, CoguInteractable interactable, CoguCastter castter)
+    public void Initialize(CoguInteractable interactable, CoguCastter castter)
     {
         _stateMachine = new CoguStateMachine(this);
-        _stateMachine.ChangeState(_stateMachine.CastState.Setup(interactSpot));
+        _stateMachine.ChangeState(_stateMachine.CastState.Setup(interactable.transform.position));
         this._interactableObj = interactable;
         this._castter = castter;
 

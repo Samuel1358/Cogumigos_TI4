@@ -7,7 +7,9 @@ public class Rotate : MonoBehaviour
     [SerializeField] private Vector3 _direction;
     [SerializeField] private Space _space;
 
+#pragma warning disable CS0649 // Campo "Rotate._initialRotation" nunca é atribuído e sempre terá seu valor padrão 
     private Vector3 _initialRotation;
+#pragma warning restore CS0649 // Campo "Rotate._initialRotation" nunca é atribuído e sempre terá seu valor padrão 
 
     private void Update()
     {
