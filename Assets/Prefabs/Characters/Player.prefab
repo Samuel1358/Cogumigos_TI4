@@ -323,6 +323,61 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4419084013077978103
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3738401722088115462}
+  - component: {fileID: 1179298946502760123}
+  m_Layer: 3
+  m_Name: ImprovedCollision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3738401722088115462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419084013077978103}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1529555395882149241}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1179298946502760123
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4419084013077978103}
+  m_Material: {fileID: 13400000, guid: a755f96acf8ffb6469587865bf542125, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.23
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1 &5637606132544027578
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +510,7 @@ Transform:
   - {fileID: 912950047957897706}
   - {fileID: 8262590220523191306}
   - {fileID: 3668737656919438085}
+  - {fileID: 3738401722088115462}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &3482175048102924009
@@ -551,8 +607,10 @@ MonoBehaviour:
     hardLandParameterName: isHardLanding
     fallParameterName: isFalling
     glideParameterName: IsGliding
-    trampolineJumpParameterName: isTrampolineJumping
   <ShouldWalk>k__BackingField: 0
+  <IsColliding>k__BackingField: 0
+  CollisionDirection: {x: 0, y: 0, z: 0}
+  _improvedCollisionCollider: {fileID: 1179298946502760123}
 --- !u!114 &6817530893392911586
 MonoBehaviour:
   m_ObjectHideFlags: 0

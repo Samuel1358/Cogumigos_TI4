@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 public class PlayerMovementState : IState {
     protected PlayerMovementStateMachine StateMachineMovement;
 
@@ -87,13 +83,15 @@ public class PlayerMovementState : IState {
             return;
         }
         Vector3 movementDirection = GetInputDirection();
+        if (StateMachineMovement.PlayerGet.IsColliding && !_isGrounded) {
+            return;
+        }
         float targetRotationYAngle = Rotate(movementDirection);
         Vector3 targetRotationDirection = GetTargetRotationDirection(targetRotationYAngle);
         float movementSpeed = GetMovementSpeed();
         Vector3 currentPlayerHorizontalVelocity = GetPlayerHorizontalVelocity();
         StateMachineMovement.PlayerGet.PlayerRigidbody.AddForce(targetRotationDirection * movementSpeed - currentPlayerHorizontalVelocity, ForceMode.VelocityChange);
     }
-
     private float Rotate(Vector3 direction) {
         float directionAngle = UpdateTargetRotation(direction);
         RotateTowardsTargetRotation();

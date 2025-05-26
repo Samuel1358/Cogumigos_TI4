@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerFallingState : PlayerAirState {
-    private Vector3 _playerPositionOnEnter;
 
     public PlayerFallingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
     }
@@ -12,13 +11,6 @@ public class PlayerFallingState : PlayerAirState {
         base.Enter();
 
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.FallParameterHash);
-
-        _playerPositionOnEnter = StateMachineMovement.PlayerGet.transform.position;
-
-        StateMachineMovement.ReusableData.MovementSpeedModifier = AirData.JumpData.SpeedModifier;
-
-        ResetVerticalVelocity();
-
 
         StateMachineMovement.ReusableData.SetGravity(StateMachineMovement.ReusableData.Gravity * AirData.FallData.FallMultiplier);
         if (IsThereGroundUnderneath()) {
