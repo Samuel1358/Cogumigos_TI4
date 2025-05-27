@@ -4,6 +4,9 @@ public class CoguCastter : MonoBehaviour, IResetable
 {
     // Fields
     [SerializeField] private CoguCastPoint _castPoint;
+    [SerializeField] private float _interactRadius;
+    [SerializeField, Range(0f, 1f)] private float _fieldOfView;
+    [SerializeField] private LayerMask _interactableLayer;
 
     public int _coguCount;
     private int _coguHoldedAtCheckpoint;
@@ -14,24 +17,57 @@ public class CoguCastter : MonoBehaviour, IResetable
     public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
     public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
 
-    // Public Methods
-    public void CastCogu(CoguType type, Vector3 interactSpot, CoguInteractable interactable)
+    private void Start()
     {
-        if (_coguCount > 0 && _isAbleCast)
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    // INPUT - mudar depois
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
-            if(CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
-            {
-                Debug.Log(_castPoint);
-                Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
-                cogu.Initialize(interactSpot, interactable, this);
-                _coguCount--;
-                _isAbleCast = false;
-                Debug.LogWarning("Casted");
-            }          
+            SendCogu();
         }
-        else
+    }
+
+    // Public Methods
+    public void SendCogu()
+    {
+        if (_coguCount <= 0 || !_isAbleCast)
+            return;
+
+        _isAbleCast = false;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRadius, _interactableLayer, QueryTriggerInteraction.Collide);
+        foreach (Collider obj in colliders)
         {
-            Debug.LogWarning("You can't cast!");
+            if (obj.TryGetComponent(out CoguInteractable interactable))
+            {
+                Vector3 interactableDir = new Vector3(transform.position.x - interactable.transform.position.x, 0, transform.position.z - interactable.transform.position.z);
+                Vector3 fowardDir = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
+                if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
+                    continue;
+
+                CastCogu(interactable.AssignedCoguType, interactable);
+                return;
+            }
+        }
+
+        _isAbleCast = true;
+    }
+
+    public void CastCogu(CoguType type, CoguInteractable interactable)
+    {
+        if (!interactable.IsAvailable)
+            return;
+
+        if (CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
+        {
+            Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
+            cogu.Initialize(interactable, this);
+            _coguCount--;
+            _isAbleCast = false;
         }
     }
 
