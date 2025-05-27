@@ -1,9 +1,11 @@
-using Unity.Cinemachine;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Collider))]
 public class KeyedDoorInteract : ResetableBase
 {
+    private PlayerInputActions _inputActions;
+
     [Header("Esternal Accesses")]
     [SerializeField] private Switchable _switchable;
     [SerializeField] private GameObject _visualInfo;
@@ -14,6 +16,19 @@ public class KeyedDoorInteract : ResetableBase
     private bool _isInteracting = false;
     private bool _isInteracted = false;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        _inputActions = new PlayerInputActions();
+        _inputActions.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _inputActions.Player.Disable();
+    }
+
     private void Start()
     {
         GetComponent<Collider>().isTrigger = true;
@@ -22,7 +37,7 @@ public class KeyedDoorInteract : ResetableBase
     }
 
     // Private Methods
-    private void Interact()
+    private void Interact(CallbackContext callbackContext)
     {
         _isInteracting = true;
     }
@@ -43,7 +58,7 @@ public class KeyedDoorInteract : ResetableBase
     {
         if (!_isInteracted)
         {
-            TEMP_InputManager.instance.onInteractInput += Interact;
+            _inputActions.Player.Interact.started += Interact;
 
             // visual
             Player player = other.GetComponentInParent<Player>();
@@ -84,7 +99,7 @@ public class KeyedDoorInteract : ResetableBase
     {
         if (!_isInteracted)
         {
-            TEMP_InputManager.instance.onInteractInput -= Interact;
+            _inputActions.Player.Interact.started -= Interact;
 
             // visual
             if (_visualInfo != null)

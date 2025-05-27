@@ -1,7 +1,10 @@
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class CoguCastter : MonoBehaviour, IResetable
 {
+    private PlayerInputActions _inputActions;
+
     // Fields
     [SerializeField] private CoguCastPoint _castPoint;
     [SerializeField] private float _interactRadius;
@@ -17,22 +20,33 @@ public class CoguCastter : MonoBehaviour, IResetable
     public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
     public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
 
+    private void OnEnable()
+    {
+        _inputActions = new PlayerInputActions();
+        _inputActions.Player.Enable();
+
+        _inputActions.Player.SendCogu.started += SendCogu;
+    }
+
+    private void OnDisable()
+    {
+        // Input
+        _inputActions.Player.SendCogu.started -= SendCogu;
+
+        _inputActions.Player.Disable();
+
+        // Reset
+        RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;
+        RespawnController.Instance.TurnNonResetable(this);
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // INPUT - mudar depois
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SendCogu();
-        }
-    }
-
     // Public Methods
-    public void SendCogu()
+    public void SendCogu(CallbackContext callbackContext)
     {
         if (_coguCount <= 0 || !_isAbleCast)
             return;
@@ -72,11 +86,6 @@ public class CoguCastter : MonoBehaviour, IResetable
     }
 
     #region // IResetable
-    private void OnDisable() 
-    {
-        RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;
-        RespawnController.Instance.TurnNonResetable(this);
-    }
 
     // Public Methods
     public void Initialize() 
