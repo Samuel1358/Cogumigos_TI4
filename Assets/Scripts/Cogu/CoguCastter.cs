@@ -1,9 +1,15 @@
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 public class CoguCastter : MonoBehaviour, IResetable
 {
+    private PlayerInputActions _inputActions;
+
     // Fields
     [SerializeField] private CoguCastPoint _castPoint;
+    [SerializeField] private float _interactRadius;
+    [SerializeField, Range(0f, 1f)] private float _fieldOfView;
+    [SerializeField] private LayerMask _interactableLayer;
 
     public int _coguCount;
     private int _coguHoldedAtCheckpoint;
@@ -14,33 +20,72 @@ public class CoguCastter : MonoBehaviour, IResetable
     public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
     public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
 
-    // Public Methods
-    public void CastCogu(CoguType type, Vector3 interactSpot, CoguInteractable interactable)
+    private void OnEnable()
     {
-        if (_coguCount > 0 && _isAbleCast)
+        _inputActions = new PlayerInputActions();
+        _inputActions.Player.Enable();
+
+        _inputActions.Player.SendCogu.started += SendCogu;
+    }
+
+    private void OnDisable()
+    {
+        // Input
+        _inputActions.Player.SendCogu.started -= SendCogu;
+
+        _inputActions.Player.Disable();
+
+        // Reset
+        RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;
+        RespawnController.Instance.TurnNonResetable(this);
+    }
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    // Public Methods
+    public void SendCogu(CallbackContext callbackContext)
+    {
+        if (_coguCount <= 0 || !_isAbleCast)
+            return;
+
+        _isAbleCast = false;
+
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRadius, _interactableLayer, QueryTriggerInteraction.Collide);
+        foreach (Collider obj in colliders)
         {
-            if(CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
+            if (obj.TryGetComponent(out CoguInteractable interactable))
             {
-                Debug.Log(_castPoint);
-                Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
-                cogu.Initialize(interactSpot, interactable, this);
-                _coguCount--;
-                _isAbleCast = false;
-                Debug.LogWarning("Casted");
-            }          
+                Vector3 interactableDir = new Vector3(transform.position.x - interactable.transform.position.x, 0, transform.position.z - interactable.transform.position.z);
+                Vector3 fowardDir = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
+                if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
+                    continue;
+
+                CastCogu(interactable.AssignedCoguType, interactable);
+                return;
+            }
         }
-        else
+
+        _isAbleCast = true;
+    }
+
+    public void CastCogu(CoguType type, CoguInteractable interactable)
+    {
+        if (!interactable.IsAvailable)
+            return;
+
+        if (CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
         {
-            Debug.LogWarning("You can't cast!");
+            Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
+            cogu.Initialize(interactable, this);
+            _coguCount--;
+            _isAbleCast = false;
         }
     }
 
     #region // IResetable
-    private void OnDisable() 
-    {
-        RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;
-        RespawnController.Instance.TurnNonResetable(this);
-    }
 
     // Public Methods
     public void Initialize() 

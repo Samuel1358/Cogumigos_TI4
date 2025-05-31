@@ -8,6 +8,8 @@ public class Player : MonoBehaviour {
     [field: SerializeField] public PlayerLayerData LayerData { get; private set; }
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
     [field: SerializeField] public bool ShouldWalk { get; private set; }
+    [field: SerializeField] public bool IsColliding { get; private set; }
+    [field: SerializeField] public Vector3 CollisionDirection;
 
     public PlayerInput Input { get; private set; }
     public PlayerInventory Inventory { get; private set; }
@@ -15,6 +17,9 @@ public class Player : MonoBehaviour {
     public Animator PlayerAnimator { get; private set; }
     public Rigidbody PlayerRigidbody { get; private set; }
     public bool ShouldGlide { get; private set; }
+
+    [SerializeField] private CapsuleCollider _improvedCollisionCollider;
+
     private PlayerMovementStateMachine _movementStateMachine;
 
     #region TesteRespawn
@@ -25,6 +30,34 @@ public class Player : MonoBehaviour {
     // TEMP
     public PlayerMovementStateMachine GetStateMachine() { return _movementStateMachine; }
 
+    private void OnCollisionEnter(Collision collision) {
+        foreach (ContactPoint contact in collision.contacts) {
+            if (contact.thisCollider == _improvedCollisionCollider || contact.otherCollider == _improvedCollisionCollider) {
+                IsColliding = true;
+                if (CollisionDirection == Vector3.zero) {
+                    CollisionDirection = Vector3.Cross(transform.position, contact.point);
+                    CollisionDirection.y = 0f;
+                    CollisionDirection = CollisionDirection.normalized;
+                }
+            }
+        }
+    }
+    private void OnCollisionStay(Collision collision) {
+        foreach (ContactPoint contact in collision.contacts) {
+            if (contact.thisCollider == _improvedCollisionCollider || contact.otherCollider == _improvedCollisionCollider) {
+                IsColliding = true;
+                if (CollisionDirection == Vector3.zero) {
+                    CollisionDirection = Vector3.Cross(transform.position, contact.point);
+                    CollisionDirection.y = 0f;
+                    CollisionDirection = CollisionDirection.normalized;
+                }
+            }
+        }
+    }
+    private void OnCollisionExit(Collision collision) {
+        IsColliding = false;
+        CollisionDirection = Vector3.zero;
+    }
 
     public Transform MainCameraTransform { get; private set; }
     private void Awake() {
@@ -59,9 +92,11 @@ public class Player : MonoBehaviour {
 
     public void OnMovementStateAnimationEnterEvent() {
         _movementStateMachine.OnAnimationEnterEvent();
-    }public void OnMovementStateAnimationExitEvent() {
+    }
+    public void OnMovementStateAnimationExitEvent() {
         _movementStateMachine.OnAnimationExitEvent();
-    }public void OnMovementStateAnimationTransitionEvent() {
+    }
+    public void OnMovementStateAnimationTransitionEvent() {
         _movementStateMachine.OnAnimationTransitionEvent();
     }
 

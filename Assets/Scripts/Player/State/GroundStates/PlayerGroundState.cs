@@ -14,6 +14,7 @@ public class PlayerGroundState : PlayerMovementState {
 
         StateMachineMovement.ReusableData.EnableDoubleJump();
         StateMachineMovement.ReusableData.SetCoyoteTime(AirData.JumpData.CoyoteTime);
+        StateMachineMovement.PlayerGet.ColliderUtility.CapsuleColliderData.Collider.sharedMaterial = StateMachineMovement.PlayerGet.Data.GroundedData.PlayerPhysics;
 
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerTrampolineJumpState : PlayerAirState
 {
@@ -18,20 +17,9 @@ public class PlayerTrampolineJumpState : PlayerAirState
     {
         base.Enter();
         
-        StateMachineMovement.ReusableData.MovementSpeedModifier = AirData.JumpData.SpeedModifier;
-        
         Vector3 currentVelocity = StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity;
         currentVelocity.y = trampolineForce;
         StateMachineMovement.PlayerGet.PlayerRigidbody.linearVelocity = currentVelocity;
-        
-        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.TrampolineJumpParameterHash);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        
-        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.TrampolineJumpParameterHash);
     }
 
     public override void Update()
@@ -44,12 +32,8 @@ public class PlayerTrampolineJumpState : PlayerAirState
         }
     }
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-    }
-
-    protected override void OnJumpStarted(InputAction.CallbackContext context)
-    {
+    protected override void DoubleJump() {
+        base.DoubleJump();
+        StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
     }
 } 

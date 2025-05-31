@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8092583103207374686}
   m_Layer: 6
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: CineMachineIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eccd8879a4969de4cad7008571c62f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startFall: 0
   fallSpeed: 500
   waitTime: 2
 --- !u!1 &6618644901902938430
@@ -85,7 +86,7 @@ GameObject:
   - component: {fileID: 771363330284672534}
   m_Layer: 11
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: CineMachineIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

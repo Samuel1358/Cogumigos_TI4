@@ -1,12 +1,10 @@
-using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(Collider))]
 public class InteractingArea : ResetableBase
 {
-    [SerializeField] private InputActionAsset _inputActions;
-    private InputAction _interact;
+    private PlayerInputActions _inputActions;
 
     [SerializeField] private Interaction _interaction;
     [SerializeField] private GameObject _visualInfo;
@@ -19,14 +17,13 @@ public class InteractingArea : ResetableBase
     {
         base.OnEnable();
 
-        _inputActions.FindActionMap("Player").Enable();
-
-        _interact = _inputActions.FindAction("Interact");       
+        _inputActions = new PlayerInputActions();
+        _inputActions.Player.Enable();    
     }
 
     private void OnDisable()
     {       
-        _inputActions.FindActionMap("Player").Disable();
+        _inputActions.Player.Disable();
     }
 
     private void Start()
@@ -45,13 +42,13 @@ public class InteractingArea : ResetableBase
     }
 
     // Private Methods
-    private void InteractAction(InputAction.CallbackContext context)
+    private void InteractAction(CallbackContext callbackContext)
     {
         if (_player != null)
         {
             _interaction.Interact(_player);
             _isInteracted = true;
-            _interact.started -= InteractAction;
+            _inputActions.Player.Interact.started -= InteractAction;
 
             // visual
             if (_visualInfo != null)
@@ -84,7 +81,7 @@ public class InteractingArea : ResetableBase
             if (player == null)
                 return;
 
-            _interact.started += InteractAction;
+            _inputActions.Player.Interact.started += InteractAction;
             _player = player;
         }
     }
@@ -97,7 +94,7 @@ public class InteractingArea : ResetableBase
             if (_visualInfo != null)
                 _visualInfo.SetActive(false);
 
-            _interact.started -= InteractAction;
+            _inputActions.Player.Interact.started -= InteractAction;
             _player = null;
         }
     }
