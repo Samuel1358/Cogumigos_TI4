@@ -18,7 +18,7 @@ public class Portal : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider collider) {
-        if (collider.gameObject.TryGetComponent<Player>(out Player player)) {
+        if (collider.transform.parent.TryGetComponent<Player>(out Player player)) {
             _travelObject = player.transform;
             EnterPortal.Invoke();
 
@@ -28,7 +28,7 @@ public class Portal : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider collider) {
-        if (collider.gameObject.TryGetComponent<Player>(out Player player)) {
+        if (collider.transform.parent.TryGetComponent<Player>(out Player player)) {
             ExitPortal.Invoke();
             _travelObject = null;
             StopAllCoroutines();
