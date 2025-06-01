@@ -14,7 +14,7 @@ public class RollingTrunk : MonoBehaviour
         {
             visualChild = transform.GetChild(0);
         }
-        
+
         if (visualChild == null)
         {
             Debug.LogWarning("No visual child assigned to RollingTrunk. Please assign a child object to rotate.");
@@ -33,10 +33,16 @@ public class RollingTrunk : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+
         Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
         if (playerRb != null)
         {
-            playerRb.AddForce((pushToRight ? transform.right : -transform.right) * pushForce, ForceMode.Force);
+            //Vector3 raio = collision.transform.position - transform.position;
+            Vector3 dir = Vector3.Cross(transform.forward, collision.contacts[0].normal);
+            playerRb.transform.position += -dir * Time.deltaTime;
+            //playerRb.AddForce(-dir * 0.2f, ForceMode.VelocityChange);
+            Debug.DrawLine(collision.transform.position, collision.transform.position - dir * 5);
+            //playerRb.AddForce((pushToRight ? transform.right : -transform.right) * pushForce, ForceMode.Force);
         }
     }
 }
