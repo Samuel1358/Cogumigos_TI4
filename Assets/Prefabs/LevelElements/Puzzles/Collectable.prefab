@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7763456871140327397}
   - component: {fileID: 2482816805223774743}
   - component: {fileID: 7278861056759388770}
+  - component: {fileID: 6724186285426255368}
   m_Layer: 11
   m_Name: Collectable
   m_TagString: Untagged
@@ -71,6 +72,21 @@ MonoBehaviour:
   _visual: {fileID: 6936830580231651867}
   _collider: {fileID: 2482816805223774743}
   _ingredientType: 0
+--- !u!114 &6724186285426255368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241346667940507188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b62c32436034840a6ee94fc8dcf8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0.5
+  speed: 1
+  startMoving: 1
 --- !u!1001 &5523356410011725603
 PrefabInstance:
   m_ObjectHideFlags: 0
