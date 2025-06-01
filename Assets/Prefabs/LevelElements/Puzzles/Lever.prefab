@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6627297343594711888}
   - {fileID: 160857226132512237}
@@ -84,10 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
-  _inputActions: {fileID: -944628639613478452, guid: 1d5326077d8cca442b5cb36dc368fe44, type: 3}
   _interaction: {fileID: 0}
   _visualInfo: {fileID: 0}
-  _tagTrigger: Player
 --- !u!1 &8217776036245960651
 GameObject:
   m_ObjectHideFlags: 0
