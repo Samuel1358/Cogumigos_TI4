@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 455268629255873390}
   - component: {fileID: 9171904281534178150}
+  - component: {fileID: 2749691048955528630}
   m_Layer: 6
   m_Name: LillyPad
   m_TagString: Untagged
@@ -140,3 +141,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.9102453, y: 0.16190827, z: 1.6826838}
   m_Center: {x: 0.005550325, y: 0.08602929, z: 0.047177374}
+--- !u!114 &2749691048955528630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8950079652775940480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f8ee230583b0b48ab2ac2bd6d56ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitudeX: 0.5
+  amplitudeZ: 0.3
+  velocidadeX: 1
+  velocidadeZ: 0.8
+  amplitudeRotacao: 2
+  velocidadeRotacao: 0.5
