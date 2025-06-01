@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4741653159369819466}
-  - component: {fileID: 1286725465523720358}
   - component: {fileID: 3064575011746122177}
   - component: {fileID: 5284130596557607403}
   m_Layer: 9
@@ -29,33 +28,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.8100002, y: 2.81, z: 2.8100002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7369513171195852508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1286725465523720358
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7588883787091607037}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.4
-  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!195 &3064575011746122177
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -105,7 +83,8 @@ GameObject:
   - component: {fileID: 7369513171195852508}
   - component: {fileID: 5902564047290628473}
   - component: {fileID: 8506993979201359283}
-  m_Layer: 0
+  - component: {fileID: 5106908640203839823}
+  m_Layer: 6
   m_Name: RollingStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,3 +159,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &5106908640203839823
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7858242054508293222}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.4584458
+  m_Center: {x: -0.00000017881396, y: -0.0000008791685, z: -0.0000002384186}
