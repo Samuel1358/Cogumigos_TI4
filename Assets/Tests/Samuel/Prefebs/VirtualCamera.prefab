@@ -61,7 +61,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 1
   Lens:
-    FieldOfView: 60.000004
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -260,8 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 64
-  IgnoreTag: 
+    m_Bits: 320
+  IgnoreTag: CineMachineIgnore
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
