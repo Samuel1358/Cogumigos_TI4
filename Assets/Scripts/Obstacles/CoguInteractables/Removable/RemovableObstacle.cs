@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class RemovableObstacle : CoguInteractable
 {
     private NavMeshAgent _agent;
+    [SerializeField] private bool _startAvailable = true;
     [SerializeField] public Vector3 destiny = Vector3.forward;
     [SerializeField] public bool positionated;
 
@@ -13,6 +14,8 @@ public class RemovableObstacle : CoguInteractable
 
     private void Awake()
     {
+        _isAvailable = _startAvailable;
+
         _agent = GetComponent<NavMeshAgent>();
         destiny = transform.TransformPoint(destiny);
 
