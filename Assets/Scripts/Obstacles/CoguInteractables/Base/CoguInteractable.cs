@@ -4,9 +4,8 @@ using UnityEngine;
 public abstract class CoguInteractable : ResetableBase
 {
     // Fields
-    [SerializeField] private CoguType _assignedCoguType;
-    
-    public bool _isAvailable = true;
+    [SerializeField] CoguType _assignedCoguType;
+    protected bool _isAvailable = true;
 
     // Properties
     public CoguType AssignedCoguType { get { return _assignedCoguType; } }
