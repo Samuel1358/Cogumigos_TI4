@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4741653159369819466}
+  - component: {fileID: 5604184163907080083}
   - component: {fileID: 3064575011746122177}
   - component: {fileID: 5284130596557607403}
   m_Layer: 9
@@ -34,6 +35,27 @@ Transform:
   - {fileID: 7369513171195852508}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5604184163907080083
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7588883787091607037}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.45
+  m_Center: {x: 0, y: 1.4, z: 0}
 --- !u!195 &3064575011746122177
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -70,6 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 3
+  _isAvailable: 1
+  _startAvailable: 1
   destiny: {x: 0, y: 0, z: 1}
   positionated: 0
 --- !u!1 &7858242054508293222

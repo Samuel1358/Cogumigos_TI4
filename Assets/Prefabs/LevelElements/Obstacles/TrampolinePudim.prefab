@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 2
+  _startAvailable: 1
   _trampoloPrefab: {fileID: 5950955071416487807}
 --- !u!65 &1809448520782449286
 BoxCollider:
@@ -139,9 +140,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 16
-  includeLayers:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1 &6709573026717770973
 GameObject:
   m_ObjectHideFlags: 0

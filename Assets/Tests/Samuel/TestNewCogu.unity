@@ -373,7 +373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cd5b99eab23274280ecb6d4d387e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraController: {fileID: 198709811}
 --- !u!114 &116633209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,11 +675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a58196ee3f3f7d4fbaf1df7d3391ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraObj: {fileID: 585474617}
-  inputController: {fileID: 585474615}
-  zoomRate: 5
-  zoomMaxDis: 50
-  zoomMinDis: 10
 --- !u!114 &198709812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -810,7 +804,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
-  _inputActions: {fileID: -944628639613478452, guid: 1d5326077d8cca442b5cb36dc368fe44, type: 3}
   _interaction: {fileID: 0}
   _visualInfo: {fileID: 0}
 --- !u!65 &240889058
@@ -1349,28 +1342,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361e76df49ed985439eede51cc82caec, type: 3}
---- !u!114 &585474615 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2858565964967010927, guid: a5663ec593fe3ba40a8f8cad6e414d93, type: 3}
-  m_PrefabInstance: {fileID: 880704181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &585474617 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 107209154603563350, guid: a5663ec593fe3ba40a8f8cad6e414d93, type: 3}
-  m_PrefabInstance: {fileID: 880704181}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &632488926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2071,6 +2042,10 @@ PrefabInstance:
     - target: {fileID: 5284130596557607403, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
       propertyPath: positionated
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5284130596557607403, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
+      propertyPath: _startAvailable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5284130596557607403, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
       propertyPath: _assignedCoguName
