@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 732243825917976543}
   - component: {fileID: 1574904565542825349}
-  - component: {fileID: 2215225172564286804}
-  m_Layer: 0
+  - component: {fileID: 6875250371945799712}
+  m_Layer: 11
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,6 +35,7 @@ Transform:
   - {fileID: 8072668719263720848}
   - {fileID: 1028189306772616169}
   - {fileID: 3780027669165239302}
+  - {fileID: 3187333192462563881}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1574904565542825349
@@ -57,7 +58,7 @@ MonoBehaviour:
       m_Calls: []
   _linkedPortal: {fileID: 0}
   _timeToActivate: 0
---- !u!65 &2215225172564286804
+--- !u!65 &6875250371945799712
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -470,3 +471,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4475652192973243168, guid: 7f4f1efa791f7fc4db636712506869e2, type: 3}
+--- !u!1 &8762622329664703508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3187333192462563881}
+  m_Layer: 11
+  m_Name: Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3187333192462563881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8762622329664703508}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 732243825917976543}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

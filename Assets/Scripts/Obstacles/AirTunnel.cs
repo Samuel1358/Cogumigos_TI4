@@ -49,7 +49,7 @@ public class AirTunnel : MonoBehaviour {
             float t = _segmentProgress / _segmentDuration;
             _objToMove.position = Vector3.Slerp(_startPoint, _targetPoint, t);
 
-            if (_segmentProgress >= _segmentDuration)
+            if (_segmentProgress >= _segmentDuration || Vector3.Distance(_objToMove.position, _targetPoint) < 0.5f)
             {
                 _objToMove.position = _targetPoint;
                 SetupNextSegment();
@@ -91,7 +91,6 @@ public class AirTunnel : MonoBehaviour {
     {
         if (collider.transform.parent.TryGetComponent<Player>(out player))
         {
-            Debug.Log("Colided player");
             _objToMove = player.transform;
             _startPoint = player.transform.position;
             player.SetGlide(true);
