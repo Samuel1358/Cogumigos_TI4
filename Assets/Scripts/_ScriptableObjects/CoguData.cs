@@ -4,7 +4,7 @@ using UnityEngine;
 public class CoguData : ScriptableObject
 {
     public float moveSpd;
-    public float minDistance;
+    //public float minDistance;
 
     /*public float followSpd;
     public float throwSpd;

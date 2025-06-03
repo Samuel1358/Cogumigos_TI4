@@ -36,7 +36,7 @@ public class Cogu : MonoBehaviour
 
     public bool ArrivedDestination()
     {
-        if (Vector3.Distance(transform.position, _agent.destination) <= _data.minDistance)
+        if (Vector3.Distance(transform.position, _agent.destination) <= _interactableObj.InteractDistance)
             return true;
         else
             return false;
