@@ -109,5 +109,5 @@ public class CoguCastter : MonoBehaviour, IResetable
         _coguCount = _coguHoldedAtCheckpoint;
     }
 
-    #endregion
+    #endregion   
 }

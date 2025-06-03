@@ -12,24 +12,33 @@ public class Cogu : MonoBehaviour
     private NavMeshAgent _agent;
     private CoguInteractable _interactableObj;
     private CoguCastter _castter;
+    private Vector3 _castSpot;
+    private Vector3 _interactSpot;
 
     // Properties
     public CoguData Data { get { return _data; } }
     public CoguStateMachine StateMachine { get { return _stateMachine; } }
     public NavMeshAgent Agent { get { return _agent; } }
+    public Vector3 CastSpot { get { return _castSpot; } }
+    public Vector3 InteractSpot {  get { return _interactSpot; } }
 
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _agent.enabled = false;
     }
 
     // Public Methods
     public void Initialize(CoguInteractable interactable, CoguCastter castter)
     {
         _stateMachine = new CoguStateMachine(this);
-        _stateMachine.ChangeState(_stateMachine.CastState.Setup(interactable.transform.position));
+        _stateMachine.ChangeState(_stateMachine.CastState);
         this._interactableObj = interactable;
         this._castter = castter;
+
+        _castSpot = transform.position;
+        float t = interactable.InteractDistance / (transform.position - interactable.transform.position).magnitude;
+        _interactSpot = Vector3.Lerp(interactable.transform.position, transform.position, t);
 
         CoguManager.instance.AssingCogu(this);
     }
