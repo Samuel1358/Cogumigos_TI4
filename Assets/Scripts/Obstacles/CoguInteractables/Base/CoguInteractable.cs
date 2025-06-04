@@ -31,12 +31,12 @@ public abstract class CoguInteractable : ResetableBase
     // Inherit Public Methods
     public abstract Action Interact(Cogu cogu);
 
-    /*protected virtual void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
 #if UNITY_EDITOR
         Handles.color = Color.red;
         Handles.DrawWireDisc(transform.position, transform.up, _interactDistance);
         Handles.color = Color.white;
 #endif
-    }*/
+    }
 }
