@@ -1,5 +1,8 @@
 using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public abstract class CoguInteractable : ResetableBase
 {
@@ -27,4 +30,13 @@ public abstract class CoguInteractable : ResetableBase
 
     // Inherit Public Methods
     public abstract Action Interact(Cogu cogu);
+
+    /*protected virtual void OnDrawGizmosSelected()
+    {
+#if UNITY_EDITOR
+        Handles.color = Color.red;
+        Handles.DrawWireDisc(transform.position, transform.up, _interactDistance);
+        Handles.color = Color.white;
+#endif
+    }*/
 }
