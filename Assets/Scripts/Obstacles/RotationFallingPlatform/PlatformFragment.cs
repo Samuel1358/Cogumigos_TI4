@@ -25,7 +25,8 @@ public class PlatformFragment : CollisionHandlerChild
     // Inherited public Methods
     public override void ParentCollisionEnter(Collision other)
     {
-        StartCoroutine(FallAndRestore());
+        //StartCoroutine(FallAndRestore());
+        DoTweenUtility.instance.FallingPlatformShake(transform, _fallDelay, new Vector3(.5f, .2f, 1), Fall);
     }
 
     // Private Methods
@@ -36,11 +37,23 @@ public class PlatformFragment : CollisionHandlerChild
         yield return new WaitForSeconds(_fallDelay);
 
         // caindo
-        _rb.isKinematic = false;
+        Fall();
         AudioManager.Instance.StopSFX();
         yield return new WaitForSeconds(_restoreDelay);
 
         // respawn
+        Restore();
+    }
+
+    private void Fall()
+    {
+        _rb.isKinematic = false;
+
+        DoTweenUtility.instance.Timer(_restoreDelay, Restore);
+    }
+
+    private void Restore()
+    {
 #pragma warning disable CS0618 // O tipo ou membro � obsoleto
         _rb.velocity = Vector3.zero;
 #pragma warning restore CS0618 // O tipo ou membro � obsoleto

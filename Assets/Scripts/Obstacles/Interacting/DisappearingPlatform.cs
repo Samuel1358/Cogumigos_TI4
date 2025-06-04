@@ -3,33 +3,37 @@ using UnityEngine;
 
 public class DisappearingPlatform : MonoBehaviour
 {
-    public float disappearTime = 2f; 
-    [SerializeField] private Renderer platformRenderer; 
-    private Collider platformCollider; 
-    private bool isActive = true; 
+    [SerializeField] private float _disappearTime = 2f;
+    [SerializeField] private float _reappearTime = 2f;
+    [SerializeField] private Renderer _platformRenderer; 
+    private Collider _platformCollider; 
+    private bool _isActive = true;
+    private Quaternion _startRotetion;
 
     void Start()
     {
         //platformRenderer = GetComponent<Renderer>(); 
-        platformCollider = GetComponent<Collider>(); 
+        _platformCollider = GetComponent<Collider>();
+        _startRotetion = transform.rotation;
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (isActive)
+        if (_isActive)
         {
-            StartCoroutine(DisappearAfterTime());
+            DoTweenUtility.instance.FallingPlatformShake(transform, _disappearTime, new Vector3(.5f, .5f, 1), DisablePlatform);
+            //StartCoroutine(DisappearAfterTime());
         }
     }
 
     // Método para fazer a plataforma desaparecer após um tempo específico
     IEnumerator DisappearAfterTime()
     {
-        yield return new WaitForSeconds(disappearTime);
+        yield return new WaitForSeconds(_disappearTime);
 
         DisablePlatform();
 
-        yield return new WaitForSeconds(disappearTime);
+        yield return new WaitForSeconds(_disappearTime);
 
         EnablePlatform();
     }
@@ -37,16 +41,20 @@ public class DisappearingPlatform : MonoBehaviour
     
     public void DisablePlatform()
     {
-        platformRenderer.enabled = false; // Torna a plataforma invisível
-        platformCollider.enabled = false; // Desativa a colisão
-        isActive = false; // Marca a plataforma como inativa
+        _platformRenderer.enabled = false; // Torna a plataforma invisível
+        _platformCollider.enabled = false; // Desativa a colisão
+        _isActive = false; // Marca a plataforma como inativa
+
+        DoTweenUtility.instance.Timer(_reappearTime, EnablePlatform);
     }
 
     
     public void EnablePlatform()
     {
-        platformRenderer.enabled = true; // Torna a plataforma visível
-        platformCollider.enabled = true; // Reativa a colisão
-        isActive = true; // Marca a plataforma como ativa
+        transform.rotation = _startRotetion;
+
+        _platformRenderer.enabled = true; // Torna a plataforma visível
+        _platformCollider.enabled = true; // Reativa a colisão
+        _isActive = true; // Marca a plataforma como ativa
     }
 }

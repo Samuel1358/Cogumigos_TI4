@@ -71,8 +71,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.512231, y: 0.109291606, z: 0.49405384}
-  m_Center: {x: 0.0015147686, y: 0.018177724, z: 0.004544556}
+  m_Size: {x: 0.9, y: 0.16, z: 0.9}
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!1 &7248776140753039079
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FragmentFallingPlatform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8500328215801815831, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -249,6 +253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FragmentFallingPlatform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8500328215801815831, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -318,6 +326,10 @@ PrefabInstance:
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7704210407280308282, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Convex
@@ -392,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_Name
       value: FragmentFallingPlatform (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721136977149749671, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8500328215801815831, guid: a5449ab5bb0519b4d82b2da5bb1d8a84, type: 3}
       propertyPath: m_LocalPosition.x
