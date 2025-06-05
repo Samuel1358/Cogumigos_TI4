@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class AudioManager : MonoBehaviour
     private float masterVolume = 1f;
     private float sfxVolume = 1f;
     private float bgmVolume = 1f;
+
+    // Death sound control
+    private bool isDeathSoundPlaying = false;
+    private const float DEATH_SOUND_COOLDOWN = 3.5f;
 
     // PlayerPrefs keys
     private const string MASTER_VOLUME_KEY = "MasterVolume";
@@ -109,6 +114,33 @@ public class AudioManager : MonoBehaviour
         {
             Debug.LogWarning($"Sound effect '{soundName}' not found!");
         }
+    }
+
+    // Special method for playing death sound with cooldown control
+    public void PlayDeathSound()
+    {
+        if (!isDeathSoundPlaying)
+        {
+            if (soundEffectDictionary.TryGetValue("Death", out AudioClip clip))
+            {
+                isDeathSoundPlaying = true;
+                sfxSource.pitch = 1f;
+                sfxSource.PlayOneShot(clip, 1f);
+                
+                // Reset the flag after cooldown
+                StartCoroutine(ResetDeathSoundCooldown());
+            }
+            else
+            {
+                Debug.LogWarning("Death sound effect not found!");
+            }
+        }
+    }
+
+    private IEnumerator ResetDeathSoundCooldown()
+    {
+        yield return new WaitForSeconds(DEATH_SOUND_COOLDOWN);
+        isDeathSoundPlaying = false;
     }
 
     public void PlaySFXAtPosition(string soundName, Vector3 position, float volume = 1f, float pitch = 1f)

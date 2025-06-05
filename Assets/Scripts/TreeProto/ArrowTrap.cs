@@ -6,17 +6,34 @@ public class ArrowTrap : MonoBehaviour
     public GameObject arrowPrefab;
     public float arrowSpeed = 10f;
     public float shootInterval = 2f;
-    public Transform shootPoint;
+    
+    [Header("Shoot Points")]
+    public Transform[] shootPoints;
     public Vector3 shootDirection = Vector3.right; // Direção no espaço do mundo
+    
+    [Header("Multi-Point Settings")]
+    public bool useMultiplePoints = true; // Se true, alterna entre pontos. Se false, usa apenas o primeiro
 
     private float nextShootTime;
+    private int currentShootPointIndex = 0;
 
     void Start()
     {
-        if (shootPoint == null)
+        // Se não há pontos configurados, usa o próprio transform
+        if (shootPoints == null || shootPoints.Length == 0)
         {
-            shootPoint = transform;
+            shootPoints = new Transform[] { transform };
         }
+        
+        // Remove nulls do array
+        shootPoints = System.Array.FindAll(shootPoints, point => point != null);
+        
+        if (shootPoints.Length == 0)
+        {
+            Debug.LogWarning($"ArrowTrap {name}: No valid shoot points found! Using transform as default.");
+            shootPoints = new Transform[] { transform };
+        }
+        
         nextShootTime = Time.time;
     }
 
@@ -31,11 +48,54 @@ public class ArrowTrap : MonoBehaviour
 
     void ShootArrow()
     {
-        GameObject arrow = Instantiate(arrowPrefab, shootPoint.position, shootPoint.rotation);
+        // Seleciona o ponto atual
+        Transform currentShootPoint = GetCurrentShootPoint();
+        
+        // Cria a flecha no ponto selecionado
+        GameObject arrow = Instantiate(arrowPrefab, currentShootPoint.position, currentShootPoint.rotation);
         Arrow arrowScript = arrow.GetComponent<Arrow>();
         if (arrowScript != null)
         {
             arrowScript.Initialize(arrowSpeed, shootDirection);
+        }
+        
+        // Avança para o próximo ponto (se usando múltiplos pontos)
+        if (useMultiplePoints && shootPoints.Length > 1)
+        {
+            AdvanceToNextShootPoint();
+        }
+        
+        Debug.Log($"ArrowTrap {name}: Shot arrow from point {currentShootPointIndex + 1}/{shootPoints.Length}");
+    }
+    
+    private Transform GetCurrentShootPoint()
+    {
+        // Garante que o índice está dentro dos limites
+        if (currentShootPointIndex >= shootPoints.Length)
+        {
+            currentShootPointIndex = 0;
+        }
+        
+        return shootPoints[currentShootPointIndex];
+    }
+    
+    private void AdvanceToNextShootPoint()
+    {
+        currentShootPointIndex = (currentShootPointIndex + 1) % shootPoints.Length;
+    }
+    
+    // Método público para resetar o índice (útil para testes)
+    public void ResetToFirstShootPoint()
+    {
+        currentShootPointIndex = 0;
+    }
+    
+    // Método público para definir um ponto específico
+    public void SetCurrentShootPoint(int index)
+    {
+        if (index >= 0 && index < shootPoints.Length)
+        {
+            currentShootPointIndex = index;
         }
     }
 } 

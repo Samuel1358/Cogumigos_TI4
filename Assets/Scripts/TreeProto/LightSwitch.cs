@@ -1,18 +1,14 @@
 using UnityEngine;
 
-public class FinalLever : MonoBehaviour
+public class LightSwitch : MonoBehaviour
 {
     [Header("Light Settings")]
-    public Light leverLight;
-    public Color activeColor = Color.green;
-    private Color originalColor;
+    [SerializeField] private Light _light;
+    [SerializeField] private bool _startLightOff = true;
     
     [Header("Switch Connection")]
     [SerializeField] private ActivateSwitch _activateSwitch;
     
-    [Header("State")]
-    public bool isActivated = false;
-
     private void OnEnable()
     {
         // Subscribe to respawn events
@@ -27,16 +23,10 @@ public class FinalLever : MonoBehaviour
 
     private void Start()
     {
-        // Se não foi atribuída uma luz, tenta encontrar uma no objeto
-        if (leverLight == null)
+        // Set initial light state
+        if (_light != null)
         {
-            leverLight = GetComponentInChildren<Light>();
-        }
-
-        // Guarda a cor original da luz
-        if (leverLight != null)
-        {
-            originalColor = leverLight.color;
+            _light.enabled = !_startLightOff;
         }
         
         // Subscribe to switch state changes
@@ -72,19 +62,33 @@ public class FinalLever : MonoBehaviour
         if (_activateSwitch != null)
         {
             SyncWithSwitch();
-            Debug.Log($"FinalLever {name}: Re-synchronized with switch after respawn. Switch state: {_activateSwitch.isActivated}");
+            Debug.Log($"LightSwitch {name}: Re-synchronized with switch after respawn. Switch state: {_activateSwitch.isActivated}");
         }
+    }
+
+    // Public Methods
+    public Light GetLight()
+    {
+        return _light;
     }
 
     // Private Methods
     private void OnSwitchActivated()
     {
-        Activate();
+        if (_light != null)
+        {
+            _light.enabled = true;
+            Debug.Log($"Light {_light.name} turned ON by switch");
+        }
     }
 
     private void OnSwitchDeactivated()
     {
-        Deactivate();
+        if (_light != null)
+        {
+            _light.enabled = false;
+            Debug.Log($"Light {_light.name} turned OFF by switch");
+        }
     }
 
     private void SyncWithSwitch()
@@ -93,44 +97,11 @@ public class FinalLever : MonoBehaviour
         
         if (_activateSwitch.isActivated)
         {
-            Activate();
+            OnSwitchActivated();
         }
         else
         {
-            Deactivate();
+            OnSwitchDeactivated();
         }
-    }
-
-    public virtual void Activate()
-    {
-        // Se já estiver ativado, não faz nada
-        if (isActivated) return;
-
-        isActivated = true;
-        
-        // Liga a luz
-        if (leverLight != null)
-        {
-            leverLight.enabled = true;
-            leverLight.color = activeColor;
-        }
-        
-        Debug.Log($"FinalLever {name} activated by switch");
-    }
-
-    public virtual void Deactivate()
-    {
-        if (!isActivated) return;
-
-        isActivated = false;
-        
-        // Desliga a luz e restaura cor original
-        if (leverLight != null)
-        {
-            leverLight.enabled = false;
-            leverLight.color = originalColor;
-        }
-        
-        Debug.Log($"FinalLever {name} deactivated by switch");
     }
 } 
