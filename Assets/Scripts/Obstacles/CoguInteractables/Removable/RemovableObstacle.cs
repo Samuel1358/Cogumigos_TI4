@@ -22,6 +22,7 @@ public class RemovableObstacle : CoguInteractable
         _inictialPosition = transform.position;
     }
 
+    [ContextMenu("Walk")]
     public void Walk()
     {
         if (positionated)
@@ -50,8 +51,10 @@ public class RemovableObstacle : CoguInteractable
     }
 
     // Gizmo
-    private void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
+
         if (Application.isPlaying)
             return;
 

@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 3527457123113359247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalPosition: {x: 0.5, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -656,6 +656,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _castPoint: {fileID: 2103010604124182890}
+  _interactRadius: 10
+  _fieldOfView: 0.4
+  _interactableLayer:
+    serializedVersion: 2
+    m_Bits: 512
   _coguCount: 0
 --- !u!114 &4870009662224598465
 MonoBehaviour:

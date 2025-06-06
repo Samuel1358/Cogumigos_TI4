@@ -101,4 +101,16 @@ public class CoguManager : MonoBehaviour
             _coguList.Add(cogu);
         }
     }
+
+
+    // DELETAR
+    /*public Vector3 spot;
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawSphere(spot, .5f);
+
+        Gizmos.color = Color.white;
+    }*/
 }

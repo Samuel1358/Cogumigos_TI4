@@ -25,22 +25,16 @@ public class PlatformFragment : CollisionHandlerChild
     // Inherited public Methods
     public override void ParentCollisionEnter(Collision other)
     {
-        StartCoroutine(FallAndRestore());
+        TweenHandler.FallingPlatformShake(transform, new Vector3(.5f, .5f, 1), _fallDelay, _restoreDelay, Fall, Restore);
     }
 
-    // Private Methods
-    private IEnumerator FallAndRestore()
+    private void Fall()
     {
-        // prestes a cair
-        AudioManager.Instance.PlaySFX("PlatformBreak");
-        yield return new WaitForSeconds(_fallDelay);
-
-        // caindo
         _rb.isKinematic = false;
-        AudioManager.Instance.StopSFX();
-        yield return new WaitForSeconds(_restoreDelay);
+    }
 
-        // respawn
+    private void Restore()
+    {
 #pragma warning disable CS0618 // O tipo ou membro � obsoleto
         _rb.velocity = Vector3.zero;
 #pragma warning restore CS0618 // O tipo ou membro � obsoleto

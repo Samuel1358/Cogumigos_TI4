@@ -2,17 +2,8 @@ using UnityEngine;
 
 public class ThrowCoguState : CoguState
 {
-    private Vector3 _interactSpot;
-
     // Inerited Constructor
     public ThrowCoguState(CoguStateMachine stateMachine) : base(stateMachine) { }
-
-    // Public Methods
-    public ThrowCoguState Setup(Vector3 interactSpot)
-    {
-        this._interactSpot = interactSpot;
-        return this;
-    }
 
     // Inherited Public Methods
     public override void Enter()
@@ -24,6 +15,6 @@ public class ThrowCoguState : CoguState
     {
         // Throw actions/animation
 
-        _stateMachine.ChangeState(_stateMachine.MoveState.Setup(_interactSpot));
+        _stateMachine.ChangeState(_stateMachine.MoveState);
     }
 }
