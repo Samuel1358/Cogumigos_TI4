@@ -12,7 +12,7 @@ public class Breakable : CoguInteractable
     private List<Transform> _parts;
 
     [SerializeField] private UnityEvent _onBreak;
-
+    
     private void Awake() {
         _parts = new List<Transform>();
         NeedReset = false;
@@ -20,13 +20,13 @@ public class Breakable : CoguInteractable
 
     private void DeactivateWall() {
         //GetComponent<MeshRenderer>().enabled = false;
-        //GetComponent<Collider>().enabled = false;
+        GetComponent<Collider>().enabled = false;
         _visual.SetActive(false);
         NeedReset = true;
     }
     private void ActivateWall() {
         //GetComponent<MeshRenderer>().enabled = true;
-        //GetComponent<Collider>().enabled = true;
+        GetComponent<Collider>().enabled = true;
         _visual.SetActive(true);
         foreach (Transform t in _parts) {
             Destroy(t.gameObject);

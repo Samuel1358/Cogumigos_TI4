@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e584e2927dbd94786856c1e6fa3bc3, type: 3}
-  m_Name: CoguData
+  m_Script: {fileID: 11500000, guid: 0b221d0107771e24e9709cbf10da2b45, type: 3}
+  m_Name: TweenHandlerManager
   m_EditorClassIdentifier: 
-  moveSpd: 6
-  throwHeight: 5
+  _shakeStrenght: 2
+  _shakeVibrato: 5
+  _randomness: 30

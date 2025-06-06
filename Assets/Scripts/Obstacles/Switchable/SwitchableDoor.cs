@@ -88,20 +88,24 @@ public class SwitchableDoor : Switchable
 
     private void MoveOpenBounce()
     {
-        transform.DOMoveY(value, durationTime).SetEase(Ease.InBounce);
+        //transform.DOMoveY(value, durationTime).SetEase(Ease.InBounce);
+        TweenHandler.MoveY(transform, value, durationTime, Ease.Linear);
     }
     private void RotateOpenBounce()
     {
-        transform.DORotate(new Vector3(0f, value, 0f), durationTime).SetEase(Ease.InBounce);
+        //transform.DORotate(new Vector3(0f, value, 0f), durationTime).SetEase(Ease.InBounce);
+        TweenHandler.Rotate(transform, new Vector3(0f, value, 0f), durationTime, Ease.Linear);
     }
 
     private void MoveCloseBounce()
     {
-        transform.DOMoveY(0, durationTime).SetEase(Ease.InBounce);
+        //transform.DOMoveY(0, durationTime).SetEase(Ease.InBounce);
+        TweenHandler.MoveY(transform, 0, durationTime, Ease.Linear);
     }
     private void RotateCloseBounce()
     {
-        transform.DORotate(new Vector3(0f, 0f, 0f), durationTime).SetEase(Ease.InBounce);
+        //transform.DORotate(new Vector3(0f, 0f, 0f), durationTime).SetEase(Ease.InBounce);
+        TweenHandler.Rotate(transform, new Vector3(0f, 0f, 0f), durationTime, Ease.Linear);
     }
 
     #endregion 
