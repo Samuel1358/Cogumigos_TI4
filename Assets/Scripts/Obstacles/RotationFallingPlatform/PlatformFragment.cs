@@ -25,31 +25,12 @@ public class PlatformFragment : CollisionHandlerChild
     // Inherited public Methods
     public override void ParentCollisionEnter(Collision other)
     {
-        //StartCoroutine(FallAndRestore());
-        DoTweenUtility.instance.FallingPlatformShake(transform, _fallDelay, new Vector3(.5f, .2f, 1), Fall);
-    }
-
-    // Private Methods
-    private IEnumerator FallAndRestore()
-    {
-        // prestes a cair
-        AudioManager.Instance.PlaySFX("PlatformBreak");
-        yield return new WaitForSeconds(_fallDelay);
-
-        // caindo
-        Fall();
-        AudioManager.Instance.StopSFX();
-        yield return new WaitForSeconds(_restoreDelay);
-
-        // respawn
-        Restore();
+        TweenHandler.FallingPlatformShake(transform, new Vector3(.5f, .5f, 1), _fallDelay, _restoreDelay, Fall, Restore);
     }
 
     private void Fall()
     {
         _rb.isKinematic = false;
-
-        DoTweenUtility.instance.Timer(_restoreDelay, Restore);
     }
 
     private void Restore()
