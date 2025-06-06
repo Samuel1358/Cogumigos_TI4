@@ -8,6 +8,7 @@ public class InteractingArea : ResetableBase
 
     [SerializeField] private Interaction _interaction;
     [SerializeField] private GameObject _visualInfo;
+    [SerializeField] private float _visualOffset = 1.5f; // Altura do texto acima do objeto
 
     private Collider _collider;
     private Player _player;
@@ -32,7 +33,12 @@ public class InteractingArea : ResetableBase
         _collider.isTrigger = true;
 
         if (_visualInfo != null)
+        {
             _visualInfo.SetActive(false);
+            // Posiciona o visual acima do objeto
+            _visualInfo.transform.position = transform.position + Vector3.up * _visualOffset;
+
+        }
     }
 
     // Public Methods
@@ -99,3 +105,5 @@ public class InteractingArea : ResetableBase
         }
     }
 }
+
+// Classe auxiliar para fazer o objeto sempre olhar para a câmera
