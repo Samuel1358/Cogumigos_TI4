@@ -172,7 +172,7 @@ public class CollisionHandler : MonoBehaviour
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(CollisionHandler), true), CanEditMultipleObjects]
+[CustomEditor(typeof(CollisionHandler), true)]
 public class CollisionHandlerInspector : Editor
 {
     private CollisionHandler _collisionHandler;
