@@ -42,10 +42,6 @@ public class Arrow : MonoBehaviour
     {
         if (hasHit) return;
 
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Game Over!");
-        }
 
         hasHit = true;
         Destroy(gameObject, 0.1f); // Destrói a flecha após a colisão
