@@ -259,10 +259,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 0.65
+  m_Radius: 0.71
+  m_Height: 1.1
   m_Direction: 1
-  m_Center: {x: 0, y: 0.325, z: 0}
+  m_Center: {x: 0, y: 0.71, z: 0}
 --- !u!195 &1256187436896294778
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -298,5 +298,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
-  _data: {fileID: 11400000, guid: 8abb0dfe6d85c5e46ade2f15255d06ef, type: 2}
   _visual: {fileID: 5117088430465566249}

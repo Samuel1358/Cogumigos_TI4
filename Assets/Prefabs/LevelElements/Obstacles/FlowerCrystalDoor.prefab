@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5435089859159426371}
   - component: {fileID: 2629257589796134204}
   - component: {fileID: 6272252775391473557}
+  - component: {fileID: 7300891520367513012}
   m_Layer: 8
   m_Name: TreeDoorLow
   m_TagString: Untagged
@@ -86,6 +87,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7300891520367513012
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716796580946226239}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -652166188830721945, guid: 169c549ed7210904bb18d5bbf29074e5, type: 3}
 --- !u!1 &751998948407124141
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +121,7 @@ GameObject:
   - component: {fileID: 5633962008730847416}
   - component: {fileID: 8926106697600689156}
   - component: {fileID: 8999166506393980774}
-  - component: {fileID: 8779084635467972620}
+  - component: {fileID: 7289849749402297939}
   m_Layer: 8
   m_Name: DoorCrystal
   m_TagString: Untagged
@@ -190,8 +213,8 @@ MonoBehaviour:
   selectedIndex: 0
   value: -4
   durationTime: 2
---- !u!65 &8779084635467972620
-BoxCollider:
+--- !u!64 &7289849749402297939
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -208,9 +231,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.7258925, y: 3.0658162, z: 1.3754059}
-  m_Center: {x: 0.06854057, y: 1.5086293, z: -0.1470504}
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -240344263116744698, guid: 169c549ed7210904bb18d5bbf29074e5, type: 3}
 --- !u!1 &861842605099161329
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +282,7 @@ GameObject:
   - component: {fileID: 468226262337763347}
   - component: {fileID: 5243784400152471400}
   - component: {fileID: 7789566084830515877}
+  - component: {fileID: 1882316034315046099}
   m_Layer: 8
   m_Name: TreeDoorRightLow
   m_TagString: Untagged
@@ -333,6 +358,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1882316034315046099
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831567736797037195}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1935807200343529052, guid: 169c549ed7210904bb18d5bbf29074e5, type: 3}
 --- !u!1 &4425627434768384960
 GameObject:
   m_ObjectHideFlags: 0
