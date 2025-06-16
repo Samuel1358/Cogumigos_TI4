@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7750224806313985463}
   - component: {fileID: 3564473704007083134}
-  m_Layer: 0
+  - component: {fileID: 8151860110697013734}
+  m_Layer: 10
   m_Name: Crystal3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,6 +61,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8151860110697013734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15253490226478047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &969100693803583698
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +84,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1376725500100601648}
   - component: {fileID: 8689393328860661446}
-  m_Layer: 0
+  - component: {fileID: 4135982388895852132}
+  m_Layer: 10
   m_Name: Crystal4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +135,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4135982388895852132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969100693803583698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &1309598806785321308
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +160,7 @@ GameObject:
   - component: {fileID: 6938027932463450234}
   - component: {fileID: 4612089092235298580}
   - component: {fileID: 7970620816227189024}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +269,7 @@ GameObject:
   - component: {fileID: 238085900975458645}
   - component: {fileID: 8127089388648228091}
   - component: {fileID: 6616073517022599541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +378,7 @@ GameObject:
   - component: {fileID: 6562151899136757737}
   - component: {fileID: 7581976471468404816}
   - component: {fileID: 3218738534538833589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,7 +487,7 @@ GameObject:
   - component: {fileID: 6511511180204930340}
   - component: {fileID: 7526761717558446749}
   - component: {fileID: 5832579645669756027}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -568,7 +596,7 @@ GameObject:
   - component: {fileID: 6323196815475419548}
   - component: {fileID: 6662077225253056566}
   - component: {fileID: 955413112918481123}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -677,7 +705,7 @@ GameObject:
   - component: {fileID: 897358318761974429}
   - component: {fileID: 9219132053857908531}
   - component: {fileID: 1371505852536962600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +812,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1737140929433317692}
   - component: {fileID: 1150317556570092553}
-  m_Layer: 0
+  - component: {fileID: 557238629604737808}
+  m_Layer: 10
   m_Name: Crystal2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -834,6 +863,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &557238629604737808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2213305799149207047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &2304654903159768266
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +886,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1826045761108888561}
   - component: {fileID: 3865152620620426113}
-  m_Layer: 0
+  - component: {fileID: 8208259311515158489}
+  m_Layer: 10
   m_Name: Crystal2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -894,6 +937,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8208259311515158489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304654903159768266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &3150628258858413776
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +962,7 @@ GameObject:
   - component: {fileID: 6475390376480739318}
   - component: {fileID: 8760776775816265880}
   - component: {fileID: 7350166736716147207}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,7 +1071,7 @@ GameObject:
   - component: {fileID: 7360761477536055366}
   - component: {fileID: 7895474666449148396}
   - component: {fileID: 8535116178495074701}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1122,7 +1178,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3630578459474890612}
   - component: {fileID: 4840036418701941416}
-  m_Layer: 0
+  - component: {fileID: 7102374676982906928}
+  m_Layer: 10
   m_Name: Crystal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1172,6 +1229,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7102374676982906928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557824529903200331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &4153399055787916371
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1252,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5916519341316293179}
   - component: {fileID: 7801530907398824228}
-  m_Layer: 0
+  - component: {fileID: 6360389971583431813}
+  m_Layer: 10
   m_Name: Crystal3 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,6 +1303,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6360389971583431813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4153399055787916371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &4365325468822331656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,7 +1326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2521227564787584746}
   - component: {fileID: 2721617423592975968}
-  m_Layer: 0
+  - component: {fileID: 5532799732136552426}
+  m_Layer: 10
   m_Name: Crystal4 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1292,6 +1377,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5532799732136552426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365325468822331656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &4402920094841135076
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1446,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6795501916236146411}
   - component: {fileID: 6766669848375385220}
-  m_Layer: 0
+  - component: {fileID: 7684053650288404752}
+  m_Layer: 10
   m_Name: Crystal4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1398,6 +1497,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7684053650288404752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622816937355069705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &4922535506777036512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,7 +1522,7 @@ GameObject:
   - component: {fileID: 3905792399510566854}
   - component: {fileID: 1620614497211529384}
   - component: {fileID: 2203251708841140348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1631,7 @@ GameObject:
   - component: {fileID: 1915690590431946823}
   - component: {fileID: 1234293616305222125}
   - component: {fileID: 8408624836983659799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1626,7 +1738,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6008747315298001199}
   - component: {fileID: 6518983318449024695}
-  m_Layer: 0
+  - component: {fileID: 5432188442814710151}
+  m_Layer: 10
   m_Name: Crystal1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,6 +1789,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5432188442814710151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5791297653363557904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &6874469916144997848
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,7 +1812,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6654786050877829863}
   - component: {fileID: 386338530664755017}
-  m_Layer: 0
+  - component: {fileID: 3216425518231816834}
+  m_Layer: 10
   m_Name: Crystal1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,6 +1863,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3216425518231816834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874469916144997848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &7022773355576342701
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1888,7 @@ GameObject:
   - component: {fileID: 1004719335095893207}
   - component: {fileID: 3874888005413959583}
   - component: {fileID: 6937613002946658351}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1995,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5528818664637954027}
   - component: {fileID: 5509419998491483826}
-  m_Layer: 0
+  - component: {fileID: 4729789412374893503}
+  m_Layer: 10
   m_Name: Crystal5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1905,6 +2046,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4729789412374893503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368278407974321587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &7763148906440713884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +2071,7 @@ GameObject:
   - component: {fileID: 520345034478035686}
   - component: {fileID: 4544000049687177646}
   - component: {fileID: 378833694293132544}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2178,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5076566872110115290}
   - component: {fileID: 7262180990222743349}
-  m_Layer: 0
+  - component: {fileID: 3775451289793345248}
+  m_Layer: 10
   m_Name: Crystal5 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,6 +2229,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3775451289793345248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7820707222452020098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &8061211013609538543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2084,7 +2252,8 @@ GameObject:
   m_Component:
   - component: {fileID: 317301622552493447}
   - component: {fileID: 8115840446196974275}
-  m_Layer: 0
+  - component: {fileID: 6199401695912514797}
+  m_Layer: 10
   m_Name: Crystal3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2134,6 +2303,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6199401695912514797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8061211013609538543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &8350451408259652306
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2328,7 @@ GameObject:
   - component: {fileID: 7083289042287011598}
   - component: {fileID: 1281279291224328864}
   - component: {fileID: 1320764262277127541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2253,7 +2435,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9054139515745654201}
   - component: {fileID: 6990316940860803254}
-  m_Layer: 0
+  - component: {fileID: 2462428994047123778}
+  m_Layer: 10
   m_Name: Crystal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2303,6 +2486,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2462428994047123778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8866020270740822658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &8878893067269806709
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2509,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5891560811087630381}
   - component: {fileID: 3450440555343845159}
-  m_Layer: 0
+  - component: {fileID: 4549167830600767482}
+  m_Layer: 10
   m_Name: Crystal5 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2363,6 +2560,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4549167830600767482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8878893067269806709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218d11f24efc09f4aa1f432f9d2eba53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
 --- !u!1 &8938712011399913323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2585,7 @@ GameObject:
   - component: {fileID: 1191258137532668689}
   - component: {fileID: 2936089688289054809}
   - component: {fileID: 4252935268505980000}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2484,7 +2694,7 @@ GameObject:
   - component: {fileID: 4602920130407272865}
   - component: {fileID: 993393864195075608}
   - component: {fileID: 4131268820133739238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Crystal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
