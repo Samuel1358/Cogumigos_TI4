@@ -79,13 +79,13 @@ public class InteractingArea : ResetableBase
     {
         if ((_interaction.InteractJustOnce) ? !_isInteracted : true)
         {
-            // visual
-            if (_visualInfo != null)
-                _visualInfo.SetActive(true);
-
             Player player = other.GetComponentInParent<Player>();
             if (player == null)
                 return;
+
+            // visual - só mostra se ainda não foi interagido
+            if (_visualInfo != null && !_isInteracted)
+                _visualInfo.SetActive(true);
 
             _inputActions.Player.Interact.started += InteractAction;
             _player = player;
@@ -96,7 +96,7 @@ public class InteractingArea : ResetableBase
     {
         if ((_interaction.InteractJustOnce) ? !_isInteracted : true)
         {
-            // visual
+            // visual - sempre oculta quando sai da área
             if (_visualInfo != null)
                 _visualInfo.SetActive(false);
 
