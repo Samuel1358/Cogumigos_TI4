@@ -22,14 +22,14 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 1
-        inSlope: -0.016666668
-        outSlope: -0.016666668
+        inSlope: -0.0035714286
+        outSlope: -0.0035714286
         tangentMode: 34
         weightedMode: 0
         inWeight: 0
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 15
+        time: 70
         value: 0.75
         inSlope: Infinity
         outSlope: Infinity
@@ -60,8 +60,8 @@ MonoBehaviour:
     PlayerPhysics: {fileID: 13400000, guid: a755f96acf8ffb6469587865bf542125, type: 2}
     <JumpData>k__BackingField:
       <MaxJumpTime>k__BackingField: 0.8
-      <MaxJumpHeight>k__BackingField: 2
-      <CoyoteTime>k__BackingField: 0.2
+      <MaxJumpHeight>k__BackingField: 3
+      <CoyoteTime>k__BackingField: 1
       <JumpBuffer>k__BackingField: 0.2
     <FallData>k__BackingField:
       <FallMultiplier>k__BackingField: 1.5

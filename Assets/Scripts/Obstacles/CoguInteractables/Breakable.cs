@@ -40,9 +40,9 @@ public class Breakable : CoguInteractable
         Transform father = Instantiate(_fracturedPrefab, transform).transform;
         Rigidbody[] aux = father.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody t in aux) {
-            _parts.Add(t.gameObject.transform);
             t.AddExplosionForce(_explosionForce, cogu.transform.position, _explosionRadius);
         }
+        _parts.Add(father);
         _onBreak.Invoke();
         return () => { Destroy(cogu.gameObject); };
     }
