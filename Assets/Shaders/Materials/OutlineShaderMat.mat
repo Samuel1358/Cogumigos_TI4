@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrystalShaderMat
-  m_Shader: {fileID: -6465566751694194690, guid: afa39c882a439a44e9d09efe49654a08, type: 3}
+  m_Name: OutlineShaderMat
+  m_Shader: {fileID: -6465566751694194690, guid: 47ba7a922eeb9c048926c730f4855310, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -38,20 +38,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 1
-    - _BottonLine: 0.51
-    - _Metallic: 1
+    - _OutlineThickness: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.4
-    - _TopLine: 0.58
     m_Colors:
-    - _BaseColor: {r: 2.114318, g: 0.2796933, b: 3.0401464, a: 1}
-    - _BottonColor: {r: 8.564354, g: 5.3126445, b: 2.706659, a: 1}
-    - _TopColor: {r: 0, g: 7.0437617, b: 29.857058, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &4798963655270981286
+--- !u!114 &1560897566121953836
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
