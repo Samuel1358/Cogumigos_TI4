@@ -65,7 +65,7 @@ public class ArrowTrap : MonoBehaviour
             AdvanceToNextShootPoint();
         }
         
-        Debug.Log($"ArrowTrap {name}: Shot arrow from point {currentShootPointIndex + 1}/{shootPoints.Length}");
+        //Debug.Log($"ArrowTrap {name}: Shot arrow from point {currentShootPointIndex + 1}/{shootPoints.Length}");
     }
     
     private Transform GetCurrentShootPoint()
