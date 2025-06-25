@@ -30,7 +30,7 @@ public class ExplosiveBarrel : ResetableBase {
         if (!_wasExploded) {
             StartCoroutine(ExplosionAfterColdown());
             _material.DOColor(_finalColor, _timeToExplode);
-            transform.DOScale(_finalScale, _timeToExplode);
+            _visual.transform.DOScale(_finalScale, _timeToExplode);
             _explosionRadiusVisual.DOScale(_initinalExplosionRadius, _timeToExplode);
             _willExplodePlayer = true;
         }
@@ -58,7 +58,7 @@ public class ExplosiveBarrel : ResetableBase {
         if (_willExplodePlayer) {
             RespawnController.OnPlayerRespawn.Invoke();
         }
-        transform.localScale = new Vector3(1f, 1f, 1f);
+        _visual.transform.localScale = new Vector3(1f, 1f, 1f);
         _explosionRadiusVisual.localScale = new Vector3(0.01f, 0.01f, 0.01f);
         _material.color = _initinalColor;
         yield return new WaitForSeconds(_timeToReload);
