@@ -71,6 +71,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _switchable: {fileID: 0}
   _area: {fileID: 3843611674088410698}
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &3843611674088410698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +219,18 @@ PrefabInstance:
     - target: {fileID: 4556467740938744605, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
       propertyPath: m_Name
       value: E_Interaction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
