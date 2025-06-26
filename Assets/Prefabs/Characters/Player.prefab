@@ -424,9 +424,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
-  m_Height: 1.62
+  m_Height: 1.53
   m_Direction: 1
-  m_Center: {x: 0, y: 0.98999995, z: 0}
+  m_Center: {x: 0, y: 1.035, z: 0}
 --- !u!54 &471983202795356733
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
     <CenterY>k__BackingField: 0.9
     <Radius>k__BackingField: 0.2
   <SlopeData>k__BackingField:
-    <StepHeightPercentege>k__BackingField: 0.1
+    <StepHeightPercentege>k__BackingField: 0.15
     <FloatRayDistance>k__BackingField: 2
     <StepReachForce>k__BackingField: 25
 --- !u!114 &763782506595356418
@@ -547,11 +547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _castPoint: {fileID: 2103010604124182890}
-  _interactRadius: 0
-  _fieldOfView: 0
+  _interactRadius: 10
+  _fieldOfView: 0.4
   _interactableLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   _coguCount: 0
 --- !u!114 &4870009662224598465
 MonoBehaviour:
@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TEMP_Twila_FBX
       objectReference: {fileID: 0}
+    - target: {fileID: 2026081558148769356, guid: 7f71023ae36d84c48b46c5c319196253, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a99a56e7247cc85439d1815498a87609, type: 2}
     - target: {fileID: 5866666021909216657, guid: 7f71023ae36d84c48b46c5c319196253, type: 3}
       propertyPath: m_Controller
       value: 
