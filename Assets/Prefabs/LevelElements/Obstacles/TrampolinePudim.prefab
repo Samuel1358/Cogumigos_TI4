@@ -106,7 +106,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1975962547214924908}
   - component: {fileID: 3385542555461980390}
-  m_Layer: 0
+  - component: {fileID: 6503001434227669025}
+  - component: {fileID: 4231121864884654109}
+  m_Layer: 6
   m_Name: TrampolineCogu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -188,6 +190,41 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0.81344426, z: 0}
     m_Extent: {x: 2.3957753, y: 0.8201835, z: 2.3957748}
   m_DirtyAABB: 0
+--- !u!64 &6503001434227669025
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646906973178617515}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 610570822625923759, guid: 22e6bfd5e9a5c20429f4fbfc7dbb9c0f, type: 3}
+--- !u!114 &4231121864884654109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2646906973178617515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123a76b815595da4f9c0d5e2916108a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceForce: 30
 --- !u!1 &3753884614159870651
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +235,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6557041262745437410}
   - component: {fileID: 6903341021410800346}
-  - component: {fileID: 2011399806322589953}
+  - component: {fileID: 920825138617515260}
   m_Layer: 9
   m_Name: TrampolinePudim
   m_TagString: Untagged
@@ -240,8 +277,8 @@ MonoBehaviour:
   _assignedCoguType: 2
   _interactDistance: 0
   _trampoloPrefab: {fileID: 0}
---- !u!64 &2011399806322589953
-MeshCollider:
+--- !u!65 &920825138617515260
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -258,10 +295,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 610570822625923759, guid: 22e6bfd5e9a5c20429f4fbfc7dbb9c0f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.058802, y: 1.2618593, z: 1.8585899}
+  m_Center: {x: -0.07143128, y: 0.87427646, z: 0.0517987}
 --- !u!1 &5534324348353765358
 GameObject:
   m_ObjectHideFlags: 0
