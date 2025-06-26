@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrystalShaderMat
+  m_Name: CrystalFlowerBaseShaderMat
   m_Shader: {fileID: -6465566751694194690, guid: afa39c882a439a44e9d09efe49654a08, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -38,17 +38,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.66
+    - _Alpha: 0.95
     - _BottonLine: 0.51
     - _Metallic: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.4
+    - _Smoothness: 0.13
     - _TopLine: 0.58
     m_Colors:
-    - _BaseColor: {r: 2.114318, g: 0.2796933, b: 3.0401464, a: 1}
-    - _BottonColor: {r: 8.564354, g: 5.3126445, b: 2.706659, a: 1}
-    - _TopColor: {r: 0, g: 7.0437617, b: 29.857058, a: 1}
+    - _BaseColor: {r: 0.04174649, g: 0.21509439, b: 0.036931295, a: 1}
+    - _BottonColor: {r: 0.19437493, g: 2.6415095, b: 0.33459947, a: 1}
+    - _TopColor: {r: 0.35883227, g: 0.8528302, b: 0.42393282, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4798963655270981286
