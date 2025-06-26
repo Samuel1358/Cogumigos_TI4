@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class SwitchableAppearing : Switchable
 {
     [SerializeField] private GameObject _visual;

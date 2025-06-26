@@ -48,7 +48,7 @@ public class Breakable : CoguInteractable
     }
 
     public override void ResetObject() {
-        base.ResetObject();
+        //base.ResetObject();
         if (NeedReset) 
         { 
             ActivateWall();

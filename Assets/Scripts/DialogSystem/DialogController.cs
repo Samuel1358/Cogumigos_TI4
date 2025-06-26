@@ -5,6 +5,8 @@ namespace DialogSystem
 {
     public class DialogController : MonoBehaviour
     {
+        public static DialogController instance;
+
         [SerializeField] private DialogUI dialogUI;
         
         private DialogData currentDialog;
@@ -15,6 +17,14 @@ namespace DialogSystem
         
         public event Action OnDialogStarted;
         public event Action OnDialogEnded;
+
+        private void Awake()
+        {
+            if (instance == null)
+                instance = this;
+            else
+                Destroy(gameObject);
+        }
 
         private void Start()
         {
@@ -47,16 +57,16 @@ namespace DialogSystem
             OnDialogStarted?.Invoke();
         }
 
-        public void AdvanceDialog()
+        public bool AdvanceDialog()
         {
             if (!isDialogActive)
             {
-                return;
+                return false;
             }
 
             if (Time.time < dialogStartTime + advanceDelay)
             {
-                return;
+                return false;
             }
 
             currentLineIndex++;
@@ -64,10 +74,12 @@ namespace DialogSystem
             if (currentLineIndex >= currentDialog.LineCount)
             {
                 EndDialog();
-                return;
+                return true;
             }
 
             DisplayCurrentLine();
+
+            return false;
         }
 
         public void EndDialog()
