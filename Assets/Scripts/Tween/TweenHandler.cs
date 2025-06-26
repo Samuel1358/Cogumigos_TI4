@@ -9,10 +9,10 @@ public static class TweenHandler
     public static float randomness = 30f;   
 
     // Private Methods
-    private static Tweener Timer(float time, Action actionBefore)
+    public static Tweener Timer(float duration)
     {
         float count = 0;
-        return DOTween.To(() => count, x => count = x, 10, time).OnComplete(() => actionBefore.Invoke());
+        return DOTween.To(() => count, x => count = x, 10, duration);
     }
 
     private static Tweener ShakeRotation(Transform transform, Vector3 shakeDirection, float time, Action actionBefore)
@@ -27,7 +27,8 @@ public static class TweenHandler
     public static void FallingPlatformShake(Transform transform, Vector3 shakeDirection, float fallTime, float restoreTime, Action fallAction, Action restoreAction)
     {
         Tweener fall = ShakeRotation(transform, shakeDirection, fallTime, fallAction);
-        Tweener restore = Timer(restoreTime, restoreAction);
+        Tweener restore = Timer(restoreTime);
+        restore.OnComplete(restoreAction.Invoke);
 
         Sequence sequence = DOTween.Sequence();
         sequence.Append(fall);
