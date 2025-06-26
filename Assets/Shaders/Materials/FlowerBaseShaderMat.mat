@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrystalWallShaderMat
+  m_Name: FlowerBaseShaderMat
   m_Shader: {fileID: -6465566751694194690, guid: afa39c882a439a44e9d09efe49654a08, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -16,7 +16,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3001
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
@@ -38,17 +38,17 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.66
-    - _BottonLine: 0.51
-    - _Metallic: 1
+    - _Alpha: 1
+    - _BottonLine: 0.32
+    - _Metallic: 0.63
     - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Smoothness: 0.4
-    - _TopLine: 0.58
+    - _QueueOffset: 1
+    - _Smoothness: 0.2
+    - _TopLine: 0.64
     m_Colors:
-    - _BaseColor: {r: 1.9962946, g: 2.9960785, b: 1.4901961, a: 1}
-    - _BottonColor: {r: 8.564354, g: 5.3126445, b: 2.706659, a: 1}
-    - _TopColor: {r: 3.154717, g: 0.9700148, b: 0.39880377, a: 1}
+    - _BaseColor: {r: 0.09133333, g: 0.137, b: 0.04566667, a: 1}
+    - _BottonColor: {r: 0.19437493, g: 2.6415095, b: 0.33459947, a: 1}
+    - _TopColor: {r: 0.7031275, g: 0.8509804, b: 0.36078432, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4798963655270981286
