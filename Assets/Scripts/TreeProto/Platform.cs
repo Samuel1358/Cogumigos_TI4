@@ -31,8 +31,8 @@ public class Platform : MonoBehaviour
             playerOnPlatform.Translate(platformMovement, Space.World);
         }
 
-        if ((moveRight && transform.position.x >= resetXPosition) || 
-            (!moveRight && transform.position.x <= resetXPosition))
+        if ((moveRight && transform.position.x <= resetXPosition) || 
+            (!moveRight && transform.position.x >= resetXPosition))
         {
             Vector3 resetMovement = resetPosition - transform.position;
             transform.position = resetPosition;
