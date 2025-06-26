@@ -43,7 +43,7 @@ public class ExplosiveBarrel : ResetableBase {
     }
 
     public override void ResetObject() {
-        base.ResetObject();
+        //base.ResetObject();
 
         _visual.SetActive(true);
         _willExplodePlayer = false;

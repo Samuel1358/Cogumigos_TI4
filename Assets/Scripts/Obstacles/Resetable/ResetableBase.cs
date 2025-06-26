@@ -34,6 +34,7 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
         RespawnController.Instance.TurnResetable(this);
     }
 
-    public virtual void ResetObject() {
-    }
+    //public abstract void SetMemory();
+
+    public abstract void ResetObject();
 }
