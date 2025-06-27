@@ -1,7 +1,8 @@
+using DG.Tweening;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider), typeof(KeyedDoorFeedback))]
 public class KeyedDoorInteract : ResetableBase
 {
     private PlayerInputActions _inputActions;
@@ -11,10 +12,11 @@ public class KeyedDoorInteract : ResetableBase
     [SerializeField] private GameObject _visualInfo;
 
     [Header("Settings")]
-    [SerializeField] private KeyTypes _keyAccepted;
+    [SerializeField] private KeyTypes _keyAccepted;   
 
     private bool _isInteracting = false;
     private bool _isInteracted = false;
+    private KeyedDoorFeedback _feedback;
 
     protected override void OnEnable()
     {
@@ -32,6 +34,8 @@ public class KeyedDoorInteract : ResetableBase
     private void Start()
     {
         GetComponent<Collider>().isTrigger = true;
+        _feedback = GetComponent<KeyedDoorFeedback>();
+
         if (_visualInfo != null)
             _visualInfo.SetActive(false);
     }
@@ -83,7 +87,7 @@ public class KeyedDoorInteract : ResetableBase
 
             if (player.Inventory.TryUseKey(_keyAccepted))
             {
-                _switchable.Activate();
+                _feedback.Open(other, _switchable.Activate);
                 _isInteracted = true;
 
                 // visual

@@ -50,13 +50,25 @@ VisualEffect:
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
-      m_Array: []
+      m_Array:
+      - m_Value: 1
+        m_Name: Size
+        m_Overridden: 1
+      - m_Value: 4
+        m_Name: ParticleRate
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 4.1679654, y: 0.5628809, z: 5.963236, w: 1}
+        m_Name: Color2
+        m_Overridden: 1
+      - m_Value: {x: 5.963236, y: 3.7422707, z: 1.9071813, w: 1}
+        m_Name: Color1 1
+        m_Overridden: 1
     m_Uint:
       m_Array: []
     m_Int:
@@ -80,7 +92,7 @@ VFXRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4392839910504088390}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -168,15 +180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
-      propertyPath: m_LocalRotation.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375317870031294173, guid: 17470effb153ce44ba1b1d449abdaf5f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
