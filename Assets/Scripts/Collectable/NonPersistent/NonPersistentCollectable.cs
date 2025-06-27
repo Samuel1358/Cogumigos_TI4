@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class NonPersistentCollectable : ResetableBase
 {
     [SerializeField] private GameObject _visual;
     [SerializeField] private Collider _collider;
+    [SerializeField] private UnityEvent _onCollect;
     private bool _wasCollected;
 
     private void Awake() {
@@ -17,6 +19,7 @@ public abstract class NonPersistentCollectable : ResetableBase
                 _collider.enabled = false;
                 _wasCollected = true;
                 OnCollect(player.Inventory);
+                _onCollect.Invoke();
             }
         }
     }
