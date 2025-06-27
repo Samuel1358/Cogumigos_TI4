@@ -57,6 +57,33 @@ namespace DialogSystem
             OnDialogStarted?.Invoke();
         }
 
+        public void StartDialog(DialogData dialogData, int index)
+        {
+            if (dialogData == null || dialogData.LineCount == 0)
+            {
+                return;
+            }
+
+            currentDialog = dialogData;
+            if (index < currentDialog.LineCount && index >= 0)
+                currentLineIndex = index;
+            else
+                currentLineIndex = 0;
+
+            isDialogActive = true;
+            dialogStartTime = Time.time;
+
+            if (dialogUI != null)
+            {
+                dialogUI.ShowPanel();
+
+                CancelInvoke(nameof(DisplayCurrentLine));
+                Invoke(nameof(DisplayCurrentLine), 0.05f);
+            }
+
+            OnDialogStarted?.Invoke();
+        }
+
         public bool AdvanceDialog()
         {
             if (!isDialogActive)

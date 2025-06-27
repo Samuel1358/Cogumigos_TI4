@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2482816805223774743}
   - component: {fileID: 7278861056759388770}
   - component: {fileID: 6724186285426255368}
+  - component: {fileID: 6612820822694331611}
   m_Layer: 11
   m_Name: Collectable
   m_TagString: Untagged
@@ -71,6 +72,21 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _visual: {fileID: 7018966783481949218}
   _collider: {fileID: 2482816805223774743}
+  _onCollect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6612820822694331611}
+        m_TargetAssemblyTypeName: DialogSystem.DialogInteractable, Assembly-CSharp
+        m_MethodName: StartDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _ingredientType: 0
 --- !u!114 &6724186285426255368
 MonoBehaviour:
@@ -87,6 +103,21 @@ MonoBehaviour:
   amplitude: 0.5
   speed: 1
   startMoving: 1
+--- !u!114 &6612820822694331611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241346667940507188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2a7e38b56622418e9fe858f82c06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogData: {fileID: 11400000, guid: dff3432643836624cb98f11a78df284a, type: 2}
+  _visualInfo: {fileID: 0}
+  _autoPlay: 1
 --- !u!1001 &3656308595653411366
 PrefabInstance:
   m_ObjectHideFlags: 0
