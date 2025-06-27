@@ -22,10 +22,13 @@ public class DisappearingPlatform : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (_isActive)
-        {
-            TweenHandler.FallingPlatformShake(transform, new Vector3(.4f, .4f, 1), _disappearTime, _reappearTime, DisablePlatform, EnablePlatform);
-        }
+        if (!_isActive)
+            return;
+
+        if (collision.gameObject.transform.position.y < transform.position.y - 0.2f)
+            return;
+
+        TweenHandler.FallingPlatformShake(transform, new Vector3(.4f, .4f, 1), _disappearTime, _reappearTime, DisablePlatform, EnablePlatform);
     }
     
     public void DisablePlatform()

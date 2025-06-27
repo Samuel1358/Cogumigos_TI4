@@ -25,6 +25,9 @@ public class PlatformFragment : CollisionHandlerChild
     // Inherited public Methods
     public override void ParentCollisionEnter(Collision other)
     {
+        if (other.gameObject.transform.position.y < transform.position.y - 0.2f)
+            return;
+
         TweenHandler.FallingPlatformShake(transform, new Vector3(.5f, .5f, 1), _fallDelay, _restoreDelay, Fall, Restore);
     }
 
