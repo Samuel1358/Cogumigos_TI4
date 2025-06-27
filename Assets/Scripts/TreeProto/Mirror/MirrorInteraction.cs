@@ -120,12 +120,12 @@ public class MirrorInteraction : MonoBehaviour
         // Toca som de rotação
         PlayRotationSound();
 
-        // Rotaciona o espelho
-        mirrorReflector.ToggleReflectionDirection();
+        // Rotaciona o espelho (usando novo sistema)
+        mirrorReflector.ToggleMirrorState();
 
         if (_showDebugInfo)
         {
-            Debug.Log($"Player interacted with mirror {gameObject.name} - New direction: {mirrorReflector.GetReflectionDirection()}");
+            Debug.Log($"Player interacted with mirror {gameObject.name} - New state: {mirrorReflector.GetCurrentState()}");
         }
     }
 
@@ -170,19 +170,19 @@ public class MirrorInteraction : MonoBehaviour
     }
 
     /// <summary>
-    /// Define uma direção específica do espelho
+    /// Define um estado específico do espelho
     /// </summary>
-    public void SetMirrorDirection(ReflectionDirection direction)
+    public void SetMirrorState(MirrorState state)
     {
         var mirror = GetMirrorReflector();
         if (mirror != null)
         {
             PlayRotationSound();
-            mirror.SetReflectionDirectionAnimated(direction);
+            mirror.SetMirrorStateAnimated(state);
             
             if (_showDebugInfo)
             {
-                Debug.Log($"Mirror direction set to {direction} on {gameObject.name}");
+                Debug.Log($"Mirror state set to {state} on {gameObject.name}");
             }
         }
     }
@@ -196,6 +196,15 @@ public class MirrorInteraction : MonoBehaviour
         return mirror != null && mirror.IsRotating();
     }
 
+    /// <summary>
+    /// Retorna o estado atual do espelho
+    /// </summary>
+    public MirrorState GetCurrentMirrorState()
+    {
+        var mirror = GetMirrorReflector();
+        return mirror != null ? mirror.GetCurrentState() : MirrorState.ReflectRight;
+    }
+
     // Métodos para uso no inspector/debug
     [ContextMenu("Test Interaction")]
     private void TestInteraction()
@@ -203,28 +212,27 @@ public class MirrorInteraction : MonoBehaviour
         HandleMirrorInteraction(GetMirrorReflector());
     }
 
-    [ContextMenu("Set Direction: Up")]
-    private void SetDirectionUp()
+    [ContextMenu("Set State: Reflect Right")]
+    private void SetStateRight()
     {
-        SetMirrorDirection(ReflectionDirection.Up);
+        SetMirrorState(MirrorState.ReflectRight);
     }
 
-    [ContextMenu("Set Direction: Right")]
-    private void SetDirectionRight()
+    [ContextMenu("Set State: Reflect Left")]
+    private void SetStateLeft()
     {
-        SetMirrorDirection(ReflectionDirection.Right);
+        SetMirrorState(MirrorState.ReflectLeft);
     }
 
-    [ContextMenu("Set Direction: Down")]
-    private void SetDirectionDown()
+    [ContextMenu("Toggle Mirror State")]
+    private void ToggleState()
     {
-        SetMirrorDirection(ReflectionDirection.Down);
-    }
-
-    [ContextMenu("Set Direction: Left")]
-    private void SetDirectionLeft()
-    {
-        SetMirrorDirection(ReflectionDirection.Left);
+        var mirror = GetMirrorReflector();
+        if (mirror != null)
+        {
+            PlayRotationSound();
+            mirror.ToggleMirrorState();
+        }
     }
 
     private void OnValidate()
