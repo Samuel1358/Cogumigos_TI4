@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 8261219313525098386}
   - {fileID: 604102150525091260}
+  - {fileID: 3871189500598777178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4825082772989531274
@@ -73,7 +74,19 @@ MonoBehaviour:
   _area: {fileID: 3843611674088410698}
   _onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1916513791035553101}
+        m_TargetAssemblyTypeName: DialogSystem.DialogInteractable, Assembly-CSharp
+        m_MethodName: StartDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3843611674088410698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +103,53 @@ MonoBehaviour:
   _interaction: {fileID: 0}
   _visualInfo: {fileID: 0}
   _visualOffset: 1.5
+--- !u!1 &7191996671414287824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3871189500598777178}
+  - component: {fileID: 1916513791035553101}
+  m_Layer: 11
+  m_Name: DialogInteract
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3871189500598777178
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191996671414287824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2924677291601841030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916513791035553101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7191996671414287824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2a7e38b56622418e9fe858f82c06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogData: {fileID: 11400000, guid: 6301f202f13942d4b9f858abbf9db1bd, type: 2}
+  _visualInfo: {fileID: 0}
+  _autoPlay: 1
 --- !u!1001 &2507599327924917670
 PrefabInstance:
   m_ObjectHideFlags: 0

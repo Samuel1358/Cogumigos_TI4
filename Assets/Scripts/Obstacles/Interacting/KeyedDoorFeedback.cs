@@ -20,7 +20,7 @@ public class KeyedDoorFeedback : ResetableBase
 
     private void Start()
     {
-        _keyVisual.SetActive(false);
+        SetKeyVisualActive(false);
         //_keyVisual.transform.localScale *= _keyVisualScale;
 
         RespawnController.OnPlayerChangeCheckPoint += SetMemory;
@@ -28,9 +28,15 @@ public class KeyedDoorFeedback : ResetableBase
 
     public void Open(Collider other, Action openAction)
     {
+        if (_keyVisual == null)
+        {
+            openAction.Invoke();
+            return;
+        }
+
         _keyVisual.transform.position = other.transform.position;
         _keyVisual.transform.rotation = Quaternion.identity;
-        _keyVisual.SetActive(true);
+        SetKeyVisualActive(true);
 
         if (_rotateOnMoveDuration > _moveDuration)
             _rotateOnMoveDuration = _moveDuration;
@@ -52,6 +58,12 @@ public class KeyedDoorFeedback : ResetableBase
         transform.Rotate(_finalRotateSpeed * Time.deltaTime * Vector3.up, Space.Self);
     }  
 
+    private void SetKeyVisualActive(bool value)
+    {
+        if (_keyVisual != null)
+            _keyVisual.SetActive(value);
+    }
+
     // Resetable
     private void SetMemory(Checkpoint checkpoint)
     {
@@ -60,6 +72,6 @@ public class KeyedDoorFeedback : ResetableBase
 
     public override void ResetObject()
     {
-        _keyVisual.SetActive(_activeAtCheckpoint);
+        SetKeyVisualActive(_activeAtCheckpoint);
     }
 }

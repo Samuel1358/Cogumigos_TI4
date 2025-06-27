@@ -60,7 +60,6 @@ namespace DialogSystem
                     rootCanvas.gameObject.SetActive(true);
                 }
                 
-                Debug.Log("Mostrando painel de diálogo");
                 dialogPanel.SetActive(true);
                 
                 if (speakerNameText != null)
@@ -78,7 +77,6 @@ namespace DialogSystem
         {
             if (dialogPanel != null)
             {
-                Debug.Log("Ocultando painel de diálogo");
                 dialogPanel.SetActive(false);
             }
         }
