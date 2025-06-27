@@ -1,5 +1,6 @@
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
+using DG.Tweening;
 
 namespace DialogSystem
 {
@@ -7,13 +8,15 @@ namespace DialogSystem
     {
         private PlayerInputActions _inputActions;
 
-        [SerializeField] private DialogData dialogData;
+        [SerializeField] private DialogData _dialogData;
         [SerializeField] private GameObject _visualInfo;
-        [SerializeField] private bool autoPlay = true;
+        [SerializeField] private bool _autoPlay = true;
+
+        private bool _hasInteractedOnce = false;
 
         private void OnEnable()
         {
-            _visualInfo.SetActive(false);
+            SetVisualActive(false);
 
             _inputActions = new PlayerInputActions();
             _inputActions.Player.Enable();
@@ -26,23 +29,43 @@ namespace DialogSystem
             _inputActions.Player.Disable();
         }
 
-        // Public Methods
+        #region // Public Methods
+
         public void StartDialog()
         {
-            if (dialogData == null)
+            if (_dialogData == null || DialogController.instance.IsDialogActive)
                 return;
 
-            if (DialogController.instance.IsDialogActive)
-                return;
-
-            DialogController.instance.StartDialog(dialogData);
+            //start dialog
+            if (_dialogData.RandomLine)
+                DialogController.instance.StartDialog(_dialogData, Random.Range(0, _dialogData.LineCount));
+            else
+                DialogController.instance.StartDialog(_dialogData);
 
             _inputActions.Player.Interact.started -= StartDialog;
+
+            //line auto-close
+            if (_dialogData.Duration > 0f)
+            {
+                TweenHandler.Timer(_dialogData.Duration).OnComplete(DialogController.instance.EndDialog);
+                return;
+            }
+
             _inputActions.Player.Interact.started += AdvanceDialog;
         }
 
+        #endregion
 
-        // Private Methods
+        #region // Private Methods
+
+        private void SetVisualActive(bool value)
+        {
+            if (_visualInfo == null)
+                return;
+
+            _visualInfo.SetActive(value);
+        }
+
         private void AdvanceDialog()
         {
             if (!DialogController.instance.IsDialogActive)
@@ -52,7 +75,10 @@ namespace DialogSystem
                 _inputActions.Player.Interact.started -= AdvanceDialog;
         }
 
-        // Input
+        #endregion
+
+        #region // Inputs
+
         private void StartDialog(CallbackContext callbackContext)
         {
             StartDialog();
@@ -63,22 +89,38 @@ namespace DialogSystem
             AdvanceDialog();
         }
 
+        #endregion
+
+        #region // Trigger
+
         private void OnTriggerEnter(Collider other)
         {
-            if (autoPlay)
+            //verify just once interact
+            if (_dialogData.ShowJustOnce)
+            {
+                if (_hasInteractedOnce)
+                    return;
+                else
+                    _hasInteractedOnce = true;
+            }
+
+            // auto-play
+            if (_autoPlay)
             {
                 StartDialog();
                 return;
             }
 
-            _visualInfo.SetActive(true);
+            SetVisualActive(true);
             _inputActions.Player.Interact.started += StartDialog;
         }
         
         private void OnTriggerExit(Collider other)
         {
-            _visualInfo.SetActive(false);
+            SetVisualActive(false);
             _inputActions.Player.Interact.started -= StartDialog;
-        }       
+        }
+
+        #endregion
     }
 } 
