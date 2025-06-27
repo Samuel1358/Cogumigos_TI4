@@ -12,6 +12,18 @@ public class FlowerColorLerp : MonoBehaviour
     private int direction = 1;  // 1 = indo para frente, -1 = voltando
     private float timer = 0f;
 
+    private Color _startColor;
+
+    private void OnEnable()
+    {
+        _startColor = targetMaterial.color;
+    }
+
+    private void OnDisable()
+    {
+        targetMaterial.color = _startColor;
+    }
+
     void Update()
     {
         if (targetMaterial == null || colorSequence.Length < 2) return;
