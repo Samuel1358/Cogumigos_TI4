@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4825082772989531274}
   - component: {fileID: 80091164561245635}
   - component: {fileID: 3843611674088410698}
+  - component: {fileID: 69974866785954755}
   m_Layer: 11
   m_Name: Lever
   m_TagString: Untagged
@@ -71,6 +72,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _switchable: {fileID: 0}
   _area: {fileID: 3843611674088410698}
+  _onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 69974866785954755}
+        m_TargetAssemblyTypeName: DialogSystem.DialogInteractable, Assembly-CSharp
+        m_MethodName: StartDialog
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3843611674088410698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +103,21 @@ MonoBehaviour:
   _interaction: {fileID: 0}
   _visualInfo: {fileID: 0}
   _visualOffset: 1.5
+--- !u!114 &69974866785954755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6313359627609195810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d2a7e38b56622418e9fe858f82c06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogData: {fileID: 11400000, guid: 6301f202f13942d4b9f858abbf9db1bd, type: 2}
+  _visualInfo: {fileID: 0}
+  _autoPlay: 1
 --- !u!1001 &3363761951078617704
 PrefabInstance:
   m_ObjectHideFlags: 0
