@@ -12,13 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc71ed0871d73a34991d8f0440666756, type: 3}
   m_Name: TestDialog
   m_EditorClassIdentifier: 
-  dialogLines:
-  - speakerName: Jordan
-    speakerPortrait: {fileID: 21300000, guid: 72ac2faebb6f2f549bfe8eb770fdaf79, type: 3}
-    message: Oi eu sou o Jordan
-  - speakerName: 'Samuel '
-    speakerPortrait: {fileID: 21300000, guid: 8c56d0d09b6429646bdfbfd1da24594f, type: 3}
-    message: Eu sou o gatinho!
-  - speakerName: Jordan
-    speakerPortrait: {fileID: 21300000, guid: 72ac2faebb6f2f549bfe8eb770fdaf79, type: 3}
-    message: Eu gosto de dar a bunda gatinho
+  _dialogLines:
+  - speakerName: 
+    speakerPortrait: {fileID: 0}
+    message: Texto 1
+  - speakerName: 
+    speakerPortrait: {fileID: 0}
+    message: Texto 2
+  - speakerName: 
+    speakerPortrait: {fileID: 0}
+    message: Texto 3
+  _duration: 5
+  _showJustOnce: 0
+  _randomLine: 1
