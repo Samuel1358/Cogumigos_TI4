@@ -3103,6 +3103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level2FirstFloor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d9bfa8b6bd811384393501c0cb4ff9d1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3438,6 +3442,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6bc0b0776f110e8418d7f4fb14342dae, type: 3}
       propertyPath: m_Name
       value: Level2SecondFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6bc0b0776f110e8418d7f4fb14342dae, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6bc0b0776f110e8418d7f4fb14342dae, type: 3}
       propertyPath: m_IsActive
@@ -7426,7 +7434,7 @@ Transform:
   m_GameObject: {fileID: 1876083335}
   serializedVersion: 2
   m_LocalRotation: {x: 0.22975296, y: -3.0760268e-12, z: 7.261515e-13, w: 0.973249}
-  m_LocalPosition: {x: 68.5, y: 46.5, z: -58.7}
+  m_LocalPosition: {x: 68.49995, y: 45.483105, z: -56.66513}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
