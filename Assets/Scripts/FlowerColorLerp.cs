@@ -3,7 +3,7 @@ using UnityEngine;
 public class FlowerColorLerp : MonoBehaviour
 {
     [Header("Material Settings")]
-    [SerializeField] private Material targetMaterial;          // Material compartilhado a ser modificado
+    [SerializeField] private int targetMaterialIndex;          // Material compartilhado a ser modificado
     [SerializeField] private Color[] colorSequence;           // Cores predefinidas
     [SerializeField] private float durationPerColor = 1f;     // Tempo entre cada cor
     [SerializeField] private bool loop = true;                // Se o ciclo deve reiniciar ao fim
@@ -14,7 +14,11 @@ public class FlowerColorLerp : MonoBehaviour
 
     void Update()
     {
-        if (targetMaterial == null || colorSequence.Length < 2) return;
+        if (targetMaterialIndex < 0)
+        {
+            Debug.LogWarning($"FlowerRandomizeColor: Índice inválido de material ({targetMaterialIndex}) em {gameObject.name}", this);
+            return;
+        }
 
         timer += Time.deltaTime;
         float t = Mathf.SmoothStep(0f, 1f, timer / durationPerColor);
@@ -22,7 +26,8 @@ public class FlowerColorLerp : MonoBehaviour
         Color fromColor = colorSequence[currentColorIndex];
         Color toColor = colorSequence[currentColorIndex + direction];
 
-        targetMaterial.color = Color.Lerp(fromColor, toColor, t);
+        Renderer randerer = GetComponent<Renderer>();
+        randerer.materials[targetMaterialIndex].color = Color.Lerp(fromColor, toColor, t);
 
         if (timer >= durationPerColor)
         {
