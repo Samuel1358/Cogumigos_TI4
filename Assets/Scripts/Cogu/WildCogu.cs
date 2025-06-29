@@ -7,6 +7,7 @@ public class WildCogu : ResetableBase
     // Fields
     //[SerializeField] private CoguData _data;
     [SerializeField] private GameObject _visual;
+    [SerializeField] private Animator _animator;
 
     private WildCoguStateMachine _stateMachine;
     private Collider _collider;
@@ -17,6 +18,7 @@ public class WildCogu : ResetableBase
     // Properties
     //public CoguData Data { get { return _data; } }
     public WildCoguStateMachine StateMachine {  get { return _stateMachine; } }
+    public Animator Animator { get { return _animator; } }
     //public NavMeshAgent Agent { get { return _agent; } }
 
     private void Awake()
@@ -79,7 +81,7 @@ public class WildCogu : ResetableBase
         CoguCastter castter = other.GetComponentInParent<CoguCastter>();
         if (castter != null)
         {
-            StateMachine.ChangeState(StateMachine.DisappearState.Setup(castter.CastPoint));
+            StateMachine.ChangeState(StateMachine.AttracState.Setup(castter.CastPoint));
         }
     }
 

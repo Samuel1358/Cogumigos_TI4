@@ -6,7 +6,7 @@ public class IdleWildCoguState : WildCoguState
     public IdleWildCoguState(WildCoguStateMachine stateMachine) : base(stateMachine) { }
 
     // Inherited Public Methods
-    public override void Enter()
+    public override void Update()
     {
         //Debug.Log("Enter - Idle");
     }
