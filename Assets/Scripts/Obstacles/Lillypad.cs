@@ -190,7 +190,6 @@ public class Lillypad : MonoBehaviour
     private IEnumerator StartSinkingAfterDelay()
     {
         yield return new WaitForSeconds(disappearDelay);
-        AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         isSinking = true;
     }
 
@@ -199,6 +198,7 @@ public class Lillypad : MonoBehaviour
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
             playerOnPlatform = collision.transform;
+            AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         }
     }
 

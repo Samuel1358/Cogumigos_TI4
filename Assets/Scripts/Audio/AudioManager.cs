@@ -10,7 +10,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private List<SoundEffect> soundEffects = new List<SoundEffect>();
 
+    [Header("Proximity Audio Settings")]
+    [SerializeField] private float proximityDistance = 20f;              // Distance to check for proximity
+    [SerializeField] private bool showProximityDebug = false;           // Show debug info
+
     private Dictionary<string, AudioClip> soundEffectDictionary = new Dictionary<string, AudioClip>();
+    private Transform playerTransform;
 
     // Volume settings
     private float masterVolume = 1f;
@@ -108,7 +113,7 @@ public class AudioManager : MonoBehaviour
         if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip))
         {
             sfxSource.pitch = pitch;
-            sfxSource.PlayOneShot(clip, 1f);
+            sfxSource.PlayOneShot(clip, volume);
         }
         else
         {
@@ -143,17 +148,93 @@ public class AudioManager : MonoBehaviour
         isDeathSoundPlaying = false;
     }
 
+    /// <summary>
+    /// Plays a sound effect at a specific position with 3D audio
+    /// </summary>
     public void PlaySFXAtPosition(string soundName, Vector3 position, float volume = 1f, float pitch = 1f)
     {
         if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip))
         {
-            float totalVolume = masterVolume * sfxVolume;
+            float totalVolume = volume * masterVolume * sfxVolume;
             AudioSource.PlayClipAtPoint(clip, position, totalVolume);
         }
         else
         {
             Debug.LogWarning($"Sound effect '{soundName}' not found!");
         }
+    }
+
+    /// <summary>
+    /// Plays a sound effect only if the player is within proximity distance
+    /// </summary>
+    public bool PlaySFXIfPlayerNearby(string soundName, Vector3 position, float volume = 1f, float pitch = 1f)
+    {
+        if (playerTransform == null)
+        {
+            // Try to find player
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTransform = player.transform;
+            }
+            else
+            {
+                if (showProximityDebug)
+                    Debug.LogWarning("AudioManager: Player not found! Cannot check proximity.");
+                return false;
+            }
+        }
+
+        float distance = Vector3.Distance(position, playerTransform.position);
+        
+        if (distance <= proximityDistance)
+        {
+            PlaySFXAtPosition(soundName, position, volume, pitch);
+            
+            if (showProximityDebug)
+                Debug.Log($"AudioManager: Playing '{soundName}' at distance {distance:F2} (max: {proximityDistance})");
+            
+            return true;
+        }
+        else
+        {
+            if (showProximityDebug)
+                Debug.Log($"AudioManager: Player too far for '{soundName}' - distance {distance:F2} (max: {proximityDistance})");
+            
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Sets the player transform for proximity calculations
+    /// </summary>
+    public void SetPlayerTransform(Transform player)
+    {
+        playerTransform = player;
+        if (showProximityDebug)
+            Debug.Log($"AudioManager: Player transform set to {player.name}");
+    }
+
+    /// <summary>
+    /// Checks if a position is within proximity distance of the player
+    /// </summary>
+    public bool IsPlayerNearby(Vector3 position)
+    {
+        if (playerTransform == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerTransform = player.transform;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        float distance = Vector3.Distance(position, playerTransform.position);
+        return distance <= proximityDistance;
     }
 
     public void PlayBGM(AudioClip bgmClip)
@@ -184,4 +265,14 @@ public class AudioManager : MonoBehaviour
     public float GetMasterVolume() => masterVolume;
     public float GetSFXVolume() => sfxVolume;
     public float GetBGMVolume() => bgmVolume;
-} 
+
+    private void OnDrawGizmosSelected()
+    {
+        // Draw proximity range in scene view
+        if (playerTransform != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(playerTransform.position, proximityDistance);
+        }
+    }
+}   
