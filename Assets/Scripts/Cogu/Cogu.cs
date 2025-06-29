@@ -8,6 +8,7 @@ public class Cogu : MonoBehaviour
     // Fields
     [SerializeField] private CoguData _data;
     [SerializeField] private Animator _animator;
+    [SerializeField] private LookAtTarget _lookAtTarget;
 
     private CoguStateMachine _stateMachine;
     //private NavMeshAgent _agent;
@@ -19,6 +20,7 @@ public class Cogu : MonoBehaviour
     // Properties
     public CoguData Data { get { return _data; } }
     public Animator Animator { get { return _animator; } }
+    public LookAtTarget LookAtTarget { get { return _lookAtTarget; } }
     public CoguStateMachine StateMachine { get { return _stateMachine; } }
     //public NavMeshAgent Agent { get { return _agent; } }
     public Vector3 CastSpot { get { return _castSpot; } }
@@ -41,6 +43,8 @@ public class Cogu : MonoBehaviour
         _castSpot = transform.position;
         float t = interactable.InteractDistance / (transform.position - interactable.transform.position).magnitude;
         _interactSpot = Vector3.Lerp(interactable.transform.position, transform.position, t);
+
+        _lookAtTarget.SetTarget(_interactableObj.transform);
 
         CoguManager.instance.AssingCogu(this);
     }
@@ -88,7 +92,7 @@ public class Cogu : MonoBehaviour
     }
 
     public void InteractionOnAnim()
-    {
+    {        
         _stateMachine.InteractState.Interact();
     }
 
