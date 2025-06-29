@@ -1,7 +1,3 @@
-using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
-
 public class PlayerGlideState : PlayerAirState {
     public PlayerGlideState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
     }
@@ -12,6 +8,11 @@ public class PlayerGlideState : PlayerAirState {
         ResetVerticalVelocity();
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
         AudioManager.Instance.PlaySFX("AirTunnel");
+    }
+
+    public override void Update() {
+        base.Update();
+        StateMachineMovement.ReusableData.SetGravity(0f);
     }
 
     public override void Exit() {

@@ -174,7 +174,7 @@ MonoBehaviour:
     defaultVolume: 1
     defaultPitch: 0.1
   - name: PortaCristal
-    clip: {fileID: 8300000, guid: aaabd34575664f347b595bc17edf189a, type: 3}
+    clip: {fileID: 8300000, guid: af8a4bb47ceff584faab3e518252a700, type: 3}
     defaultVolume: 1
     defaultPitch: 0.1
   - name: LillypadCaindo
@@ -185,6 +185,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 75a6ea6619dd20540bfeb6029f59999d, type: 3}
     defaultVolume: 1
     defaultPitch: 0.1
+  proximityDistance: 20
+  showProximityDebug: 0
 --- !u!82 &4189985247834983667
 AudioSource:
   m_ObjectHideFlags: 0

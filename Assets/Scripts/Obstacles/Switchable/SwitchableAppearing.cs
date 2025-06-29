@@ -9,6 +9,7 @@ public class SwitchableAppearing : Switchable
     {
         _collider = GetComponent<Collider>();
         _visual.SetActive(false);
+        _collider.enabled = false;
     }
 
     public override void Activate() 
@@ -24,12 +25,6 @@ public class SwitchableAppearing : Switchable
     // Resetable
     public override void ResetObject()
     {
-        if (NeedReset)
-        {
-            _visual.SetActive(false);
-            _collider.enabled = false;
 
-            NeedReset = false;
-        }
     }
 }
