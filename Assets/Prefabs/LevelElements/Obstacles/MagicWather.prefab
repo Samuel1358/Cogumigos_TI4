@@ -71,6 +71,7 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 1
   _interactDistance: 0
+  _interactableEffectVisual: {fileID: 3896901260489187857}
   _plataformPrefab: {fileID: 8672224064961100166}
 --- !u!1001 &6034093251232450269
 PrefabInstance:
@@ -216,6 +217,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+--- !u!1 &3896901260489187857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7730282990487809328, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+  m_PrefabInstance: {fileID: 6724974171660472097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4533364478836417648 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7186151372550892369, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}

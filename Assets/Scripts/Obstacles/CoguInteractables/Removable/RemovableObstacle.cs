@@ -36,6 +36,7 @@ public class RemovableObstacle : CoguInteractable
     {
         if (NeedReset)
         {
+            base.ResetObject();
             transform.position = _inictialPosition;
             _isAvailable = true;
             NeedReset = false;

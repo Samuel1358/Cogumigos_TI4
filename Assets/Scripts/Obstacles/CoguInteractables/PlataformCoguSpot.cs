@@ -27,6 +27,7 @@ public class PlataformCoguSpot : CoguInteractable
     {
         if (NeedReset)
         {
+            base.ResetObject();
             _plataformPrefab.SetActive(false);
             _canActive = true;
 
