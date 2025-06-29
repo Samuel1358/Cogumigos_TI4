@@ -54,6 +54,7 @@ public class ExplosiveBarrel : ResetableBase {
         yield return new WaitForSeconds(_timeToExplode);
         _visual.SetActive(false);
         _collider.enabled = false;
+        AudioManager.Instance.PlaySFX(SoundEffectNames.EXPLOSAO);
         _wasExploded = true;
         if (_willExplodePlayer) {
             RespawnController.OnPlayerRespawn.Invoke();

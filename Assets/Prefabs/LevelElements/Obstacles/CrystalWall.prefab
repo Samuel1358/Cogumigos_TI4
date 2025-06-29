@@ -51,10 +51,8 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 4
   _interactDistance: 3
+  _interactableEffectVisual: {fileID: 9156151843452374694}
   _visual: {fileID: 5117573778880908413}
-  _fracturedPrefab: {fileID: 4402920094841135076, guid: 1e2863b4fc9377244bc672283ee7f437, type: 3}
-  _explosionForce: 500
-  _explosionRadius: 500
   _onBreak:
     m_PersistentCalls:
       m_Calls:
@@ -485,6 +483,11 @@ PrefabInstance:
 --- !u!4 &8641284405498054855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7186151372550892369, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+  m_PrefabInstance: {fileID: 1465452167241491350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9156151843452374694 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7730282990487809328, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
   m_PrefabInstance: {fileID: 1465452167241491350}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3257682404655735130

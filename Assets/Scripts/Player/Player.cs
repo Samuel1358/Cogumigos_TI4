@@ -7,7 +7,6 @@ public class Player : MonoBehaviour {
     [field: SerializeField] public ResizableCapsuleCollider ColliderUtility { get; private set; }
     [field: SerializeField] public PlayerLayerData LayerData { get; private set; }
     [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
-    [field: SerializeField] public bool ShouldWalk { get; private set; }
     [field: SerializeField] public bool IsColliding { get; private set; }
     [field: SerializeField] public Vector3 CollisionDirection;
 
@@ -21,14 +20,6 @@ public class Player : MonoBehaviour {
     [SerializeField] private CapsuleCollider _improvedCollisionCollider;
 
     private PlayerMovementStateMachine _movementStateMachine;
-
-    #region TesteRespawn
-    private int CoguCount = 0;
-    private int _lastCount = 0;
-    #endregion
-
-    // TEMP
-    public PlayerMovementStateMachine GetStateMachine() { return _movementStateMachine; }
 
     private void OnCollisionEnter(Collision collision) {
         foreach (ContactPoint contact in collision.contacts) {
@@ -83,6 +74,8 @@ public class Player : MonoBehaviour {
         ColliderUtility.CalculateCapsuleColliderDimensions();
     }
     private void Update() {
+        _movementStateMachine.ReusableData.SetCoyoteTime(_movementStateMachine.ReusableData.CoyoteTimeCount - Time.deltaTime);
+        _movementStateMachine.ReusableData.SetJumpBuffer(_movementStateMachine.ReusableData.JumpBufferCount - Time.deltaTime);
         _movementStateMachine.HandleInput();
         _movementStateMachine.Update();
     }
@@ -101,14 +94,8 @@ public class Player : MonoBehaviour {
     }
 
     public void ResetPlayer() {
-        CoguCount = _lastCount;
         transform.position = RespawnController.Instance.PlayerActiveCheckPoint.transform.position;
         transform.rotation = RespawnController.Instance.PlayerActiveCheckPoint.transform.rotation;
-    }
-
-    public void SetCheckpoint(int coguToAdd) {
-        CoguCount += coguToAdd;
-        _lastCount = CoguCount;
     }
 
     public void SetGlide(bool state) {

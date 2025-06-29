@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerGroundState : PlayerMovementState {
@@ -13,20 +12,13 @@ public class PlayerGroundState : PlayerMovementState {
         base.Enter();
 
         StateMachineMovement.ReusableData.EnableDoubleJump();
-        StateMachineMovement.ReusableData.SetCoyoteTime(AirData.JumpData.CoyoteTime);
         StateMachineMovement.PlayerGet.ColliderUtility.CapsuleColliderData.Collider.sharedMaterial = StateMachineMovement.PlayerGet.Data.GroundedData.PlayerPhysics;
-
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
-
-
-        if (StateMachineMovement.ReusableData.JumpBufferCount > 0) {
-            StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
-        }
     }
 
     public override void Exit() {
         base.Exit();
-
+        StateMachineMovement.ReusableData.SetCoyoteTime(AirData.JumpData.CoyoteTime);
         StopAnimation(StateMachineMovement.PlayerGet.AnimationData.GroundedParameterHash);
     }
 

@@ -15,7 +15,7 @@ public class TrampoloCoguSpot : CoguInteractable
         if (_canActive) {
             _trampoloPrefab.SetActive(true);
             _canActive = false;
-
+            AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_COZINHEIRO);
             _isAvailable = false;
             NeedReset = true;
             return () => { Destroy(cogu.gameObject); };
@@ -27,6 +27,7 @@ public class TrampoloCoguSpot : CoguInteractable
     {        
         if (NeedReset)
         {
+            base.ResetObject();
             _trampoloPrefab.SetActive(false);
             _canActive = true;
 

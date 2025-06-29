@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerLightLandingState : PlayerLandingState {
     public PlayerLightLandingState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
@@ -14,6 +13,10 @@ public class PlayerLightLandingState : PlayerLandingState {
 
     public override void Update() {
         base.Update();
+
+        if (StateMachineMovement.ReusableData.JumpBufferCount > 0) {
+            StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
+        }
 
         if (StateMachineMovement.ReusableData.MovementInput == Vector2.zero) {
             return;

@@ -73,7 +73,6 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     public void CastCogu(CoguType type, CoguInteractable interactable)
     {
-        //Debug.Log($"{interactable.gameObject.name}: {interactable.IsAvailable}");
         if (!interactable.IsAvailable)
         {
             _isAbleCast = true;
@@ -85,6 +84,7 @@ public class CoguCastter : MonoBehaviour, IResetable
             Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
             cogu.Initialize(interactable, this);
             _coguCount--;
+            UiInventory.Instance.UpdateCoguCountUI(_coguCount);
             _isAbleCast = false;
         }
     }

@@ -15,7 +15,7 @@ public class PlataformCoguSpot : CoguInteractable
         if (_canActive) {
             _plataformPrefab.SetActive(true);
             _canActive = false;
-
+            AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_PLATAFORMA);
             _isAvailable = false;
             NeedReset = true;
             return () => { Destroy(cogu.gameObject); };
@@ -27,6 +27,7 @@ public class PlataformCoguSpot : CoguInteractable
     {
         if (NeedReset)
         {
+            base.ResetObject();
             _plataformPrefab.SetActive(false);
             _canActive = true;
 

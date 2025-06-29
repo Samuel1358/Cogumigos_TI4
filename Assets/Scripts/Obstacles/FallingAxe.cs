@@ -25,16 +25,37 @@ public class FallingAxe : MonoBehaviour {
         rotationDirection = originalRotation + rotationDirection;
         if (infiniteRotation) {
             Vector3 rotateAxe = new Vector3(360 * _axesRotation.x, 360 * _axesRotation.y, 360 * _axesRotation.z);
+            
+            // Som para movimento infinito (volume baixo e repetindo)
+          
+            
             transform.DORotate(rotateAxe, _infiniteRotationTime, RotateMode.FastBeyond360).SetRelative(true)
            .SetEase(Ease.Linear).SetLoops(-1);
         }
         else {
+            // Som para movimento normal (volume normal)
+          
+            
             sequence.Append(transform.DORotate(rotationDirection, fallDuration).SetEase(Ease.Linear))
                 .Append(transform.DOShakePosition(groundShakeDuration))
                 .Append(transform.DORotate(originalRotation, upDuration).SetEase(Ease.Linear).SetDelay(groundStaticDuration))
-                .Append(transform.DOShakePosition(airShakeDuration / 3).SetDelay((airShakeDuration * 2 / 3))).SetLoops(-1);
+                .Append(transform.DOShakePosition(airShakeDuration / 3).SetDelay((airShakeDuration * 2 / 3)))
+                .OnStepComplete(() => {
+                    // Toca o som a cada vez que o machado começa a cair novamente
+                   
+                })
+                .SetLoops(-1);
         }
     }
 
-
+    /// <summary>
+    /// Método chamado pelo InvokeRepeating para tocar o som do machado em movimento infinito
+    /// </summary>
+    private void PlayInfiniteAxeSound()
+    {
+        if (AudioManager.Instance != null)
+        {
+            
+        }
+    }
 }

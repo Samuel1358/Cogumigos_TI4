@@ -25,8 +25,10 @@ public class Lever : Switch
     // Inherit Methods
     protected override void Activate(Switchable obj) 
     {
-        if (_switchable != null)
+        if (_switchable != null){
             _switchable.Activate();
+            AudioManager.Instance.PlaySFX(SoundEffectNames.LEVER);
+        }
 
         _onInteract?.Invoke();
     }
