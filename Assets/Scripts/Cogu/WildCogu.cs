@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Collider), typeof(NavMeshAgent))]
+[RequireComponent(typeof(Collider))]
 public class WildCogu : ResetableBase
 {
     // Fields
@@ -11,7 +11,6 @@ public class WildCogu : ResetableBase
 
     private WildCoguStateMachine _stateMachine;
     private Collider _collider;
-    //private NavMeshAgent _agent;
 
     private Vector3 _initialPosition;
 
@@ -19,7 +18,8 @@ public class WildCogu : ResetableBase
     //public CoguData Data { get { return _data; } }
     public WildCoguStateMachine StateMachine {  get { return _stateMachine; } }
     public Animator Animator { get { return _animator; } }
-    //public NavMeshAgent Agent { get { return _agent; } }
+
+    private CoguCastPoint _castPoint;
 
     private void Awake()
     {
@@ -76,12 +76,21 @@ public class WildCogu : ResetableBase
         }        
     }
 
+    public void Collect()
+    {
+        if (_castPoint == null)
+            return;
+
+        StateMachine.ChangeState(StateMachine.DisappearState.Setup(_castPoint));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         CoguCastter castter = other.GetComponentInParent<CoguCastter>();
         if (castter != null)
         {
-            StateMachine.ChangeState(StateMachine.AttracState.Setup(castter.CastPoint));
+            StateMachine.ChangeState(StateMachine.AttracState);
+            _castPoint = castter.CastPoint;
         }
     }
 
