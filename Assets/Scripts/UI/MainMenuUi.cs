@@ -7,7 +7,7 @@ using UnityEditor;
 public class MainMenuUi : MonoBehaviour
 {
     public void LoadScene(int sceneIndex) {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
     }
     public void ExitGame() {
 
