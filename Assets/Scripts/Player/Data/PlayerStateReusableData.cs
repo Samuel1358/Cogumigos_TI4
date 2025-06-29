@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 public class PlayerStateReusableData {
     public Vector2 MovementInput { get; set; }
@@ -8,8 +6,7 @@ public class PlayerStateReusableData {
     public float Gravity { get; private set; }
     public float CoyoteTimeCount { get; private set; }
     public float JumpBufferCount { get; private set; }
-    // TORNAR PRIVATE SET DEPOIS
-    public bool CanDoubleJump { get; set; }
+    public bool CanDoubleJump { get; private set; }
 
     private Vector3 _currentTargetRotation;
     private Vector3 _timeToReachtargetRotation;

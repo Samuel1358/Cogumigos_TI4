@@ -39,9 +39,6 @@ public class LightPuzzleManager : MonoBehaviour
     [SerializeField] private float _riseDistance = 5f; // Distância para subir objetos
     [SerializeField] private bool _hideInactiveStages = true; // Se true, esconde etapas inativas no início
     
-    [Header("Puzzle Settings")]
-    [SerializeField] private bool _autoFindElements = false; // Desabilitado para sistema de etapas
-    
     [Header("Events")]
     public UnityEvent onPuzzleCompleted;
     public UnityEvent onPuzzleReset;

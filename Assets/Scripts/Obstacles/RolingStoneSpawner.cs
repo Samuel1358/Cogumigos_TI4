@@ -13,7 +13,6 @@ public class RolingStoneSpawner : MonoBehaviour {
     private void Update() {
         _counter -= Time.deltaTime;
         if (_counter <= 0) {
-            Debug.Log("inspaning");
             _counter = _TimeToSpawn;
             GameObject Gb = Instantiate(_stantiateRollingStone, _spawnPoint.position, Quaternion.identity);
             if (Gb.TryGetComponent<Rigidbody>(out Rigidbody rb)) {

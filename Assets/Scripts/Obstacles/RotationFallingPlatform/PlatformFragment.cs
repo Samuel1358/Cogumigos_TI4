@@ -38,10 +38,6 @@ public class PlatformFragment : CollisionHandlerChild
 
     private void Restore()
     {
-#pragma warning disable CS0618 // O tipo ou membro � obsoleto
-        _rb.velocity = Vector3.zero;
-#pragma warning restore CS0618 // O tipo ou membro � obsoleto
-        _rb.angularVelocity = Vector3.zero;
         _rb.isKinematic = true;
 
         transform.localPosition = _initialPosition;
