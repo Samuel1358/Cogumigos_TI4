@@ -27,22 +27,14 @@ public class FallingAxe : MonoBehaviour {
             Vector3 rotateAxe = new Vector3(360 * _axesRotation.x, 360 * _axesRotation.y, 360 * _axesRotation.z);
             
             // Som para movimento infinito (volume baixo e repetindo)
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlaySFXAtPosition(SoundEffectNames.MACHADO_CAINDO, transform.position, 0.3f);
-                // Programa o som para repetir a cada ciclo de rotação
-                InvokeRepeating(nameof(PlayInfiniteAxeSound), _infiniteRotationTime, _infiniteRotationTime);
-            }
+          
             
             transform.DORotate(rotateAxe, _infiniteRotationTime, RotateMode.FastBeyond360).SetRelative(true)
            .SetEase(Ease.Linear).SetLoops(-1);
         }
         else {
             // Som para movimento normal (volume normal)
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlaySFXAtPosition(SoundEffectNames.MACHADO_CAINDO, transform.position);
-            }
+          
             
             sequence.Append(transform.DORotate(rotationDirection, fallDuration).SetEase(Ease.Linear))
                 .Append(transform.DOShakePosition(groundShakeDuration))
@@ -50,10 +42,7 @@ public class FallingAxe : MonoBehaviour {
                 .Append(transform.DOShakePosition(airShakeDuration / 3).SetDelay((airShakeDuration * 2 / 3)))
                 .OnStepComplete(() => {
                     // Toca o som a cada vez que o machado começa a cair novamente
-                    if (AudioManager.Instance != null)
-                    {
-                        AudioManager.Instance.PlaySFXAtPosition(SoundEffectNames.MACHADO_CAINDO, transform.position);
-                    }
+                   
                 })
                 .SetLoops(-1);
         }
@@ -66,7 +55,7 @@ public class FallingAxe : MonoBehaviour {
     {
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.PlaySFXAtPosition(SoundEffectNames.MACHADO_CAINDO, transform.position, 0.3f);
+            
         }
     }
 }
