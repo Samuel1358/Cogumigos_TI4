@@ -3,6 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public PlayerInput PlayerInputs { get; private set; }
     [SerializeField] private GameObject FrameDebugger;
 
     private void Awake() {
@@ -28,5 +29,8 @@ public class GameManager : MonoBehaviour
     public void UnpauseGame() {
         Time.timeScale = 1f;
         PlayerInput.HideAndLockMouse();
+    }
+    public void SetInput(PlayerInput newInput) {
+        PlayerInputs = newInput;
     }
 }
