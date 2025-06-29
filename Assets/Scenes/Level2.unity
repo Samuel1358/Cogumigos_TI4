@@ -94,7 +94,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: b75e55393898cfc4cae9f650f82e60e3, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -7824,6 +7824,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1908517724125944773, guid: a77c6f894392329459750f1844f65d96, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d45e1b2ecfe43842bbd32772ce0f6bd, type: 3}
+    - target: {fileID: 1908517724125944773, guid: a77c6f894392329459750f1844f65d96, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d45e1b2ecfe43842bbd32772ce0f6bd, type: 3}
     - target: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -15471,10 +15479,8 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 4
   _interactDistance: 3
+  _interactableEffectVisual: {fileID: 0}
   _visual: {fileID: 1737082678970175229}
-  _fracturedPrefab: {fileID: 4402920094841135076, guid: 1e2863b4fc9377244bc672283ee7f437, type: 3}
-  _explosionForce: 500
-  _explosionRadius: 500
   _onBreak:
     m_PersistentCalls:
       m_Calls:
@@ -18975,10 +18981,8 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 4
   _interactDistance: 3
+  _interactableEffectVisual: {fileID: 0}
   _visual: {fileID: 3229395618500117283}
-  _fracturedPrefab: {fileID: 4402920094841135076, guid: 1e2863b4fc9377244bc672283ee7f437, type: 3}
-  _explosionForce: 500
-  _explosionRadius: 500
   _onBreak:
     m_PersistentCalls:
       m_Calls:
@@ -20908,10 +20912,8 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 4
   _interactDistance: 3
+  _interactableEffectVisual: {fileID: 0}
   _visual: {fileID: 3126817907984206214}
-  _fracturedPrefab: {fileID: 4402920094841135076, guid: 1e2863b4fc9377244bc672283ee7f437, type: 3}
-  _explosionForce: 500
-  _explosionRadius: 500
   _onBreak:
     m_PersistentCalls:
       m_Calls:
