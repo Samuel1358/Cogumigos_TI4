@@ -9,6 +9,7 @@ public class CoguCastPoint : MonoBehaviour
     public void AssingWildCogu(WildCogu wildCogu)
     {
         _coguCastter.CoguCount++;
+        UiInventory.Instance.UpdateCoguCountUI(_coguCastter.CoguCount);
         wildCogu.Disable();
     }
 }
