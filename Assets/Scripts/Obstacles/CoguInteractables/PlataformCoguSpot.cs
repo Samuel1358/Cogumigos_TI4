@@ -11,16 +11,17 @@ public class PlataformCoguSpot : CoguInteractable
         _canActive = true;
     }
 
-    public override Action Interact(Cogu cogu) {
+    public override void Interact(Cogu cogu) {
         if (_canActive) {
             _plataformPrefab.SetActive(true);
             _canActive = false;
             AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_PLATAFORMA);
             _isAvailable = false;
             NeedReset = true;
-            return () => { Destroy(cogu.gameObject); };
+            Destroy(cogu.gameObject);
+            //return () => { Destroy(cogu.gameObject); };
         }
-        return () => {};
+        //return () => {};
     }
 
     public override void ResetObject() 
