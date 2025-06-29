@@ -28,14 +28,6 @@ public class PlayerFallingState : PlayerAirState {
         StateMachineMovement.ChangeState(StateMachineMovement.LightLandingState);
     }
 
-    protected override void OnJumpStarted(InputAction.CallbackContext context) {
-        base.OnJumpStarted(context);
-
-        if (StateMachineMovement.ReusableData.CoyoteTimeCount > 0) {
-            StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
-        }
-    }
-
     protected override void DoubleJump() {
         base.DoubleJump();
         StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);

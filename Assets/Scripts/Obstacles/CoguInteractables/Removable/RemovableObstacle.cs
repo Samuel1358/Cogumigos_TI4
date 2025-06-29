@@ -1,11 +1,7 @@
 using System;
 using UnityEngine;
-using UnityEngine.AI;
-
-[RequireComponent(typeof(NavMeshAgent))]
 public class RemovableObstacle : CoguInteractable
 {
-    private NavMeshAgent _agent;
     [SerializeField] private bool _startAvailable = true;
     [SerializeField] public Vector3 destiny = Vector3.forward;
     [SerializeField] public bool positionated;
@@ -15,8 +11,6 @@ public class RemovableObstacle : CoguInteractable
     private void Awake()
     {
         _isAvailable = _startAvailable;
-
-        _agent = GetComponent<NavMeshAgent>();
         destiny = transform.TransformPoint(destiny);
 
         _inictialPosition = transform.position;
@@ -27,7 +21,6 @@ public class RemovableObstacle : CoguInteractable
     {
         if (positionated)
         {
-            _agent.SetDestination(destiny);
             NeedReset = true;
         }
     }
@@ -44,7 +37,6 @@ public class RemovableObstacle : CoguInteractable
         if (NeedReset)
         {
             transform.position = _inictialPosition;
-            _agent.SetDestination(transform.position);
             _isAvailable = true;
             NeedReset = false;
         }

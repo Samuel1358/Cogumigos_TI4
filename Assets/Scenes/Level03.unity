@@ -192,8 +192,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase (6)
@@ -549,8 +553,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase (4)
@@ -678,8 +686,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (11)
@@ -816,7 +828,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1059916086}
     m_Modifications:
     - target: {fileID: 2166596167613113728, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -872,7 +884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672224064961100166, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1021,8 +1033,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (16)
@@ -1149,6 +1165,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7638820560866586497, guid: e27566efbe22b4340992e943abe54b23, type: 3}
   m_PrefabInstance: {fileID: 2055916779}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &86130245
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 86130246}
+  m_Layer: 0
+  m_Name: Checkpoint1
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &86130246
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86130245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1422432916}
+  - {fileID: 120576715}
+  - {fileID: 1059916086}
+  - {fileID: 1193068793}
+  - {fileID: 1002342929}
+  - {fileID: 1484990588}
+  - {fileID: 658386616}
+  m_Father: {fileID: 1225757279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &91668174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1286,7 +1340,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1405,8 +1459,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (2)
@@ -1540,6 +1598,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7638820560866586497, guid: e27566efbe22b4340992e943abe54b23, type: 3}
   m_PrefabInstance: {fileID: 922750366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &120576714
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 120576715}
+  m_Layer: 0
+  m_Name: CoguBase
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &120576715
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120576714}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 822505}
+  - {fileID: 847764442}
+  - {fileID: 1247951863}
+  - {fileID: 1488896423}
+  - {fileID: 1924022159}
+  - {fileID: 23616125}
+  - {fileID: 1752658296}
+  - {fileID: 1399916008}
+  m_Father: {fileID: 86130246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &122177477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1682,7 +1779,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1059916086}
     m_Modifications:
     - target: {fileID: 2166596167613113728, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1738,7 +1835,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672224064961100166, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1887,7 +1984,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 1159319154377330943, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_Name
@@ -1899,7 +1996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.36
+      value: 3.3600004
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalScale.z
@@ -2026,8 +2123,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (8)
@@ -2150,7 +2251,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2228,7 +2329,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
       propertyPath: m_LocalScale.y
@@ -2420,8 +2521,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (3)
@@ -2823,8 +2928,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (20)
@@ -3054,7 +3163,6 @@ Transform:
   m_Children:
   - {fileID: 762367026}
   - {fileID: 1481713226}
-  - {fileID: 1531621967}
   - {fileID: 472826061}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3064,8 +3172,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (24)
@@ -3316,7 +3428,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3996,7 +4108,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 1004f9b93c1f17c458ce25fb08659289, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4392,7 +4504,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 1159319154377330943, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_Name
@@ -5133,7 +5245,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5487,7 +5599,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1059916086}
     m_Modifications:
     - target: {fileID: 2166596167613113728, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5543,7 +5655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672224064961100166, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5618,7 +5730,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5680,8 +5792,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (7)
@@ -6022,8 +6138,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (23)
@@ -6160,8 +6280,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (10)
@@ -6776,8 +6900,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (6)
@@ -7096,7 +7224,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7362,11 +7490,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.7300003
+      value: 2.7300005
       objectReference: {fileID: 0}
     - target: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7703,7 +7831,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7875,8 +8003,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (18)
@@ -7932,8 +8064,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (14)
@@ -8764,6 +8900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mirror
       objectReference: {fileID: 0}
+    - target: {fileID: 6175957224753869255, guid: 8c0b66ae495873c46a35611bbede2839, type: 3}
+      propertyPath: _showDebugInfo
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9007,7 +9147,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
       propertyPath: m_LocalScale.y
@@ -9150,7 +9290,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10070,8 +10210,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (1)
@@ -10137,8 +10281,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel
@@ -10264,8 +10412,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (3)
@@ -10400,7 +10552,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1694546839}
     m_Modifications:
     - target: {fileID: 241346667940507188, guid: 42d7b8a1319c07743adade5d74539dac, type: 3}
       propertyPath: m_Name
@@ -10467,8 +10619,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase (1)
@@ -10847,8 +11003,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (15)
@@ -10966,8 +11126,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (25)
@@ -11028,6 +11192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66687598bee8504d80b2136bd732497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &879104797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5246355953438049750, guid: 361e76df49ed985439eede51cc82caec, type: 3}
+  m_PrefabInstance: {fileID: 1540681222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &879236998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11647,8 +11816,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (19)
@@ -12482,7 +12655,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13237,14 +13410,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7638820560866586497, guid: e27566efbe22b4340992e943abe54b23, type: 3}
   m_PrefabInstance: {fileID: 1646681273}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1059916085
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059916086}
+  m_Layer: 0
+  m_Name: MagicWather
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059916086
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059916085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2020162321}
+  - {fileID: 725290174}
+  - {fileID: 181983583}
+  - {fileID: 646948077}
+  m_Father: {fileID: 86130246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1064681896
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (17)
@@ -13572,7 +13784,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13854,7 +14066,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13985,7 +14197,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 1159319154377330943, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_Name
@@ -13993,15 +14205,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.87
+      value: 2.8700001
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.36
+      value: 3.3599997
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.5200002
+      value: 3.52
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14017,7 +14229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8147526
+      value: 0.81475264
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -14025,7 +14237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.4523432
+      value: 0.45234323
       objectReference: {fileID: 0}
     - target: {fileID: 4162483818862006365, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_LocalRotation.z
@@ -14187,8 +14399,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (26)
@@ -14301,8 +14517,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase (2)
@@ -14593,8 +14813,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 86130246}
     m_Modifications:
+    - target: {fileID: -3757659073584647303, guid: 381740880afa8e841808fe6ebb57a3b9, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 1978705344252104432, guid: 381740880afa8e841808fe6ebb57a3b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.36
@@ -15272,7 +15496,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15329,7 +15553,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15391,8 +15615,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (2)
@@ -15661,8 +15889,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (27)
@@ -15798,94 +16030,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 420059530}
-  - {fileID: 1399916008}
-  - {fileID: 482314815}
-  - {fileID: 94450938}
-  - {fileID: 2085532064}
-  - {fileID: 1571071420}
-  - {fileID: 118942859}
-  - {fileID: 1133513417}
-  - {fileID: 1084557245}
-  - {fileID: 1650948161}
-  - {fileID: 2032915390}
-  - {fileID: 1070373376}
-  - {fileID: 1419629115}
-  - {fileID: 126235561}
-  - {fileID: 1835814594}
-  - {fileID: 1959326683}
-  - {fileID: 631394582}
-  - {fileID: 1529307044}
-  - {fileID: 1253173190}
-  - {fileID: 1098369446}
-  - {fileID: 160458377}
-  - {fileID: 1199564656}
-  - {fileID: 15039266}
-  - {fileID: 1377811611}
-  - {fileID: 1878596217}
-  - {fileID: 1576795730}
-  - {fileID: 1703923422}
-  - {fileID: 285152772}
-  - {fileID: 1475220588}
-  - {fileID: 1352283034}
-  - {fileID: 1040715188}
-  - {fileID: 680450934}
-  - {fileID: 822505}
-  - {fileID: 847764442}
-  - {fileID: 1360101235}
-  - {fileID: 135082029}
-  - {fileID: 1650822087}
-  - {fileID: 216988770}
-  - {fileID: 438565774}
-  - {fileID: 120221661}
-  - {fileID: 1759951335}
-  - {fileID: 1705036780}
-  - {fileID: 1247951863}
-  - {fileID: 1488896423}
-  - {fileID: 658386616}
-  - {fileID: 809898023}
-  - {fileID: 1924022159}
-  - {fileID: 1002342929}
-  - {fileID: 23616125}
-  - {fileID: 303748546}
-  - {fileID: 214810257}
-  - {fileID: 198587339}
-  - {fileID: 1484990588}
-  - {fileID: 1320400151}
-  - {fileID: 847514551}
-  - {fileID: 1752658296}
-  - {fileID: 1679360918}
-  - {fileID: 1904444540}
-  - {fileID: 284723311}
-  - {fileID: 1366277148}
-  - {fileID: 1418629484}
-  - {fileID: 1193068793}
-  - {fileID: 1818727707}
-  - {fileID: 667230107}
-  - {fileID: 1120005668}
-  - {fileID: 1610044393}
-  - {fileID: 141146084}
-  - {fileID: 1872755269}
-  - {fileID: 956094476}
-  - {fileID: 210325525}
-  - {fileID: 302197557}
-  - {fileID: 1324918975}
-  - {fileID: 740945081}
-  - {fileID: 1546631133}
-  - {fileID: 1161972578}
-  - {fileID: 200423921}
-  - {fileID: 452157891}
-  - {fileID: 252878513}
-  - {fileID: 1675972696}
-  - {fileID: 41107905}
-  - {fileID: 2056151834}
-  - {fileID: 1477834208}
-  - {fileID: 100979431}
   - {fileID: 1662147143}
-  - {fileID: 2020162321}
-  - {fileID: 725290174}
-  - {fileID: 181983583}
-  - {fileID: 646948077}
+  - {fileID: 879104797}
+  - {fileID: 86130246}
+  - {fileID: 1603388763}
+  - {fileID: 1712763977}
+  - {fileID: 1917410917}
+  - {fileID: 1694546839}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1225780321 stripped
@@ -15976,11 +16127,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.7300003
+      value: 2.7300005
       objectReference: {fileID: 0}
     - target: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16210,7 +16361,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16596,7 +16747,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 1004f9b93c1f17c458ce25fb08659289, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16800,7 +16951,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1694546839}
     m_Modifications:
     - target: {fileID: 241346667940507188, guid: 42d7b8a1319c07743adade5d74539dac, type: 3}
       propertyPath: m_Name
@@ -16928,7 +17079,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17057,8 +17208,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (9)
@@ -17307,8 +17462,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (22)
@@ -17431,7 +17590,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 1004f9b93c1f17c458ce25fb08659289, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17550,8 +17709,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase
@@ -18019,6 +18182,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
   m_PrefabInstance: {fileID: 2118877503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1422432915
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422432916}
+  m_Layer: 0
+  m_Name: ExplosiveBarel
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1422432916
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422432915}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 303748546}
+  - {fileID: 214810257}
+  - {fileID: 198587339}
+  - {fileID: 482314815}
+  - {fileID: 94450938}
+  - {fileID: 2085532064}
+  - {fileID: 1571071420}
+  - {fileID: 118942859}
+  - {fileID: 1133513417}
+  - {fileID: 1084557245}
+  - {fileID: 1650948161}
+  - {fileID: 2032915390}
+  - {fileID: 1070373376}
+  - {fileID: 1419629115}
+  - {fileID: 126235561}
+  - {fileID: 1835814594}
+  - {fileID: 1959326683}
+  - {fileID: 1360101235}
+  - {fileID: 135082029}
+  - {fileID: 1650822087}
+  - {fileID: 216988770}
+  - {fileID: 438565774}
+  - {fileID: 120221661}
+  - {fileID: 1759951335}
+  - {fileID: 1705036780}
+  - {fileID: 1161972578}
+  - {fileID: 200423921}
+  - {fileID: 452157891}
+  - {fileID: 252878513}
+  - {fileID: 1675972696}
+  - {fileID: 41107905}
+  - {fileID: 2056151834}
+  - {fileID: 1477834208}
+  - {fileID: 100979431}
+  - {fileID: 740945081}
+  - {fileID: 1872755269}
+  - {fileID: 956094476}
+  - {fileID: 210325525}
+  m_Father: {fileID: 86130246}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1429269160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18211,8 +18443,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (21)
@@ -18278,8 +18514,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (8)
@@ -18449,8 +18689,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (10)
@@ -18511,7 +18755,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 1159319154377330943, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_Name
@@ -18903,7 +19147,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1059916086}
     m_Modifications:
     - target: {fileID: 2166596167613113728, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18959,7 +19203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8672224064961100166, guid: 858dc378860a0814d8dde1d7bc1bcc55, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18972,7 +19216,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1603388763}
     m_Modifications:
     - target: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19124,8 +19368,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel
@@ -19300,8 +19548,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (12)
@@ -19492,7 +19744,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 263062567}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19512,15 +19764,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19547,11 +19799,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a77c6f894392329459750f1844f65d96, type: 3}
---- !u!4 &1531621967 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2617109802531778211, guid: a77c6f894392329459750f1844f65d96, type: 3}
-  m_PrefabInstance: {fileID: 1531621966}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1531621968 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 1908517724125944773, guid: a77c6f894392329459750f1844f65d96, type: 3}
@@ -19568,7 +19815,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1225757279}
     m_Modifications:
     - target: {fileID: 5246355953438049750, guid: 361e76df49ed985439eede51cc82caec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19612,7 +19859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7883266095855590741, guid: 361e76df49ed985439eede51cc82caec, type: 3}
       propertyPath: m_Name
-      value: Checkpoint
+      value: Checkpoint1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20479,6 +20726,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 50687431800034737, guid: 58a4e972567535d4091adda5df4867e8, type: 3}
   m_PrefabInstance: {fileID: 832902210}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1603388762
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1603388763}
+  m_Layer: 0
+  m_Name: Axes
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1603388763
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603388762}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1546631133}
+  - {fileID: 420059530}
+  - {fileID: 285152772}
+  - {fileID: 1475220588}
+  - {fileID: 1352283034}
+  - {fileID: 1040715188}
+  - {fileID: 680450934}
+  m_Father: {fileID: 1225757279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1604076168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5246355953438049750, guid: 361e76df49ed985439eede51cc82caec, type: 3}
@@ -20505,7 +20790,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1917410917}
     m_Modifications:
     - target: {fileID: 1159319154377330943, guid: 1984efe58cb8cf043bcecfb33fde87a4, type: 3}
       propertyPath: m_Name
@@ -20593,7 +20878,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 86130246}
     m_Modifications:
     - target: {fileID: 4741653159369819466, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20647,6 +20932,10 @@ PrefabInstance:
       propertyPath: destiny.z
       value: 145
       objectReference: {fileID: 0}
+    - target: {fileID: 5284130596557607403, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 7588883787091607037, guid: 73c1506715d8c4446b6af9a49f08d36f, type: 3}
       propertyPath: m_Name
       value: RemovableObstacle
@@ -20672,11 +20961,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
-      value: CoguBase
+      value: CoguBase (7)
       objectReference: {fileID: 0}
     - target: {fileID: 8466276231914123393, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20946,7 +21239,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 86130246}
     m_Modifications:
     - target: {fileID: 3753884614159870651, guid: f62e4900eaf1a6949b786a43534b7aab, type: 3}
       propertyPath: m_Name
@@ -21016,6 +21309,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6903341021410800346, guid: f62e4900eaf1a6949b786a43534b7aab, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21027,7 +21324,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1694546839}
     m_Modifications:
     - target: {fileID: 241346667940507188, guid: 42d7b8a1319c07743adade5d74539dac, type: 3}
       propertyPath: m_Name
@@ -21363,6 +21660,40 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+--- !u!1 &1694546838
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694546839}
+  m_Layer: 0
+  m_Name: Collectables
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1694546839
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694546838}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1320400151}
+  - {fileID: 847514551}
+  - {fileID: 1679360918}
+  m_Father: {fileID: 1225757279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1697136524
 GameObject:
   m_ObjectHideFlags: 0
@@ -21423,8 +21754,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (1)
@@ -21612,14 +21947,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+--- !u!1 &1712763976
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1712763977}
+  m_Layer: 0
+  m_Name: Plataforms
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1712763977
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712763976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 302197557}
+  - {fileID: 1324918975}
+  - {fileID: 631394582}
+  - {fileID: 1529307044}
+  - {fileID: 1253173190}
+  - {fileID: 1098369446}
+  - {fileID: 160458377}
+  - {fileID: 1199564656}
+  - {fileID: 15039266}
+  - {fileID: 1377811611}
+  - {fileID: 1878596217}
+  - {fileID: 1576795730}
+  - {fileID: 1703923422}
+  - {fileID: 809898023}
+  m_Father: {fileID: 1225757279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1716865301
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 86130246}
     m_Modifications:
+    - target: {fileID: -3757659073584647303, guid: 381740880afa8e841808fe6ebb57a3b9, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 1978705344252104432, guid: 381740880afa8e841808fe6ebb57a3b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -65
@@ -22095,8 +22479,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (9)
@@ -23774,8 +24162,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (11)
@@ -24250,6 +24642,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1351967233312027742, guid: 8c0b66ae495873c46a35611bbede2839, type: 3}
   m_PrefabInstance: {fileID: 2122373666}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1917410916
+GameObject:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1917410917}
+  m_Layer: 0
+  m_Name: Vines
+  m_TagString: Folder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917410917
+Transform:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917410916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1904444540}
+  - {fileID: 284723311}
+  - {fileID: 1366277148}
+  - {fileID: 1418629484}
+  - {fileID: 1818727707}
+  - {fileID: 667230107}
+  - {fileID: 1120005668}
+  - {fileID: 1610044393}
+  - {fileID: 141146084}
+  m_Father: {fileID: 1225757279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1924022159 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8466276231914123393, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
@@ -24333,7 +24765,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24390,8 +24822,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase (5)
@@ -24872,8 +25308,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (28)
@@ -25128,8 +25568,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (4)
@@ -26198,8 +26642,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (5)
@@ -26255,8 +26703,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (6)
@@ -26535,7 +26987,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1712763977}
     m_Modifications:
     - target: {fileID: 3335071202542008335, guid: 6c31278b230e180408aa5927f500a150, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26654,8 +27106,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 1422432916}
     m_Modifications:
+    - target: {fileID: 1319730473719916225, guid: e27566efbe22b4340992e943abe54b23, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 4756990914100633885, guid: e27566efbe22b4340992e943abe54b23, type: 3}
       propertyPath: m_Name
       value: ExplosiveBarrel (13)
@@ -26916,8 +27372,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1225757279}
+    m_TransformParent: {fileID: 120576715}
     m_Modifications:
+    - target: {fileID: 3972547540336631873, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
+      propertyPath: _linkedCheckpoint
+      value: 
+      objectReference: {fileID: 879104796}
     - target: {fileID: 6612267296426110229, guid: 8673daf09b10a974b8b5aaa29283c177, type: 3}
       propertyPath: m_Name
       value: CoguBase (3)
@@ -28293,14 +28753,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 999554163}
+  - {fileID: 979346472}
   - {fileID: 1530958686}
+  - {fileID: 1531621966}
   - {fileID: 1172322086}
   - {fileID: 322065704}
   - {fileID: 263062567}
   - {fileID: 206261075}
   - {fileID: 2077388578}
   - {fileID: 494464259}
-  - {fileID: 1540681222}
-  - {fileID: 979346472}
   - {fileID: 1225757279}
   - {fileID: 1156061468}

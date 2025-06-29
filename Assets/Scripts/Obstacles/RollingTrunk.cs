@@ -3,7 +3,6 @@ using UnityEngine;
 public class RollingTrunk : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 50f;
-    [SerializeField] private float pushForce = 5f;
     [SerializeField] private Transform visualChild;
     [SerializeField] private bool pushToRight = false;
     private Vector3 rotationDirection;
