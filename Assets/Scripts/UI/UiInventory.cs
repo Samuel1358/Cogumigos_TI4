@@ -3,10 +3,10 @@ using UnityEngine;
 public class UiInventory : MonoBehaviour
 {
     public static UiInventory Instance;
-    private int coguCount;
-    private TextMeshProUGUI _coguCountText;
-    private TextMeshProUGUI _collectableCountText;
-    private GameObject _hasKey;
+    [SerializeField] private TextMeshProUGUI _coguCountText;
+    [SerializeField] private TextMeshProUGUI _collectableCountText;
+    [SerializeField] private int _totalCollectableCount;
+    [SerializeField] private GameObject _keyObject;
 
     private void Awake() {
         if (Instance == null) {
@@ -21,11 +21,11 @@ public class UiInventory : MonoBehaviour
         _coguCountText.text = newValue.ToString();
     }
     
-    public void UpdateCollectableCountUI() {
-        
+    public void UpdateCollectableCountUI(int newValue) {
+        _collectableCountText.text = newValue + " / " + _totalCollectableCount;
     }
 
     public void UpdateKeyUI(bool hasKey) {
-        
+        _keyObject.SetActive(hasKey);
     }
 }
