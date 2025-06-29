@@ -120,12 +120,12 @@ public class MirrorReflector : MonoBehaviour
     /// Define o estado do espelho sem animação
     /// </summary>
     public void SetMirrorState(MirrorState newState)
-    {
+        {
         _currentState = newState;
         UpdateVisualRotation();
         Debug.Log($"Mirror {gameObject.name} state set to: {_currentState}");
     }
-
+    
     /// <summary>
     /// Define o estado do espelho com animação
     /// </summary>
@@ -196,12 +196,12 @@ public class MirrorReflector : MonoBehaviour
         
         Debug.Log($"Mirror {gameObject.name} animated to state: {_currentState} (Y rotation: {targetRotationY}°)");
     }
-
+    
     /// <summary>
     /// Retorna se o espelho está sendo atingido por um feixe atualmente
     /// </summary>
     public bool IsBeingHit()
-    {
+        {
         return _isBeingHit;
     }
 
@@ -209,7 +209,7 @@ public class MirrorReflector : MonoBehaviour
     /// Retorna se o espelho está atualmente rotacionando
     /// </summary>
     public bool IsRotating()
-    {
+            {
         return _isRotating;
     }
 

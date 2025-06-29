@@ -79,6 +79,7 @@ public class LightSwitch : MonoBehaviour
         {
             _light.enabled = true;
             Debug.Log($"Light {_light.name} turned ON by switch");
+            //AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_VELA);
         }
     }
 
