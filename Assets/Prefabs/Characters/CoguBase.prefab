@@ -1088,6 +1088,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4925654294991268220}
   - component: {fileID: 1233948064122868144}
+  - component: {fileID: 5387216958218776196}
   m_Layer: 0
   m_Name: HeadBase
   m_TagString: Untagged
@@ -1182,3 +1183,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000014901161, y: 0.033868834, z: -0.97280335}
     m_Extent: {x: 0.33786336, y: 0.3579731, z: 0.23460308}
   m_DirtyAABB: 0
+--- !u!114 &5387216958218776196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9219070974363261611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b42794c8abb0af4e9835272d7242410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleColors:
+  - {r: 0.60784316, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  targetMaterialIndex: 0

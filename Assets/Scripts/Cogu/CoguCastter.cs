@@ -25,13 +25,13 @@ public class CoguCastter : MonoBehaviour, IResetable
         _inputActions = new PlayerInputActions();
         _inputActions.Player.Enable();
 
-        _inputActions.Player.SendCogu.started += SendCogu;
+        _inputActions.Player.Interact.started += SendCogu;
     }
 
     private void OnDisable()
     {
         // Input
-        _inputActions.Player.SendCogu.started -= SendCogu;
+        _inputActions.Player.Interact.started -= SendCogu;
 
         _inputActions.Player.Disable();
 

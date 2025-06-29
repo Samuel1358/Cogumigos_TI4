@@ -30,7 +30,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
 
     public void CollectKey(KeyTypes keyCollected) {
         Keys.Add(keyCollected);
-        DebugTest();
+        UiInventory.Instance.UpdateKeyUI(Keys.Count > 0);
     }
 
     public bool VerifyKey(KeyTypes keyToVerify) {
@@ -52,6 +52,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
         if (Keys.Contains(keyToVerify))
         {
             Keys.Remove(keyToVerify);
+            UiInventory.Instance.UpdateKeyUI(Keys.Count > 0);
             return true;
         }
         return false;
@@ -59,7 +60,6 @@ public class PlayerInventory : MonoBehaviour, IResetable {
 
     public void CollectIngredient(IngredientTypes ingredientCollected) {
         Ingredients.Add(ingredientCollected);
-        DebugTest();
     }
 
     public bool VerifyIngredient(IngredientTypes ingredientToVerify) {
@@ -97,19 +97,6 @@ public class PlayerInventory : MonoBehaviour, IResetable {
         Ingredients = new List<IngredientTypes>();
         foreach (IngredientTypes ingredient in _ingredientsHoldedAtCheckpoint) {
             Ingredients.Add(ingredient);
-        }
-        DebugTest();
-    }
-
-    private void DebugTest() {
-        Debug.Log("-----------------------------------------");
-        Debug.Log("Keys Collecteds: ");
-        foreach (KeyTypes key in Keys) {
-            Debug.Log("Key: " + key);
-        }
-        Debug.Log("Ingredients Collecteds: ");
-        foreach (IngredientTypes ingredient in Ingredients) {
-            Debug.Log("Ingredient: " + ingredient);
         }
     }
 }

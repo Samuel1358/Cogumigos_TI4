@@ -51,8 +51,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
   _interaction: {fileID: 11400000, guid: 08f99872afd7e5b4486697f4a45ec800, type: 2}
-  _visualInfo: {fileID: 0}
+  _visualInfo: {fileID: 6051177526568343968}
   _visualOffset: 1.5
+  _useAutoPositioning: 0
 --- !u!114 &1110240796847630350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +295,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+--- !u!1 &6051177526568343968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 489619555545909406, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+  m_PrefabInstance: {fileID: 6138797177558323518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8210875166819005346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2649102791583883932, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}

@@ -13,21 +13,23 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     protected override void SetCollectableInactive() {
         _visual.SetActive(false);
         WasCollected = true;
+        DataPersistenceManager.Instance.SaveGame();
+        UiInventory.Instance.UpdateCollectableCounter();
     }
 
     public void StartDialog() {
-        if (_collectableSO == null || DialogController.instance.IsDialogActive)
+        if (CollectableSO == null || DialogController.instance.IsDialogActive)
             return;
 
-        if (_collectableSO.RandomLine)
-            DialogController.instance.StartDialog(_collectableSO, Random.Range(0, _collectableSO.LineCount));
+        if (CollectableSO.RandomLine)
+            DialogController.instance.StartDialog(CollectableSO, Random.Range(0, CollectableSO.LineCount));
         else
-            DialogController.instance.StartDialog(_collectableSO);
+            DialogController.instance.StartDialog(CollectableSO);
 
         if(GameManager.Instance.PlayerInputs != null) GameManager.Instance.PlayerInputs.PlayerActions.Interact.started -= StartDialog;
 
-        if (_collectableSO.Duration > 0f) {
-            TweenHandler.Timer(_collectableSO.Duration).OnComplete(DialogController.instance.EndDialog);
+        if (CollectableSO.Duration > 0f) {
+            TweenHandler.Timer(CollectableSO.Duration).OnComplete(DialogController.instance.EndDialog);
             return;
         }
 
@@ -61,10 +63,11 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     private void OnTriggerEnter(Collider collider) {
         if (!WasCollected) {
             AudioManager.Instance.PlaySFX("Collectable");
+            //UiInventory.Instance.UpdateCollectableCountUI(NUMERO DE PAGINAS COLETADAS);
             SetCollectableInactive();
         }
 
-        if (_collectableSO.ShowJustOnce) {
+        if (CollectableSO.ShowJustOnce) {
             if (_hasInteractedOnce)
                 return;
             else

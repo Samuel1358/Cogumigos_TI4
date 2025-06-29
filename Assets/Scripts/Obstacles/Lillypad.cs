@@ -46,7 +46,6 @@ public class Lillypad : MonoBehaviour
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
         
-        
         timeOffset = Random.Range(0f, Mathf.PI * 2f);
     }
 
@@ -112,7 +111,11 @@ public class Lillypad : MonoBehaviour
         {
             waypointMovementThisFrame = MoveTowardsCurrentWaypoint();
             transform.position += waypointMovementThisFrame;
-            initialPosition += waypointMovementThisFrame;
+            // Atualiza initialPosition apenas se não chegou a um waypoint
+            if (waypointMovementThisFrame != Vector3.zero)
+            {
+                initialPosition += waypointMovementThisFrame;
+            }
         }
     }
 
@@ -138,6 +141,16 @@ public class Lillypad : MonoBehaviour
         if (playerOnPlatform != null)
         {
             playerOnPlatform.position += waypointMovementThisFrame;
+            Debug.Log($"[Lillypad] Moving player: {waypointMovementThisFrame}");
+        }
+        else
+        {
+            // Só loga se o player está próximo desta Lillypad
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null && Vector3.Distance(playerObj.transform.position, transform.position) < 1.5f)
+            {
+                Debug.LogWarning($"[Lillypad] Player null during waypoint movement! Movement: {waypointMovementThisFrame} (Lillypad pos: {transform.position})");
+            }
         }
     }
 
@@ -157,6 +170,8 @@ public class Lillypad : MonoBehaviour
         
         if (reachedWaypoint)
         {
+            // Move para a posição exata do waypoint
+            Vector3 actualMovement = targetWaypoint.position - transform.position;
             transform.position = targetWaypoint.position;
             initialPosition = targetWaypoint.position;
             currentWaypointIndex++;
@@ -167,12 +182,8 @@ public class Lillypad : MonoBehaviour
                 return Vector3.zero;
             }
             
-            if (currentWaypointIndex < waypointPath.Count)
-            {
-                Transform nextWaypoint = waypointPath[currentWaypointIndex];
-                Vector3 nextDirection = (nextWaypoint.position - transform.position).normalized;
-                return nextDirection * waypointMovementSpeed * Time.deltaTime;
-            }
+            // Retorna o movimento real feito para este frame
+            return actualMovement;
         }
         
         return movement;
@@ -190,7 +201,6 @@ public class Lillypad : MonoBehaviour
     private IEnumerator StartSinkingAfterDelay()
     {
         yield return new WaitForSeconds(disappearDelay);
-        AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         isSinking = true;
     }
 
@@ -199,6 +209,8 @@ public class Lillypad : MonoBehaviour
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
             playerOnPlatform = collision.transform;
+            Debug.Log($"[Lillypad] Player detected: {playerOnPlatform.name}");
+            AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         }
     }
 
@@ -206,7 +218,31 @@ public class Lillypad : MonoBehaviour
     {
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
+            Debug.Log($"[Lillypad] Player exit: {collision.transform.name}");
+            StartCoroutine(DelayedPlayerRemoval(collision.transform));
+        }
+    }
+
+    private IEnumerator DelayedPlayerRemoval(Transform playerTransform)
+    {
+        yield return new WaitForSeconds(0.1f);
+        
+        if (playerOnPlatform == playerTransform)
+        {
+            Debug.Log($"[Lillypad] Player removed: {playerTransform.name}");
             playerOnPlatform = null;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (IsInLayerMask(collision.gameObject, playerLayer))
+        {
+            if (playerOnPlatform != collision.transform)
+            {
+                playerOnPlatform = collision.transform;
+                Debug.Log($"[Lillypad] Player stay: {playerOnPlatform.name}");
+            }
         }
     }
 

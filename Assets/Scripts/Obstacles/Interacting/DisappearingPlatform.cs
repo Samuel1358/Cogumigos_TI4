@@ -28,7 +28,7 @@ public class DisappearingPlatform : MonoBehaviour
         if (collision.gameObject.transform.position.y < transform.position.y - 0.2f)
             return;
 
-        TweenHandler.FallingPlatformShake(transform, new Vector3(.4f, .4f, 1), _disappearTime, _reappearTime, DisablePlatform, EnablePlatform);
+        TweenHandler.FallingPlatformShake(transform, new Vector3(.4f, 1f, .4f), _disappearTime, _reappearTime, DisablePlatform, EnablePlatform);
     }
     
     public void DisablePlatform()
@@ -55,5 +55,7 @@ public class DisappearingPlatform : MonoBehaviour
     {
         if (_visualObg == null)
             return;
+
+        _rb.isKinematic = value;
     }
 }
