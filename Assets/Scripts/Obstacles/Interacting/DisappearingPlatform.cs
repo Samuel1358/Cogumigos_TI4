@@ -55,5 +55,7 @@ public class DisappearingPlatform : MonoBehaviour
     {
         if (_visualObg == null)
             return;
+
+        _rb.isKinematic = value;
     }
 }
