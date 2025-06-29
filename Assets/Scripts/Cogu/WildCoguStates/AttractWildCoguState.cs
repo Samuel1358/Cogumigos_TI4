@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class AttractWildCoguState : WildCoguState
@@ -13,17 +14,17 @@ public class AttractWildCoguState : WildCoguState
     }
 
     // Public Methods
-    /*public AttractWildCoguState Setup(CoguCastPoint assingPoint)
+    public AttractWildCoguState Setup(CoguCastPoint assingPoint)
     {
         this._assingPoint = assingPoint;
-        _stateMachine.WildCogu.Agent.speed = _stateMachine.WildCogu.Data.moveSpd;
+        //_stateMachine.WildCogu.Agent.speed = _stateMachine.WildCogu.Data.moveSpd;
         return this;
-    }*/
+    }
 
     // Inherited Public Methods
     public override void Enter()
     {
-        //Debug.Log("Enter - Attract");
+        _stateMachine.WildCogu.Animator.SetBool("Disapear", true);
     }
 
     public override void Update()
