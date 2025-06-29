@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2166596167613113728
 Transform:
@@ -168,6 +168,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2166596167613113728}
     m_Modifications:
+    - target: {fileID: 4392839910504088390, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756477466969689538, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7186151372550892369, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -211,6 +219,14 @@ PrefabInstance:
     - target: {fileID: 7730282990487809328, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
       propertyPath: m_Name
       value: Cogumigo_Interaction
+      objectReference: {fileID: 0}
+    - target: {fileID: 7730282990487809328, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9105766658822196384, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
