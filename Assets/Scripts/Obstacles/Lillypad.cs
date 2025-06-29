@@ -190,6 +190,7 @@ public class Lillypad : MonoBehaviour
     private IEnumerator StartSinkingAfterDelay()
     {
         yield return new WaitForSeconds(disappearDelay);
+        AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         isSinking = true;
     }
 

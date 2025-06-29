@@ -16,9 +16,9 @@ public class MirrorInteraction : MonoBehaviour
     [SerializeField] private bool _interactJustOnce = false; // Se true, só permite uma interação
     
     [Header("Audio Feedback")]
-    [SerializeField] private AudioSource _audioSource; // Source de áudio para feedback
-    [SerializeField] private AudioClip _rotationSound; // Som de rotação
     [SerializeField] private float _volume = 0.7f; // Volume do som
+    
+    private bool _useFirstSound = true; // Alterna entre os dois sons
     
     [Header("Debug")]
     [SerializeField] private bool _showDebugInfo = true;
@@ -59,17 +59,7 @@ public class MirrorInteraction : MonoBehaviour
                           "Adicione um InteractingArea component ao objeto base do espelho.");
         }
 
-        // Configura áudio se não configurado
-        if (_audioSource == null)
-        {
-            _audioSource = GetComponent<AudioSource>();
-            if (_audioSource == null && _rotationSound != null)
-            {
-                _audioSource = gameObject.AddComponent<AudioSource>();
-                _audioSource.playOnAwake = false;
-                _audioSource.volume = _volume;
-            }
-        }
+        // Audio será gerenciado pelo AudioManager.Instance
 
         if (_showDebugInfo)
         {
@@ -130,14 +120,28 @@ public class MirrorInteraction : MonoBehaviour
     }
 
     /// <summary>
-    /// Toca o som de rotação
+    /// Toca o som de rotação alternando entre os dois sons
     /// </summary>
     private void PlayRotationSound()
     {
-        if (_audioSource != null && _rotationSound != null)
+        if (AudioManager.Instance != null)
         {
-            _audioSource.volume = _volume;
-            _audioSource.PlayOneShot(_rotationSound);
+            // Alterna entre os dois sons
+            string soundName = _useFirstSound ? SoundEffectNames.ESPELHO_MEXENDO : SoundEffectNames.ESPELHO_MEXENDO2;
+            
+            AudioManager.Instance.PlaySFX(soundName);
+            
+            // Alterna para o próximo som
+            _useFirstSound = !_useFirstSound;
+            
+            if (_showDebugInfo)
+            {
+                Debug.Log($"Playing mirror sound: {soundName} (volume: {_volume})");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager.Instance is null - cannot play mirror rotation sound");
         }
     }
 

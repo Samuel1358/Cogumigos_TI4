@@ -34,6 +34,8 @@ public class KeyedDoorFeedback : ResetableBase
             return;
         }
 
+        AudioManager.Instance.PlaySFX(SoundEffectNames.CHAVE_PORTA);
+
         _keyVisual.transform.position = other.transform.position;
         _keyVisual.transform.rotation = Quaternion.identity;
         SetKeyVisualActive(true);
