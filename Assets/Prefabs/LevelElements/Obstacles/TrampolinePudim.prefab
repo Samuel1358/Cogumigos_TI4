@@ -277,6 +277,7 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 2
   _interactDistance: 0
+  _interactableEffectVisual: {fileID: 8470082181237611806}
   _trampoloPrefab: {fileID: 2646906973178617515}
 --- !u!65 &920825138617515260
 BoxCollider:
@@ -597,6 +598,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+--- !u!1 &8470082181237611806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7730282990487809328, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}
+  m_PrefabInstance: {fileID: 2219357289701027886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9040671872804019071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7186151372550892369, guid: 9309e0449686ec5439bfdd6da83b50b3, type: 3}

@@ -27,6 +27,7 @@ public class TrampoloCoguSpot : CoguInteractable
     {        
         if (NeedReset)
         {
+            base.ResetObject();
             _trampoloPrefab.SetActive(false);
             _canActive = true;
 

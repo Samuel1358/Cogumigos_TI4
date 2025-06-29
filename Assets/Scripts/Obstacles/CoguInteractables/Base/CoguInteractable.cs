@@ -9,6 +9,7 @@ public abstract class CoguInteractable : ResetableBase
     // Fields
     [SerializeField] private CoguType _assignedCoguType;
     [SerializeField] private float _interactDistance;
+    [SerializeField] private GameObject _interactableEffectVisual;
     
     protected bool _isAvailable = true;
 
@@ -25,10 +26,15 @@ public abstract class CoguInteractable : ResetableBase
 
     public virtual void DisableInteract()
     {
+        _interactableEffectVisual.SetActive(false);
         _isAvailable = false;
     }
 
     // Inherit Public Methods
+    public override void ResetObject() {
+        _interactableEffectVisual.SetActive(true);
+    }
+
     public abstract Action Interact(Cogu cogu);
 
     protected virtual void OnDrawGizmosSelected()
