@@ -23,4 +23,7 @@ public class PersistenteCollectableDataSO : DialogData
     public bool VerifyState() {
         return DataPersistenceManager.Instance.VerifyCollectableState(ID);
     }
+    public bool VerifyCollected() {
+        return DataPersistenceManager.Instance.VerifyCollectableCollected(ID);
+    }
 }

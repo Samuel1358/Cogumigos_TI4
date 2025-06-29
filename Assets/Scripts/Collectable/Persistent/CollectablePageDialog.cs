@@ -12,9 +12,8 @@ public class CollectablePageDialog : CollectablePersistenceBase {
 
     protected override void SetCollectableInactive() {
         _visual.SetActive(false);
-        WasCollected = true;
-        DataPersistenceManager.Instance.SaveGame();
-        UiInventory.Instance.UpdateCollectableCounter();
+        _wasCollected = true;
+        UiInventory.Instance.UpdateCollectableCountUI();
     }
 
     public void StartDialog() {
@@ -61,10 +60,11 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     }
 
     private void OnTriggerEnter(Collider collider) {
-        if (!WasCollected) {
+        if (!_wasCollected) {
             AudioManager.Instance.PlaySFX("Collectable");
-            //UiInventory.Instance.UpdateCollectableCountUI(NUMERO DE PAGINAS COLETADAS);
             SetCollectableInactive();
+            DataPersistenceManager.Instance.SaveGame();
+
         }
 
         if (CollectableSO.ShowJustOnce) {
