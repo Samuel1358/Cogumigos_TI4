@@ -12,12 +12,14 @@ public class InteractCoguState : CoguState
     public override void Enter()
     {
         //Debug.Log("Enter - Interact");
-        _interacting += _stateMachine.Cogu.StartInteracting();
+        _interacting += _stateMachine.Cogu.StartInteracting;
         _stateMachine.Cogu.ResetAnableCast();
         AudioManager.Instance.PlaySFX("CoguTransform");
+
+        _stateMachine.Cogu.Animator.SetBool("Interact", true);
     }
 
-    public override void Update()
+    public void Interact()
     {
         _interacting?.Invoke();
     }

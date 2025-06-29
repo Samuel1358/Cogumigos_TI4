@@ -591,7 +591,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7975699960414888578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2488717133453938278}
+        m_TargetAssemblyTypeName: CollectablePagesUi, Assembly-CSharp
+        m_MethodName: PreviousPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &805290517157528785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,7 +1809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7425473534326848404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2488717133453938278}
+        m_TargetAssemblyTypeName: CollectablePagesUi, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2072648415855865620
 GameObject:
   m_ObjectHideFlags: 0
@@ -6602,6 +6626,7 @@ GameObject:
   - component: {fileID: 9046093119433897577}
   - component: {fileID: 8425479215965936608}
   - component: {fileID: 6836134745423000792}
+  - component: {fileID: 2488717133453938278}
   m_Layer: 5
   m_Name: CreditsMenu
   m_TagString: Untagged
@@ -6672,6 +6697,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2488717133453938278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7423036198458663009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a9f5bf4bdfb3841a252fe033a980a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableDataSOs:
+  - {fileID: 11400000, guid: f94016a49e3f3db428b6ab0fc5814902, type: 2}
+  - {fileID: 11400000, guid: 3bae4e64a1b5e134ea8d53dc00b1754c, type: 2}
+  - {fileID: 11400000, guid: fde1492ec78c7304dbae25990fb763f0, type: 2}
+  - {fileID: 11400000, guid: c191e63a2bfbb1b498eb5d2554bbf6f5, type: 2}
+  - {fileID: 11400000, guid: 9e2c9906d8377fb4f92661be7fee5fb6, type: 2}
+  - {fileID: 11400000, guid: 3f54f27dfb55c424abf4e8e033d244c5, type: 2}
+  - {fileID: 11400000, guid: df7f66dddea78b74b818a89e2ebe3003, type: 2}
+  - {fileID: 11400000, guid: 93da5723a71f9b140b56c6afb1700897, type: 2}
+  - {fileID: 11400000, guid: dc44c5fac5c1ee14caac97fa1cd3cab7, type: 2}
+  - {fileID: 11400000, guid: 6c6e6f4a92bfd37459c44bd80581360c, type: 2}
+  - {fileID: 11400000, guid: 973eaa29427ca10478a70bc659ef414a, type: 2}
+  - {fileID: 11400000, guid: 2234b706af6dbd14f81063b7a506bee8, type: 2}
+  - {fileID: 11400000, guid: 3656e3f3ef539a143b0bbfb12a7eaee7, type: 2}
+  - {fileID: 11400000, guid: 071e35e09fc4df348995fc5f6b089eea, type: 2}
+  - {fileID: 11400000, guid: 947a04b391b23ca44ac7f9ae09d79080, type: 2}
+  - {fileID: 11400000, guid: c206743c928ac1044a3e4c244f6ecc7b, type: 2}
+  - {fileID: 11400000, guid: 6084a961b6011d54fb0f694104a6a41b, type: 2}
+  - {fileID: 11400000, guid: 678431d9a972d6b4998da2516a856978, type: 2}
+  - {fileID: 11400000, guid: 363f26fad9c967440942461ba58187a3, type: 2}
+  - {fileID: 11400000, guid: 941e4eb3e66b1514bbe49fec3c4220c9, type: 2}
+  - {fileID: 11400000, guid: 451c9b825d44235488a0add43f763cbb, type: 2}
+  - {fileID: 11400000, guid: 6b430d00f522c47488ef5e221834d5f6, type: 2}
+  - {fileID: 11400000, guid: 212cecf277aad2947943fd29597cb88e, type: 2}
+  - {fileID: 11400000, guid: 4b4d6ff389fe0704da3a85868c9d81e3, type: 2}
+  - {fileID: 11400000, guid: ee5bece1c920d944e885e8ccf9e241e0, type: 2}
+  - {fileID: 11400000, guid: 51521b3b3ada0ed4693f9001f4452746, type: 2}
+  - {fileID: 11400000, guid: fb1511ca4342bdd4a9dd67759acab322, type: 2}
+  _collectableNumber: {fileID: 3485869383522240073}
+  _collectableTitle: {fileID: 1476805615108322920}
+  _collectableText: {fileID: 4130265911708842372}
+  _collectableAuthor: {fileID: 3707588488168414729}
 --- !u!1 &7557159549689577859
 GameObject:
   m_ObjectHideFlags: 0

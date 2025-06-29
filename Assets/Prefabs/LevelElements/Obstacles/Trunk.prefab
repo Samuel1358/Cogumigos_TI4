@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1013802781469149756
 Transform:
@@ -102,7 +102,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &946856101842312980
 Transform:
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
-  pushForce: 150
   visualChild: {fileID: 0}
   pushToRight: 0
 --- !u!64 &8749110542598095655

@@ -21,8 +21,7 @@ public class DisappearWildCoguState : WildCoguState
 
     // Inherited Public Methods
     public override void Enter()
-    {
-        //Debug.Log("Enter - Disappear");
+    {       
         _assingPoint.AssingWildCogu(_stateMachine.WildCogu);
     }
 }

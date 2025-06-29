@@ -1,16 +1,15 @@
-using System;
 using UnityEngine;
 
 public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersistence {
 
     protected bool WasCollected;
 
-    [SerializeField] private PersistenceCollectableBaseSO _collectableSO;
+    [SerializeField] public PersistenteCollectableDataSO CollectableSO { get; private set; }
 
     private string _id;
 
     private void Awake() {
-        _id = _collectableSO.ID;
+        _id = CollectableSO.ID;
     }
 
     public void LoadData(GameData data) {
@@ -28,7 +27,7 @@ public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersisten
     }
 
     private void OnValidate() {
-        _id = _collectableSO?.ID;
+        _id = CollectableSO?.ID;
     }
 
     protected abstract void SetCollectableInactive();

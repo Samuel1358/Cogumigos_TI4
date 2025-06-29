@@ -31,13 +31,6 @@ public class FlowerRandomizeColor : MonoBehaviour
 
         Color selectedColor = possibleColors[Random.Range(0, possibleColors.Length)];
 
-        // Pega a PropertyBlock só para o material alvo
-        rend.GetPropertyBlock(propBlock, targetMaterialIndex);
-
-        // Altera só a cor (supondo que o shader use "_Color", ajuste se for outro nome ex: "_BaseColor")
-        propBlock.SetColor("_BaseColor", selectedColor);
-
-        // Aplica de volta no material alvo
-        rend.SetPropertyBlock(propBlock, targetMaterialIndex);
+        rend.materials[targetMaterialIndex].color = selectedColor;
     }
 }
