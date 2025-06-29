@@ -22,10 +22,11 @@ public class Breakable : CoguInteractable
         NeedReset = false;
     }
 
-    public override Action Interact(Cogu cogu) {
+    public override void Interact(Cogu cogu) {
         DeactivateWall();
         _onBreak.Invoke();
-        return () => { Destroy(cogu.gameObject); };
+        Destroy(cogu.gameObject);
+        //return () => { Destroy(cogu.gameObject); };
     }
 
     public override void ResetObject() {

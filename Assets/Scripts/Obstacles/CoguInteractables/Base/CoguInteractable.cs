@@ -35,7 +35,7 @@ public abstract class CoguInteractable : ResetableBase
         _interactableEffectVisual.SetActive(true);
     }
 
-    public abstract Action Interact(Cogu cogu);
+    public abstract void Interact(Cogu cogu);
 
     protected virtual void OnDrawGizmosSelected()
     {

@@ -25,10 +25,11 @@ public class RemovableObstacle : CoguInteractable
         }
     }
 
-    public override Action Interact(Cogu cogu)
+    public override void Interact(Cogu cogu)
     {
         Walk();
-        return () => { Destroy(cogu.gameObject); };
+        Destroy(cogu.gameObject);
+        //return () => { Destroy(cogu.gameObject); };
     }
 
     // Resetable

@@ -11,16 +11,17 @@ public class TrampoloCoguSpot : CoguInteractable
         _canActive = true;
     }
 
-    public override Action Interact(Cogu cogu) {
+    public override void Interact(Cogu cogu) {
         if (_canActive) {
             _trampoloPrefab.SetActive(true);
             _canActive = false;
             AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_COZINHEIRO);
             _isAvailable = false;
             NeedReset = true;
-            return () => { Destroy(cogu.gameObject); };
+            Destroy(cogu.gameObject);
+            //return () => { Destroy(cogu.gameObject); };
         }
-        return () => {};
+        //return () => {};
     }
 
     public override void ResetObject() 

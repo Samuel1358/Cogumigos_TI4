@@ -2,14 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+//[RequireComponent(typeof(NavMeshAgent))]
 public class Cogu : MonoBehaviour
 {
     // Fields
     [SerializeField] private CoguData _data;
+    [SerializeField] private Animator _animator;
 
     private CoguStateMachine _stateMachine;
-    private NavMeshAgent _agent;
+    //private NavMeshAgent _agent;
     private CoguInteractable _interactableObj;
     private CoguCastter _castter;
     private Vector3 _castSpot;
@@ -17,16 +18,17 @@ public class Cogu : MonoBehaviour
 
     // Properties
     public CoguData Data { get { return _data; } }
+    public Animator Animator { get { return _animator; } }
     public CoguStateMachine StateMachine { get { return _stateMachine; } }
-    public NavMeshAgent Agent { get { return _agent; } }
+    //public NavMeshAgent Agent { get { return _agent; } }
     public Vector3 CastSpot { get { return _castSpot; } }
     public Vector3 InteractSpot {  get { return _interactSpot; } }
 
-    private void Start()
+    /*private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
         _agent.enabled = false;
-    }
+    }*/
 
     // Public Methods
     public void Initialize(CoguInteractable interactable, CoguCastter castter)
@@ -43,23 +45,23 @@ public class Cogu : MonoBehaviour
         CoguManager.instance.AssingCogu(this);
     }
 
-    public bool ArrivedDestination()
+    /*public bool ArrivedDestination()
     {
         if (Vector3.Distance(transform.position, _agent.destination) <= _interactableObj.InteractDistance)
             return true;
         else
             return false;
-    }
+    }*/
 
     public void ResetAnableCast()
     {
         _castter.IsAbleCast = true;
     }
 
-    public Action StartInteracting()
+    public void StartInteracting()
     {
         _interactableObj.DisableInteract();
-        return _interactableObj.Interact(this);
+        _interactableObj.Interact(this);
     }
 
     public void EndInteracting(Action act)
@@ -70,6 +72,24 @@ public class Cogu : MonoBehaviour
     public void SelfDestruction()
     {
         Destroy(gameObject);
+    }
+
+    // Animation
+    public void AnimToThrow()
+    {
+        _stateMachine.ChangeState(_stateMachine.ThrowState);
+        Animator.SetBool("Throw", true);
+    }
+
+    public void AnimToMove()
+    {
+        //_stateMachine.ChangeState(_stateMachine.MoveState);
+        Animator.SetBool("Move", true);
+    }
+
+    public void InteractionOnAnim()
+    {
+        _stateMachine.InteractState.Interact();
     }
 
     private void OnDestroy()

@@ -56,7 +56,7 @@ public class MoveCoguState : CoguState
         }
     }
 
-    private bool CheckGround()
+    /*private bool CheckGround()
     {
         if (_stateMachine.Cogu.Agent.enabled)
             return true;
@@ -71,5 +71,5 @@ public class MoveCoguState : CoguState
         }
 
         return aux;
-    }
+    }*/
 }
