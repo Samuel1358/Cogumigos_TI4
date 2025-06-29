@@ -455,6 +455,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 160196964961092860}
+    - target: {fileID: 8670465722033153964, guid: cc97911a129de6442944028bd84b2aa0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670465722033153964, guid: cc97911a129de6442944028bd84b2aa0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3664831724893684064}
+    - target: {fileID: 8670465722033153964, guid: cc97911a129de6442944028bd84b2aa0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: HidePauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670465722033153964, guid: cc97911a129de6442944028bd84b2aa0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UiInGameMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8904977680132244723, guid: cc97911a129de6442944028bd84b2aa0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -612,6 +628,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2105172678213075176, guid: 808cc6b9b11049f4f93821d52f75b5fd, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391432385739767154, guid: 808cc6b9b11049f4f93821d52f75b5fd, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2508715698932055072, guid: 808cc6b9b11049f4f93821d52f75b5fd, type: 3}
@@ -1447,8 +1467,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6246412990406281073, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6246412990406281073, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 3664831724893684064}
     - target: {fileID: 6246412990406281073, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -1459,11 +1483,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6246412990406281073, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: HidePauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6246412990406281073, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UiInGameMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6246412990406281073, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument

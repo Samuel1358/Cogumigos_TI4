@@ -65,4 +65,8 @@ public class DataPersistenceManager : MonoBehaviour
     public bool VerifyCollectableState(string idToCheck) {
         return _gameData.Colectables.ContainsKey(idToCheck);
     }
+    
+    public bool VerifyCollectableCollected(string idToCheck) {
+        return _gameData.Colectables[idToCheck];
+    }
 }

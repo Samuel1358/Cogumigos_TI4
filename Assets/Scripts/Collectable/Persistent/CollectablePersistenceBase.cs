@@ -2,9 +2,11 @@ using UnityEngine;
 
 public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersistence {
 
-    protected bool WasCollected;
+    protected bool _wasCollected;
 
-    [SerializeField] public PersistenteCollectableDataSO CollectableSO { get; private set; }
+    public bool WasCollected { get { return _wasCollected; } }
+
+    [field: SerializeField] public PersistenteCollectableDataSO CollectableSO { get; private set; }
 
     private string _id;
 
@@ -13,8 +15,8 @@ public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersisten
     }
 
     public void LoadData(GameData data) {
-        data.Colectables.TryGetValue(_id, out WasCollected);
-        if (WasCollected) {
+        data.Colectables.TryGetValue(_id, out _wasCollected);
+        if (_wasCollected) {
             SetCollectableInactive();
         }
     }
@@ -23,7 +25,7 @@ public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersisten
         if (data.Colectables.ContainsKey(_id)) {
             data.Colectables.Remove(_id);
         }
-        data.Colectables.Add(_id, WasCollected);
+        data.Colectables.Add(_id, _wasCollected);
     }
 
     private void OnValidate() {
