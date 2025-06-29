@@ -17,7 +17,7 @@ public class FlowerRandomizeColor : MonoBehaviour
         rend = GetComponent<Renderer>();
         propBlock = new MaterialPropertyBlock();
 
-        ApplyRandomColor();
+        //ApplyRandomColor();
     }
 
     private void ApplyRandomColor()
