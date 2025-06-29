@@ -6,9 +6,10 @@ public class DeathCollision : MonoBehaviour
     {
         if ((Cheats.instance != null) ? !Cheats.instance.Imortal : true)
         {
-            if (collision.transform.TryGetComponent<Player>(out Player player)) {
+            if (collision.transform.TryGetComponent(out Player player)) {
                 RespawnController.OnPlayerRespawn.Invoke();
                 AudioManager.Instance.PlayDeathSound();
+                UiInventory.Instance.UpdateCoguCountUI(GameManager.Instance.Player.CoguCast.CoguCount);
             }
         }
     }

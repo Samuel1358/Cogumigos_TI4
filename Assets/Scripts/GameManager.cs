@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public PlayerInput PlayerInputs { get; private set; }
     [SerializeField] private GameObject FrameDebugger;
+    [SerializeField] private Player _player;
+
+    public Player Player { get { return _player; } }
 
     private void Awake() {
         if (Instance == null) {

@@ -61,6 +61,7 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     private void OnTriggerEnter(Collider collider) {
         if (!WasCollected) {
             AudioManager.Instance.PlaySFX("Collectable");
+            //UiInventory.Instance.UpdateCollectableCountUI(NUMERO DE PAGINAS COLETADAS);
             SetCollectableInactive();
         }
 
