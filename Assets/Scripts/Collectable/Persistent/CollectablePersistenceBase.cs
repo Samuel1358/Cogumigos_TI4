@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public abstract class CollectablePersistenceBase : MonoBehaviour, IDataPersistence {
 
     protected bool WasCollected;
 
-    [SerializeField] private PersistenceCollectableBaseSO _collectableSO;
+    [SerializeField] protected PersistenteCollectableDataSO _collectableSO;
 
     private string _id;
 

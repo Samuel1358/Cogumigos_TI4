@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour {
 
     private void OnEnable() {
         PlayerActions.Enable();
+        GameManager.Instance?.SetInput(this);
         PlayerActions.Pause.canceled += OnPauseCanceled;
     }
 

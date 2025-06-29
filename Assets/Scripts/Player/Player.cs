@@ -95,7 +95,8 @@ public class Player : MonoBehaviour {
 
     public void ResetPlayer() {
         transform.position = RespawnController.Instance.PlayerActiveCheckPoint.transform.position;
-        transform.rotation = RespawnController.Instance.PlayerActiveCheckPoint.transform.rotation;
+        transform.LookAt(RespawnController.Instance.PlayerActiveCheckPoint.transform.forward);
+        _movementStateMachine.ChangeState(_movementStateMachine.IdlingState);
     }
 
     public void SetGlide(bool state) {
