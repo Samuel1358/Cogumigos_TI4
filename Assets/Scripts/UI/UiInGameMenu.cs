@@ -48,6 +48,6 @@ public class UiInGameMenu : MonoBehaviour {
     }
 
     public void ReturnToMenu() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

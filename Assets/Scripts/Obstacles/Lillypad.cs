@@ -141,16 +141,12 @@ public class Lillypad : MonoBehaviour
         if (playerOnPlatform != null)
         {
             playerOnPlatform.position += waypointMovementThisFrame;
-            Debug.Log($"[Lillypad] Moving player: {waypointMovementThisFrame}");
         }
         else
         {
             // Só loga se o player está próximo desta Lillypad
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-            if (playerObj != null && Vector3.Distance(playerObj.transform.position, transform.position) < 1.5f)
-            {
-                Debug.LogWarning($"[Lillypad] Player null during waypoint movement! Movement: {waypointMovementThisFrame} (Lillypad pos: {transform.position})");
-            }
+            
         }
     }
 
@@ -209,7 +205,6 @@ public class Lillypad : MonoBehaviour
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
             playerOnPlatform = collision.transform;
-            Debug.Log($"[Lillypad] Player detected: {playerOnPlatform.name}");
             AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         }
     }
@@ -218,7 +213,6 @@ public class Lillypad : MonoBehaviour
     {
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
-            Debug.Log($"[Lillypad] Player exit: {collision.transform.name}");
             StartCoroutine(DelayedPlayerRemoval(collision.transform));
         }
     }
@@ -229,7 +223,6 @@ public class Lillypad : MonoBehaviour
         
         if (playerOnPlatform == playerTransform)
         {
-            Debug.Log($"[Lillypad] Player removed: {playerTransform.name}");
             playerOnPlatform = null;
         }
     }
@@ -241,7 +234,6 @@ public class Lillypad : MonoBehaviour
             if (playerOnPlatform != collision.transform)
             {
                 playerOnPlatform = collision.transform;
-                Debug.Log($"[Lillypad] Player stay: {playerOnPlatform.name}");
             }
         }
     }

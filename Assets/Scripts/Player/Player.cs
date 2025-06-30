@@ -21,6 +21,22 @@ public class Player : MonoBehaviour {
 
     private PlayerMovementStateMachine _movementStateMachine;
 
+    private void OnEnable() {
+        RespawnController.OnPlayerRespawn += ResetPlayer;
+
+
+    }
+
+    private void OnDisable() {
+        RespawnController.OnPlayerRespawn -= ResetPlayer;
+
+
+
+    }
+
+
+
+
     private void OnCollisionEnter(Collision collision) {
         foreach (ContactPoint contact in collision.contacts) {
             if (contact.thisCollider == _improvedCollisionCollider || contact.otherCollider == _improvedCollisionCollider) {
@@ -67,7 +83,6 @@ public class Player : MonoBehaviour {
         ColliderUtility.CalculateCapsuleColliderDimensions();
         _movementStateMachine.ChangeState(_movementStateMachine.IdlingState);
         MainCameraTransform = Camera.main.transform;
-        RespawnController.OnPlayerRespawn += ResetPlayer;
     }
     private void OnValidate() {
         ColliderUtility.Initialize(gameObject);
