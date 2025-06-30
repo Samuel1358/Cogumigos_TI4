@@ -8,6 +8,7 @@ public class Cogu : MonoBehaviour
     // Fields
     [SerializeField] private CoguData _data;
     [SerializeField] private Animator _animator;
+    [SerializeField] private bool _lookAt;
     [SerializeField] private LookAtTarget _lookAtTarget;
 
     private CoguStateMachine _stateMachine;
@@ -44,8 +45,9 @@ public class Cogu : MonoBehaviour
         float t = interactable.InteractDistance / (transform.position - interactable.transform.position).magnitude;
         _interactSpot = Vector3.Lerp(interactable.transform.position, transform.position, t);
 
-        _lookAtTarget.SetTarget(_interactableObj.transform);
-
+        if (_lookAt)
+            _lookAtTarget.SetTarget(_interactableObj.transform);
+        
         CoguManager.instance.AssingCogu(this);
     }
 

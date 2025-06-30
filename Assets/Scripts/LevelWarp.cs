@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelWarp : MonoBehaviour
 {
     [SerializeField] private int _targetSceneIndex;
-    //[SerializeField] private UnityEvent _onJust
+    [SerializeField] private UnityEvent _onJustBeforeWarp;
 
     private void Start()
     {
@@ -15,6 +15,7 @@ public class LevelWarp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        _onJustBeforeWarp.Invoke();
         SceneManager.LoadScene(_targetSceneIndex, LoadSceneMode.Single);
     }
 }
