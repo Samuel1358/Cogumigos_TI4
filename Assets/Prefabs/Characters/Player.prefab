@@ -499,6 +499,7 @@ MonoBehaviour:
     hardLandParameterName: isHardLanding
     fallParameterName: isFalling
     glideParameterName: IsGliding
+    isDoubleJump: IsDoubleJump
   <IsColliding>k__BackingField: 0
   CollisionDirection: {x: 0, y: 0, z: 0}
   _improvedCollisionCollider: {fileID: 1179298946502760123}
@@ -719,10 +720,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7823293702887809713, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c29994f70ac71a241adae36e080f51ab, type: 2}
     - target: {fileID: 919132149155446097, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
       propertyPath: m_Name
       value: Twila
       objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 15754cc52bbccc949a2e4da815a5c3fc, type: 2}
+    - target: {fileID: 1630794972795428178, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 59ec97c70edceb94f8bceccf668344db, type: 2}
+    - target: {fileID: 1640574174137304352, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c10719c1dfd3565439f4eeeeb4376e69, type: 2}
+    - target: {fileID: 2026081558148769356, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a99a56e7247cc85439d1815498a87609, type: 2}
+    - target: {fileID: 4026956329034801375, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c10719c1dfd3565439f4eeeeb4376e69, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
