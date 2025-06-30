@@ -485,10 +485,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3664831724893684064}
-        m_TargetAssemblyTypeName: UiInGameMenu, Assembly-CSharp
-        m_MethodName: ReturnToMenu
-        m_Mode: 1
+      - m_Target: {fileID: 8052551680274792627}
+        m_TargetAssemblyTypeName: MainMenuUi, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1119,8 +1119,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3664831724893684064}
-        m_TargetAssemblyTypeName: UiInGameMenu, Assembly-CSharp
+      - m_Target: {fileID: 8052551680274792627}
+        m_TargetAssemblyTypeName: MainMenuUi, Assembly-CSharp
         m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
@@ -1252,14 +1252,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3664831724893684064}
-        m_TargetAssemblyTypeName: UiInGameMenu, Assembly-CSharp
-        m_MethodName: ExitGame
-        m_Mode: 1
+      - m_Target: {fileID: 8052551680274792627}
+        m_TargetAssemblyTypeName: MainMenuUi, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2472,7 +2472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7358851470044642380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2749,6 +2749,7 @@ GameObject:
   - component: {fileID: 1370851887330861470}
   - component: {fileID: 3211357402560947708}
   - component: {fileID: 3664831724893684064}
+  - component: {fileID: 8052551680274792627}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
@@ -2853,6 +2854,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inputs: {fileID: 0}
   _pauseScreen: {fileID: 0}
+--- !u!114 &8052551680274792627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673831409970772845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6885b9cbe60cf8d47b31ca54506165b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8789135987981273993
 GameObject:
   m_ObjectHideFlags: 0
