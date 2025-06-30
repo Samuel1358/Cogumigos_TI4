@@ -26,7 +26,9 @@ public abstract class CoguInteractable : ResetableBase
 
     public virtual void DisableInteract()
     {
-        _interactableEffectVisual.SetActive(false);
+        if (_interactableEffectVisual != null)
+            _interactableEffectVisual.SetActive(false);
+
         _isAvailable = false;
     }
 

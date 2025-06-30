@@ -1,14 +1,14 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ActivateSwitch : ResetableBase
+public class ActivateSwitch : CoguInteractable
 {
     [Header("Switch Settings")]
     [SerializeField] private bool _startActivated = false;
     [SerializeField] private Light _indicatorLight; // Optional visual indicator
     
     [Header("Interaction Settings")]
-    [SerializeField] private InteractingArea _area;
+    //[SerializeField] private InteractingArea _area;
     [SerializeField] private bool _interactJustOnce = false;
     [SerializeField] private bool _toggleMode = true; // true = toggle, false = only activate
     
@@ -38,7 +38,7 @@ public class ActivateSwitch : ResetableBase
         RespawnController.OnPlayerChangeCheckPoint -= SaveStateAtCheckpoint;
     }
 
-    private void Awake()
+    /*private void Awake()
     {
         _interaction = ScriptableObject.CreateInstance<ActivateSwitchInteraction>();
         _interaction.Assign(this, HandleSwitchInteraction);
@@ -47,7 +47,7 @@ public class ActivateSwitch : ResetableBase
         _interaction.SetInteractJustOnce(_interactJustOnce);
 
         _area.Assign(_interaction);
-    }
+    }*/
 
     private void Start()
     {
@@ -58,6 +58,14 @@ public class ActivateSwitch : ResetableBase
         // Set initial state
         isActivated = _startActivated;
         UpdateVisuals();
+    }
+
+    // CoguInteract
+    public override void Interact(Cogu cogu)
+    {
+        Debug.Log("Interactable Pira");
+        HandleSwitchInteraction(this);
+        Destroy(cogu.gameObject);
     }
 
     // Public Methods
@@ -107,6 +115,8 @@ public class ActivateSwitch : ResetableBase
     // Resetable Implementation
     public override void ResetObject()
     {
+        base.ResetObject();
+
         if (NeedReset)
         {
             // Determine what state to reset to based on checkpoint system

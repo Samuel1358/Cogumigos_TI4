@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5497108635689877265}
   m_Layer: 6
   m_Name: LillyPad
-  m_TagString: Untagged
+  m_TagString: Lillypad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,6 +142,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
+  lillypadLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  isSinking: 0
 --- !u!64 &5497108635689877265
 MeshCollider:
   m_ObjectHideFlags: 0
