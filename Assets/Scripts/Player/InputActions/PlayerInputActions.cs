@@ -917,6 +917,34 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UIgame"",
+            ""id"": ""bfc9e138-be71-4466-a1bf-79fb75e792c3"",
+            ""actions"": [
+                {
+                    ""name"": ""EscapePress"",
+                    ""type"": ""Button"",
+                    ""id"": ""700ccd0d-d684-48c7-950b-9c2e7b30b869"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""bd5bd66d-c0f6-4b1d-88d5-c9a04221647d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EscapePress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1002,12 +1030,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // UIgame
+        m_UIgame = asset.FindActionMap("UIgame", throwIfNotFound: true);
+        m_UIgame_EscapePress = m_UIgame.FindAction("EscapePress", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputActions.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerInputActions.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UIgame.enabled, "This will cause a leak and performance issues, PlayerInputActions.UIgame.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1425,6 +1457,102 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // UIgame
+    private readonly InputActionMap m_UIgame;
+    private List<IUIgameActions> m_UIgameActionsCallbackInterfaces = new List<IUIgameActions>();
+    private readonly InputAction m_UIgame_EscapePress;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "UIgame".
+    /// </summary>
+    public struct UIgameActions
+    {
+        private @PlayerInputActions m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public UIgameActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "UIgame/EscapePress".
+        /// </summary>
+        public InputAction @EscapePress => m_Wrapper.m_UIgame_EscapePress;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_UIgame; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="UIgameActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(UIgameActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="UIgameActions" />
+        public void AddCallbacks(IUIgameActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIgameActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIgameActionsCallbackInterfaces.Add(instance);
+            @EscapePress.started += instance.OnEscapePress;
+            @EscapePress.performed += instance.OnEscapePress;
+            @EscapePress.canceled += instance.OnEscapePress;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="UIgameActions" />
+        private void UnregisterCallbacks(IUIgameActions instance)
+        {
+            @EscapePress.started -= instance.OnEscapePress;
+            @EscapePress.performed -= instance.OnEscapePress;
+            @EscapePress.canceled -= instance.OnEscapePress;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="UIgameActions.UnregisterCallbacks(IUIgameActions)" />.
+        /// </summary>
+        /// <seealso cref="UIgameActions.UnregisterCallbacks(IUIgameActions)" />
+        public void RemoveCallbacks(IUIgameActions instance)
+        {
+            if (m_Wrapper.m_UIgameActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="UIgameActions.AddCallbacks(IUIgameActions)" />
+        /// <seealso cref="UIgameActions.RemoveCallbacks(IUIgameActions)" />
+        /// <seealso cref="UIgameActions.UnregisterCallbacks(IUIgameActions)" />
+        public void SetCallbacks(IUIgameActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIgameActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIgameActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="UIgameActions" /> instance referencing this action map.
+    /// </summary>
+    public UIgameActions @UIgame => new UIgameActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1617,5 +1745,20 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UIgame" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="UIgameActions.AddCallbacks(IUIgameActions)" />
+    /// <seealso cref="UIgameActions.RemoveCallbacks(IUIgameActions)" />
+    public interface IUIgameActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "EscapePress" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEscapePress(InputAction.CallbackContext context);
     }
 }

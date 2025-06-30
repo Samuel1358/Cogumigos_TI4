@@ -7,12 +7,20 @@ public class SwitchableAppearing : Switchable
 
     private void Awake()
     {
-        _visual.SetActive(false);
+        if (TryGetComponent(out Collider collider))
+        {
+            _collider = collider;
+            collider.enabled = false;
+        }
+
+        if (_visual != null)
+            _visual.SetActive(false);
     }
 
     public override void Activate() 
     {
         _visual.SetActive(true);
+        _collider.enabled = true;
 
         NeedReset = true;
     }
