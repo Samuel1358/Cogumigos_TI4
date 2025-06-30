@@ -40,6 +40,11 @@ public class CoguCastter : MonoBehaviour, IResetable
         RespawnController.Instance.TurnNonResetable(this);
     }
 
+    private void Teste(CallbackContext callbackContext)
+    {
+        Debug.Log("Teste 123");
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

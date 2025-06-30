@@ -13,7 +13,11 @@ public class PersistenteCollectableDataSO : DialogData
     [field: TextArea(3, 10)] [field: SerializeField] public string InactiveText { get; private set; }
     [field: SerializeField] public string InactiveAuthor { get; private set; }
     [field: Header("Persistence Id")]
-    [field: ReadOnly] [field: SerializeField] [field: Tooltip("If this field is empty, right click on icon and Generate id")] public string ID { get; private set; }
+
+#if UNITY_EDITOR
+    [field: ReadOnly]
+#endif
+    [field: SerializeField] [field: Tooltip("If this field is empty, right click on icon and Generate id")] public string ID { get; private set; }
     
     [ContextMenu("Generate id")]
     private void GenerateGuid() {
