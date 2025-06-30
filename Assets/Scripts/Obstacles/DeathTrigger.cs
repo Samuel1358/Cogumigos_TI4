@@ -4,7 +4,8 @@ public class DeathTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) 
     {
-        if (other.transform.TryGetComponent(out Player player))
+        Player player = other.GetComponentInParent<Player>();
+        if (player != null)
         {
             RespawnController.OnPlayerRespawn.Invoke();
             AudioManager.Instance.PlayDeathSound();
