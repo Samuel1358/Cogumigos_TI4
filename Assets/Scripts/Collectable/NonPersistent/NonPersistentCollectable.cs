@@ -25,8 +25,11 @@ public abstract class NonPersistentCollectable : ResetableBase
     }
 
     override public void ResetObject() {
-        _visual.SetActive(true);
-        _collider.enabled = true;
+        if (_visual != null)
+            _visual.SetActive(true);
+        if (_collider != null)
+            _collider.enabled = true;
+
         _wasCollected = false;
     }
 
