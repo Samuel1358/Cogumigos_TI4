@@ -30,6 +30,7 @@ public class PlayerFallingState : PlayerAirState {
 
     protected override void DoubleJump() {
         base.DoubleJump();
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.IsDoubleJump);
         StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
     }
 }
