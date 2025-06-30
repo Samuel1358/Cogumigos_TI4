@@ -9,6 +9,9 @@ public class LightSwitch : MonoBehaviour
     [Header("Switch Connection")]
     [SerializeField] private ActivateSwitch _activateSwitch;
     
+    [Header("Effects")]
+    [SerializeField] private GameObject _flameEffect;
+    
     private void OnEnable()
     {
         // Subscribe to respawn events
@@ -27,6 +30,12 @@ public class LightSwitch : MonoBehaviour
         if (_light != null)
         {
             _light.enabled = !_startLightOff;
+        }
+        
+        // Set initial flame effect state
+        if (_flameEffect != null)
+        {
+            _flameEffect.SetActive(!_startLightOff);
         }
         
         // Subscribe to switch state changes
@@ -81,6 +90,12 @@ public class LightSwitch : MonoBehaviour
             Debug.Log($"Light {_light.name} turned ON by switch");
             //AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_VELA);
         }
+        
+        if (_flameEffect != null)
+        {
+            _flameEffect.SetActive(true);
+            Debug.Log($"FlameEffect {_flameEffect.name} activated by switch");
+        }
     }
 
     private void OnSwitchDeactivated()
@@ -89,6 +104,12 @@ public class LightSwitch : MonoBehaviour
         {
             _light.enabled = false;
             Debug.Log($"Light {_light.name} turned OFF by switch");
+        }
+        
+        if (_flameEffect != null)
+        {
+            _flameEffect.SetActive(false);
+            Debug.Log($"FlameEffect {_flameEffect.name} deactivated by switch");
         }
     }
 
