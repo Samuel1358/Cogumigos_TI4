@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 5689332663867877422}
   - component: {fileID: 7188360410054059272}
   - component: {fileID: 9004205810667202027}
+  - component: {fileID: 5946005010309784737}
   m_Layer: 0
   m_Name: CoguPlatform
   m_TagString: Untagged
@@ -932,6 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 8abb0dfe6d85c5e46ade2f15255d06ef, type: 2}
   _animator: {fileID: 7188360410054059272}
+  _lookAtTarget: {fileID: 5946005010309784737}
 --- !u!95 &7188360410054059272
 Animator:
   serializedVersion: 7
@@ -967,6 +969,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cogu: {fileID: 5689332663867877422}
+--- !u!114 &5946005010309784737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8169558775697007208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce58538221096148b6624970d396d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
 --- !u!1 &8479628924338606872
 GameObject:
   m_ObjectHideFlags: 0

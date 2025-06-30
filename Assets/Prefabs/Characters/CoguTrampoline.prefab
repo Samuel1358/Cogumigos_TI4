@@ -668,6 +668,7 @@ GameObject:
   - component: {fileID: 8002203433808522579}
   - component: {fileID: 4421068782563640155}
   - component: {fileID: 6976989509139338228}
+  - component: {fileID: 3257667400619393886}
   m_Layer: 0
   m_Name: CoguTrampoline
   m_TagString: Untagged
@@ -708,6 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 8abb0dfe6d85c5e46ade2f15255d06ef, type: 2}
   _animator: {fileID: 4421068782563640155}
+  _lookAtTarget: {fileID: 3257667400619393886}
 --- !u!95 &4421068782563640155
 Animator:
   serializedVersion: 7
@@ -743,6 +745,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cogu: {fileID: 8002203433808522579}
+--- !u!114 &3257667400619393886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429618739763223767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce58538221096148b6624970d396d1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
 --- !u!1 &5945171937382505795
 GameObject:
   m_ObjectHideFlags: 0
