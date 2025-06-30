@@ -63,7 +63,7 @@ public class CoguCastter : MonoBehaviour, IResetable
         {
             if (obj.TryGetComponent(out CoguInteractable interactable))
             {
-                Vector3 interactableDir = new Vector3(transform.position.x - interactable.transform.position.x, 0, transform.position.z - interactable.transform.position.z);
+                Vector3 interactableDir = new Vector3(Camera.main.transform.position.x - interactable.transform.position.x, 0, Camera.main.transform.position.z - interactable.transform.position.z);
                 Vector3 fowardDir = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
                 if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
                     continue;
