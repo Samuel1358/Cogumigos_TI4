@@ -49,6 +49,7 @@ public class Cogu : MonoBehaviour
             _lookAtTarget.SetTarget(_interactableObj.transform);
         
         CoguManager.instance.AssingCogu(this);
+        RespawnController.OnPlayerRespawn += SelfDestruction;
     }
 
     /*public bool ArrivedDestination()
@@ -101,5 +102,6 @@ public class Cogu : MonoBehaviour
     private void OnDestroy()
     {
         CoguManager.instance.RemoveCogu(this);
+        RespawnController.OnPlayerRespawn -= SelfDestruction;
     }
 }

@@ -112,6 +112,7 @@ public class CoguCastter : MonoBehaviour, IResetable
     public void ResetObject()
     {
         _coguCount = _coguHoldedAtCheckpoint;
+        _isAbleCast = true;
     }
 
     #endregion   
