@@ -831,6 +831,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UIgame",
+            "id": "bfc9e138-be71-4466-a1bf-79fb75e792c3",
+            "actions": [
+                {
+                    "name": "EscapePress",
+                    "type": "Button",
+                    "id": "700ccd0d-d684-48c7-950b-9c2e7b30b869",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bd5bd66d-c0f6-4b1d-88d5-c9a04221647d",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EscapePress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

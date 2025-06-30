@@ -4,9 +4,11 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour {
     public PlayerInputActions InputActions { get; private set; }
     public PlayerInputActions.PlayerActions PlayerActions { get; private set; }
+    public PlayerInputActions.UIgameActions UiActions { get; private set; }
     private void Awake() {
         InputActions = new PlayerInputActions();
         PlayerActions = InputActions.Player;
+        UiActions = InputActions.UIgame;
         HideAndLockMouse();
     }
 
