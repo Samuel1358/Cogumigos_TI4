@@ -1,8 +1,6 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class RespawnController : MonoBehaviour {
     public static RespawnController Instance { get; private set; }
@@ -17,13 +15,8 @@ public class RespawnController : MonoBehaviour {
     public static Action OnPlayerRespawn;
     public static Action<Checkpoint> OnPlayerChangeCheckPoint;
 
-    private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-        }
-        else {
-            Destroy(gameObject);
-        }
+    private void Start() {
+        Instance = this;
         ResetablesTraps = new List<IResetable>();
         CheckpointCount = 0;
         OnPlayerRespawn += ResetObjects;
