@@ -20,6 +20,7 @@ public class PlayerJumpingState : PlayerAirState {
 
     public override void Exit() {
         base.Exit();
+        StopAnimation(StateMachineMovement.PlayerGet.AnimationData.IsDoubleJump);
         SetBaseRotationData();
     }
 
@@ -34,6 +35,7 @@ public class PlayerJumpingState : PlayerAirState {
 
     protected override void DoubleJump() {
         base.DoubleJump();
+        StartAnimation(StateMachineMovement.PlayerGet.AnimationData.IsDoubleJump);
         Jump();
     }
 }
