@@ -17,6 +17,7 @@ public class KeyedDoorInteract : ResetableBase
     private bool _isInteracting = false;
     private bool _isInteracted = false;
     private KeyedDoorFeedback _feedback;
+    private BoxCollider _boxCollider;
 
     protected override void OnEnable()
     {
@@ -35,6 +36,7 @@ public class KeyedDoorInteract : ResetableBase
     {
         GetComponent<Collider>().isTrigger = true;
         _feedback = GetComponent<KeyedDoorFeedback>();
+        _boxCollider = GetComponent<BoxCollider>();
 
         if (_visualInfo != null)
             _visualInfo.SetActive(false);
@@ -52,6 +54,10 @@ public class KeyedDoorInteract : ResetableBase
         {
             _isInteracting = false;
             _isInteracted = false;
+
+            // Re-enable the box collider when resetting
+            if (_boxCollider != null)
+                _boxCollider.enabled = true;
 
             NeedReset = false;
         }
@@ -95,6 +101,9 @@ public class KeyedDoorInteract : ResetableBase
                     _visualInfo.SetActive(false);
 
                 NeedReset = true;
+
+                // Disable the box collider when the door is opened
+                _boxCollider.enabled = false;
             }
         }       
     }

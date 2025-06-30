@@ -69,6 +69,9 @@ public class KeyedDoorFeedback : ResetableBase
     // Resetable
     private void SetMemory(Checkpoint checkpoint)
     {
+        if (_keyVisual == null)
+            return;
+
         _activeAtCheckpoint = _keyVisual.activeSelf;
     }
 
