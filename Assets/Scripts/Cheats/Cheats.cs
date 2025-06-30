@@ -30,7 +30,7 @@ public class Cheats : MonoBehaviour
         _cheatsActions.Scene1.started += Scene1Action;
         _cheatsActions.Scene2.started += Scene2Action;
         _cheatsActions.Scene3.started += Scene3Action;
-        _cheatsActions.Scene4.started += Scene4Action;
+        //_cheatsActions.Scene4.started += Scene4Action;
         _cheatsActions.InfinityJump.started += ShiftInfinityJumpAction;
         _cheatsActions.Imortal.started += ShiftImortalAction;
     }
@@ -40,7 +40,7 @@ public class Cheats : MonoBehaviour
         _cheatsActions.Scene1.started -= Scene1Action;
         _cheatsActions.Scene2.started -= Scene2Action;
         _cheatsActions.Scene3.started -= Scene3Action;
-        _cheatsActions.Scene4.started -= Scene4Action;
+        //_cheatsActions.Scene4.started -= Scene4Action;
         _cheatsActions.InfinityJump.started -= ShiftInfinityJumpAction;
         _cheatsActions.Imortal.started -= ShiftImortalAction;
 
