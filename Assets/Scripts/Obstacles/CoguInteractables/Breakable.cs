@@ -6,6 +6,7 @@ public class Breakable : CoguInteractable
 {
     [SerializeField] private GameObject _visual;
     [SerializeField] private GameObject _vfx;
+    [SerializeField] private Collider _childCollider;
     [SerializeField] private UnityEvent _onBreak;
     
     private void Awake() {
@@ -13,13 +14,15 @@ public class Breakable : CoguInteractable
     }
 
     private void DeactivateWall() {
-        GetComponent<Collider>().enabled = false;
+        if (_childCollider != null)
+            _childCollider.enabled = false;
         _visual.SetActive(false);
         _vfx.SetActive(true);
         NeedReset = true;
     }
     private void ActivateWall() {
-        GetComponent<Collider>().enabled = true;
+        if (_childCollider != null)
+            _childCollider.enabled = true;
         _visual.SetActive(true);
         _vfx.SetActive(false);
         NeedReset = false;
