@@ -15,18 +15,18 @@ public static class TweenHandler
         return DOTween.To(() => count, x => count = x, 10, duration);
     }
 
-    private static Tweener ShakeRotation(Transform transform, Vector3 shakeDirection, float time, Action actionBefore)
+    public static Tweener ShakeRotation(Transform transform, Vector3 shakeDirection, float time)
     {
         return DOTween.Shake(() => transform.localRotation.eulerAngles,
             x => transform.localRotation = Quaternion.Euler(x),
             time, shakeDirection.normalized * shakeStrenght,
-            shakeVibrato, randomness).OnComplete(() => actionBefore.Invoke());
+            shakeVibrato, randomness);
     }
 
     // Public Methods
     public static void FallingPlatformShake(Transform transform, Vector3 shakeDirection, float fallTime, float restoreTime, Action fallAction, Action restoreAction)
     {
-        Tweener fall = ShakeRotation(transform, shakeDirection, fallTime, fallAction);
+        Tweener fall = ShakeRotation(transform, shakeDirection, fallTime).OnComplete(() => fallAction());
         Tweener restore = Timer(restoreTime);
         restore.OnComplete(restoreAction.Invoke);
 

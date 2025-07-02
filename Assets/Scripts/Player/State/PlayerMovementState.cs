@@ -185,11 +185,6 @@ public class PlayerMovementState : IState {
         StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, true);
     }
     protected void StopAnimation(int animationHash) {
-        Debug.Log("===================");
-        Debug.Log("StateMachine: " + StateMachineMovement);
-        Debug.Log("Player: " + StateMachineMovement.PlayerGet);
-        Debug.Log("Animator: " + StateMachineMovement.PlayerGet.PlayerAnimator);
-        Debug.Log("------------------");
         StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, false);
     }
 

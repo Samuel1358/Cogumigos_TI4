@@ -1,62 +1,103 @@
-using System;
 using UnityEngine;
+using DG.Tweening;
+
 public class RemovableObstacle : CoguInteractable
 {
-    [SerializeField] private bool _startAvailable = true;
-    [SerializeField] public Vector3 destiny = Vector3.forward;
-    [SerializeField] public bool positionated;
+    [Header("Removable")]
+    [SerializeField] private Transform _waypointsContainer;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _changeDistance;
 
-    private Vector3 _inictialPosition;
+    private int _index = 0;
+    private bool _arrived = false;
 
-    private void Awake()
+    // Public Methods
+    [ContextMenu("Walk")]
+    public void StarWalk(Cogu cogu)
     {
-        _isAvailable = _startAvailable;
-        destiny = transform.TransformPoint(destiny);
-
-        _inictialPosition = transform.position;
+        Tween follow = DOTween.To(IndexGetter, FollowPath, _waypointsContainer.childCount - 1, float.MaxValue);
+        follow.OnUpdate(() => Arrive(follow, cogu));
     }
 
-    [ContextMenu("Walk")]
-    public void Walk()
+    // Private Methods
+    private int IndexGetter()
     {
-        if (positionated)
+        return _index;
+    }
+
+    private void FollowPath(int x)
+    {
+        Transform point = _waypointsContainer.GetChild(_index);
+        Vector3 dir = point.position - transform.position;
+
+        float changeDistance = _changeDistance;
+        float speedModifier = 1f;
+        if (point.TryGetComponent(out RemovableWaypoint waypoint))
         {
-            NeedReset = true;
+            changeDistance = waypoint.ChangeDistanceModifier;
+            speedModifier = waypoint.SpeedModifier;
+        }
+
+        if (dir.magnitude < changeDistance)
+            _index++;
+
+        _arrived = (_index >= _waypointsContainer.childCount);
+
+        transform.Translate(_moveSpeed * speedModifier * Time.fixedDeltaTime * dir.normalized);
+    }
+
+    private void Arrive(Tween follow, Cogu cogu)
+    {
+        if (_arrived)
+        {
+            follow.Kill();
+
+            Transform endPoint = _waypointsContainer.GetChild(_index - 1);
+            float dis = Mathf.Abs(Vector3.Distance(endPoint.position, transform.position));
+            Tween end;
+            if (endPoint.TryGetComponent(out RemovableWaypoint waypoint))
+                end = transform.DOMove(endPoint.position, dis / (_moveSpeed * waypoint.SpeedModifier));
+            else
+                end = transform.DOMove(endPoint.position, dis / _moveSpeed);
+
+            end.OnComplete(() => Destroy(cogu.gameObject));
         }
     }
 
+    // Interactable
     public override void Interact(Cogu cogu)
     {
-        Walk();
-        Destroy(cogu.gameObject);
-        //return () => { Destroy(cogu.gameObject); };
+        Debug.Log("RemovableObject - Interact");
+        StarWalk(cogu);
     }
 
-    // Resetable
-    public override void ResetObject()
+    private void OnDrawGizmos()
     {
-        if (NeedReset)
-        {
-            base.ResetObject();
-            transform.position = _inictialPosition;
-            _isAvailable = true;
-            NeedReset = false;
-        }
-    }
+        //if (Application.isPlaying)
+        //    return;
 
-    // Gizmo
-    protected override void OnDrawGizmosSelected()
-    {
-        base.OnDrawGizmosSelected();
-
-        if (Application.isPlaying)
+        if (_waypointsContainer == null)
             return;
 
-        Color oldGizmoColor = Gizmos.color;
+        Vector3 from = transform.position;
+
+        Gizmos.color = Color.yellow;
+        for (int i = 0; i < _waypointsContainer.childCount; i++)
+        {
+            Vector3 point = _waypointsContainer.GetChild(i).position;
+            Gizmos.DrawLine(from, point);           
+            from = point;
+
+            if (i == _waypointsContainer.childCount - 1)
+                Gizmos.color = Color.red;
+            else
+                Gizmos.color = Color.blue;
+
+            Gizmos.DrawSphere(point, 0.05f);
+
+            Gizmos.color = Color.white;
+        }
 
         Gizmos.color = Color.white;
-        Gizmos.DrawLine(transform.position, transform.TransformPoint(destiny));
-
-        Gizmos.color = oldGizmoColor;
     }
 }

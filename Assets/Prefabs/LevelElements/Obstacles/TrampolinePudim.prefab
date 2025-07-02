@@ -63,7 +63,7 @@ Transform:
   - {fileID: 5326445874567445274}
   - {fileID: 867511236764294172}
   m_Father: {fileID: 6557041262745437410}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
 --- !u!1 &1902492634945116179
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ Transform:
   m_Children:
   - {fileID: 3148715802669649357}
   m_Father: {fileID: 874776247408155977}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.0000014374026, y: 0, z: 0}
 --- !u!1 &2646906973178617515
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +225,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounceForce: 30
+  _onBounce:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 594712800287992117}
+        m_TargetAssemblyTypeName: UnityEngine.VFX.VisualEffect, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7551564851190311081}
+        m_TargetAssemblyTypeName: TrampolineAnimationTrigger, Assembly-CSharp
+        m_MethodName: EnableBounce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &3753884614159870651
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,6 +263,8 @@ GameObject:
   - component: {fileID: 6557041262745437410}
   - component: {fileID: 6903341021410800346}
   - component: {fileID: 920825138617515260}
+  - component: {fileID: 4686160108201391759}
+  - component: {fileID: 7551564851190311081}
   m_Layer: 9
   m_Name: TrampolinePudim
   m_TagString: Untagged
@@ -300,6 +329,41 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.058802, y: 1.2618593, z: 1.8585899}
   m_Center: {x: -0.07143128, y: 0.87427646, z: 0.0517987}
+--- !u!95 &4686160108201391759
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753884614159870651}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a92b46c193f27f543b04f114c8c15a63, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7551564851190311081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3753884614159870651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 235e0d04f6abda440a3d0cb65b4e1ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 4686160108201391759}
 --- !u!1 &4525850022376032174
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +509,7 @@ Transform:
   m_Children:
   - {fileID: 1559085022300653219}
   m_Father: {fileID: 850060314081237853}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98022, y: -0.000014104384, z: 0}
 --- !u!1 &6298045435734563124
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +541,7 @@ Transform:
   m_Children:
   - {fileID: 874776247408155977}
   m_Father: {fileID: 850060314081237853}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 89.98022, y: 0, z: 0}
 --- !u!1 &7876173666886497285
 GameObject:
   m_ObjectHideFlags: 0

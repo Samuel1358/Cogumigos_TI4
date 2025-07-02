@@ -58,16 +58,23 @@ public class CoguCastter : MonoBehaviour, IResetable
 
         _isAbleCast = false;
 
+        Debug.Log(01);
         Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRadius, _interactableLayer, QueryTriggerInteraction.Collide);
         foreach (Collider obj in colliders)
         {
+            Debug.Log(02);
             if (obj.TryGetComponent(out CoguInteractable interactable))
             {
+                Debug.Log(03);
                 Vector3 interactableDir = new Vector3(Camera.main.transform.position.x - interactable.transform.position.x, 0, Camera.main.transform.position.z - interactable.transform.position.z);
                 Vector3 fowardDir = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
                 if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
+                {
+                    Debug.Log(032);
                     continue;
+                }
 
+                Debug.Log(041);
                 CastCogu(interactable.AssignedCoguType, interactable);
                 return;
             }
@@ -78,14 +85,17 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     public void CastCogu(CoguType type, CoguInteractable interactable)
     {
+        Debug.Log(04);
         if (!interactable.IsAvailable)
         {
             _isAbleCast = true;
             return;
         }
 
+        Debug.Log(05);
         if (CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
         {
+            Debug.Log(06);
             Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
             cogu.Initialize(interactable, this);
             _coguCount--;
