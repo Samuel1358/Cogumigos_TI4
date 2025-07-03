@@ -17,6 +17,14 @@ public class ArrowTrap : MonoBehaviour
     private float nextShootTime;
     private int currentShootPointIndex = 0;
 
+    private ObjectPool _objectPool;
+
+    private void Awake()
+    {
+        _objectPool = ObjectPool.CreateObjecPool(name + "_ObjectPool", new Vector3(1000, 1000, 1000));
+        _objectPool.SetInstanceObject(arrowPrefab);
+    }
+
     void Start()
     {
         // Se não há pontos configurados, usa o próprio transform
@@ -50,13 +58,13 @@ public class ArrowTrap : MonoBehaviour
     {
         // Seleciona o ponto atual
         Transform currentShootPoint = GetCurrentShootPoint();
-        
+
         // Cria a flecha no ponto selecionado
-        GameObject arrow = Instantiate(arrowPrefab, currentShootPoint.position, currentShootPoint.rotation);
+        GameObject arrow = _objectPool.InstantiateObject(currentShootPoint.position, currentShootPoint.rotation, _objectPool.transform);
         Arrow arrowScript = arrow.GetComponent<Arrow>();
         if (arrowScript != null)
         {
-            arrowScript.Initialize(arrowSpeed, shootDirection);
+            arrowScript.Initialize(arrowSpeed, shootDirection, _objectPool);
         }
         
         // Avança para o próximo ponto (se usando múltiplos pontos)

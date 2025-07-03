@@ -35,6 +35,8 @@ public class Lillypad : MonoBehaviour
     private Vector3 waterMovementThisFrame = Vector3.zero;
     private float timeOffset;
     private Transform playerOnPlatform;
+
+    private ObjectPool _pool;
     
     // Events
     public System.Action<Lillypad> OnLillypadDestroyed;
@@ -75,6 +77,27 @@ public class Lillypad : MonoBehaviour
         HandleRotation();
     }
 
+    public void Initialize(ObjectPool objectPool)
+    {
+        _pool = objectPool;
+
+        initialPosition = transform.position;
+        initialRotation = transform.eulerAngles;
+
+        timeOffset = Random.Range(0f, Mathf.PI * 2f);
+
+        // properties
+        currentWaypointIndex = 0;
+        isMovingToWaypoint = false;
+        waypointMovementSpeed = 0f;
+        sinkSpeed = 2f;
+        sinkDepth = 3f;
+        disappearDelay = 1f;
+        isSinking = false;
+        waypointMovementThisFrame = Vector3.zero;
+        waterMovementThisFrame = Vector3.zero;
+    }
+
     private void HandleSinking()
     {
         Vector3 sinkMovement = Vector3.down * sinkSpeed * Time.deltaTime;
@@ -83,7 +106,7 @@ public class Lillypad : MonoBehaviour
         if (newPosition.y <= initialSinkPosition.y - sinkDepth)
         {
             OnLillypadDestroyed?.Invoke(this);
-            Destroy(gameObject);
+            _pool.ReturnObject(gameObject);
             return;
         }
         

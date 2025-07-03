@@ -66,6 +66,14 @@ public class LillypadSpawner : MonoBehaviour
     // Track last used waypoints for each phase to avoid repetition
     private int[] lastUsedWaypointIndices;                        // Array to track last used waypoint for each phase
 
+    private ObjectPool _objectPool;
+
+    private void Awake()
+    {
+        _objectPool = ObjectPool.CreateObjecPool(name + "_ObjectPool", new Vector3(1000, 1000, 1000));
+        _objectPool.SetInstanceObject(lillypadPrefab);
+    }
+
     private void Start()
     {
         ValidateConfiguration();
@@ -222,7 +230,7 @@ public class LillypadSpawner : MonoBehaviour
 
         List<Transform> path = GeneratePath(selectedSpawnIndex);
 
-        GameObject newLillypad = Instantiate(lillypadPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject newLillypad = _objectPool.InstantiateObject(spawnPoint.position, spawnPoint.rotation, _objectPool.transform);//Instantiate(lillypadPrefab, spawnPoint.position, spawnPoint.rotation);
         
         Lillypad lillypadScript = newLillypad.GetComponent<Lillypad>();
         if (lillypadScript == null)
@@ -230,6 +238,7 @@ public class LillypadSpawner : MonoBehaviour
             Destroy(newLillypad);
             return;
         }
+        lillypadScript.Initialize(_objectPool);
 
         lillypadScript.SetWaypointControl(true, path, movementSpeed, sinkSpeed, sinkDepth, disappearDelay);
         lillypadScript.OnLillypadDestroyed += RemoveLillypadFromList;
