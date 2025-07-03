@@ -64,7 +64,7 @@ public class CollectablePageDialog : CollectablePersistenceBase {
             AudioManager.Instance.PlaySFX("Collectable");
             SetCollectableInactive();
             DataPersistenceManager.Instance.SaveGame();
-
+            CollectablePagesUISingleton.instance.CollectablePagesUi.UpdateIndicie(CollectableSO);
         }
 
         if (CollectableSO.ShowJustOnce) {
@@ -80,7 +80,7 @@ public class CollectablePageDialog : CollectablePersistenceBase {
         }
 
         SetVisualActive(true);
-        SetCollectableInactive();
+        SetCollectableInactive();        
     }
 
     private void OnTriggerExit(Collider other) {

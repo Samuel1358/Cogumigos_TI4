@@ -7,13 +7,15 @@ public class CollectablePagesUi : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI _collectableTitle;
     [SerializeField] private TextMeshProUGUI _collectableText;
     [SerializeField] private TextMeshProUGUI _collectableAuthor;
-    private int indice = 0;
+    private int indice = 0;   
+
     private void Start() {
         //CollectableDataSOs = Resources.LoadAll<PersistenteCollectableDataSO>("Collectables");
-    }
-    private void OnEnable() {
         indice = 0;
         SetPageInfos();
+    }
+    private void OnEnable() {
+        
     }
 
     public void NextPage() {
@@ -45,5 +47,20 @@ public class CollectablePagesUi : MonoBehaviour {
             _collectableText.text = CollectableDataSOs[indice].InactiveText;
             _collectableAuthor.text = CollectableDataSOs[indice].InactiveAuthor;
         }
+    }
+
+    public void UpdateIndicie(PersistenteCollectableDataSO collectableSO)
+    {
+        for (int i = 0; i < CollectableDataSOs.Length; i++)
+        {
+            if (CollectableDataSOs[i] == collectableSO)
+            {
+                indice = i;
+                break;
+            }
+            indice = 0;
+        }
+
+        SetPageInfos();
     }
 }
