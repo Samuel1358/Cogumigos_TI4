@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
@@ -51,6 +50,6 @@ public class Arrow : MonoBehaviour
         if (hasHit) return;
 
         hasHit = true;
-        TweenHandler.Timer(0.1f).OnComplete(Return); // Destrói a flecha após a colisão
+        TweenHandler.Timer(0.1f, Return); // Destrói a flecha após a colisão
     }
 } 

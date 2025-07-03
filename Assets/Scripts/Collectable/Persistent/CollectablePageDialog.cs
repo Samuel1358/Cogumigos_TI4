@@ -1,4 +1,3 @@
-using DG.Tweening;
 using DialogSystem;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
@@ -28,7 +27,7 @@ public class CollectablePageDialog : CollectablePersistenceBase {
         if(GameManager.Instance.PlayerInputs != null) GameManager.Instance.PlayerInputs.PlayerActions.Interact.started -= StartDialog;
 
         if (CollectableSO.Duration > 0f) {
-            TweenHandler.Timer(CollectableSO.Duration).OnComplete(DialogController.instance.EndDialog);
+            TweenHandler.Timer(CollectableSO.Duration, DialogController.instance.EndDialog);
             return;
         }
 

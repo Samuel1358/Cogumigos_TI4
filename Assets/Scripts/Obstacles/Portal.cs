@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.VFX;
 
 public class Portal : MonoBehaviour {
 
@@ -9,8 +10,16 @@ public class Portal : MonoBehaviour {
 
     [SerializeField] private Portal _linkedPortal;
     [SerializeField] private float _timeToActivate;
+    [SerializeField] private float _startTravel;
+    [SerializeField] private VisualEffect _effect;
 
     private Transform _travelObject;
+    private bool _canEnter = true;
+
+    private void Start()
+    {
+        _effect.SetFloat("TeleportCD", _timeToActivate);
+    }
 
     public Portal LinkedPortal {
         get { return _linkedPortal; }
@@ -18,12 +27,14 @@ public class Portal : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider collider) {
+        if (!_canEnter)
+            return;       
+
         if (collider.transform.parent.TryGetComponent<Player>(out Player player)) {
             _travelObject = player.transform;
             EnterPortal.Invoke();
 
-            StartCoroutine(StartTravel());
-            
+            StartCoroutine(StartTravel());           
         }
     }
 
@@ -42,7 +53,7 @@ public class Portal : MonoBehaviour {
     }
 
     private IEnumerator StartTravel() {      
-        yield return new WaitForSeconds(_timeToActivate);
+        yield return new WaitForSeconds(_timeToActivate + _startTravel);
         AudioManager.Instance.PlaySFX("TPIn");
         if (_travelObject != null) {
             Teleport();
@@ -52,7 +63,15 @@ public class Portal : MonoBehaviour {
     public virtual void Teleport() {
         _travelObject.position = _linkedPortal.transform.position;
         _travelObject.rotation = _linkedPortal.transform.rotation;
+        _linkedPortal.JustArrived();
+
         AudioManager.Instance.PlaySFX("TPOut");
+        _effect.gameObject.SetActive(false);
     }
 
+    public void JustArrived()
+    {
+        _canEnter = false;
+        TweenHandler.Timer(_startTravel, () => _canEnter = true);
+    }
 }

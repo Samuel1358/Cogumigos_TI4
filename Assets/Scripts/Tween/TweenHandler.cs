@@ -15,6 +15,12 @@ public static class TweenHandler
         return DOTween.To(() => count, x => count = x, 10, duration);
     }
 
+    public static Tweener Timer(float duration, Action action)
+    {
+        float count = 0;
+        return DOTween.To(() => count, x => count = x, 10, duration).OnComplete(() => action());
+    }
+
     public static Tweener ShakeRotation(Transform transform, Vector3 shakeDirection, float time)
     {
         return DOTween.Shake(() => transform.localRotation.eulerAngles,

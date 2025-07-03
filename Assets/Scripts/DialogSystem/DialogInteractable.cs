@@ -1,6 +1,5 @@
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
-using DG.Tweening;
 
 namespace DialogSystem
 {
@@ -47,7 +46,7 @@ namespace DialogSystem
             //line auto-close
             if (_dialogData.Duration > 0f)
             {
-                TweenHandler.Timer(_dialogData.Duration).OnComplete(DialogController.instance.EndDialog);
+                TweenHandler.Timer(_dialogData.Duration, DialogController.instance.EndDialog);
                 return;
             }
 
