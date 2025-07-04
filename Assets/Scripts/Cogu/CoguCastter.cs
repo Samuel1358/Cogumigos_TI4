@@ -36,8 +36,8 @@ public class CoguCastter : MonoBehaviour, IResetable
         _inputActions.Player.Disable();
 
         // Reset
-        RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;
-        RespawnController.Instance.TurnNonResetable(this);
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint -= SaveResetState;
+        GameIniciator.Instance.RespawnControllerInstance.TurnNonResetable(this);
     }
 
     private void Teste(CallbackContext callbackContext)
@@ -93,13 +93,13 @@ public class CoguCastter : MonoBehaviour, IResetable
         }
 
         Debug.Log(05);
-        if (CoguManager.instance.TryGetCoguVariant(type, out Cogu variant))
+        if (GameIniciator.Instance.CoguManagerInstance.TryGetCoguVariant(type, out Cogu variant))
         {
             Debug.Log(06);
             Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
             cogu.Initialize(interactable, this);
             _coguCount--;
-            UiInventory.Instance.UpdateCoguCountUI(_coguCount);
+            GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateCoguCountUI(_coguCount);
             _isAbleCast = false;
         }
     }
@@ -109,8 +109,8 @@ public class CoguCastter : MonoBehaviour, IResetable
     // Public Methods
     public void Initialize() 
     {
-        RespawnController.OnPlayerChangeCheckPoint += SaveResetState;
-        RespawnController.Instance.TurnResetable(this);
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += SaveResetState;
+        GameIniciator.Instance.RespawnControllerInstance.TurnResetable(this);
     }
 
     public void SaveResetState(Checkpoint checkpoint)

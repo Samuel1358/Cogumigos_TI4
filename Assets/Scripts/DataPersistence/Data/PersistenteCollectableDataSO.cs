@@ -25,9 +25,9 @@ public class PersistenteCollectableDataSO : DialogData
     }
 
     public bool VerifyState() {
-        return DataPersistenceManager.Instance.VerifyCollectableState(ID);
+        return GameIniciator.Instance.PersistenceManagerInstance.VerifyCollectableState(ID);
     }
     public bool VerifyCollected() {
-        return DataPersistenceManager.Instance.VerifyCollectableCollected(ID);
+        return GameIniciator.Instance.PersistenceManagerInstance.VerifyCollectableCollected(ID);
     }
 }

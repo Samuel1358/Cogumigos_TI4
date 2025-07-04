@@ -15,7 +15,7 @@ public class PlataformCoguSpot : CoguInteractable
         if (_canActive) {
             _plataformPrefab.SetActive(true);
             _canActive = false;
-            AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_PLATAFORMA);
+            GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.COGU_PLATAFORMA);
             _isAvailable = false;
             NeedReset = true;
             Destroy(cogu.gameObject);

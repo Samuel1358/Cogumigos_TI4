@@ -54,10 +54,10 @@ public class ExplosiveBarrel : ResetableBase {
         yield return new WaitForSeconds(_timeToExplode);
         _visual.SetActive(false);
         _collider.enabled = false;
-        AudioManager.Instance.PlaySFX(SoundEffectNames.EXPLOSAO);
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.EXPLOSAO);
         _wasExploded = true;
         if (_willExplodePlayer) {
-            RespawnController.OnPlayerRespawn.Invoke();
+            GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn.Invoke();
         }
         _visual.transform.localScale = new Vector3(1f, 1f, 1f);
         _explosionRadiusVisual.localScale = new Vector3(0.01f, 0.01f, 0.01f);

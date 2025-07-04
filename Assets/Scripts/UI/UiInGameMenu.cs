@@ -31,14 +31,14 @@ public class UiInGameMenu : MonoBehaviour {
 
     public void ShowPauseMenu() {
         _pauseScreen.SetActive(true);
-        GameManager.Instance?.PlayerInputs?.PlayerActions.Disable();
-        GameManager.Instance?.PauseGame();
+        GameIniciator.Instance.GameManagerInstance?.PlayerInputs?.PlayerActions.Disable();
+        GameIniciator.Instance.GameManagerInstance?.PauseGame();
     }
 
     public void HidePauseMenu() {
         _pauseScreen.SetActive(false);
-        GameManager.Instance?.PlayerInputs?.PlayerActions.Enable();
-        GameManager.Instance?.UnpauseGame();
+        GameIniciator.Instance.GameManagerInstance?.PlayerInputs?.PlayerActions.Enable();
+        GameIniciator.Instance.GameManagerInstance?.UnpauseGame();
     }
 
     public void ExitGame() {

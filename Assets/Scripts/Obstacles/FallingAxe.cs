@@ -53,7 +53,7 @@ public class FallingAxe : MonoBehaviour {
     /// </summary>
     private void PlayInfiniteAxeSound()
     {
-        if (AudioManager.Instance != null)
+        if (GameIniciator.Instance.AudioManagerInstance != null)
         {
             
         }

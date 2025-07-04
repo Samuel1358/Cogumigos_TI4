@@ -15,7 +15,7 @@ public class TrampoloCoguSpot : CoguInteractable
         if (_canActive) {
             _trampoloPrefab.SetActive(true);
             _canActive = false;
-            AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_COZINHEIRO);
+            GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.COGU_COZINHEIRO);
             _isAvailable = false;
             NeedReset = true;
             Destroy(cogu.gameObject);

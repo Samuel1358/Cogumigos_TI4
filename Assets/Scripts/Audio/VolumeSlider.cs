@@ -29,11 +29,11 @@ public class VolumeSlider : MonoBehaviour
         switch (volumeType)
         {
             case VolumeType.Master:
-                return AudioManager.Instance.GetMasterVolume();
+                return GameIniciator.Instance.AudioManagerInstance.GetMasterVolume();
             case VolumeType.SFX:
-                return AudioManager.Instance.GetSFXVolume();
+                return GameIniciator.Instance.AudioManagerInstance.GetSFXVolume();
             case VolumeType.BGM:
-                return AudioManager.Instance.GetBGMVolume();
+                return GameIniciator.Instance.AudioManagerInstance.GetBGMVolume();
             default:
                 return 1f;
         }
@@ -46,13 +46,13 @@ public class VolumeSlider : MonoBehaviour
         switch (volumeType)
         {
             case VolumeType.Master:
-                AudioManager.Instance.SetMasterVolume(value);
+                GameIniciator.Instance.AudioManagerInstance.SetMasterVolume(value);
                 break;
             case VolumeType.SFX:
-                AudioManager.Instance.SetSFXVolume(value);
+                GameIniciator.Instance.AudioManagerInstance.SetSFXVolume(value);
                 break;
             case VolumeType.BGM:
-                AudioManager.Instance.SetBGMVolume(value);
+                GameIniciator.Instance.AudioManagerInstance.SetBGMVolume(value);
                 break;
         }
     }

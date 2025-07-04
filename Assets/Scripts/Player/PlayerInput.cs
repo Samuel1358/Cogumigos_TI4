@@ -23,7 +23,7 @@ public class PlayerInput : MonoBehaviour {
 
     private void OnEnable() {
         PlayerActions.Enable();
-        GameManager.Instance?.SetInput(this);
+        GameIniciator.Instance.GameManagerInstance?.SetInput(this);
         PlayerActions.Pause.canceled += OnPauseCanceled;
     }
 

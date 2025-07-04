@@ -59,7 +59,7 @@ public class MirrorInteraction : MonoBehaviour
                           "Adicione um InteractingArea component ao objeto base do espelho.");
         }
 
-        // Audio será gerenciado pelo AudioManager.Instance
+        // Audio será gerenciado pelo GameIniciator.Instance.AudioManagerInstance
 
         if (_showDebugInfo)
         {
@@ -124,12 +124,12 @@ public class MirrorInteraction : MonoBehaviour
     /// </summary>
     private void PlayRotationSound()
     {
-        if (AudioManager.Instance != null)
+        if (GameIniciator.Instance.AudioManagerInstance != null)
         {
             // Alterna entre os dois sons
             string soundName = _useFirstSound ? SoundEffectNames.ESPELHO_MEXENDO : SoundEffectNames.ESPELHO_MEXENDO2;
             
-            AudioManager.Instance.PlaySFX(soundName);
+            GameIniciator.Instance.AudioManagerInstance.PlaySFX(soundName);
             
             // Alterna para o próximo som
             _useFirstSound = !_useFirstSound;
@@ -141,7 +141,7 @@ public class MirrorInteraction : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("AudioManager.Instance is null - cannot play mirror rotation sound");
+            Debug.LogWarning("GameIniciator.Instance.AudioManagerInstance is null - cannot play mirror rotation sound");
         }
     }
 

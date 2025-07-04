@@ -73,7 +73,7 @@ public class SwitchableDoor : Switchable
     private void OpenAnimation()
     {
         openAnimationList[selectedIndex].TweenAnimation();
-        AudioManager.Instance.PlaySFX(SoundEffectNames.PORTA_CRISTAL);
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.PORTA_CRISTAL);
     }
 
     [ContextMenu("CloseAnimation")]

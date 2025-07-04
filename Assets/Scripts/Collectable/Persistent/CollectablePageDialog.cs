@@ -1,5 +1,4 @@
 using DG.Tweening;
-using DialogSystem;
 using UnityEngine;
 using static UnityEngine.InputSystem.InputAction;
 
@@ -13,26 +12,26 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     protected override void SetCollectableInactive() {
         _visual.SetActive(false);
         _wasCollected = true;
-        UiInventory.Instance.UpdateCollectableCountUI();
+        GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateCollectableCountUI();
     }
 
     public void StartDialog() {
-        if (CollectableSO == null || DialogController.instance.IsDialogActive)
+        if (CollectableSO == null || GameIniciator.Instance.DialogManagerInstance.IsDialogActive)
             return;
 
         if (CollectableSO.RandomLine)
-            DialogController.instance.StartDialog(CollectableSO, Random.Range(0, CollectableSO.LineCount));
+            GameIniciator.Instance.DialogManagerInstance.StartDialog(CollectableSO, Random.Range(0, CollectableSO.LineCount));
         else
-            DialogController.instance.StartDialog(CollectableSO);
+            GameIniciator.Instance.DialogManagerInstance.StartDialog(CollectableSO);
 
-        if(GameManager.Instance.PlayerInputs != null) GameManager.Instance.PlayerInputs.PlayerActions.Interact.started -= StartDialog;
+        if(GameIniciator.Instance.GameManagerInstance.PlayerInputs != null) GameIniciator.Instance.GameManagerInstance.PlayerInputs.PlayerActions.Interact.started -= StartDialog;
 
         if (CollectableSO.Duration > 0f) {
-            TweenHandler.Timer(CollectableSO.Duration).OnComplete(DialogController.instance.EndDialog);
+            TweenHandler.Timer(CollectableSO.Duration).OnComplete(GameIniciator.Instance.DialogManagerInstance.EndDialog);
             return;
         }
 
-        if (GameManager.Instance.PlayerInputs != null) GameManager.Instance.PlayerInputs.PlayerActions.Interact.started += AdvanceDialog;
+        if (GameIniciator.Instance.GameManagerInstance.PlayerInputs != null) GameIniciator.Instance.GameManagerInstance.PlayerInputs.PlayerActions.Interact.started += AdvanceDialog;
     }
 
     private void SetVisualActive(bool value) {
@@ -43,11 +42,11 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     }
 
     private void AdvanceDialog() {
-        if (!DialogController.instance.IsDialogActive)
+        if (!GameIniciator.Instance.DialogManagerInstance.IsDialogActive)
             return;
 
-        if (DialogController.instance.AdvanceDialog())
-            if (GameManager.Instance.PlayerInputs != null) GameManager.Instance.PlayerInputs.PlayerActions.Interact.started -= AdvanceDialog;
+        if (GameIniciator.Instance.DialogManagerInstance.AdvanceDialog())
+            if (GameIniciator.Instance.GameManagerInstance.PlayerInputs != null) GameIniciator.Instance.GameManagerInstance.PlayerInputs.PlayerActions.Interact.started -= AdvanceDialog;
     }
 
 
@@ -61,10 +60,10 @@ public class CollectablePageDialog : CollectablePersistenceBase {
 
     private void OnTriggerEnter(Collider collider) {
         if (!_wasCollected) {
-            AudioManager.Instance.PlaySFX("Collectable");
+            GameIniciator.Instance.AudioManagerInstance.PlaySFX("Collectable");
             SetCollectableInactive();
-            DataPersistenceManager.Instance.SaveGame();
-            CollectablePagesUISingleton.instance.CollectablePagesUi.UpdateIndicie(CollectableSO);
+            GameIniciator.Instance.PersistenceManagerInstance.SaveGame();
+            //CollectablePagesUISingleton.instance.CollectablePagesUi.UpdateIndicie(CollectableSO);
         }
 
         if (CollectableSO.ShowJustOnce) {

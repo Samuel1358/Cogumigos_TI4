@@ -11,13 +11,13 @@ public class PlayerInventory : MonoBehaviour, IResetable {
     private List<IngredientTypes> _ingredientsHoldedAtCheckpoint;
 
     public void Initialize() {
-        RespawnController.OnPlayerChangeCheckPoint += SaveResetState;
-        RespawnController.Instance.TurnResetable(this);
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += SaveResetState;
+        GameIniciator.Instance.RespawnControllerInstance.TurnResetable(this);
     }
 
     private void OnDisable() {
-        RespawnController.OnPlayerChangeCheckPoint -= SaveResetState;
-        RespawnController.Instance.TurnNonResetable(this);
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint -= SaveResetState;
+        GameIniciator.Instance.RespawnControllerInstance.TurnNonResetable(this);
     }
 
     private void Awake() {
@@ -30,7 +30,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
 
     public void CollectKey(KeyTypes keyCollected) {
         Keys.Add(keyCollected);
-        UiInventory.Instance.UpdateKeyUI(Keys.Count > 0);
+        GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateKeyUI(Keys.Count > 0);
     }
 
     public bool VerifyKey(KeyTypes keyToVerify) {
@@ -52,7 +52,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
         if (Keys.Contains(keyToVerify))
         {
             Keys.Remove(keyToVerify);
-            UiInventory.Instance.UpdateKeyUI(Keys.Count > 0);
+            GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateKeyUI(Keys.Count > 0);
             return true;
         }
         return false;

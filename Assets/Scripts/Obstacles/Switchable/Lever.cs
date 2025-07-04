@@ -27,7 +27,7 @@ public class Lever : Switch
     {
         if (_switchable != null){
             _switchable.Activate();
-            AudioManager.Instance.PlaySFX(SoundEffectNames.LEVER);
+            GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
         }
 
         _onInteract?.Invoke();

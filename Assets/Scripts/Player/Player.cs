@@ -22,13 +22,14 @@ public class Player : MonoBehaviour {
     private PlayerMovementStateMachine _movementStateMachine;
 
     private void OnEnable() {
-        RespawnController.OnPlayerRespawn += ResetPlayer;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn += ResetPlayer;
+        GameIniciator.Instance.GameManagerInstance.SetPlayer(this);
 
 
     }
 
     private void OnDisable() {
-        RespawnController.OnPlayerRespawn -= ResetPlayer;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn -= ResetPlayer;
 
 
 
@@ -109,8 +110,8 @@ public class Player : MonoBehaviour {
     }
 
     public void ResetPlayer() {
-        transform.position = RespawnController.Instance.PlayerActiveCheckPoint.transform.position;
-        transform.LookAt(RespawnController.Instance.PlayerActiveCheckPoint.transform.forward);
+        transform.position = GameIniciator.Instance.RespawnControllerInstance.PlayerActiveCheckPoint.transform.position;
+        transform.LookAt(GameIniciator.Instance.RespawnControllerInstance.PlayerActiveCheckPoint.transform.forward);
         _movementStateMachine.ChangeState(_movementStateMachine.IdlingState);
     }
 

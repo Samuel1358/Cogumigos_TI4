@@ -7,7 +7,7 @@ public class PlayerGlideState : PlayerAirState {
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
         ResetVerticalVelocity();
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
-        AudioManager.Instance.PlaySFX("AirTunnel");
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX("AirTunnel");
     }
 
     public override void Update() {
@@ -19,7 +19,7 @@ public class PlayerGlideState : PlayerAirState {
         base.Exit();
         ResetVerticalVelocity();
         StopAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
-        AudioManager.Instance.StopSFX();
+        GameIniciator.Instance.AudioManagerInstance.StopSFX();
     }
 
     protected override void OnGlideVerify() {

@@ -205,7 +205,7 @@ public class Lillypad : MonoBehaviour
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
             playerOnPlatform = collision.transform;
-            AudioManager.Instance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
+            GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
         }
     }
 

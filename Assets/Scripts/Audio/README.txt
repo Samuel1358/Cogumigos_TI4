@@ -32,24 +32,24 @@ Este sistema de áudio foi projetado para gerenciar todos os efeitos sonoros do 
 Para tocar um efeito sonoro em qualquer script:
 
 // Tocar um som globalmente
-AudioManager.Instance.PlaySFX(SoundEffectNames.NOME_DO_SOM);
+GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.NOME_DO_SOM);
 
 // Tocar um som em uma posição específica
-AudioManager.Instance.PlaySFXAtPosition(SoundEffectNames.NOME_DO_SOM, transform.position);
+GameIniciator.Instance.AudioManagerInstance.PlaySFXAtPosition(SoundEffectNames.NOME_DO_SOM, transform.position);
 
 // Tocar um som com volume e pitch personalizados
-AudioManager.Instance.PlaySFX(SoundEffectNames.NOME_DO_SOM, volume: 0.8f, pitch: 1.2f);
+GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.NOME_DO_SOM, volume: 0.8f, pitch: 1.2f);
 
 4. CONTROLES ADICIONAIS
 ----------------------
 // Parar todos os efeitos sonoros
-AudioManager.Instance.StopSFX();
+GameIniciator.Instance.AudioManagerInstance.StopSFX();
 
 // Ajustar volume global dos efeitos sonoros
-AudioManager.Instance.SetSFXVolume(0.5f);
+GameIniciator.Instance.AudioManagerInstance.SetSFXVolume(0.5f);
 
 // Ajustar pitch global dos efeitos sonoros
-AudioManager.Instance.SetSFXPitch(1.2f);
+GameIniciator.Instance.AudioManagerInstance.SetSFXPitch(1.2f);
 
 5. BOAS PRÁTICAS
 ---------------
@@ -64,13 +64,13 @@ AudioManager.Instance.SetSFXPitch(1.2f);
 // No script do jogador
 void Jump()
 {
-    AudioManager.Instance.PlaySFX(SoundEffectNames.PLAYER_JUMP);
+    GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.PLAYER_JUMP);
 }
 
 // No script de coletáveis
 void OnCollect()
 {
-    AudioManager.Instance.PlaySFXAtPosition(
+    GameIniciator.Instance.AudioManagerInstance.PlaySFXAtPosition(
         SoundEffectNames.COIN_COLLECT,
         transform.position,
         volume: 0.7f
@@ -80,7 +80,7 @@ void OnCollect()
 // No script de UI
 void OnButtonClick()
 {
-    AudioManager.Instance.PlaySFX(
+    GameIniciator.Instance.AudioManagerInstance.PlaySFX(
         SoundEffectNames.BUTTON_CLICK,
         pitch: 1.1f
     );

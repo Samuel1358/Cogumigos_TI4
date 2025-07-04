@@ -5,8 +5,6 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class Cheats : MonoBehaviour
 {
-    public static Cheats instance;
-
     private CheatsInputs _inputActions;
     private CheatsInputs.CheatsActions _cheatsActions;
     
@@ -45,14 +43,6 @@ public class Cheats : MonoBehaviour
         _cheatsActions.Imortal.started -= ShiftImortalAction;
 
         _cheatsActions.Disable();
-    }
-
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this);
     }
 
     #region // Public Methods

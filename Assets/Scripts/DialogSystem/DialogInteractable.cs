@@ -33,21 +33,21 @@ namespace DialogSystem
 
         public void StartDialog()
         {
-            if (_dialogData == null || DialogController.instance.IsDialogActive)
+            if (_dialogData == null || GameIniciator.Instance.DialogManagerInstance.IsDialogActive)
                 return;
 
             //start dialog
             if (_dialogData.RandomLine)
-                DialogController.instance.StartDialog(_dialogData, Random.Range(0, _dialogData.LineCount));
+                GameIniciator.Instance.DialogManagerInstance.StartDialog(_dialogData, Random.Range(0, _dialogData.LineCount));
             else
-                DialogController.instance.StartDialog(_dialogData);
+                GameIniciator.Instance.DialogManagerInstance.StartDialog(_dialogData);
 
             _inputActions.Player.Interact.started -= StartDialog;
 
             //line auto-close
             if (_dialogData.Duration > 0f)
             {
-                TweenHandler.Timer(_dialogData.Duration).OnComplete(DialogController.instance.EndDialog);
+                TweenHandler.Timer(_dialogData.Duration).OnComplete(GameIniciator.Instance.DialogManagerInstance.EndDialog);
                 return;
             }
 
@@ -68,10 +68,10 @@ namespace DialogSystem
 
         private void AdvanceDialog()
         {
-            if (!DialogController.instance.IsDialogActive)
+            if (!GameIniciator.Instance.DialogManagerInstance.IsDialogActive)
                 return;
 
-            if (DialogController.instance.AdvanceDialog())
+            if (GameIniciator.Instance.DialogManagerInstance.AdvanceDialog())
                 _inputActions.Player.Interact.started -= AdvanceDialog;
         }
 

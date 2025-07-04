@@ -14,7 +14,7 @@ public class InteractCoguState : CoguState
         //Debug.Log("Enter - Interact");
         _interacting += _stateMachine.Cogu.StartInteracting;
         _stateMachine.Cogu.ResetAnableCast();
-        AudioManager.Instance.PlaySFX("CoguTransform");
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX("CoguTransform");
 
         _stateMachine.Cogu.Animator.SetBool("Interact", true);
     }

@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoguManager : MonoBehaviour
-{
-    public static CoguManager instance;
+public class CoguManager : MonoBehaviour {
 
     // Fields
     [SerializeField] private List<CastCoguData> _coguVariants = new List<CastCoguData>();
@@ -13,42 +11,31 @@ public class CoguManager : MonoBehaviour
     public List<Cogu> _coguList = new List<Cogu>();
 
     // Properties
-    public List<CastCoguData> CoguVariants {  get { return _coguVariants; } }
+    public List<CastCoguData> CoguVariants { get { return _coguVariants; } }
 
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(this);
+    private void Awake() {
 
-        foreach (CastCoguData castData in _coguVariants)
-        {
+        foreach (CastCoguData castData in _coguVariants) {
             _coguDictionary.Add(castData.type, castData.cogu);
         }
     }
 
-    private void Start()
-    {
+    private void Start() {
         UpdateWildCoguList();
     }
 
-    private void FixedUpdate()
-    {
-        foreach (WildCogu wildCogu in _wildCoguList)
-        {
+    private void FixedUpdate() {
+        foreach (WildCogu wildCogu in _wildCoguList) {
             wildCogu.StateMachine.Update();
         }
 
-        foreach (Cogu cogu in _coguList)
-        {
+        foreach (Cogu cogu in _coguList) {
             cogu.StateMachine.Update();
         }
     }
 
     // Get & Set
-    public bool TryGetCoguVariant(CoguType type, out Cogu cogu)
-    {
+    public bool TryGetCoguVariant(CoguType type, out Cogu cogu) {
         if (_coguDictionary.TryGetValue(type, out cogu))
             return true;
 
@@ -57,60 +44,40 @@ public class CoguManager : MonoBehaviour
     }
 
     // Public Methods
-    public void AssingWildCogu(WildCogu wildCogu)
-    {
+    public void AssingWildCogu(WildCogu wildCogu) {
         _wildCoguList.Add(wildCogu);
     }
 
-    public void RemoveWildCogu(WildCogu wildCogu)
-    {
+    public void RemoveWildCogu(WildCogu wildCogu) {
         _wildCoguList.Remove(wildCogu);
     }
 
-    public void AssingCogu(Cogu cogu)
-    {
+    public void AssingCogu(Cogu cogu) {
         _coguList.Add(cogu);
     }
 
-    public void RemoveCogu(Cogu cogu)
-    {
+    public void RemoveCogu(Cogu cogu) {
         _coguList.Remove(cogu);
     }
 
     // Private Methods
-    private void UpdateWildCoguList()
-    {
+    private void UpdateWildCoguList() {
         _wildCoguList.Clear();
 
         WildCogu[] aux = FindObjectsByType<WildCogu>(FindObjectsSortMode.None);
 
-        foreach (WildCogu cogu in aux)
-        {
+        foreach (WildCogu cogu in aux) {
             _wildCoguList.Add(cogu);
         }
     }
 
-    private void UpdateCoguList()
-    {
+    private void UpdateCoguList() {
         _coguList.Clear();
 
         Cogu[] aux = FindObjectsByType<Cogu>(FindObjectsSortMode.None);
 
-        foreach (Cogu cogu in aux)
-        {
+        foreach (Cogu cogu in aux) {
             _coguList.Add(cogu);
         }
     }
-
-
-    // DELETAR
-    /*public Vector3 spot;
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawSphere(spot, .5f);
-
-        Gizmos.color = Color.white;
-    }*/
 }

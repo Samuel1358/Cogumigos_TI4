@@ -2,26 +2,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
     public PlayerInput PlayerInputs { get; private set; }
-    [SerializeField] private GameObject FrameDebugger;
+    [SerializeField] private GameObject _frameDebugger;
     [SerializeField] private Player _player;
 
     public Player Player { get { return _player; } }
 
-    private void Awake() {
-        if (Instance == null) {
-            Instance = this;
-            FrameDebugger.SetActive(false);
-        }
-        else {
-            Destroy(this);
-        }
+    public void WakeUp(GameObject frameDebugger) {
+        _frameDebugger = frameDebugger;    
+        _frameDebugger.SetActive(false);
     }
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.F11)) {
-            FrameDebugger.SetActive(!FrameDebugger.activeInHierarchy);
+            _frameDebugger.SetActive(!_frameDebugger.activeInHierarchy);
         }
     }
 
@@ -35,5 +29,8 @@ public class GameManager : MonoBehaviour
     }
     public void SetInput(PlayerInput newInput) {
         PlayerInputs = newInput;
+    }
+    public void SetPlayer(Player scenePlayer) {
+        _player = scenePlayer;
     }
 }

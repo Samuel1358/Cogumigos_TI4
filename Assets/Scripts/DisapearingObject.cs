@@ -9,7 +9,7 @@ public class DisapearingObject : ResetableBase
 
     private void Start()
     {
-        RespawnController.OnPlayerChangeCheckPoint += SetMemory;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += SetMemory;
     }
 
     private void SetMemory(Checkpoint checkpoint)

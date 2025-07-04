@@ -8,7 +8,7 @@ public class ThrowCoguState : CoguState
     // Inherited Public Methods
     public override void Enter()
     {
-        AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_ARREMESSO);
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.COGU_ARREMESSO);
     }
 
     public override void Update()
