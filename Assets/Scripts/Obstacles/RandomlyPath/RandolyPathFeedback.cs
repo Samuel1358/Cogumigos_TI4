@@ -8,7 +8,7 @@ public class RandolyPathFeedback : MonoBehaviour
     [SerializeField] private Transform _platformContainer;
     [SerializeField] private Transform _fakePlatformContainer;
     [SerializeField] private float _heightDislocation;
-    [SerializeField] private float _duration;
+    [SerializeField, Min(0.001f)] private float _duration = 0.1f;
     [SerializeField] private float _waitTime;
     [SerializeField] private Ease _easeMode;
 
@@ -23,7 +23,7 @@ public class RandolyPathFeedback : MonoBehaviour
     [SerializeField] public float rotationSpeed = 0.5f;
 
     private List<RandolyPathPlatform> _platformList = new List<RandolyPathPlatform>();
-    private List<RandolyPathFakePlatform> _fakePlatformList = new List<RandolyPathFakePlatform>();
+    private List<RandolyPathPlatform> _fakePlatformList = new List<RandolyPathPlatform>();
 
     // Public Methods
     public void AddPlatform(GameObject obj)
@@ -36,7 +36,13 @@ public class RandolyPathFeedback : MonoBehaviour
             if (_overrideLillypad)
                 platform.OverrideLillypadSettings(xAmplitude, zAmplitude, xSpeed, zSpeed, rotationAmplitude, rotationSpeed);
         }
-        else if (obj.TryGetComponent(out RandolyPathFakePlatform fakePlatform))
+        else
+            Destroy(obj);
+    }
+
+    public void AddFakePlatform(GameObject obj)
+    {
+        if (obj.TryGetComponent(out RandolyPathPlatform fakePlatform))
         {
             _fakePlatformList.Add(fakePlatform);
             obj.transform.parent = _fakePlatformContainer;

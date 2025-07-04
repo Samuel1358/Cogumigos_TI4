@@ -17,7 +17,6 @@ public class RandomlyPath : MonoBehaviour
     [SerializeField] private float _spacing;
     [SerializeField] private GameObject _pathPlataformPrefab;
     [SerializeField] private GameObject _fakePlatformPrefab;
-    [SerializeField] private bool _xAxis;
 
     private int[,] _path;
     private bool _safetyLock = false;
@@ -31,10 +30,10 @@ public class RandomlyPath : MonoBehaviour
             _safetyLock = true;
             Debug.LogWarning("Path Platform is missing component 'RandolyPathPlatform'");
         }
-        if (_fakePlatformPrefab.TryGetComponent(out RandolyPathFakePlatform fakePlatform) == false)
+        if (_fakePlatformPrefab.TryGetComponent(out RandolyPathPlatform fakePlatform) == false)
         {
             _safetyLock = true;
-            Debug.LogWarning("Fake Path Platform is missing component 'RandolyPathFakePlatform'");
+            Debug.LogWarning("Fake Path Platform is missing component 'RandolyPathPlatform'");
         }
 
         if (_safetyLock)
@@ -61,11 +60,15 @@ public class RandomlyPath : MonoBehaviour
                 GameObject obj;
                 Vector3 pos = CauculatePosition(j, i);
                 if (_path[j, i] == 1)
+                {
                     obj = Instantiate(_pathPlataformPrefab, new Vector3(pos.x, transform.position.y, pos.z), Quaternion.identity);
+                    _feedback.AddPlatform(obj);
+                }
                 else
+                {
                     obj = Instantiate(_fakePlatformPrefab, new Vector3(pos.x, transform.position.y, pos.z), Quaternion.identity);
-
-                _feedback.AddPlatform(obj);
+                    _feedback.AddFakePlatform(obj);
+                }                
             }
         }
 
@@ -244,5 +247,12 @@ public class RandomlyPath : MonoBehaviour
 
         Vector3 offset = dir.normalized * dis;
         return new Vector3(transform.position.x + offset.x, transform.position.y, transform.position.z + offset.z);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + (_xLength * _spacing * transform.right));
+        Gizmos.DrawLine(transform.position, transform.position + (_zLength * _spacing * transform.forward));
     }
 }

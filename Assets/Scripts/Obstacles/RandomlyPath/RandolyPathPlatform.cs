@@ -1,8 +1,16 @@
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(Lillypad))]
 public class RandolyPathPlatform : MonoBehaviour
 {
-    [SerializeField] private Lillypad _lillypad;
+    private Lillypad _lillypad;
+    [SerializeField] private UnityEvent _onCollide;
+
+    private void Start()
+    {
+        _lillypad = GetComponent<Lillypad>();
+    }
 
     // Public Methods
     public void SetEnabledLillypad(bool value)
@@ -18,5 +26,13 @@ public class RandolyPathPlatform : MonoBehaviour
         _lillypad.zSpeed = zSpeed;
         _lillypad.rotationAmplitude = rotationAmplitude;
         _lillypad.rotationSpeed = rotationSpeed;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.transform.position.y < transform.position.y - 0.2f)
+            return;
+
+        _onCollide.Invoke();
     }
 }
