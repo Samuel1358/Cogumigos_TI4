@@ -35,14 +35,14 @@ public class PlayerAirState : PlayerMovementState {
         if (StateMachineMovement.ReusableData.CoyoteTimeCount > 0) {
             StateMachineMovement.ChangeState(StateMachineMovement.JumpingState);
         }
-        else if (StateMachineMovement.ReusableData.CoyoteTimeCount <= 0 && (Cheats.instance != null) ? CheatInfinityJump() : StateMachineMovement.ReusableData.CanDoubleJump) {
+        else if (StateMachineMovement.ReusableData.CoyoteTimeCount <= 0 && (GameIniciator.Instance.CheatsInstance != null) ? CheatInfinityJump() : StateMachineMovement.ReusableData.CanDoubleJump) {
             DoubleJump();
         }
     }
 
     private bool CheatInfinityJump()
     {
-        return (!Cheats.instance.InfinityJump) ? StateMachineMovement.ReusableData.CanDoubleJump : true;
+        return (!GameIniciator.Instance.CheatsInstance.InfinityJump) ? StateMachineMovement.ReusableData.CanDoubleJump : true;
     }
 
     protected virtual void DoubleJump() {

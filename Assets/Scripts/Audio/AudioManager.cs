@@ -2,10 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour
-{
-    public static AudioManager Instance { get; private set; }
-
+public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private List<SoundEffect> soundEffects = new List<SoundEffect>();
@@ -31,119 +28,91 @@ public class AudioManager : MonoBehaviour
     private const string SFX_VOLUME_KEY = "SFXVolume";
     private const string BGM_VOLUME_KEY = "BGMVolume";
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            InitializeAudioManager();
-            LoadVolumeSettings();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+    private void Awake() {
+        InitializeAudioManager();
+        LoadVolumeSettings();
     }
 
-    private void InitializeAudioManager()
-    {
-        if (sfxSource == null)
-        {
+    private void InitializeAudioManager() {
+        if (sfxSource == null) {
             sfxSource = gameObject.AddComponent<AudioSource>();
         }
 
-        if (bgmSource == null)
-        {
+        if (bgmSource == null) {
             bgmSource = gameObject.AddComponent<AudioSource>();
             bgmSource.loop = true;
         }
 
         // Inicializa o dicionário com os efeitos sonoros
-        foreach (var sound in soundEffects)
-        {
-            if (!string.IsNullOrEmpty(sound.name) && sound.clip != null)
-            {
+        foreach (var sound in soundEffects) {
+            if (!string.IsNullOrEmpty(sound.name) && sound.clip != null) {
                 soundEffectDictionary[sound.name] = sound.clip;
             }
         }
     }
 
-    private void LoadVolumeSettings()
-    {
+    private void LoadVolumeSettings() {
         masterVolume = PlayerPrefs.GetFloat(MASTER_VOLUME_KEY, 1f);
         sfxVolume = PlayerPrefs.GetFloat(SFX_VOLUME_KEY, 1f);
         bgmVolume = PlayerPrefs.GetFloat(BGM_VOLUME_KEY, 1f);
-        
+
         ApplyVolumeSettings();
     }
 
-    private void ApplyVolumeSettings()
-    {
+    private void ApplyVolumeSettings() {
         sfxSource.volume = masterVolume * sfxVolume;
         bgmSource.volume = masterVolume * bgmVolume;
     }
 
-    public void SetMasterVolume(float volume)
-    {
+    public void SetMasterVolume(float volume) {
         masterVolume = volume;
         PlayerPrefs.SetFloat(MASTER_VOLUME_KEY, volume);
         PlayerPrefs.Save();
         ApplyVolumeSettings();
     }
 
-    public void SetSFXVolume(float volume)
-    {
+    public void SetSFXVolume(float volume) {
         sfxVolume = volume;
         PlayerPrefs.SetFloat(SFX_VOLUME_KEY, volume);
         PlayerPrefs.Save();
         ApplyVolumeSettings();
     }
 
-    public void SetBGMVolume(float volume)
-    {
+    public void SetBGMVolume(float volume) {
         bgmVolume = volume;
         PlayerPrefs.SetFloat(BGM_VOLUME_KEY, volume);
         PlayerPrefs.Save();
         ApplyVolumeSettings();
     }
 
-    public void PlaySFX(string soundName, float volume = 1f, float pitch = 1f)
-    {
-        if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip))
-        {
+    public void PlaySFX(string soundName, float volume = 1f, float pitch = 1f) {
+        if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip)) {
             sfxSource.pitch = pitch;
             sfxSource.PlayOneShot(clip, volume);
         }
-        else
-        {
+        else {
             Debug.LogWarning($"Sound effect '{soundName}' not found!");
         }
     }
 
     // Special method for playing death sound with cooldown control
-    public void PlayDeathSound()
-    {
-        if (!isDeathSoundPlaying)
-        {
-            if (soundEffectDictionary.TryGetValue("Death", out AudioClip clip))
-            {
+    public void PlayDeathSound() {
+        if (!isDeathSoundPlaying) {
+            if (soundEffectDictionary.TryGetValue("Death", out AudioClip clip)) {
                 isDeathSoundPlaying = true;
                 sfxSource.pitch = 1f;
                 sfxSource.PlayOneShot(clip, 1f);
-                
+
                 // Reset the flag after cooldown
                 StartCoroutine(ResetDeathSoundCooldown());
             }
-            else
-            {
+            else {
                 Debug.LogWarning("Death sound effect not found!");
             }
         }
     }
 
-    private IEnumerator ResetDeathSoundCooldown()
-    {
+    private IEnumerator ResetDeathSoundCooldown() {
         yield return new WaitForSeconds(DEATH_SOUND_COOLDOWN);
         isDeathSoundPlaying = false;
     }
@@ -151,15 +120,12 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays a sound effect at a specific position with 3D audio
     /// </summary>
-    public void PlaySFXAtPosition(string soundName, Vector3 position, float volume = 1f, float pitch = 1f)
-    {
-        if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip))
-        {
+    public void PlaySFXAtPosition(string soundName, Vector3 position, float volume = 1f, float pitch = 1f) {
+        if (soundEffectDictionary.TryGetValue(soundName, out AudioClip clip)) {
             float totalVolume = volume * masterVolume * sfxVolume;
             AudioSource.PlayClipAtPoint(clip, position, totalVolume);
         }
-        else
-        {
+        else {
             Debug.LogWarning($"Sound effect '{soundName}' not found!");
         }
     }
@@ -167,18 +133,14 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays a sound effect only if the player is within proximity distance
     /// </summary>
-    public bool PlaySFXIfPlayerNearby(string soundName, Vector3 position, float volume = 1f, float pitch = 1f)
-    {
-        if (playerTransform == null)
-        {
+    public bool PlaySFXIfPlayerNearby(string soundName, Vector3 position, float volume = 1f, float pitch = 1f) {
+        if (playerTransform == null) {
             // Try to find player
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
+            if (player != null) {
                 playerTransform = player.transform;
             }
-            else
-            {
+            else {
                 if (showProximityDebug)
                     Debug.LogWarning("AudioManager: Player not found! Cannot check proximity.");
                 return false;
@@ -186,21 +148,19 @@ public class AudioManager : MonoBehaviour
         }
 
         float distance = Vector3.Distance(position, playerTransform.position);
-        
-        if (distance <= proximityDistance)
-        {
+
+        if (distance <= proximityDistance) {
             PlaySFXAtPosition(soundName, position, volume, pitch);
-            
+
             if (showProximityDebug)
                 Debug.Log($"AudioManager: Playing '{soundName}' at distance {distance:F2} (max: {proximityDistance})");
-            
+
             return true;
         }
-        else
-        {
+        else {
             if (showProximityDebug)
                 Debug.Log($"AudioManager: Player too far for '{soundName}' - distance {distance:F2} (max: {proximityDistance})");
-            
+
             return false;
         }
     }
@@ -208,8 +168,7 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Sets the player transform for proximity calculations
     /// </summary>
-    public void SetPlayerTransform(Transform player)
-    {
+    public void SetPlayerTransform(Transform player) {
         playerTransform = player;
         if (showProximityDebug)
             Debug.Log($"AudioManager: Player transform set to {player.name}");
@@ -218,17 +177,13 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Checks if a position is within proximity distance of the player
     /// </summary>
-    public bool IsPlayerNearby(Vector3 position)
-    {
-        if (playerTransform == null)
-        {
+    public bool IsPlayerNearby(Vector3 position) {
+        if (playerTransform == null) {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
+            if (player != null) {
                 playerTransform = player.transform;
             }
-            else
-            {
+            else {
                 return false;
             }
         }
@@ -237,27 +192,22 @@ public class AudioManager : MonoBehaviour
         return distance <= proximityDistance;
     }
 
-    public void PlayBGM(AudioClip bgmClip)
-    {
-        if (bgmClip != null)
-        {
+    public void PlayBGM(AudioClip bgmClip) {
+        if (bgmClip != null) {
             bgmSource.clip = bgmClip;
             bgmSource.Play();
         }
     }
 
-    public void StopBGM()
-    {
+    public void StopBGM() {
         bgmSource.Stop();
     }
 
-    public void StopSFX()
-    {
+    public void StopSFX() {
         sfxSource.Stop();
     }
 
-    public void SetSFXPitch(float pitch)
-    {
+    public void SetSFXPitch(float pitch) {
         sfxSource.pitch = pitch;
     }
 
@@ -266,13 +216,11 @@ public class AudioManager : MonoBehaviour
     public float GetSFXVolume() => sfxVolume;
     public float GetBGMVolume() => bgmVolume;
 
-    private void OnDrawGizmosSelected()
-    {
+    private void OnDrawGizmosSelected() {
         // Draw proximity range in scene view
-        if (playerTransform != null)
-        {
+        if (playerTransform != null) {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(playerTransform.position, proximityDistance);
         }
     }
-}   
+}

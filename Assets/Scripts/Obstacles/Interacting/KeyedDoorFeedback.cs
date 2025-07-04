@@ -23,7 +23,7 @@ public class KeyedDoorFeedback : ResetableBase
         SetKeyVisualActive(false);
         //_keyVisual.transform.localScale *= _keyVisualScale;
 
-        RespawnController.OnPlayerChangeCheckPoint += SetMemory;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += SetMemory;
     }
 
     public void Open(Collider other, Action openAction)
@@ -34,7 +34,7 @@ public class KeyedDoorFeedback : ResetableBase
             return;
         }
 
-        AudioManager.Instance.PlaySFX(SoundEffectNames.CHAVE_PORTA);
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.CHAVE_PORTA);
 
         _keyVisual.transform.position = other.transform.position;
         _keyVisual.transform.rotation = Quaternion.identity;

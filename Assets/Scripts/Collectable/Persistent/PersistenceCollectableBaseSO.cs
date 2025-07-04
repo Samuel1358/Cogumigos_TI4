@@ -9,6 +9,6 @@ public abstract class PersistenceCollectableBaseSO : ScriptableObject {
     }
 
     public bool VerifyState() {
-        return DataPersistenceManager.Instance.VerifyCollectableState(ID);
+        return GameIniciator.Instance.PersistenceManagerInstance.VerifyCollectableState(ID);
     }
 }

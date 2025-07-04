@@ -9,8 +9,10 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.transform.parent.TryGetComponent<Player>(out Player player)) {
             if (_canActive) {
-                RespawnController.Instance.SetActiveCheckPoint(this);
-                RespawnController.OnPlayerChangeCheckPoint.Invoke(this);
+
+
+                GameIniciator.Instance.RespawnControllerInstance.SetActiveCheckPoint(this);
+                GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint.Invoke(this);
                 _onSetCheckpoint.Invoke();
                 _canActive = false;
             }

@@ -16,26 +16,11 @@ public class MoveCoguState : CoguState
         heightPoint.y += _stateMachine.Cogu.Data.throwHeight;
         this._heightPoint = heightPoint;
 
-        _rayMask = LayerMask.GetMask("Ground", "Wall");      
-
-        // DEBUG
-        if (GizmoSpiline.instance == null)
-            return;
-        GizmoSpiline.instance.a = _stateMachine.Cogu.CastSpot;       
-        GizmoSpiline.instance.b = heightPoint;
-        GizmoSpiline.instance.c = _stateMachine.Cogu.InteractSpot;
+        _rayMask = LayerMask.GetMask("Ground", "Wall");
     }
 
     public override void Update()
     {
-        /*if (!CheckGround())
-        {
-            Parable();
-        }
-        else if(_stateMachine.Cogu.ArrivedDestination())
-        {
-            _stateMachine.ChangeState(_stateMachine.InteractState);
-        }*/
         Parable();
     }
 
@@ -55,21 +40,4 @@ public class MoveCoguState : CoguState
             _stateMachine.ChangeState(_stateMachine.InteractState);
         }
     }
-
-    /*private bool CheckGround()
-    {
-        if (_stateMachine.Cogu.Agent.enabled)
-            return true;
-
-        bool aux = Physics.Raycast(_stateMachine.Cogu.transform.position, Vector3.down, 0.5f, _rayMask);
-        Debug.Log(aux);
-        if (aux)
-        {
-            _stateMachine.Cogu.Agent.enabled = true;
-            _stateMachine.Cogu.Agent.speed = _stateMachine.Cogu.Data.moveSpd;
-            _stateMachine.Cogu.Agent.SetDestination(_stateMachine.Cogu.InteractSpot);
-        }
-
-        return aux;
-    }*/
 }

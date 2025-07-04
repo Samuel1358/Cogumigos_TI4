@@ -4,23 +4,11 @@ using System.Collections.Generic;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    public static DataPersistenceManager Instance { get; private set; }
-
     [SerializeField] private string _fileName;
 
     private GameData _gameData;
     private List<IDataPersistence> _dataPersistencesObjects;
     private FileDataHandler _dataHandler;
-
-    private void Awake() {
-        if (Instance == null) {
-            Instance = this; 
-        }
-        else {
-            Debug.LogError("Mais de uma Instancia do DataPersistenceManager na cena");
-            Destroy(gameObject);
-        }
-    }
 
     private void Start() {
         _dataHandler = new FileDataHandler(Application.persistentDataPath, _fileName);

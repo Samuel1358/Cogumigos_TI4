@@ -13,25 +13,25 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
     }
 
     private void OnDisable() {
-        RespawnController.OnPlayerChangeCheckPoint -= VerifyReset;
-        RespawnController.Instance.TurnNonResetable(this);
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint -= VerifyReset;
+        GameIniciator.Instance.RespawnControllerInstance.TurnNonResetable(this);
     }
 
     private void VerifyReset(Checkpoint checkpoint) {
-        if (RespawnController.Instance.PlayerLastCheckPoint == null) {
-            RespawnController.Instance.TurnResetable(this);
+        if (GameIniciator.Instance.RespawnControllerInstance.PlayerLastCheckPoint == null) {
+            GameIniciator.Instance.RespawnControllerInstance.TurnResetable(this);
             return;
         }
-        if (RespawnController.Instance.PlayerLastCheckPoint == _linkedCheckpoint) {
-            RespawnController.Instance.TurnNonResetable(this);
+        if (GameIniciator.Instance.RespawnControllerInstance.PlayerLastCheckPoint == _linkedCheckpoint) {
+            GameIniciator.Instance.RespawnControllerInstance.TurnNonResetable(this);
         }
     }
 
     //REMENDO RETIRAR APÓS CONVERSA SOBRE RESETABLE
     IEnumerator ActivateResetable() {
         yield return new WaitForSeconds(Time.deltaTime * 4);
-        RespawnController.OnPlayerChangeCheckPoint += VerifyReset;
-        RespawnController.Instance.TurnResetable(this);
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += VerifyReset;
+        GameIniciator.Instance.RespawnControllerInstance.TurnResetable(this);
     }
 
     //public abstract void SetMemory();

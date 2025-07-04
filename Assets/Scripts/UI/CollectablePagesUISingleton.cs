@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CollectablePagesUISingleton : MonoBehaviour
 {
-    public static CollectablePagesUISingleton instance;
+    /*public static CollectablePagesUISingleton instance;
 
     [SerializeField] private CollectablePagesUi _collectablePagesUI;
     public CollectablePagesUi CollectablePagesUi { get { return _collectablePagesUI; } }
@@ -13,5 +13,5 @@ public class CollectablePagesUISingleton : MonoBehaviour
             instance = this;
         else
             Destroy(this);
-    }
+    }*/
 }

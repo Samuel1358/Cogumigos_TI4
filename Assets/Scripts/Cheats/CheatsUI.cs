@@ -32,8 +32,8 @@ public class CheatsUI : MonoBehaviour
 
     private void Start()
     {
-        Cheats.instance.onShiftInfinityJump += OnShiftInfinityJump;
-        Cheats.instance.onShiftImortal += OnShiftImortal;
+        GameIniciator.Instance.CheatsInstance.onShiftInfinityJump += OnShiftInfinityJump;
+        GameIniciator.Instance.CheatsInstance.onShiftImortal += OnShiftImortal;
     }
 
     // Input
@@ -43,8 +43,8 @@ public class CheatsUI : MonoBehaviour
         _imortalToggle.onValueChanged.RemoveListener(OnToggleImortal);
 
         _sceneName.text = SceneManager.GetActiveScene().name;
-        _infinityJumpToggle.isOn = Cheats.instance.InfinityJump;
-        _imortalToggle.isOn = Cheats.instance.Imortal;
+        _infinityJumpToggle.isOn = GameIniciator.Instance.CheatsInstance.InfinityJump;
+        _imortalToggle.isOn = GameIniciator.Instance.CheatsInstance.Imortal;
 
         _infinityJumpToggle.onValueChanged.AddListener(OnToggleInfinityJump);
         _imortalToggle.onValueChanged.AddListener(OnToggleImortal);
@@ -57,7 +57,7 @@ public class CheatsUI : MonoBehaviour
     {
         _infinityJumpToggle.onValueChanged.RemoveListener(OnToggleInfinityJump);
 
-        _infinityJumpToggle.isOn = Cheats.instance.InfinityJump;
+        _infinityJumpToggle.isOn = GameIniciator.Instance.CheatsInstance.InfinityJump;
 
         _infinityJumpToggle.onValueChanged.AddListener(OnToggleInfinityJump);
     }
@@ -66,18 +66,18 @@ public class CheatsUI : MonoBehaviour
     {
         _imortalToggle.onValueChanged.RemoveListener(OnToggleImortal);
 
-        _imortalToggle.isOn = Cheats.instance.Imortal;
+        _imortalToggle.isOn = GameIniciator.Instance.CheatsInstance.Imortal;
 
         _imortalToggle.onValueChanged.AddListener(OnToggleImortal);
     }
 
     private void OnToggleInfinityJump(bool value)
     {
-        Cheats.instance.ShiftInfinityJump();
+        GameIniciator.Instance.CheatsInstance.ShiftInfinityJump();
     }
 
     private void OnToggleImortal(bool value)
     {
-        Cheats.instance.ShiftImortal();
+        GameIniciator.Instance.CheatsInstance.ShiftImortal();
     }
 }

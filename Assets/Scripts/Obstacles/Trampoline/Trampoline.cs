@@ -18,6 +18,6 @@ public class Trampoline : MonoBehaviour
         player.ChangeToTrampolineJumpState(bounceForce);
         _onBounce.Invoke();
     
-        AudioManager.Instance.PlaySFX("TrampolineBounce2");
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX("TrampolineBounce2");
     }
 }

@@ -15,13 +15,13 @@ public class LightSwitch : MonoBehaviour
     private void OnEnable()
     {
         // Subscribe to respawn events
-        RespawnController.OnPlayerRespawn += OnPlayerRespawn;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn += OnPlayerRespawn;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from respawn events
-        RespawnController.OnPlayerRespawn -= OnPlayerRespawn;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn -= OnPlayerRespawn;
     }
 
     private void Start()
@@ -88,7 +88,7 @@ public class LightSwitch : MonoBehaviour
         {
             _light.enabled = true;
             Debug.Log($"Light {_light.name} turned ON by switch");
-            //AudioManager.Instance.PlaySFX(SoundEffectNames.COGU_VELA);
+            //GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.COGU_VELA);
         }
         
         if (_flameEffect != null)

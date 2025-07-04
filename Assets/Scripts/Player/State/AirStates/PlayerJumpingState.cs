@@ -7,7 +7,7 @@ public class PlayerJumpingState : PlayerAirState {
     public override void Enter() {
         base.Enter();
         StateMachineMovement.ReusableData.MovementSpeedModifier = 1f;
-        AudioManager.Instance.PlaySFX("PlayerJump");
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX("PlayerJump");
         Jump();
     }
 

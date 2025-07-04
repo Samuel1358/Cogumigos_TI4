@@ -4,12 +4,12 @@ public class DeathCollision : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if ((Cheats.instance != null) ? !Cheats.instance.Imortal : true)
+        if ((GameIniciator.Instance.CheatsInstance != null) ? !GameIniciator.Instance.CheatsInstance.Imortal : true)
         {
             if (collision.transform.TryGetComponent(out Player player)) {
-                RespawnController.OnPlayerRespawn.Invoke();
-                AudioManager.Instance.PlayDeathSound();
-                //UiInventory.Instance.UpdateCoguCountUI(GameManager.Instance.Player.CoguCast.CoguCount);
+                GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn.Invoke();
+                GameIniciator.Instance.AudioManagerInstance.PlayDeathSound();
+                //GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateCoguCountUI(GameIniciator.Instance.GameManagerInstance.Player.CoguCast.CoguCount);
             }
         }
     }

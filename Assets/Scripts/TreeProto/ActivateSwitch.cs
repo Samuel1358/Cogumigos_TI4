@@ -9,7 +9,7 @@ public class ActivateSwitch : CoguInteractable
     
     [Header("Interaction Settings")]
     //[SerializeField] private InteractingArea _area;
-    [SerializeField] private bool _interactJustOnce = false;
+    //[SerializeField] private bool _interactJustOnce = false;
     [SerializeField] private bool _toggleMode = true; // true = toggle, false = only activate
     
     [Header("State")]
@@ -29,13 +29,13 @@ public class ActivateSwitch : CoguInteractable
     {
         base.OnEnable();
         // Subscribe to checkpoint changes
-        RespawnController.OnPlayerChangeCheckPoint += SaveStateAtCheckpoint;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += SaveStateAtCheckpoint;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from checkpoint changes
-        RespawnController.OnPlayerChangeCheckPoint -= SaveStateAtCheckpoint;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint -= SaveStateAtCheckpoint;
     }
 
     /*private void Awake()

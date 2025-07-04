@@ -96,6 +96,6 @@ public class WildCogu : ResetableBase
 
     private void OnDestroy()
     {
-        CoguManager.instance.RemoveWildCogu(this);
+        GameIniciator.Instance.CoguManagerInstance.RemoveWildCogu(this);
     }
 }

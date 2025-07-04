@@ -54,7 +54,7 @@ public class Portal : MonoBehaviour {
 
     private IEnumerator StartTravel() {      
         yield return new WaitForSeconds(_timeToActivate + _startTravel);
-        AudioManager.Instance.PlaySFX("TPIn");
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX("TPIn");
         if (_travelObject != null) {
             Teleport();
         }
@@ -64,8 +64,7 @@ public class Portal : MonoBehaviour {
         _travelObject.position = _linkedPortal.transform.position;
         _travelObject.rotation = _linkedPortal.transform.rotation;
         _linkedPortal.JustArrived();
-
-        AudioManager.Instance.PlaySFX("TPOut");
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX("TPOut");
         _effect.gameObject.SetActive(false);
     }
 

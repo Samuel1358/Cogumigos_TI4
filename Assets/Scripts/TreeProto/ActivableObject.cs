@@ -31,13 +31,13 @@ public class ActivableObject : ResetableBase
     {
         base.OnEnable();
         // Subscribe to respawn events
-        RespawnController.OnPlayerRespawn += OnPlayerRespawn;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn += OnPlayerRespawn;
     }
 
     private void OnDisable()
     {
         // Unsubscribe from respawn events  
-        RespawnController.OnPlayerRespawn -= OnPlayerRespawn;
+        GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn -= OnPlayerRespawn;
     }
 
     private void Start()
