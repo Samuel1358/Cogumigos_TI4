@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(RandolyPathFeedback))]
 public class RandomlyPath : MonoBehaviour
 {
     private enum Direction
@@ -11,32 +12,64 @@ public class RandomlyPath : MonoBehaviour
         left = 4
     }
 
-    [SerializeField] private int wdith;
-    [SerializeField] private int height;
-    [SerializeField] private float spacing;
-    [SerializeField] private GameObject destructiblePrefab;
-    [SerializeField] private GameObject plataformPrefab;
+    [SerializeField] private int _xLength;
+    [SerializeField] private int _zLength;
+    [SerializeField] private float _spacing;
+    [SerializeField] private GameObject _pathPlataformPrefab;
+    [SerializeField] private GameObject _fakePlatformPrefab;
+    [SerializeField] private bool _xAxis;
 
-    private int[,] path;
+    private int[,] _path;
+    private bool _safetyLock = false;
+
+    private RandolyPathFeedback _feedback;
+
+    private void Awake()
+    {
+        if (_pathPlataformPrefab.TryGetComponent(out RandolyPathPlatform platform) == false)
+        {
+            _safetyLock = true;
+            Debug.LogWarning("Path Platform is missing component 'RandolyPathPlatform'");
+        }
+        if (_fakePlatformPrefab.TryGetComponent(out RandolyPathFakePlatform fakePlatform) == false)
+        {
+            _safetyLock = true;
+            Debug.LogWarning("Fake Path Platform is missing component 'RandolyPathFakePlatform'");
+        }
+
+        if (_safetyLock)
+            return;
+
+        _feedback = GetComponent<RandolyPathFeedback>();
+    }
 
     [ContextMenu("Instantiate Path")]
     public void InstantiatePath()
     {
+        if (_safetyLock)
+        {
+            Debug.LogError("Path Platform and/or Fake Path Platform are not suitable!");
+            return;
+        }
+
         GeneratePath();
 
-        for (int i = 0; i < path.GetLength(1); i++)
+        for (int i = 0; i < _path.GetLength(1); i++)
         {
-            for (int j = 0; j < path.GetLength(0); j++)
+            for (int j = 0; j < _path.GetLength(0); j++)
             {
                 GameObject obj;
-                if (path[j, i] == 1)
-                    obj = Instantiate(plataformPrefab, new Vector3(transform.position.x + (j * spacing), transform.position.y, transform.position.z + (i * spacing)), Quaternion.identity);
+                Vector3 pos = CauculatePosition(j, i);
+                if (_path[j, i] == 1)
+                    obj = Instantiate(_pathPlataformPrefab, new Vector3(pos.x, transform.position.y, pos.z), Quaternion.identity);
                 else
-                    obj = Instantiate(destructiblePrefab, new Vector3(transform.position.x + (j * spacing), transform.position.y, transform.position.z + (i * spacing)), Quaternion.identity);                
+                    obj = Instantiate(_fakePlatformPrefab, new Vector3(pos.x, transform.position.y, pos.z), Quaternion.identity);
 
-                obj.transform.parent = this.transform;
+                _feedback.AddPlatform(obj);
             }
         }
+
+        _feedback.StartFeedback();
     }
 
     [ContextMenu("Print Path")]
@@ -46,15 +79,15 @@ public class RandomlyPath : MonoBehaviour
 
         string print = "";
 
-        for (int i = 0; i < path.GetLength(1); i++)
+        for (int i = 0; i < _path.GetLength(1); i++)
         {
             print = "";
             print += "[";
 
-            for (int j = 0; j < path.GetLength(0); j++)
+            for (int j = 0; j < _path.GetLength(0); j++)
             {
-                print += path[j, i];
-                if (j < path.GetLength(0) - 1)
+                print += _path[j, i];
+                if (j < _path.GetLength(0) - 1)
                     print += ", ";
             }
 
@@ -69,17 +102,17 @@ public class RandomlyPath : MonoBehaviour
         bool freePath = false;
         while (!freePath)
         {
-            path = new int[wdith, height];
-            freePath = RecursiveGeneratePath(Random.Range(1, path.GetLength(0) - 1), 0, path, ref curved);
-            Debug.Log(freePath);
+            _path = new int[_xLength, _zLength];
+            freePath = RecursiveGeneratePath(Random.Range(1, _path.GetLength(0) - 1), 0, _path, ref curved);
+            //Debug.Log(freePath);
         }        
 
-        for (int i = 0; i < path.GetLength(0); i++)
+        for (int i = 0; i < _path.GetLength(0); i++)
         {
-            for (int j = 0; j < path.GetLength(1); j++)
+            for (int j = 0; j < _path.GetLength(1); j++)
             {
-                if (path[i, j] != 1)
-                    path[i, j] = 0;
+                if (_path[i, j] != 1)
+                    _path[i, j] = 0;
             }
         }        
     }
@@ -181,7 +214,7 @@ public class RandomlyPath : MonoBehaviour
 
         if (op.Count == 0)
         {
-            Debug.Log("Travou!");
+            //Debug.Log("Travou!");
             freePath = false;
             return Direction.Up;
         }
@@ -191,5 +224,25 @@ public class RandomlyPath : MonoBehaviour
         }
 
         return (Direction)op[Random.Range(0, op.Count)];
+    }
+
+    private Vector3 CauculatePosition(int x, int y)
+    {
+        /*float disX = x * _spacing;
+        float disY = y * _spacing;
+
+        float posx = (transform.right * disX).x;
+        float posy = (transform.forward * disY).z;
+
+        return new Vector2(transform.position.x + posx, transform.position.z + posy);*/
+
+        Vector3 point = new Vector3(transform.position.x + (x * _spacing), 0, transform.position.z + (y * _spacing));
+        float dis = Vector3.Distance(transform.position, point);
+
+        Quaternion rot = Quaternion.AngleAxis(transform.eulerAngles.y, Vector3.up);
+        Vector3 dir = rot * (point - transform.position);
+
+        Vector3 offset = dir.normalized * dis;
+        return new Vector3(transform.position.x + offset.x, transform.position.y, transform.position.z + offset.z);
     }
 }

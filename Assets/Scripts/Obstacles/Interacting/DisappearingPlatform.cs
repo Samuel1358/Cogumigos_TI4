@@ -3,11 +3,10 @@ using UnityEngine;
 
 public class DisappearingPlatform : MonoBehaviour
 {
-    [SerializeField] private GameObject _visualObg; 
-    [SerializeField] private float _disappearTime = 2f;
-    [SerializeField] private float _reappearTime = 2f;
+    [SerializeField, Min(0.001f)] private float _disappearTime = 2f;
+    [SerializeField, Min(0.001f)] private float _reappearTime = 2f;
     private bool _isActive = true;
-    private Collider _platformCollider;
+
     private Rigidbody _rb;
     private Vector3 _startPosition;
     private Quaternion _startRotetion;
@@ -15,7 +14,6 @@ public class DisappearingPlatform : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _platformCollider = GetComponent<Collider>();
         _startPosition = transform.position;
         _startRotetion = transform.rotation;
     }
@@ -35,13 +33,11 @@ public class DisappearingPlatform : MonoBehaviour
     {
         SetVisualActive(false); // Torna a plataforma invisível
 
-        //TweenHandler.Rotate(transform, new Vector3(15f, 0f, 0f), _reappearTime * 0.75f, DG.Tweening.Ease.InSine);
-
         _isActive = false; // Marca a plataforma como inativa
     }
 
     
-    public void EnablePlatform()
+    public virtual void EnablePlatform()
     {
         SetVisualActive(true); // Torna a plataforma visível
 
@@ -53,9 +49,6 @@ public class DisappearingPlatform : MonoBehaviour
 
     private void SetVisualActive(bool value)
     {
-        if (_visualObg == null)
-            return;
-
         _rb.isKinematic = value;
     }
 }

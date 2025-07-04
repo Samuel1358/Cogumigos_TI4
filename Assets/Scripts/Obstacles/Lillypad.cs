@@ -5,12 +5,12 @@ using System.Collections.Generic;
 public class Lillypad : MonoBehaviour
 {
     [Header("Water Movement")]
-    [SerializeField] private float xAmplitude = 0.5f;          
-    [SerializeField] private float zAmplitude = 0.3f;          
-    [SerializeField] private float xSpeed = 1.0f;              
-    [SerializeField] private float zSpeed = 0.8f;              
-    [SerializeField] private float rotationAmplitude = 2.0f;   
-    [SerializeField] private float rotationSpeed = 0.5f;       
+    [SerializeField] public float xAmplitude = 0.5f;          
+    [SerializeField] public float zAmplitude = 0.3f;          
+    [SerializeField] public float xSpeed = 1.0f;              
+    [SerializeField] public float zSpeed = 0.8f;              
+    [SerializeField] public float rotationAmplitude = 2.0f;   
+    [SerializeField] public float rotationSpeed = 0.5f;       
     
     [Header("Waypoint Control")]
     [SerializeField] private bool isControlledByWaypoints = false;
