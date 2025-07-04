@@ -1,114 +1,144 @@
-using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using DG.Tweening;
 
-public class AirTunnel : MonoBehaviour {
-    
-    [Header("Air Tunnel Settings")]
-    [SerializeField] private Transform destinationPoint;
-    [SerializeField] private float movementDuration = 2f;
-    [SerializeField] private Ease movementEase = Ease.InOutQuad;
-    
-    [Header("Waypoint System")]
-    [SerializeField] private List<Transform> waypoints = new List<Transform>();
-    [SerializeField] private float waypointMovementDuration = 1f;
-    
-    [Header("Player Detection")]
-    [SerializeField] private LayerMask playerLayer = 1 << 7; // Layer 7 = TriggerCheck
-    
-    private Player player;
-    private bool isPlayerInTunnel = false;
-    private Tweener movementTween;
-    private int currentWaypointIndex = 0;
-    
-    private void OnTriggerEnter(Collider other) {
-        Debug.Log("smth entered the air tunnel");
-        Debug.Log(isPlayerInTunnel);
-        Debug.Log($"Object: {other.gameObject.name}, Layer: {other.gameObject.layer}, LayerMask: {playerLayer.value}");
-        
-        if (IsInLayerMask(other.gameObject, playerLayer) && !isPlayerInTunnel) {
-            // Pega o Player do pai do TriggerCheck
-            player = other.GetComponentInParent<Player>();
-            Debug.Log(player);
-            if (player != null) {
-                Debug.Log("Player entered the air tunnel");
-                StartAirTunnelSequence();
-            }
+public class AirTunnel : MonoBehaviour
+{
+
+    [SerializeField] private Transform _waypointsContainer;
+    [SerializeField] private float _moveSpeed;
+    //[SerializeField] private float _changeDistance;
+    private Player _target;
+
+    private int _index = 0;
+
+    public Transform WaypointsContainer { get { return _waypointsContainer; } }
+
+    public void StartGlide(Player target)
+    {
+        _target = target;
+
+        Transform point = _waypointsContainer.GetChild(_index);
+        float dis = Mathf.Abs(Vector3.Distance(point.position, _target.transform.position));
+        float t = dis / _moveSpeed;
+
+        _target.transform.DOMove(point.position, t)
+            .SetEase(Ease.Linear)
+            .OnComplete(NextWaypoint);
+    }
+
+    // Private Methods
+    private bool Validate()
+    {
+        if (_waypointsContainer == null)
+            return false;
+
+        if (_waypointsContainer.childCount < 2)
+            return false;
+
+        if (_target == null)
+            return false;
+
+        return true;
+    }
+
+    private void NextWaypoint()
+    {
+        if (!Validate())
+        {
+            Arrive();
         }
-    }
-    
-    private bool IsInLayerMask(GameObject obj, LayerMask layerMask) {
-        return (layerMask.value & (1 << obj.layer)) > 0;
-    }
-    
-    private void StartAirTunnelSequence() {
-        isPlayerInTunnel = true;
-        currentWaypointIndex = 0;
-        
-        // Muda o estado do jogador para Glide
-        player.SetGlide(true);
-        
-        // Inicia o movimento pelos waypoints
-        MoveToNextWaypoint();
-    }
-    
-    private void MoveToNextWaypoint() {
-        if (currentWaypointIndex >= waypoints.Count) {
-            // Chegou ao final, move para o destino final
-            MoveToDestination();
+
+        _index++;
+        if (_index >= _waypointsContainer.childCount)
+        {
+            Arrive();
             return;
         }
-        
-        Transform targetWaypoint = waypoints[currentWaypointIndex];
-        
-        Debug.Log($"Moving to waypoint {currentWaypointIndex}: {targetWaypoint.name}");
-        
-        movementTween = player.transform.DOMove(targetWaypoint.position, waypointMovementDuration)
-        .SetEase(movementEase)
-        .OnComplete(() => {
-            currentWaypointIndex++;
-            MoveToNextWaypoint();
-        });
+
+        Transform point = _waypointsContainer.GetChild(_index);
+        float dis = Mathf.Abs(Vector3.Distance(point.position, _target.transform.position));
+        float t = dis / _moveSpeed;
+
+        _target.transform.DOMove(point.position, t)
+            .SetEase(Ease.Linear)
+            .OnComplete(NextWaypoint);
     }
-    
-    private void MoveToDestination() {
-        Debug.Log("Moving to final destination");
-        
-        movementTween = player.transform.DOMove(destinationPoint.position, movementDuration)
-        .SetEase(movementEase)
-        .OnComplete(() => {
-            // Muda o estado para Falling
-            player.SetGlide(false);
-            
-            // Reseta a flag
-            isPlayerInTunnel = false;
-            
-            Debug.Log("Air tunnel sequence completed");
-        });
+
+    private void Arrive()
+    {
+        _target.SetGlide(false);
+        _target = null;
+        _index = 0;
     }
-    
-    private void OnDestroy() {
-        // Cancela o tween se o objeto for destruído
-        if (movementTween != null && movementTween.IsActive()) {
-            movementTween.Kill();
-        }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.GetComponentInParent<Player>();
+        if (player == null)
+            return;
+
+        StartGlide(player);
+        player.SetGlide(true);
     }
 
     private void OnDrawGizmos()
     {
-        Vector3? oldVec = null;
-        foreach (var pathPoint in waypoints)
+        //if (Application.isPlaying)
+        //    return;
+
+        if (_waypointsContainer == null)
+            return;
+
+        if (_waypointsContainer.childCount < 2)
+            return;
+
+        Vector3 from = _waypointsContainer.GetChild(0).position;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(from, 0.05f);
+
+        Gizmos.color = Color.white;
+        for (int i = 1; i < _waypointsContainer.childCount; i++)
         {
-            if (pathPoint != null)
-                if (oldVec == null)
-                {
-                    oldVec = pathPoint.position;
-                }
-                else
-                {
-                    Gizmos.DrawLine(oldVec.Value, pathPoint.position);
-                    oldVec = pathPoint.position;
-                }
+            Vector3 point = _waypointsContainer.GetChild(i).position;
+            Gizmos.DrawLine(from, point);
+            from = point;
+
+            if (i == _waypointsContainer.childCount - 1)
+                Gizmos.color = Color.red;
+            else
+                Gizmos.color = Color.blue;
+
+            Gizmos.DrawSphere(point, 0.05f);
+
+            Gizmos.color = Color.white;
         }
+
+        Gizmos.color = Color.white;
     }
 }
+
+#if UNITY_EDITOR
+public class AirTunnelEditor : Editor
+{
+    private AirTunnel _airTunnel;
+
+    private void OnEnable()
+    {
+        _airTunnel = target as AirTunnel;
+    }
+
+    public override void OnInspectorGUI()
+    {
+        if (_airTunnel.WaypointsContainer == null)
+            EditorGUILayout.HelpBox("WaypointContainer has to be assigned", MessageType.Error);
+        else if (_airTunnel.WaypointsContainer.childCount < 2)
+            EditorGUILayout.HelpBox("the container must have at least 2 waypoints", MessageType.Error);
+
+        base.OnInspectorGUI();
+    }
+}
+#endif

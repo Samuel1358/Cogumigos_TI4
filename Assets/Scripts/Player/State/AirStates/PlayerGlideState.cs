@@ -1,17 +1,21 @@
+using UnityEngine;
+
 public class PlayerGlideState : PlayerAirState {
     public PlayerGlideState(PlayerMovementStateMachine playerMovementStateMachine) : base(playerMovementStateMachine) {
     }
 
     public override void Enter() {
         base.Enter();
+
         StateMachineMovement.ReusableData.MovementSpeedModifier = 0f;
-        ResetVerticalVelocity();
+        ResetVelocity();
         StartAnimation(StateMachineMovement.PlayerGet.AnimationData.GlideParameterHash);
         AudioManager.Instance.PlaySFX("AirTunnel");
     }
 
     public override void Update() {
         base.Update();
+
         StateMachineMovement.ReusableData.SetGravity(0f);
     }
 
