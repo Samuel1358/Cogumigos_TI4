@@ -30,7 +30,7 @@ public class CanvasIniciator : MonoBehaviour {
             GameIniciator.Instance.LoadScenes(sceneIndex);
         }
     }
-    private void LoadMenuScene() {
+    public void LoadMenuScene() {
         MainMenu.SetActive(true);
         StageList.SetActive(false);
         ConfigMenu.SetActive(false);
