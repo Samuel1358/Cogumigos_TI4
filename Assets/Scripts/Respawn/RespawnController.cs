@@ -23,9 +23,12 @@ public class RespawnController : MonoBehaviour {
     }
 
     private void ResetObjects() {
+        Debug.Log($"RespawnController: ResetObjects chamado - {ResetablesTraps.Count} objetos para resetar");
         foreach (IResetable trap in ResetablesTraps) {
+            Debug.Log($"RespawnController: Resetando objeto {trap.GetType().Name} - {trap}");
             trap.ResetObject();
         }
+        Debug.Log("RespawnController: ResetObjects concluído");
     }
 
     public void SetActiveCheckPoint(Checkpoint newCheckpoint) {
@@ -34,8 +37,12 @@ public class RespawnController : MonoBehaviour {
     }
 
     public void TurnResetable(IResetable trap) {
-        ResetablesTraps.Add(trap);
+        if (!ResetablesTraps.Contains(trap))
+        {
+            ResetablesTraps.Add(trap);
+        }
     }
+    
     public void TurnNonResetable(IResetable trap) {
         ResetablesTraps.Remove(trap);
     }

@@ -1,5 +1,119 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3191531951979835759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608476728622155443}
+  - component: {fileID: 2838575699586478661}
+  - component: {fileID: 3814172276013992266}
+  m_Layer: 0
+  m_Name: FireVFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608476728622155443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191531951979835759}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 3.01, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 0.6666667}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3129699839622571368}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!2083052967 &2838575699586478661
+VisualEffect:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191531951979835759}
+  m_Enabled: 1
+  m_Asset: {fileID: 8926484042661614526, guid: 1b7539112c9c54f42a6b693214ad2277, type: 3}
+  m_InitialEventName: OnPlay
+  m_InitialEventNameOverriden: 0
+  m_StartSeed: 0
+  m_ResetSeedOnPlay: 1
+  m_AllowInstancing: 1
+  m_ResourceVersion: 1
+  m_PropertySheet:
+    m_Float:
+      m_Array: []
+    m_Vector2f:
+      m_Array: []
+    m_Vector3f:
+      m_Array: []
+    m_Vector4f:
+      m_Array: []
+    m_Uint:
+      m_Array: []
+    m_Int:
+      m_Array: []
+    m_Matrix4x4f:
+      m_Array: []
+    m_AnimationCurve:
+      m_Array: []
+    m_Gradient:
+      m_Array: []
+    m_NamedObject:
+      m_Array: []
+    m_Bool:
+      m_Array: []
+--- !u!73398921 &3814172276013992266
+VFXRenderer:
+  serializedVersion: 1
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191531951979835759}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &3319532781675885854
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,13 +244,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3129699839622571368}
-  - component: {fileID: 3418740848051989241}
   - component: {fileID: 9194140903944682318}
   - component: {fileID: 2569200098258960655}
   - component: {fileID: 3677995493688285390}
   - component: {fileID: 4103084202324733183}
   - component: {fileID: 8049768026902561860}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: PuzzleBrazier1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,27 +269,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 608476728622155443}
   - {fileID: 28646561637819330}
   - {fileID: 375524676262209850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3418740848051989241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8991762322751462762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff5e07c14e799cc4aa6aa6e775625bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _linkedCheckpoint: {fileID: 0}
-  _interaction: {fileID: 11400000, guid: 08f99872afd7e5b4486697f4a45ec800, type: 2}
-  _visualInfo: {fileID: 3614014181948826280}
-  _visualOffset: 0
-  _useAutoPositioning: 0
 --- !u!114 &9194140903944682318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,11 +287,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
+  _assignedCoguType: 5
+  _interactDistance: 3
+  _interactableEffectVisual: {fileID: 2827938564904108856}
   _startActivated: 0
   _indicatorLight: {fileID: 0}
-  _area: {fileID: 3418740848051989241}
   _interactJustOnce: 1
   _toggleMode: 0
+  _interactionType: 0
+  _interactionKey: 101
+  _detectionRadius: 5.5
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _detectionOrigin: {fileID: 0}
   isActivated: 0
   onActivate:
     m_PersistentCalls:
@@ -243,6 +349,7 @@ MonoBehaviour:
   _light: {fileID: 5047194325837694821}
   _startLightOff: 1
   _activateSwitch: {fileID: 9194140903944682318}
+  _flameEffect: {fileID: 3191531951979835759}
 --- !u!136 &4103084202324733183
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -290,7 +397,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 078ab342667d09245963d56aac1d0d90, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -381,6 +488,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3129699839622571368}
     m_Modifications:
+    - target: {fileID: 1024102247588941567, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1024102247588941567, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1024102247588941567, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2649102791583883932, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -425,6 +544,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BrazierModel
       objectReference: {fileID: 0}
+    - target: {fileID: 6893548294614971742, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893548294614971742, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893548294614971742, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -438,9 +569,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2649102791583883932, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
   m_PrefabInstance: {fileID: 2447039268877159334}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3614014181948826280 stripped
+--- !u!1 &2827938564904108856 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1428256259379980558, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 489619555545909406, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
   m_PrefabInstance: {fileID: 2447039268877159334}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7045542865998563240 stripped

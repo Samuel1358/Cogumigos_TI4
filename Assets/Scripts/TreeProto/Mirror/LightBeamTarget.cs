@@ -69,7 +69,6 @@ public class LightBeamTarget : MonoBehaviour
         if (!_isBeingHit)
         {
             _isBeingHit = true;
-            Debug.Log($"Light beam hit target: {gameObject.name}");
             
             // Ativa efeito visual
             if (_hitEffect != null)
@@ -105,7 +104,6 @@ public class LightBeamTarget : MonoBehaviour
         if (_isBeingHit)
         {
             _isBeingHit = false;
-            Debug.Log($"Light beam missed target: {gameObject.name}");
             
             // Desativa efeito visual
             if (_hitEffect != null)
@@ -139,13 +137,10 @@ public class LightBeamTarget : MonoBehaviour
             _isActivated = true;
             _hasBeenActivatedOnce = true;
             
-            Debug.Log($"Target activated: {gameObject.name}");
-            
             // Desabilita o objeto se configurado
             if (_disableOnHit && _objectToDisable != null)
             {
                 _objectToDisable.SetActive(false);
-                Debug.Log($"Object disabled: {_objectToDisable.name}");
             }
             
             // Toca som de ativação
@@ -167,8 +162,6 @@ public class LightBeamTarget : MonoBehaviour
         if (_isActivated)
         {
             _isActivated = false;
-            
-            Debug.Log($"Target deactivated: {gameObject.name}");
             
             // Atualiza visuais
             UpdateVisuals();
@@ -281,12 +274,9 @@ public class LightBeamTarget : MonoBehaviour
         if (_objectToDisable != null)
         {
             _objectToDisable.SetActive(true);
-            Debug.Log($"Object re-enabled: {_objectToDisable.name}");
         }
             
         UpdateVisuals();
-        
-        Debug.Log($"Target reset: {gameObject.name}");
     }
 
     // Método para debug no inspector

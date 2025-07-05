@@ -60,11 +60,6 @@ public class MirrorInteraction : MonoBehaviour
         }
 
         // Audio será gerenciado pelo AudioManager.Instance
-
-        if (_showDebugInfo)
-        {
-            Debug.Log($"MirrorInteraction initialized on {gameObject.name} - Mirror: {(GetMirrorReflector() != null ? GetMirrorReflector().name : "None")}");
-        }
     }
 
     /// <summary>
@@ -100,10 +95,6 @@ public class MirrorInteraction : MonoBehaviour
         // Impede interação durante rotação
         if (mirrorReflector.IsRotating())
         {
-            if (_showDebugInfo)
-            {
-                Debug.Log($"MirrorInteraction: Interação ignorada - espelho {gameObject.name} ainda está rotacionando");
-            }
             return;
         }
 
@@ -133,11 +124,6 @@ public class MirrorInteraction : MonoBehaviour
             
             // Alterna para o próximo som
             _useFirstSound = !_useFirstSound;
-            
-            if (_showDebugInfo)
-            {
-                Debug.Log($"Playing mirror sound: {soundName} (volume: {_volume})");
-            }
         }
         else
         {
@@ -151,10 +137,6 @@ public class MirrorInteraction : MonoBehaviour
     public void SetMirrorReflector(MirrorReflector mirrorReflector)
     {
         _mirrorReflector = mirrorReflector;
-        if (_showDebugInfo)
-        {
-            Debug.Log($"MirrorReflector set manually on {gameObject.name}: {(_mirrorReflector != null ? _mirrorReflector.name : "None")}");
-        }
     }
 
     /// <summary>
@@ -183,11 +165,6 @@ public class MirrorInteraction : MonoBehaviour
         {
             PlayRotationSound();
             mirror.SetMirrorStateAnimated(state);
-            
-            if (_showDebugInfo)
-            {
-                Debug.Log($"Mirror state set to {state} on {gameObject.name}");
-            }
         }
     }
 
