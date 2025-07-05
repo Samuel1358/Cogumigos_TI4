@@ -7,6 +7,7 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     // Fields
     [SerializeField] private CoguCastPoint _castPoint;
+    [SerializeField] private Player _player;
     [SerializeField] private float _interactRadius;
     [SerializeField, Range(0f, 1f)] private float _fieldOfView;
     [SerializeField] private LayerMask _interactableLayer;
@@ -14,6 +15,9 @@ public class CoguCastter : MonoBehaviour, IResetable
     public int _coguCount;
     private int _coguHoldedAtCheckpoint;
     private bool _isAbleCast = true;
+
+    private CoguType _coguType = CoguType.None;
+    private CoguInteractable _coguInteractable = null;
 
     // Properties
     public CoguCastPoint CastPoint { get { return _castPoint; } }
@@ -53,22 +57,32 @@ public class CoguCastter : MonoBehaviour, IResetable
     // Public Methods
     public void SendCogu(CallbackContext callbackContext)
     {
+        Debug.Log(01);
         if (_coguCount <= 0 || !_isAbleCast)
             return;
 
         _isAbleCast = false;
 
+        Debug.Log(02);
         Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRadius, _interactableLayer, QueryTriggerInteraction.Collide);
         foreach (Collider obj in colliders)
         {
+            Debug.Log(03);
             if (obj.TryGetComponent(out CoguInteractable interactable))
             {
+                Debug.Log(04);
                 Vector3 interactableDir = new Vector3(Camera.main.transform.position.x - interactable.transform.position.x, 0, Camera.main.transform.position.z - interactable.transform.position.z);
                 Vector3 fowardDir = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
                 if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
                     continue;
 
-                CastCogu(interactable.AssignedCoguType, interactable);
+                //CastCogu(interactable.AssignedCoguType, interactable);
+                _coguType = interactable.AssignedCoguType;
+                _coguInteractable = interactable;
+
+                _player.PlayerAnimator.SetBool("IsThrowing", true);
+
+                TweenHandler.Timer(1f, () => _isAbleCast = true);
                 return;
             }
         }
@@ -76,8 +90,28 @@ public class CoguCastter : MonoBehaviour, IResetable
         _isAbleCast = true;
     }
 
-    public void CastCogu(CoguType type, CoguInteractable interactable)
+    public void CastCogu()
     {
+        CastCogu(_coguType, _coguInteractable);
+
+        _coguType = CoguType.None;
+        _coguInteractable = null;
+    }
+
+    private void CastCogu(CoguType type, CoguInteractable interactable)
+    {
+        if (type == CoguType.None)
+        {
+            _isAbleCast = true;
+            return;
+        }
+
+        if (interactable == null)
+        {
+            _isAbleCast = true;
+            return;
+        }
+
         if (!interactable.IsAvailable)
         {
             _isAbleCast = true;

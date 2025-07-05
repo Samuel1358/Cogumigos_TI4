@@ -22,6 +22,22 @@ public class PlayerAnimationTriggerEvent : MonoBehaviour
         }
         _player.OnMovementStateAnimationTransitionEvent();
     }
+    public void OnThrowAnimationActuallyThrow()
+    {
+        if (IsAnimationTransition())
+        {
+            return;
+        }
+        _player.CoguCast.CastCogu();
+    }
+    public void OnThrowAnimationEnds()
+    {
+        if (IsAnimationTransition())
+        {
+            return;
+        }
+        _player.PlayerAnimator.SetBool("IsThrowing", false);
+    }
     private bool IsAnimationTransition(int layerIndex = 0) {
         return _player.PlayerAnimator.IsInTransition(layerIndex);
     }
