@@ -14,8 +14,6 @@ public class RemovableObstacle : CoguInteractable
     private bool _arrived = false;
     private Cogu _cogu;
 
-    public bool Available { get { return _isAvailable; } set { _isAvailable = value; } }
-
     // memento
     private Vector3 _startPosition;
     private bool _availableAtCheckpoint;

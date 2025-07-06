@@ -76,13 +76,22 @@ public class CoguCastter : MonoBehaviour, IResetable
                 if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
                     continue;
 
-                //CastCogu(interactable.AssignedCoguType, interactable);
+                if (interactable.AssignedCoguType == CoguType.None)
+                    continue;
+
+                if (interactable == null)
+                    continue;
+
+                if (!interactable.IsAvailable)
+                    continue;
+
+                Debug.Log("COGU CAST - send cogu");
                 _coguType = interactable.AssignedCoguType;
                 _coguInteractable = interactable;
 
                 _player.PlayerAnimator.SetBool("IsThrowing", true);
 
-                TweenHandler.Timer(1f, () => _isAbleCast = true);
+                TweenHandler.Timer(1f, () => { _isAbleCast = true; Debug.Log("COGU CAST - tween timer"); });
                 return;
             }
         }
@@ -92,34 +101,42 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     public void CastCogu()
     {
+        Debug.Log("COGU CAST - public cogu cast");
         CastCogu(_coguType, _coguInteractable);
 
         _coguType = CoguType.None;
         _coguInteractable = null;
     }
 
+    // Private Methods
     private void CastCogu(CoguType type, CoguInteractable interactable)
     {
         if (type == CoguType.None)
         {
+            Debug.Log("COGU CAST - type none");
             _isAbleCast = true;
             return;
         }
 
         if (interactable == null)
         {
+            Debug.Log("COGU CAST - interactable null");
             _isAbleCast = true;
             return;
         }
 
         if (!interactable.IsAvailable)
         {
+            Debug.Log("COGU CAST - interactable not available");
+            Debug.Log(interactable.IsAvailable);
             _isAbleCast = true;
             return;
         }
 
+        Debug.Log("COGU CAST - private cogu cast");
         if (GameIniciator.Instance.CoguManagerInstance.TryGetCoguVariant(type, out Cogu variant))
         {
+            Debug.Log("COGU CAST - cast");
             Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
             cogu.Initialize(interactable, this);
             _coguCount--;
