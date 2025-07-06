@@ -11,7 +11,7 @@ public class CollectablePageDialog : CollectablePersistenceBase {
     protected override void SetCollectableInactive() {
         _visual.SetActive(false);
         _wasCollected = true;
-        GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateCollectableCountUI();
+        InGameMenuInitiator.Instance.InventoryCanvas.UpdateCollectableCountUI();
     }
 
     public void StartDialog() {

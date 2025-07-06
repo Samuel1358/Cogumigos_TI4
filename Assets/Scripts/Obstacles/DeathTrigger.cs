@@ -10,7 +10,7 @@ public class DeathTrigger : MonoBehaviour
             if(GameIniciator.Instance.AudioManagerInstance == null) {
 				Debug.Log("Audio manager nulo");
 			}
-            if(GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas == null) {
+            if(InGameMenuInitiator.Instance.InventoryCanvas == null) {
 				Debug.Log("Ui inventory nulo");
 			}
             if(GameIniciator.Instance.GameManagerInstance == null) {
@@ -18,7 +18,6 @@ public class DeathTrigger : MonoBehaviour
             }
             GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn.Invoke();
             GameIniciator.Instance.AudioManagerInstance.PlayDeathSound();
-            GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateCoguCountUI(GameIniciator.Instance.GameManagerInstance.Player.CoguCast.CoguCount);
         }
     }
 }

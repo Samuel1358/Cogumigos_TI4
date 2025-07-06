@@ -30,7 +30,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
 
     public void CollectKey(KeyTypes keyCollected) {
         Keys.Add(keyCollected);
-        GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateKeyUI(Keys.Count > 0);
+        InGameMenuInitiator.Instance.InventoryCanvas.UpdateKeyUI(Keys.Count > 0);
     }
 
     public bool VerifyKey(KeyTypes keyToVerify) {
@@ -52,7 +52,7 @@ public class PlayerInventory : MonoBehaviour, IResetable {
         if (Keys.Contains(keyToVerify))
         {
             Keys.Remove(keyToVerify);
-            GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateKeyUI(Keys.Count > 0);
+            InGameMenuInitiator.Instance.InventoryCanvas.UpdateKeyUI(Keys.Count > 0);
             return true;
         }
         return false;

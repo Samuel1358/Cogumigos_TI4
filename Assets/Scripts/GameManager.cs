@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,14 +20,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PauseGame() {
-        Time.timeScale = 0f;
-        PlayerInput.UnhideAndUnlockMouse();
+    public void HideMouse() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
-    public void UnpauseGame() {
-        Time.timeScale = 1f;
-        PlayerInput.HideAndLockMouse();
+    public void UnhideMouse() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
+
     public void SetInput(PlayerInput newInput) {
         PlayerInputs = newInput;
     }

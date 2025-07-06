@@ -89,7 +89,7 @@ public class CoguCastter : MonoBehaviour, IResetable
             Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
             cogu.Initialize(interactable, this);
             _coguCount--;
-            GameIniciator.Instance.CanvasIniciatorInstance.InventoryCanvas.UpdateCoguCountUI(_coguCount);
+            InGameMenuInitiator.Instance.InventoryCanvas.UpdateCoguCountUI(_coguCount);
             _isAbleCast = false;
         }
     }

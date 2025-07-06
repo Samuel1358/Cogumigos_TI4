@@ -10,7 +10,6 @@ public class CollectablePagesUi : MonoBehaviour {
     private int indice = 0;   
 
     private void Start() {
-        //CollectableDataSOs = Resources.LoadAll<PersistenteCollectableDataSO>("Collectables");
         indice = 0;
         SetPageInfos();
     }

@@ -33,7 +33,7 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void OnPauseCanceled(InputAction.CallbackContext obj) {
-        UiInGameMenu.Instance?.ChangePauseState();
+        GameIniciator.Instance.PauseGame();
     }
     public void DisableActionFor(InputAction action, float seconds) {
         StartCoroutine(DisableAction(action, seconds));

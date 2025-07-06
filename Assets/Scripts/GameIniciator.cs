@@ -1,3 +1,4 @@
+using DG.Tweening;
 using DialogSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,7 +13,7 @@ public class GameIniciator : MonoBehaviour {
     [field: SerializeField] public GameManager GameManagerInstance { get; private set; }
     [field: SerializeField] public DataPersistenceManager PersistenceManagerInstance { get; private set; }
     [field: SerializeField] public DialogController DialogManagerInstance { get; private set; }
-    [field: SerializeField] public CanvasIniciator CanvasIniciatorInstance { get; private set; }
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -35,7 +36,18 @@ public class GameIniciator : MonoBehaviour {
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
     private void LoadGameScene(int sceneIndex) {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+    }
+
+    public void PauseGame() {
+        Time.timeScale = 0f;
+        InGameMenuInitiator.Instance.PauseGameUI();
+    }
+    
+    public void UnpauseGame() {
+        Time.timeScale = 1f;
+        InGameMenuInitiator.Instance.UnPauseGameUI();
     }
 
     private void Inicialize() {
@@ -47,10 +59,8 @@ public class GameIniciator : MonoBehaviour {
         GameManagerInstance = Instantiate(GameManagerInstance, transform);
         PersistenceManagerInstance = Instantiate(PersistenceManagerInstance, transform);
         DialogManagerInstance = Instantiate(DialogManagerInstance, transform);
-        CanvasIniciatorInstance = Instantiate(CanvasIniciatorInstance, transform);
     }
     private void SetUp() {
         GameManagerInstance.WakeUp(FrameDebuggerPrefab);
-        CanvasIniciatorInstance.WakeUp();
     }
 }
