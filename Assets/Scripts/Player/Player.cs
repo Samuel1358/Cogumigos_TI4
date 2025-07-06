@@ -24,20 +24,12 @@ public class Player : MonoBehaviour {
     private void OnEnable() {
         GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn += ResetPlayer;
         GameIniciator.Instance.GameManagerInstance.SetPlayer(this);
-
-
     }
 
     private void OnDisable() {
         GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn -= ResetPlayer;
-
-
-
     }
-
-
-
-
+    
     private void OnCollisionEnter(Collision collision) {
         foreach (ContactPoint contact in collision.contacts) {
             if (contact.thisCollider == _improvedCollisionCollider || contact.otherCollider == _improvedCollisionCollider) {
@@ -92,6 +84,7 @@ public class Player : MonoBehaviour {
     private void Update() {
         _movementStateMachine.ReusableData.SetCoyoteTime(_movementStateMachine.ReusableData.CoyoteTimeCount - Time.deltaTime);
         _movementStateMachine.ReusableData.SetJumpBuffer(_movementStateMachine.ReusableData.JumpBufferCount - Time.deltaTime);
+        _movementStateMachine.ReusableData.SetIdlingVarCount(_movementStateMachine.ReusableData.IdlingVarCount - Time.deltaTime);
         _movementStateMachine.HandleInput();
         _movementStateMachine.Update();
     }

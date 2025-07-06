@@ -184,6 +184,9 @@ public class PlayerMovementState : IState {
     protected void StartAnimation(int animationHash) {
         StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, true);
     }
+    protected void StartTriggerAnimation(int animationHash) {
+        StateMachineMovement.PlayerGet.PlayerAnimator.SetTrigger(animationHash);
+    }
     protected void StopAnimation(int animationHash) {
         StateMachineMovement.PlayerGet.PlayerAnimator.SetBool(animationHash, false);
     }
