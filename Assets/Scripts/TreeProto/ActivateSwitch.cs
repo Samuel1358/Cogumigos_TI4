@@ -256,6 +256,8 @@ public class ActivateSwitch : CoguInteractable
                 onActivate?.Invoke();
             else
                 onDeactivate?.Invoke();
+
+            _isAvailable = true;
             
             NeedReset = false;
         }
@@ -334,8 +336,10 @@ public class ActivateSwitch : CoguInteractable
     }
 #if UNITY_EDITOR
     // Gizmos for debugging
-    private void OnDrawGizmosSelected()
+    protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
+
         Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
         Gizmos.color = _playerInRange ? Color.green : Color.red;
         Gizmos.DrawWireSphere(origin, _detectionRadius);
