@@ -5,7 +5,18 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
 {
     [SerializeField] private Checkpoint _linkedCheckpoint;
 
-    protected bool NeedReset;
+    private bool _needReset;
+    protected bool NeedReset
+    {
+        get { return _needReset; }
+        set 
+        { 
+            if (_needReset != value)
+            {
+                _needReset = value;
+            }
+        }
+    }
 
     protected virtual void OnEnable() 
     {
@@ -27,7 +38,7 @@ public abstract class ResetableBase : MonoBehaviour, IResetable
         }
     }
 
-    //REMENDO RETIRAR APÓS CONVERSA SOBRE RESETABLE
+    //REMENDO RETIRAR APS CONVERSA SOBRE RESETABLE
     IEnumerator ActivateResetable() {
         yield return new WaitForSeconds(Time.deltaTime * 4);
         GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += VerifyReset;

@@ -83,7 +83,6 @@ public class LightBeamEmitter : MonoBehaviour
     {
         _isBeamActive = true;
         _lineRenderer.enabled = true;
-        Debug.Log($"Light beam activated on {gameObject.name}");
         UpdateBeam();
     }
 
@@ -98,8 +97,6 @@ public class LightBeamEmitter : MonoBehaviour
             _lastHitTarget.OnBeamMiss();
             _lastHitTarget = null;
         }
-        
-        Debug.Log($"Light beam deactivated on {gameObject.name}");
     }
 
     private void UpdateBeam()
@@ -134,7 +131,7 @@ public class LightBeamEmitter : MonoBehaviour
             {
                 beamPoints.Add(hit.point);
 
-                                // Check if hit a reflectable object (mirror)
+                // Check if hit a reflectable object (mirror)
                 MirrorReflector mirror = hit.collider.GetComponent<MirrorReflector>();
                 if (mirror == null)
                 {
@@ -142,20 +139,13 @@ public class LightBeamEmitter : MonoBehaviour
                     mirror = hit.collider.GetComponentInParent<MirrorReflector>();
                 }
                 
-                // Debug log para verificar o que está acontecendo
-                Debug.Log($"Hit object: {hit.collider.name}, Has Mirror: {mirror != null}, Layer: {hit.collider.gameObject.layer}, LayerMask includes: {(_reflectableLayers.value & (1 << hit.collider.gameObject.layer)) != 0}");
-                
                 // Se tem o componente MirrorReflector, considera como espelho (independente da layer para simplificar)
                 bool isReflectableLayer = (_reflectableLayers.value & (1 << hit.collider.gameObject.layer)) != 0;
                 
                 if (mirror != null && (_ignoreLayers || isReflectableLayer || _reflectableLayers == -1))
                 {
-                    Debug.Log($"Reflecting beam on mirror: {hit.collider.name}");
-                    
                     // Get reflected direction from mirror
                     Vector3 reflectedDirection = mirror.GetReflectedDirection(currentDirection, hit.normal);
-                    
-                    Debug.Log($"Incoming direction: {currentDirection}, Reflected direction: {reflectedDirection}");
                     
                     // Continue beam from reflection point
                     currentPos = hit.point + reflectedDirection * 0.01f; // Increased offset to avoid self-collision
@@ -176,21 +166,11 @@ public class LightBeamEmitter : MonoBehaviour
                     
                     if (target != null)
                     {
-                        Debug.Log($"Hit target: {target.name} (through {hit.collider.name})");
-                        
-                        // Se mudou de alvo, notifica o anterior que parou de ser atingido
-                        if (_lastHitTarget != null && _lastHitTarget != target)
-                        {
-                            _lastHitTarget.OnBeamMiss();
-                        }
-                        
                         target.OnBeamHit();
                         _lastHitTarget = target;
                     }
                     else
                     {
-                        Debug.Log($"Hit obstacle: {hit.collider.name} (no target found)");
-                        
                         // Se não atingiu um alvo, notifica o último alvo que parou de ser atingido
                         if (_lastHitTarget != null)
                         {
