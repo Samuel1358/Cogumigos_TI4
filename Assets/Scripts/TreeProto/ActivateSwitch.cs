@@ -12,11 +12,6 @@ public class ActivateSwitch : CoguInteractable
     [SerializeField] private bool _toggleMode = true; // true = toggle, false = only activate
     [SerializeField] private KeyCode _interactionKey = KeyCode.E; // Key for direct interaction
     
-    [Header("Player Detection")]
-    [SerializeField] private float _detectionRadius = 3f;
-    [SerializeField] private LayerMask _playerLayer = 1; // Default layer, adjust as needed
-    [SerializeField] private Transform _detectionOrigin; // Optional custom origin for sphere cast
-    
     [Header("Lever Integration")]
     [SerializeField] private bool _isLever = false; // Enable lever functionality
     [SerializeField] private Animator _leverAnimator; // Animator for lever animation
@@ -82,7 +77,6 @@ public class ActivateSwitch : CoguInteractable
 
     private void Update()
     {
-        CheckPlayerInRange();
         UpdateInteractableEffect();
         
         // Handle direct interaction input (only if no Cogu type is assigned)
@@ -115,30 +109,6 @@ public class ActivateSwitch : CoguInteractable
         
         Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
         HandleSwitchInteraction(this);
-    }
-
-    private void CheckPlayerInRange()
-    {
-        Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
-        
-        // Use Physics.OverlapSphere for better performance than sphere cast
-        Collider[] colliders = Physics.OverlapSphere(origin, _detectionRadius, _playerLayer);
-        
-        bool wasInRange = _playerInRange;
-        _playerInRange = colliders.Length > 0;
-        
-        // Debug logs for player detection when using direct interaction
-        if (UsesDirectInteraction())
-        {
-            if (_playerInRange && !wasInRange)
-            {
-                Debug.Log($"ActivateSwitch {name}: Player entered range (Direct interaction mode)");
-            }
-            else if (!_playerInRange && wasInRange)
-            {
-                Debug.Log($"ActivateSwitch {name}: Player left range (Direct interaction mode)");
-            }
-        }
     }
 
     private void UpdateInteractableEffect()
@@ -334,15 +304,4 @@ public class ActivateSwitch : CoguInteractable
         
         Debug.Log($"ActivateSwitch {name}: Lever deactivation handled");
     }
-#if UNITY_EDITOR
-    // Gizmos for debugging
-    protected override void OnDrawGizmosSelected()
-    {
-        base.OnDrawGizmosSelected();
-
-        Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
-        Gizmos.color = _playerInRange ? Color.green : Color.red;
-        Gizmos.DrawWireSphere(origin, _detectionRadius);
-    }
-#endif
 } 
