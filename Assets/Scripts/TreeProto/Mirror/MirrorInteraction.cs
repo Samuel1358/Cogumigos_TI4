@@ -15,9 +15,6 @@ public class MirrorInteraction : MonoBehaviour
     [SerializeField] private bool _autoFindMirror = true; // Se true, procura automaticamente o MirrorReflector nos filhos
     [SerializeField] private bool _interactJustOnce = false; // Se true, só permite uma interação
     
-    [Header("Audio Feedback")]
-    [SerializeField] private float _volume = 0.7f; // Volume do som
-    
     private bool _useFirstSound = true; // Alterna entre os dois sons
     
     [Header("Debug")]

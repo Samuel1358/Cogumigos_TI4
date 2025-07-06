@@ -6,6 +6,7 @@ public class PlayerStateReusableData {
     public float Gravity { get; private set; }
     public float CoyoteTimeCount { get; private set; }
     public float JumpBufferCount { get; private set; }
+    public float IdlingVarCount { get; private set; }
     public bool CanDoubleJump { get; private set; }
 
     private Vector3 _currentTargetRotation;
@@ -43,6 +44,9 @@ public class PlayerStateReusableData {
     }
     public void SetJumpBuffer(float value) {
         JumpBufferCount = value;
+    }
+    public void SetIdlingVarCount(float value) {
+        IdlingVarCount = value;
     }
     public void EnableDoubleJump() {
         CanDoubleJump = true;

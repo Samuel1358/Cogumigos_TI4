@@ -10,6 +10,7 @@ public class PlayerAnimationData {
 
     [Header("Grounded Parameter Names")]
     [SerializeField] private string idleParameterName = "isIdling";
+    [SerializeField] private string idleVariationParameterName = "isIdlingVariation";
     [SerializeField] private string dashParameterName = "isDashing";
     [SerializeField] private string walkParameterName = "isWalking";
     [SerializeField] private string runParameterName = "isRunning";
@@ -33,6 +34,7 @@ public class PlayerAnimationData {
     public int AirborneParameterHash { get; private set; }
 
     public int IdleParameterHash { get; private set; }
+    public int IdleVariationParameterHash { get; private set; }
     public int DashParameterHash { get; private set; }
     public int WalkParameterHash { get; private set; }
     public int RunParameterHash { get; private set; }
@@ -53,6 +55,7 @@ public class PlayerAnimationData {
         AirborneParameterHash = Animator.StringToHash(airborneParameterName);
 
         IdleParameterHash = Animator.StringToHash(idleParameterName);
+        IdleVariationParameterHash = Animator.StringToHash(idleVariationParameterName);
         DashParameterHash = Animator.StringToHash(dashParameterName);
         WalkParameterHash = Animator.StringToHash(walkParameterName);
         RunParameterHash = Animator.StringToHash(runParameterName);
