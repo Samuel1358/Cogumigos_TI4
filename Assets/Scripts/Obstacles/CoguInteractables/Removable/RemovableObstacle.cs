@@ -30,7 +30,7 @@ public class RemovableObstacle : CoguInteractable
         //_arrivedAtCheckpoint = _arrived;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // NOJOO!!!
         if (!_walk)
