@@ -1,5 +1,6 @@
 using UnityEngine;
-using System;
+using TMPro;
+using UnityEngine.UI;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -9,10 +10,17 @@ public class InGameMenuInitiator : MonoBehaviour {
     [field: SerializeField] public CheatsUI CheatCanvas { get; private set; }
     [field: SerializeField] public UiInventory InventoryCanvas { get; private set; }
     [field: SerializeField] public GameObject PauseCanvas { get; private set; }
+    [field: SerializeField] public GameObject GameOverCanvas { get; private set; }
     [field: SerializeField] public GameObject[] InGameCanvasObjects { get; private set; }
+
+    [SerializeField] private GameObject _dialogPanel;
+    [SerializeField] private Image _speakerPortrait;
+    [SerializeField] private TextMeshProUGUI _speakerNameText;
+    [SerializeField] private TextMeshProUGUI _messageText;
 
     private void Awake() {
         Instance = this;
+        GameIniciator.Instance.DialogManagerInstance.dialogUI.SetBarks(_dialogPanel, _speakerPortrait, _speakerNameText, _messageText);
     }
 
     public void PauseGameUI() {
@@ -29,6 +37,15 @@ public class InGameMenuInitiator : MonoBehaviour {
         foreach(GameObject obj in InGameCanvasObjects) {
             obj.SetActive(false);
         }
+    }
+
+    public void GameOverUI() {
+        GameOverCanvas.SetActive(true);
+        GameIniciator.Instance.GameManagerInstance.UnhideMouse();
+    }
+
+    public void GameOver() {
+        GameIniciator.Instance.GameOver();
     }
 
     private void Start() {

@@ -49,6 +49,10 @@ public class GameIniciator : MonoBehaviour {
         Time.timeScale = 1f;
         InGameMenuInitiator.Instance.UnPauseGameUI();
     }
+    public void GameOver() {
+        Time.timeScale = 0f;
+        InGameMenuInitiator.Instance.GameOverUI();
+    }
 
     private void Inicialize() {
         RespawnControllerInstance = Instantiate(RespawnControllerInstance, transform);

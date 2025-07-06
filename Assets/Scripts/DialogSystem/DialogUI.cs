@@ -28,6 +28,13 @@ namespace DialogSystem
             }
         }
 
+        public void SetBarks(GameObject DialogPanel, Image SpeakerPortrait, TextMeshProUGUI speakerName, TextMeshProUGUI message) {
+            dialogPanel = DialogPanel;
+            speakerPortrait = SpeakerPortrait;
+            speakerNameText = speakerName;
+            messageText = message;
+        }
+
         private void Update()
         {
             if (isTextAnimating)

@@ -260,7 +260,12 @@ MonoBehaviour:
   <CheatCanvas>k__BackingField: {fileID: 2428922889828620848}
   <InventoryCanvas>k__BackingField: {fileID: 4186289488877092499}
   <PauseCanvas>k__BackingField: {fileID: 3650991085095743018}
+  <GameOverCanvas>k__BackingField: {fileID: 7923017239752894351}
   <InGameCanvasObjects>k__BackingField: []
+  _dialogPanel: {fileID: 8738243484903242799}
+  _speakerPortrait: {fileID: 0}
+  _speakerNameText: {fileID: 0}
+  _messageText: {fileID: 146485932480272165}
 --- !u!1 &8738243484903242799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1295,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fc021b67476d3949afe80bd2d4943b5, type: 3}
+--- !u!1 &7923017239752894351 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8673831409970772845, guid: 1fc021b67476d3949afe80bd2d4943b5, type: 3}
+  m_PrefabInstance: {fileID: 1561506097434107106}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9075565001708514140 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7519172776883075006, guid: 1fc021b67476d3949afe80bd2d4943b5, type: 3}
