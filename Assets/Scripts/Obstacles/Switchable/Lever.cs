@@ -5,6 +5,7 @@ public class Lever : Switch
 {
     [SerializeField] private Switchable _switchable;
     [SerializeField] private InteractingArea _area;
+    [SerializeField] private Animator _leverAnimator;
     private LeverInteraction _interaction;
 
     [Space]
@@ -27,6 +28,7 @@ public class Lever : Switch
     {
         if (_switchable != null){
             _switchable.Activate();
+            _leverAnimator.SetTrigger("ChengeActivate");
             GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
         }
 
