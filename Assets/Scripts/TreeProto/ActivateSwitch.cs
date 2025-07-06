@@ -17,6 +17,11 @@ public class ActivateSwitch : CoguInteractable
     [SerializeField] private LayerMask _playerLayer = 1; // Default layer, adjust as needed
     [SerializeField] private Transform _detectionOrigin; // Optional custom origin for sphere cast
     
+    [Header("Lever Integration")]
+    [SerializeField] private bool _isLever = false; // Enable lever functionality
+    [SerializeField] private Animator _leverAnimator; // Animator for lever animation
+    [SerializeField] private Switchable _leverSwitchable; // Switchable object for lever
+    
     [Header("State")]
     public bool isActivated = false;
     
@@ -175,6 +180,13 @@ public class ActivateSwitch : CoguInteractable
             isActivated = true;
             _hasBeenActivated = true; // Mark as activated
             UpdateVisuals();
+            
+            // Handle lever functionality if enabled
+            if (_isLever)
+            {
+                HandleLeverActivation();
+            }
+            
             onActivate?.Invoke();
             Debug.Log($"ActivateSwitch {name} activated");
             
@@ -189,6 +201,13 @@ public class ActivateSwitch : CoguInteractable
         {
             isActivated = false;
             UpdateVisuals();
+            
+            // Handle lever functionality if enabled
+            if (_isLever)
+            {
+                HandleLeverDeactivation();
+            }
+            
             onDeactivate?.Invoke();
             Debug.Log($"ActivateSwitch {name} deactivated");
             
@@ -274,6 +293,46 @@ public class ActivateSwitch : CoguInteractable
         {
             _indicatorLight.enabled = isActivated;
         }
+    }
+
+    // Lever Integration Methods
+    private void HandleLeverActivation()
+    {
+        // Trigger lever animation
+        if (_leverAnimator != null)
+        {
+            _leverAnimator.SetTrigger("ChengeActivate");
+        }
+        
+        // Activate switchable object
+        if (_leverSwitchable != null)
+        {
+            _leverSwitchable.Activate();
+        }
+        
+        // Play lever sound effect
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
+        
+        Debug.Log($"ActivateSwitch {name}: Lever activation handled");
+    }
+
+    private void HandleLeverDeactivation()
+    {
+        // For lever deactivation, we might want to reverse the animation
+        // This depends on your animation setup
+        if (_leverAnimator != null)
+        {
+            // You might need a different trigger for deactivation
+            // _leverAnimator.SetTrigger("ChengeDeactivate");
+        }
+        
+        // Deactivate switchable object
+        if (_leverSwitchable != null)
+        {
+            _leverSwitchable.Disable();
+        }
+        
+        Debug.Log($"ActivateSwitch {name}: Lever deactivation handled");
     }
 #if UNITY_EDITOR
     // Gizmos for debugging
