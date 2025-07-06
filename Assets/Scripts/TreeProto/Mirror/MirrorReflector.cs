@@ -66,8 +66,6 @@ public class MirrorReflector : MonoBehaviour
         // Ativa efeito visual
         TriggerReflectionEffect();
         
-        Debug.Log($"Mirror {gameObject.name}: {_currentState} - incoming {incomingDirection} -> reflected {reflectedDirection}");
-        
         return reflectedDirection.normalized;
     }
 
@@ -88,7 +86,6 @@ public class MirrorReflector : MonoBehaviour
         }
         
         _isBeingHit = true;
-        Debug.Log($"Mirror {gameObject.name} reflecting light beam - State: {_currentState}");
     }
 
     /// <summary>
@@ -123,7 +120,6 @@ public class MirrorReflector : MonoBehaviour
         {
         _currentState = newState;
         UpdateVisualRotation();
-        Debug.Log($"Mirror {gameObject.name} state set to: {_currentState}");
     }
     
     /// <summary>
@@ -151,8 +147,6 @@ public class MirrorReflector : MonoBehaviour
         // Aplica a rotação no eixo Y (mantém X e Z inalterados)
         Vector3 currentEuler = transform.localEulerAngles;
         transform.localRotation = Quaternion.Euler(currentEuler.x, targetRotationY, currentEuler.z);
-        
-        Debug.Log($"Mirror {gameObject.name} visual rotation updated - State: {_currentState}, Y rotation: {targetRotationY}°");
     }
 
     /// <summary>
@@ -193,8 +187,6 @@ public class MirrorReflector : MonoBehaviour
         _currentState = targetState;
         
         _isRotating = false;
-        
-        Debug.Log($"Mirror {gameObject.name} animated to state: {_currentState} (Y rotation: {targetRotationY}°)");
     }
     
     /// <summary>

@@ -196,11 +196,11 @@ Transform:
   m_GameObject: {fileID: 3527457123113359247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1529555395882149241}
+  m_Father: {fileID: 7594654342689435136}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2103010604124182890
 MonoBehaviour:
@@ -399,7 +399,6 @@ Transform:
   - {fileID: 4605865663505860017}
   - {fileID: 3974239592766194454}
   - {fileID: 7097330167986215671}
-  - {fileID: 9155786061452710839}
   - {fileID: 912950047957897706}
   - {fileID: 3668737656919438085}
   - {fileID: 3738401722088115462}
@@ -500,6 +499,7 @@ MonoBehaviour:
     fallParameterName: isFalling
     glideParameterName: IsGliding
     isDoubleJump: IsDoubleJump
+    isThrowing: IsThrowing
   <IsColliding>k__BackingField: 0
   CollisionDirection: {x: 0, y: 0, z: 0}
   _improvedCollisionCollider: {fileID: 1179298946502760123}
@@ -548,6 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _castPoint: {fileID: 2103010604124182890}
+  _player: {fileID: 6206302121836136054}
   _interactRadius: 20
   _fieldOfView: 0.4
   _interactableLayer:
@@ -750,7 +751,10 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c10719c1dfd3565439f4eeeeb4376e69, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 375883633170066364, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 9155786061452710839}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
       insertIndex: -1
@@ -773,7 +777,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6959081905095489773}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
   m_Controller: {fileID: 9100000, guid: 2e33bcc28c2e251458f2719c6db3700e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
@@ -798,6 +802,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab5b1f7157fbe54ab12f6daec185602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7594654342689435136 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 375883633170066364, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}
+  m_PrefabInstance: {fileID: 7805522994278532540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7771085074059027031 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0bfde41d2f4cc784ca1beb1d2d83ae23, type: 3}

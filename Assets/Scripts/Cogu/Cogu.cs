@@ -18,6 +18,8 @@ public class Cogu : MonoBehaviour
     private Vector3 _castSpot;
     private Vector3 _interactSpot;
 
+    private bool _once = false;
+
     // Properties
     public CoguData Data { get { return _data; } }
     public Animator Animator { get { return _animator; } }
@@ -67,8 +69,12 @@ public class Cogu : MonoBehaviour
 
     public void StartInteracting()
     {
+        if (_once)
+            return;
+
         _interactableObj.DisableInteract();
         _interactableObj.Interact(this);
+        _once = true;
     }
 
     public void EndInteracting(Action act)

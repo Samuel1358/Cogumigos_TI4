@@ -9,7 +9,7 @@ public class CastCoguState : CoguState
     public override void Enter()
     {
         //Debug.Log("Enter - Cast");
-        _stateMachine.Cogu.AnimToThrow();
+        //_stateMachine.Cogu.AnimToThrow();
     }
 
     public override void Update()

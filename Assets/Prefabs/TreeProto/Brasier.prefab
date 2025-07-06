@@ -51,11 +51,16 @@ MonoBehaviour:
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 5
   _interactDistance: 2
-  _interactableEffectVisual: {fileID: 0}
+  _interactableEffectVisual: {fileID: 6051177526568343968}
   _startActivated: 0
   _indicatorLight: {fileID: 0}
   _interactJustOnce: 1
   _toggleMode: 0
+  _detectionRadius: 5.5
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _detectionOrigin: {fileID: 0}
   isActivated: 0
   onActivate:
     m_PersistentCalls:
@@ -245,6 +250,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6893548294614971742, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893548294614971742, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6893548294614971742, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -281,6 +298,11 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 1.3, z: 0}
+--- !u!1 &6051177526568343968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 489619555545909406, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}
+  m_PrefabInstance: {fileID: 6138797177558323518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8210875166819005346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2649102791583883932, guid: 14f4a5227f4cf2342bbcd3c37289387f, type: 3}

@@ -8,9 +8,14 @@ public class ActivateSwitch : CoguInteractable
     [SerializeField] private Light _indicatorLight; // Optional visual indicator
     
     [Header("Interaction Settings")]
-    //[SerializeField] private InteractingArea _area;
-    //[SerializeField] private bool _interactJustOnce = false;
+    [SerializeField] private bool _interactJustOnce = false;
     [SerializeField] private bool _toggleMode = true; // true = toggle, false = only activate
+    [SerializeField] private KeyCode _interactionKey = KeyCode.E; // Key for direct interaction
+    
+    [Header("Player Detection")]
+    [SerializeField] private float _detectionRadius = 3f;
+    [SerializeField] private LayerMask _playerLayer = 1; // Default layer, adjust as needed
+    [SerializeField] private Transform _detectionOrigin; // Optional custom origin for sphere cast
     
     [Header("State")]
     public bool isActivated = false;
@@ -24,6 +29,10 @@ public class ActivateSwitch : CoguInteractable
     // Reset variables
     private bool _initialActivatedState;
     private bool _checkpointSavedState;
+    
+    // Player detection variables
+    private bool _playerInRange = false;
+    private bool _hasBeenActivated = false; // Track if switch was ever activated
 
     protected override void OnEnable()
     {
@@ -58,14 +67,104 @@ public class ActivateSwitch : CoguInteractable
         // Set initial state
         isActivated = _startActivated;
         UpdateVisuals();
+        
+        // If starting activated, mark as activated
+        if (_startActivated)
+        {
+            _hasBeenActivated = true;
+        }
+    }
+
+    private void Update()
+    {
+        CheckPlayerInRange();
+        UpdateInteractableEffect();
+        
+        // Handle direct interaction input (only if no Cogu type is assigned)
+        if (UsesDirectInteraction() && _playerInRange && Input.GetKeyDown(_interactionKey))
+        {
+            HandleDirectInteraction();
+        }
+    }
+
+    private bool UsesDirectInteraction()
+    {
+        // Use direct interaction if no Cogu type is assigned (None)
+        return AssignedCoguType == CoguType.None;
+    }
+
+    private bool UsesCoguInteraction()
+    {
+        // Use Cogu interaction if a Cogu type is assigned
+        return AssignedCoguType != CoguType.None;
+    }
+
+    private void HandleDirectInteraction()
+    {
+        // Check if we should allow interaction based on activation state
+        if (_interactJustOnce && _hasBeenActivated)
+        {
+            Debug.Log($"ActivateSwitch {name}: Direct interaction blocked - already activated once");
+            return; // Don't allow interaction if it's one-time and already activated
+        }
+        
+        Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
+        HandleSwitchInteraction(this);
+    }
+
+    private void CheckPlayerInRange()
+    {
+        Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
+        
+        // Use Physics.OverlapSphere for better performance than sphere cast
+        Collider[] colliders = Physics.OverlapSphere(origin, _detectionRadius, _playerLayer);
+        
+        bool wasInRange = _playerInRange;
+        _playerInRange = colliders.Length > 0;
+        
+        // Debug logs for player detection when using direct interaction
+        if (UsesDirectInteraction())
+        {
+            if (_playerInRange && !wasInRange)
+            {
+                Debug.Log($"ActivateSwitch {name}: Player entered range (Direct interaction mode)");
+            }
+            else if (!_playerInRange && wasInRange)
+            {
+                Debug.Log($"ActivateSwitch {name}: Player left range (Direct interaction mode)");
+            }
+        }
+    }
+
+    private void UpdateInteractableEffect()
+    {
+        if (_interactableEffectVisual != null)
+        {
+            // Show effect only if:
+            // 1. Player is in range
+            // 2. Switch hasn't been activated OR we're in toggle mode
+            // 3. If it's been activated and we're not in toggle mode, don't show
+            bool shouldShow = _playerInRange && 
+                            (!_hasBeenActivated || _toggleMode);
+            
+            _interactableEffectVisual.SetActive(shouldShow);
+        }
     }
 
     // CoguInteract
     public override void Interact(Cogu cogu)
     {
-        Debug.Log("Interactable Pira");
-        HandleSwitchInteraction(this);
-        Destroy(cogu.gameObject);
+        // Only allow Cogu interaction if a Cogu type is assigned
+        if (UsesCoguInteraction())
+        {
+            Debug.Log($"ActivateSwitch {name}: Cogu interaction with type {AssignedCoguType}");
+            HandleSwitchInteraction(this);
+            Destroy(cogu.gameObject);
+        }
+        else
+        {
+            Debug.Log($"ActivateSwitch {name}: Cogu interaction not allowed - no Cogu type assigned");
+        }
     }
 
     // Public Methods
@@ -74,6 +173,7 @@ public class ActivateSwitch : CoguInteractable
         if (!isActivated)
         {
             isActivated = true;
+            _hasBeenActivated = true; // Mark as activated
             UpdateVisuals();
             onActivate?.Invoke();
             Debug.Log($"ActivateSwitch {name} activated");
@@ -115,10 +215,10 @@ public class ActivateSwitch : CoguInteractable
     // Resetable Implementation
     public override void ResetObject()
     {
-        base.ResetObject();
-
         if (NeedReset)
         {
+            base.ResetObject();
+
             // Determine what state to reset to based on checkpoint system
             bool targetState = _checkpointSavedState;
             
@@ -126,6 +226,10 @@ public class ActivateSwitch : CoguInteractable
             
             // Reset to checkpoint saved state
             isActivated = targetState;
+            
+            // Reset activation tracking based on checkpoint state
+            _hasBeenActivated = targetState;
+            
             UpdateVisuals();
             
             // Fire appropriate events to notify listeners
@@ -168,5 +272,13 @@ public class ActivateSwitch : CoguInteractable
         {
             _indicatorLight.enabled = isActivated;
         }
+    }
+    
+    // Gizmos for debugging
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
+        Gizmos.color = _playerInRange ? Color.green : Color.red;
+        Gizmos.DrawWireSphere(origin, _detectionRadius);
     }
 } 
