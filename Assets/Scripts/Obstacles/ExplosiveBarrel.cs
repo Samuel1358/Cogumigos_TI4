@@ -33,6 +33,7 @@ public class ExplosiveBarrel : ResetableBase {
             _visual.transform.DOScale(_finalScale, _timeToExplode);
             _explosionRadiusVisual.DOScale(_initinalExplosionRadius, _timeToExplode);
             _willExplodePlayer = true;
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.ExplosaoBarril);
         }
     }
 
@@ -54,7 +55,6 @@ public class ExplosiveBarrel : ResetableBase {
         yield return new WaitForSeconds(_timeToExplode);
         _visual.SetActive(false);
         _collider.enabled = false;
-        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.EXPLOSAO);
         _wasExploded = true;
         if (_willExplodePlayer) {
             GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn.Invoke();
