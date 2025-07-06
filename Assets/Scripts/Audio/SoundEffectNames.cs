@@ -62,6 +62,8 @@ public static class SoundEffectNames
 
     public const string LILLYPAD_CAINDO2 = "LillypadCaindo2"; //
 
+    public const string ExplosaoBarril = "ExplosaoBarril"; //
+
 
     
 
