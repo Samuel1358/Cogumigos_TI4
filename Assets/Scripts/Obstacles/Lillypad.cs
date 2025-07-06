@@ -35,7 +35,8 @@ public class Lillypad : MonoBehaviour
     private Vector3 waterMovementThisFrame = Vector3.zero;
     private float timeOffset;
     private Transform playerOnPlatform;
-
+    private float lastLandingSoundTime = -1f;
+    private float landingSoundCooldown = 0.2f;
     private ObjectPool _pool;
     
     // Events
@@ -228,7 +229,11 @@ public class Lillypad : MonoBehaviour
         if (IsInLayerMask(collision.gameObject, playerLayer))
         {
             playerOnPlatform = collision.transform;
-            GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
+            if (Time.time - lastLandingSoundTime >= landingSoundCooldown)
+            {
+                GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LILLYPAD_CAINDO);
+                lastLandingSoundTime = Time.time;
+            }
         }
     }
 
