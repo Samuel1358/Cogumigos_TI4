@@ -11,7 +11,6 @@ public class CoguCastter : MonoBehaviour, IResetable
     [SerializeField] private float _interactRadius;
     [SerializeField, Range(0f, 1f)] private float _fieldOfView;
     [SerializeField] private LayerMask _interactableLayer;
-    [SerializeField] private LayerMask _occlusionLayer;
 
     public int _coguCount;
     private int _coguHoldedAtCheckpoint;
@@ -22,6 +21,8 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     // Properties
     public CoguCastPoint CastPoint { get { return _castPoint; } }
+    public float InteractRadius { get {  return _interactRadius; } }
+    public LayerMask InteractableLayer { get { return _interactableLayer; } }
     public int CoguCount { get { return _coguCount; } set { _coguCount = value; } }
     public bool IsAbleCast { get { return _isAbleCast; } set { _isAbleCast = value; } }
 
@@ -43,11 +44,6 @@ public class CoguCastter : MonoBehaviour, IResetable
         // Reset
         GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint -= SaveResetState;
         GameIniciator.Instance.RespawnControllerInstance.TurnNonResetable(this);
-    }
-
-    private void Teste(CallbackContext callbackContext)
-    {
-        Debug.Log("Teste 123");
     }
 
     private void Start()
