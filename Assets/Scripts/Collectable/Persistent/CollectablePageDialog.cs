@@ -23,7 +23,7 @@ public class CollectablePageDialog : CollectablePersistenceBase {
         else
             GameIniciator.Instance.DialogManagerInstance.StartDialog(CollectableSO);
 
-        if(GameIniciator.Instance.GameManagerInstance.PlayerInputs != null) GameIniciator.Instance.GameManagerInstance.PlayerInputs.PlayerActions.Interact.started -= StartDialog;
+        if (GameIniciator.Instance.GameManagerInstance.PlayerInputs != null) GameIniciator.Instance.GameManagerInstance.PlayerInputs.PlayerActions.Interact.started -= StartDialog;
 
         if (CollectableSO.Duration > 0f) {
             TweenHandler.Timer(CollectableSO.Duration, GameIniciator.Instance.DialogManagerInstance.EndDialog);
@@ -62,23 +62,21 @@ public class CollectablePageDialog : CollectablePersistenceBase {
             GameIniciator.Instance.AudioManagerInstance.PlaySFX("Collectable");
             SetCollectableInactive();
             GameIniciator.Instance.PersistenceManagerInstance.SaveGame();
-            //CollectablePagesUISingleton.instance.CollectablePagesUi.UpdateIndicie(CollectableSO);
-        }
+            if (CollectableSO.ShowJustOnce) {
+                if (_hasInteractedOnce)
+                    return;
+                else
+                    _hasInteractedOnce = true;
+            }
 
-        if (CollectableSO.ShowJustOnce) {
-            if (_hasInteractedOnce)
+            if (_autoPlay) {
+                StartDialog();
                 return;
-            else
-                _hasInteractedOnce = true;
+            }
+            SetVisualActive(true);
         }
 
-        if (_autoPlay) {
-            StartDialog();
-            return;
-        }
 
-        SetVisualActive(true);
-        SetCollectableInactive();        
     }
 
     private void OnTriggerExit(Collider other) {

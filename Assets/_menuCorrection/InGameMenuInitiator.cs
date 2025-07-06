@@ -11,7 +11,7 @@ public class InGameMenuInitiator : MonoBehaviour {
     [field: SerializeField] public UiInventory InventoryCanvas { get; private set; }
     [field: SerializeField] public GameObject PauseCanvas { get; private set; }
     [field: SerializeField] public GameObject GameOverCanvas { get; private set; }
-    [field: SerializeField] public GameObject[] InGameCanvasObjects { get; private set; }
+    [field: SerializeField] public bool IsGamePaused { get; private set; } = false;
 
     [SerializeField] private GameObject _dialogPanel;
     [SerializeField] private Image _speakerPortrait;
@@ -26,6 +26,7 @@ public class InGameMenuInitiator : MonoBehaviour {
     public void PauseGameUI() {
         PauseCanvas.SetActive(true);
         GameIniciator.Instance.GameManagerInstance.UnhideMouse();
+        IsGamePaused = true;
     }
 
     public void UnPauseGame() {
@@ -34,9 +35,7 @@ public class InGameMenuInitiator : MonoBehaviour {
     public void UnPauseGameUI() {
         PauseCanvas.SetActive(false);
         GameIniciator.Instance.GameManagerInstance.HideMouse();
-        foreach(GameObject obj in InGameCanvasObjects) {
-            obj.SetActive(false);
-        }
+        IsGamePaused = false;
     }
 
     public void GameOverUI() {
