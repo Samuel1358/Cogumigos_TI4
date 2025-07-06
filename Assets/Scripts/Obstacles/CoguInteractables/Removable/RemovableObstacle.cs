@@ -7,25 +7,55 @@ public class RemovableObstacle : CoguInteractable
     [SerializeField] private Transform _waypointsContainer;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _changeDistance;
+    public bool startAvailable;
 
+    private bool _walk = false;
     private int _index = 0;
     private bool _arrived = false;
+    private Cogu _cogu;
+
+    public bool Available { get { return _isAvailable; } set { _isAvailable = value; } }
+
+    // memento
+    private Vector3 _startPosition;
+    private bool _availableAtCheckpoint;
+    private bool _arrivedAtCheckpoint;
+    //private Tween _actualTween = null;
+
+    private void Awake()
+    {
+        _isAvailable = startAvailable;
+
+        _startPosition = transform.position;
+        _availableAtCheckpoint = _isAvailable;
+        _arrivedAtCheckpoint = _arrived;
+    }
+
+    private void Update()
+    {
+        // NOJOO!!!
+        if (!_walk)
+            return;
+
+        if (_index < _waypointsContainer.childCount - 1)
+        {
+            FollowPath();
+        }
+        else
+        {
+            Arrive();
+        }
+    }
 
     // Public Methods
     [ContextMenu("Walk")]
-    public void StarWalk(Cogu cogu)
+    public void StarWalk()
     {
-        Tween follow = DOTween.To(IndexGetter, FollowPath, _waypointsContainer.childCount - 1, float.MaxValue);
-        follow.OnUpdate(() => Arrive(follow, cogu));
+        _walk = true;
     }
 
     // Private Methods
-    private int IndexGetter()
-    {
-        return _index;
-    }
-
-    private void FollowPath(int x)
+    private void FollowPath()
     {
         Transform point = _waypointsContainer.GetChild(_index);
         Vector3 dir = point.position - transform.position;
@@ -41,34 +71,55 @@ public class RemovableObstacle : CoguInteractable
         if (dir.magnitude < changeDistance)
             _index++;
 
-        _arrived = (_index >= _waypointsContainer.childCount);
-
         transform.Translate(_moveSpeed * speedModifier * Time.fixedDeltaTime * dir.normalized);
     }
 
-    private void Arrive(Tween follow, Cogu cogu)
+    private void Arrive()
     {
-        if (_arrived)
+        Transform point = _waypointsContainer.GetChild(_index);
+        Vector3 dir = point.position - transform.position;
+
+        float changeDistance = _changeDistance;
+        float speedModifier = 1f;
+        if (point.TryGetComponent(out RemovableWaypoint waypoint))
         {
-            follow.Kill();
-
-            Transform endPoint = _waypointsContainer.GetChild(_index - 1);
-            float dis = Mathf.Abs(Vector3.Distance(endPoint.position, transform.position));
-            Tween end;
-            if (endPoint.TryGetComponent(out RemovableWaypoint waypoint))
-                end = transform.DOMove(endPoint.position, dis / (_moveSpeed * waypoint.SpeedModifier));
-            else
-                end = transform.DOMove(endPoint.position, dis / _moveSpeed);
-
-            end.OnComplete(() => Destroy(cogu.gameObject));
+            changeDistance = waypoint.ChangeDistanceModifier;
+            speedModifier = waypoint.SpeedModifier;
         }
+
+        if (dir.magnitude < changeDistance)
+        {
+            _walk = false;
+            Destroy(_cogu.gameObject);
+        }
+
+        transform.Translate(_moveSpeed * speedModifier * Time.fixedDeltaTime * dir.normalized);
     }
 
     // Interactable
     public override void Interact(Cogu cogu)
     {
-        Debug.Log("RemovableObject - Interact");
-        StarWalk(cogu);
+        _cogu = cogu;
+        StarWalk();
+        NeedReset = true;
+    }
+
+    // Resetable
+    public override void ResetObject()
+    {
+        if (NeedReset)
+        {
+            base.ResetObject();
+
+            _walk = false;
+            _index = 0;
+
+            transform.position = _startPosition;
+            _isAvailable = _availableAtCheckpoint;
+            _arrived = _arrivedAtCheckpoint;
+
+            NeedReset = false;
+        }
     }
 
     private void OnDrawGizmos()
