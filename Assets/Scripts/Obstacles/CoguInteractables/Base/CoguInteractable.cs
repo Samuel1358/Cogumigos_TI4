@@ -11,7 +11,7 @@ public abstract class CoguInteractable : ResetableBase
     [SerializeField] private float _interactDistance;
     [SerializeField] protected GameObject _interactableEffectVisual;
     
-    protected bool _isAvailable = true;
+    public bool _isAvailable = true;
 
     // Properties
     public CoguType AssignedCoguType { get { return _assignedCoguType; } }

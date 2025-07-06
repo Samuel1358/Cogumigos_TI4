@@ -28,7 +28,7 @@ public class PlayerAnimationTriggerEvent : MonoBehaviour
         {
             return;
         }
-        _player.CoguCast.CastCogu();
+        //_player.CoguCast.CastCogu();
     }
     public void OnThrowAnimationEnds()
     {
