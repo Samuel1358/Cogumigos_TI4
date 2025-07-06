@@ -226,6 +226,28 @@ public class LightPuzzleManager : MonoBehaviour
             Debug.Log($"Stage {_currentStageIndex} lever activated: {currentStage.stageName}");
         }
         
+        // Inicia corrotina com atraso de 1 segundo antes de completar a etapa
+        StartCoroutine(DelayedCompleteStage());
+    }
+
+    /// <summary>
+    /// Corrotina que adiciona atraso de 1 segundo antes de completar a etapa
+    /// </summary>
+    private System.Collections.IEnumerator DelayedCompleteStage()
+    {
+        if (_showDebugInfo)
+        {
+            Debug.Log($"Starting 1 second delay before stage transition...");
+        }
+        
+        // Aguarda 1 segundo
+        yield return new WaitForSeconds(1f);
+        
+        if (_showDebugInfo)
+        {
+            Debug.Log($"Delay completed, proceeding with stage completion");
+        }
+        
         CompleteCurrentStage();
     }
 
