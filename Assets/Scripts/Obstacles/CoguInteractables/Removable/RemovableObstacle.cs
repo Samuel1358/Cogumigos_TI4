@@ -1,5 +1,4 @@
 using UnityEngine;
-using DG.Tweening;
 
 public class RemovableObstacle : CoguInteractable
 {
@@ -9,9 +8,12 @@ public class RemovableObstacle : CoguInteractable
     [SerializeField] private float _changeDistance;
     [SerializeField] private bool _startAvailable;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject _effect;
+
     private bool _walk = false;
     private int _index = 0;
-    private bool _arrived = false;
+    //private bool _arrived = false;
     private Cogu _cogu;
 
     // memento
@@ -49,6 +51,7 @@ public class RemovableObstacle : CoguInteractable
     public void StarWalk()
     {
         _walk = true;
+        _effect.SetActive(true);
     }
 
     // Private Methods
@@ -87,6 +90,7 @@ public class RemovableObstacle : CoguInteractable
         if (dir.magnitude < changeDistance)
         {
             _walk = false;
+            _effect.SetActive(false);
             Destroy(_cogu.gameObject);
         }
 
@@ -112,7 +116,9 @@ public class RemovableObstacle : CoguInteractable
             _index = 0;
 
             transform.position = _startPosition;
-            _arrived = false;
+            //_arrived = false;
+
+            _effect.SetActive(false);
 
             NeedReset = false;
         }
