@@ -32,6 +32,11 @@ public abstract class CoguInteractable : ResetableBase
         _isAvailable = false;
     }
 
+    public void SetActiveInteractableEffectVisual(bool value)
+    {
+        _interactableEffectVisual.SetActive(value);
+    }
+
     // Inherit Public Methods
     public override void ResetObject() {
         if (NeedReset)
