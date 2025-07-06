@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
     }
     public void UnhideMouse() {
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
 
