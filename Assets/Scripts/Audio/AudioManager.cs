@@ -1,11 +1,20 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour {
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private List<SoundEffect> soundEffects = new List<SoundEffect>();
+    
+    [Header("Background Music Settings")]
+    [SerializeField] private AudioClip tutorialMusic;
+    [SerializeField] private AudioClip level1Music;
+    [SerializeField] private AudioClip level2Music;
+    [SerializeField] private AudioClip level3Music;
+    [SerializeField] private float musicFadeInDuration = 2f;
+    [SerializeField] private float musicFadeOutDuration = 1f;
 
     [Header("Proximity Audio Settings")]
     [SerializeField] private float proximityDistance = 20f;              // Distance to check for proximity
@@ -22,6 +31,11 @@ public class AudioManager : MonoBehaviour {
     // Death sound control
     private bool isDeathSoundPlaying = false;
     private const float DEATH_SOUND_COOLDOWN = 3.5f;
+    
+    // Background music control
+    private AudioClip currentBGM;
+    private Coroutine fadeCoroutine;
+    private bool isMusicFading = false;
 
     // PlayerPrefs keys
     private const string MASTER_VOLUME_KEY = "MasterVolume";
@@ -31,6 +45,24 @@ public class AudioManager : MonoBehaviour {
     private void Awake() {
         InitializeAudioManager();
         LoadVolumeSettings();
+        
+        // Subscribe to scene change events
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    
+    private void Start() {
+        // Start music for current scene
+        AudioClip currentSceneMusic = GetMusicForScene(SceneManager.GetActiveScene().name);
+        if (currentSceneMusic != null) {
+            currentBGM = currentSceneMusic;
+            bgmSource.clip = currentBGM;
+            bgmSource.Play();
+            bgmSource.volume = masterVolume * bgmVolume;
+            
+            if (showProximityDebug) {
+                Debug.Log($"AudioManager: Started with BGM for current scene: {currentBGM.name}");
+            }
+        }
     }
 
     private void InitializeAudioManager() {
@@ -61,7 +93,11 @@ public class AudioManager : MonoBehaviour {
 
     private void ApplyVolumeSettings() {
         sfxSource.volume = masterVolume * sfxVolume;
-        bgmSource.volume = masterVolume * bgmVolume;
+        
+        // Only apply BGM volume if not currently fading
+        if (!isMusicFading) {
+            bgmSource.volume = masterVolume * bgmVolume;
+        }
     }
 
     public void SetMasterVolume(float volume) {
@@ -210,6 +246,102 @@ public class AudioManager : MonoBehaviour {
     public void SetSFXPitch(float pitch) {
         sfxSource.pitch = pitch;
     }
+    
+    // Scene change handling
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        if (showProximityDebug) {
+            Debug.Log($"AudioManager: Scene loaded: {scene.name}");
+        }
+        
+        // Determine which music to play based on scene name
+        AudioClip musicToPlay = GetMusicForScene(scene.name);
+        
+        if (musicToPlay != null && musicToPlay != currentBGM) {
+            PlayBGMWithFade(musicToPlay);
+        }
+    }
+    
+    private AudioClip GetMusicForScene(string sceneName) {
+        sceneName = sceneName.ToLower();
+        
+        if (sceneName.Contains("tutorial") || sceneName.Contains("mainmenu")) {
+            return tutorialMusic;
+        }
+        else if (sceneName.Contains("level01")) {
+            return level1Music;
+        }
+        else if (sceneName.Contains("level02")) {
+            return level2Music;
+        }
+        else if (sceneName.Contains("level03")) {
+            return level3Music;
+        }
+        
+        // Default to tutorial music if no match found
+        return tutorialMusic;
+    }
+    
+    /// <summary>
+    /// Força a volta para a música do menu (útil quando retornar ao menu)
+    /// </summary>
+    public void ReturnToMenuMusic() {
+        if (tutorialMusic != null && tutorialMusic != currentBGM) {
+            PlayBGMWithFade(tutorialMusic);
+        }
+    }
+    
+    public void PlayBGMWithFade(AudioClip bgmClip) {
+        if (bgmClip == null) return;
+        
+        // Stop any ongoing fade
+        if (fadeCoroutine != null) {
+            StopCoroutine(fadeCoroutine);
+        }
+        
+        fadeCoroutine = StartCoroutine(FadeBGM(bgmClip));
+    }
+    
+    private IEnumerator FadeBGM(AudioClip newBGM) {
+        isMusicFading = true;
+        
+        // Fade out current music
+        if (bgmSource.isPlaying && bgmSource.clip != null) {
+            float startVolume = bgmSource.volume;
+            float fadeOutTime = 0f;
+            
+            while (fadeOutTime < musicFadeOutDuration) {
+                fadeOutTime += Time.deltaTime;
+                float normalizedTime = fadeOutTime / musicFadeOutDuration;
+                bgmSource.volume = Mathf.Lerp(startVolume, 0f, normalizedTime);
+                yield return null;
+            }
+        }
+        
+        // Change to new music
+        bgmSource.clip = newBGM;
+        currentBGM = newBGM;
+        bgmSource.Play();
+        
+        // Fade in new music
+        float targetVolume = masterVolume * bgmVolume;
+        float fadeInTime = 0f;
+        
+        while (fadeInTime < musicFadeInDuration) {
+            fadeInTime += Time.deltaTime;
+            float normalizedTime = fadeInTime / musicFadeInDuration;
+            bgmSource.volume = Mathf.Lerp(0f, targetVolume, normalizedTime);
+            yield return null;
+        }
+        
+        // Ensure final volume is correct
+        bgmSource.volume = targetVolume;
+        isMusicFading = false;
+        fadeCoroutine = null;
+        
+        if (showProximityDebug) {
+            Debug.Log($"AudioManager: BGM changed to {newBGM.name}");
+        }
+    }
 
     // Getters for current volume values
     public float GetMasterVolume() => masterVolume;
@@ -222,5 +354,10 @@ public class AudioManager : MonoBehaviour {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(playerTransform.position, proximityDistance);
         }
+    }
+    
+    private void OnDestroy() {
+        // Unsubscribe from scene change events
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
