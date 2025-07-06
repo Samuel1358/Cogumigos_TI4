@@ -32,6 +32,7 @@ public class Breakable : CoguInteractable
         DeactivateWall();
         _onBreak.Invoke();
         Destroy(cogu.gameObject);
+        GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.EXPLOSAO);
         //return () => { Destroy(cogu.gameObject); };
     }
 
