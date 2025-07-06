@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class FinalLever : MonoBehaviour
 {
     [Header("Light Settings")]
+    [SerializeField] private VisualEffect _vfx;
     public Light leverLight;
-    public Color activeColor = Color.green;
+    [SerializeField, ColorUsage(true, true)] private Color _activeColorFire = Color.green;
+    [SerializeField, ColorUsage(true, true)] private Color _activeColorSmoke = Color.black;
+    [SerializeField] private Color _activeColorLight = Color.green;
     private Color originalColor;
     
     [Header("Switch Connection")]
@@ -107,12 +111,15 @@ public class FinalLever : MonoBehaviour
         if (isActivated) return;
 
         isActivated = true;
-        
+
+        _vfx.SetVector4("FireColor", _activeColorFire);
+        _vfx.SetVector4("SmokeColor", _activeColorSmoke);
+
         // Liga a luz
         if (leverLight != null)
         {
             leverLight.enabled = true;
-            leverLight.color = activeColor;
+            leverLight.color = _activeColorLight;
         }
         
         Debug.Log($"FinalLever {name} activated by switch");
