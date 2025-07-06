@@ -273,7 +273,7 @@ public class ActivateSwitch : CoguInteractable
             _indicatorLight.enabled = isActivated;
         }
     }
-    
+#if UNITY_EDITOR
     // Gizmos for debugging
     private void OnDrawGizmosSelected()
     {
@@ -281,4 +281,5 @@ public class ActivateSwitch : CoguInteractable
         Gizmos.color = _playerInRange ? Color.green : Color.red;
         Gizmos.DrawWireSphere(origin, _detectionRadius);
     }
+#endif
 } 
