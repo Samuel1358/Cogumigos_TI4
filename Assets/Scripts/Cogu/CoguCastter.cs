@@ -11,6 +11,7 @@ public class CoguCastter : MonoBehaviour, IResetable
     [SerializeField] private float _interactRadius;
     [SerializeField, Range(0f, 1f)] private float _fieldOfView;
     [SerializeField] private LayerMask _interactableLayer;
+    [SerializeField] private LayerMask _occlusionLayer;
 
     public int _coguCount;
     private int _coguHoldedAtCheckpoint;
@@ -21,8 +22,8 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     // Properties
     public CoguCastPoint CastPoint { get { return _castPoint; } }
-    public int CoguCount {  get { return _coguCount; } set { _coguCount = value; } }
-    public bool IsAbleCast { get { return _isAbleCast;} set { _isAbleCast = value; } }
+    public int CoguCount { get { return _coguCount; } set { _coguCount = value; } }
+    public bool IsAbleCast { get { return _isAbleCast; } set { _isAbleCast = value; } }
 
     private void OnEnable()
     {
@@ -91,7 +92,8 @@ public class CoguCastter : MonoBehaviour, IResetable
 
                 _player.PlayerAnimator.SetBool("IsThrowing", true);
 
-                TweenHandler.Timer(1f, () => { _isAbleCast = true; Debug.Log("COGU CAST - tween timer"); });
+                //TweenHandler.Timer(1f, () => { if (!_isAbleCast) { _isAbleCast = true; Debug.Log("COGU CAST - tween timer"); } });
+                TweenHandler.Timer(0.3f, () => CastCogu());
                 return;
             }
         }
@@ -148,7 +150,7 @@ public class CoguCastter : MonoBehaviour, IResetable
     #region // IResetable
 
     // Public Methods
-    public void Initialize() 
+    public void Initialize()
     {
         GameIniciator.Instance.RespawnControllerInstance.OnPlayerChangeCheckPoint += SaveResetState;
         GameIniciator.Instance.RespawnControllerInstance.TurnResetable(this);

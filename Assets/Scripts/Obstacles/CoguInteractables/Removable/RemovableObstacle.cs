@@ -7,7 +7,7 @@ public class RemovableObstacle : CoguInteractable
     [SerializeField] private Transform _waypointsContainer;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _changeDistance;
-    public bool startAvailable;
+    [SerializeField] private bool _startAvailable;
 
     private bool _walk = false;
     private int _index = 0;
@@ -16,17 +16,16 @@ public class RemovableObstacle : CoguInteractable
 
     // memento
     private Vector3 _startPosition;
-    private bool _availableAtCheckpoint;
-    private bool _arrivedAtCheckpoint;
-    //private Tween _actualTween = null;
+    //private bool _availableAtCheckpoint;
+    //private bool _arrivedAtCheckpoint;
 
     private void Awake()
     {
-        _isAvailable = startAvailable;
+        _isAvailable = _startAvailable;
 
         _startPosition = transform.position;
-        _availableAtCheckpoint = _isAvailable;
-        _arrivedAtCheckpoint = _arrived;
+        //_availableAtCheckpoint = _isAvailable;
+        //_arrivedAtCheckpoint = _arrived;
     }
 
     private void Update()
@@ -113,11 +112,12 @@ public class RemovableObstacle : CoguInteractable
             _index = 0;
 
             transform.position = _startPosition;
-            _isAvailable = _availableAtCheckpoint;
-            _arrived = _arrivedAtCheckpoint;
+            _arrived = false;
 
             NeedReset = false;
         }
+
+        _isAvailable = _startAvailable;
     }
 
     private void OnDrawGizmos()
