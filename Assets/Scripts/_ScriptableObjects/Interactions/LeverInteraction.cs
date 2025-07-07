@@ -10,7 +10,6 @@ public class LeverInteraction : Interaction
 
     public override void Interact(Player player)
     {
-        Debug.Log("LeverInteract");
         _leverAction?.Invoke(_switchable);
     }
 

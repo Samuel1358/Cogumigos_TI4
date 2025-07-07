@@ -11,7 +11,7 @@ public class MirrorInteractionScript : Interaction
 
     public override void Interact(Player player)
     {
-        Debug.Log("Mirror Interact");
+        //Debug.Log("Mirror Interact");
         _mirrorAction?.Invoke(_mirrorReflector);
     }
 

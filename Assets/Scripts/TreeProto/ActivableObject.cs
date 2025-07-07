@@ -91,7 +91,7 @@ public class ActivableObject : ResetableBase
     {
         // Force check activation based on current switch states
         CheckActivationAndForceUpdate();
-        Debug.Log($"ActivableObject {name}: Re-checked activation after respawn");
+        //Debug.Log($"ActivableObject {name}: Re-checked activation after respawn");
     }
 
     private void CheckActivationAndForceUpdate()
@@ -186,7 +186,7 @@ public class ActivableObject : ResetableBase
         UpdateState(startOff);
         onActivate?.Invoke();
         
-        Debug.Log($"ActivableObject {name} activated");
+        //Debug.Log($"ActivableObject {name} activated");
         
         // Mark that this object needs reset
         NeedReset = true;
@@ -202,7 +202,7 @@ public class ActivableObject : ResetableBase
         UpdateState(!startOff);
         onDeactivate?.Invoke();
         
-        Debug.Log($"ActivableObject {name} deactivated");
+        //Debug.Log($"ActivableObject {name} deactivated");
         
         // Mark that this object needs reset
         NeedReset = true;
@@ -224,7 +224,7 @@ public class ActivableObject : ResetableBase
             onActivate?.Invoke();
         }
         
-        Debug.Log($"ActivableObject {name} force activated");
+        //Debug.Log($"ActivableObject {name} force activated");
     }
 
     // Force deactivation regardless of current state (used for respawn sync)
@@ -243,7 +243,7 @@ public class ActivableObject : ResetableBase
             onDeactivate?.Invoke();
         }
         
-        Debug.Log($"ActivableObject {name} force deactivated");
+        //Debug.Log($"ActivableObject {name} force deactivated");
     }
 
     // Resetable Implementation
@@ -251,7 +251,7 @@ public class ActivableObject : ResetableBase
     {
         if (NeedReset)
         {
-            Debug.Log($"ActivableObject {name}: ResetObject called - will be overridden by DelayedCheckActivation");
+            //Debug.Log($"ActivableObject {name}: ResetObject called - will be overridden by DelayedCheckActivation");
             
             // Don't reset to initial state immediately
             // Let DelayedCheckActivation handle the correct state based on switches

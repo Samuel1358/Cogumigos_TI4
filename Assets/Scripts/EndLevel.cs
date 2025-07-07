@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class EndLevel : MonoBehaviour
-{   
+{
     [SerializeField] private UnityEvent _onJustBeforeEnd;
     [SerializeField] private UnityEvent _onEnd;
 
@@ -15,6 +15,7 @@ public class EndLevel : MonoBehaviour
     public void CallEnd()
     {
         _onJustBeforeEnd.Invoke();
+        GameIniciator.Instance.PersistenceManagerInstance.SaveGame();
         _onEnd.Invoke();
     }
 

@@ -101,11 +101,11 @@ public class ActivateSwitch : CoguInteractable
         // Check if we should allow interaction based on activation state
         if (_interactJustOnce && _hasBeenActivated)
         {
-            Debug.Log($"ActivateSwitch {name}: Direct interaction blocked - already activated once");
+            //Debug.Log($"ActivateSwitch {name}: Direct interaction blocked - already activated once");
             return; // Don't allow interaction if it's one-time and already activated
         }
         
-        Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
+        //Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
         HandleSwitchInteraction(this);
     }
 
@@ -115,13 +115,13 @@ public class ActivateSwitch : CoguInteractable
         // Only allow Cogu interaction if a Cogu type is assigned
         if (UsesCoguInteraction())
         {
-            Debug.Log($"ActivateSwitch {name}: Cogu interaction with type {AssignedCoguType}");
+            //Debug.Log($"ActivateSwitch {name}: Cogu interaction with type {AssignedCoguType}");
             HandleSwitchInteraction(this);
             Destroy(cogu.gameObject);
         }
         else
         {
-            Debug.Log($"ActivateSwitch {name}: Cogu interaction not allowed - no Cogu type assigned");
+            //Debug.Log($"ActivateSwitch {name}: Cogu interaction not allowed - no Cogu type assigned");
         }
     }
 
@@ -141,7 +141,7 @@ public class ActivateSwitch : CoguInteractable
             }
             
             onActivate?.Invoke();
-            Debug.Log($"ActivateSwitch {name} activated");
+            //Debug.Log($"ActivateSwitch {name} activated");
             
             // Mark that this object needs reset
             NeedReset = true;
@@ -162,7 +162,7 @@ public class ActivateSwitch : CoguInteractable
             }
             
             onDeactivate?.Invoke();
-            Debug.Log($"ActivateSwitch {name} deactivated");
+            //Debug.Log($"ActivateSwitch {name} deactivated");
             
             // Mark that this object needs reset
             NeedReset = true;
@@ -181,7 +181,7 @@ public class ActivateSwitch : CoguInteractable
     private void SaveStateAtCheckpoint(Checkpoint checkpoint)
     {
         _checkpointSavedState = isActivated;
-        Debug.Log($"ActivateSwitch {name}: Saved state at checkpoint: {_checkpointSavedState}");
+        //Debug.Log($"ActivateSwitch {name}: Saved state at checkpoint: {_checkpointSavedState}");
     }
 
     // Resetable Implementation
@@ -194,7 +194,7 @@ public class ActivateSwitch : CoguInteractable
             // Determine what state to reset to based on checkpoint system
             bool targetState = _checkpointSavedState;
             
-            Debug.Log($"Resetting ActivateSwitch {name} to checkpoint state: {targetState}");
+            //Debug.Log($"Resetting ActivateSwitch {name} to checkpoint state: {targetState}");
             
             // Reset to checkpoint saved state
             isActivated = targetState;
@@ -266,7 +266,7 @@ public class ActivateSwitch : CoguInteractable
         // Play lever sound effect
         GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
         
-        Debug.Log($"ActivateSwitch {name}: Lever activation handled");
+        //Debug.Log($"ActivateSwitch {name}: Lever activation handled");
     }
 
     private void HandleLeverDeactivation()
@@ -285,6 +285,6 @@ public class ActivateSwitch : CoguInteractable
             _leverSwitchable.Disable();
         }
         
-        Debug.Log($"ActivateSwitch {name}: Lever deactivation handled");
+        //Debug.Log($"ActivateSwitch {name}: Lever deactivation handled");
     }
 } 

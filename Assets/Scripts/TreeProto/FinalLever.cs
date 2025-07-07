@@ -76,7 +76,7 @@ public class FinalLever : MonoBehaviour
         if (_activateSwitch != null)
         {
             SyncWithSwitch();
-            Debug.Log($"FinalLever {name}: Re-synchronized with switch after respawn. Switch state: {_activateSwitch.isActivated}");
+            //Debug.Log($"FinalLever {name}: Re-synchronized with switch after respawn. Switch state: {_activateSwitch.isActivated}");
         }
     }
 
@@ -122,7 +122,7 @@ public class FinalLever : MonoBehaviour
             leverLight.color = _activeColorLight;
         }
         
-        Debug.Log($"FinalLever {name} activated by switch");
+        //Debug.Log($"FinalLever {name} activated by switch");
     }
 
     public virtual void Deactivate()
@@ -138,6 +138,6 @@ public class FinalLever : MonoBehaviour
             leverLight.color = originalColor;
         }
         
-        Debug.Log($"FinalLever {name} deactivated by switch");
+        //Debug.Log($"FinalLever {name} deactivated by switch");
     }
 } 

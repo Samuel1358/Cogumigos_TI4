@@ -26,6 +26,7 @@ public class CoguInteractableSensor : MonoBehaviour
         if (_interactables.Count <= 0)
             return;
 
+        // InvalidOperationException
         foreach (CoguInteractable interactable in _interactables)
         {
             if (!aux.Contains(interactable))
