@@ -5150,15 +5150,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a552f7a0e0f3764f9027781a7a4db3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _linkedCheckpoint: {fileID: 285305980507929586}
+  _linkedCheckpoint: {fileID: 1613485353}
   _assignedCoguType: 0
-  _interactDistance: 3
+  _interactDistance: 4
   _interactableEffectVisual: {fileID: 614452625}
   _startActivated: 0
   _indicatorLight: {fileID: 0}
   _interactJustOnce: 0
   _toggleMode: 1
   _interactionKey: 101
+  _detectionRadius: 6
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _detectionOrigin: {fileID: 0}
   _isLever: 1
   _leverAnimator: {fileID: 614452623}
   _leverSwitchable: {fileID: 0}
@@ -7925,6 +7930,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 211798232}
     - target: {fileID: 2516374392675540673, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
+      propertyPath: _detectionRadius
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516374392675540673, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
+      propertyPath: _playerLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516374392675540673, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
       propertyPath: _interactableEffectVisual
       value: 
       objectReference: {fileID: 75452961}
@@ -10109,6 +10122,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35835baa427d7e44a86496865e3dec56, type: 3}
+--- !u!1 &1161292296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7728195493403775946, guid: 35835baa427d7e44a86496865e3dec56, type: 3}
+  m_PrefabInstance: {fileID: 1161292295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1162878431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4694373567757685731, guid: 3ea21953e18b6534ba93567c4feab930, type: 3}
@@ -13817,6 +13835,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1410218490}
   m_SourcePrefab: {fileID: 100100000, guid: 361e76df49ed985439eede51cc82caec, type: 3}
+--- !u!114 &1613485353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9147788515004142546, guid: 361e76df49ed985439eede51cc82caec, type: 3}
+  m_PrefabInstance: {fileID: 1613485352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394714829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66687598bee8504d80b2136bd732497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1624985954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2564958894188166537, guid: 84c42bb4178c9874fac84b5dda5823ca, type: 3}
@@ -128991,6 +129020,11 @@ MonoBehaviour:
   _interactJustOnce: 1
   _toggleMode: 0
   _interactionKey: 101
+  _detectionRadius: 5.5
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _detectionOrigin: {fileID: 0}
   _isLever: 0
   _leverAnimator: {fileID: 0}
   _leverSwitchable: {fileID: 0}
@@ -143231,6 +143265,18 @@ PrefabInstance:
       propertyPath: _leverAnimator
       value: 
       objectReference: {fileID: 1049244025}
+    - target: {fileID: 2516374392675540673, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
+      propertyPath: _detectionRadius
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516374392675540673, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
+      propertyPath: _playerLayer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516374392675540673, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
+      propertyPath: _interactableEffectVisual
+      value: 
+      objectReference: {fileID: 1161292296}
     - target: {fileID: 2724725105064721202, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -143288,7 +143334,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2724725105064721202, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4898612844960048066, guid: bb0facc719ec86d458cd9e5cec13444f, type: 3}
       insertIndex: 0
@@ -145477,15 +145524,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a552f7a0e0f3764f9027781a7a4db3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _linkedCheckpoint: {fileID: 0}
+  _linkedCheckpoint: {fileID: 285305980507929586}
   _assignedCoguType: 0
-  _interactDistance: 3
+  _interactDistance: 4
   _interactableEffectVisual: {fileID: 138387751}
   _startActivated: 0
   _indicatorLight: {fileID: 0}
   _interactJustOnce: 0
   _toggleMode: 1
   _interactionKey: 101
+  _detectionRadius: 6
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _detectionOrigin: {fileID: 0}
   _isLever: 1
   _leverAnimator: {fileID: 138387749}
   _leverSwitchable: {fileID: 0}

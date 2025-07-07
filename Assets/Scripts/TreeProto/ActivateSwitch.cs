@@ -12,6 +12,11 @@ public class ActivateSwitch : CoguInteractable
     [SerializeField] private bool _toggleMode = true; // true = toggle, false = only activate
     [SerializeField] private KeyCode _interactionKey = KeyCode.E; // Key for direct interaction
     
+    [Header("Player Detection")]
+    [SerializeField] private float _detectionRadius = 3f;
+    [SerializeField] private LayerMask _playerLayer = 1; // Default layer, adjust as needed
+    [SerializeField] private Transform _detectionOrigin; // Optional custom origin for sphere cast
+    
     [Header("Lever Integration")]
     [SerializeField] private bool _isLever = false; // Enable lever functionality
     [SerializeField] private Animator _leverAnimator; // Animator for lever animation
@@ -76,7 +81,10 @@ public class ActivateSwitch : CoguInteractable
     }
 
     private void Update()
-    {        
+    {
+        CheckPlayerInRange();
+        UpdateInteractableEffect();
+        
         // Handle direct interaction input (only if no Cogu type is assigned)
         if (UsesDirectInteraction() && _playerInRange && Input.GetKeyDown(_interactionKey))
         {
@@ -101,12 +109,51 @@ public class ActivateSwitch : CoguInteractable
         // Check if we should allow interaction based on activation state
         if (_interactJustOnce && _hasBeenActivated)
         {
-            //Debug.Log($"ActivateSwitch {name}: Direct interaction blocked - already activated once");
+            // Debug.Log($"ActivateSwitch {name}: Direct interaction blocked - already activated once");
             return; // Don't allow interaction if it's one-time and already activated
         }
         
-        //Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
+        // Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
         HandleSwitchInteraction(this);
+    }
+
+    private void CheckPlayerInRange()
+    {
+        Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
+        
+        // Use Physics.OverlapSphere for better performance than sphere cast
+        Collider[] colliders = Physics.OverlapSphere(origin, _detectionRadius, _playerLayer);
+        
+        bool wasInRange = _playerInRange;
+        _playerInRange = colliders.Length > 0;
+        
+        // Debug logs for player detection when using direct interaction
+        if (UsesDirectInteraction())
+        {
+            if (_playerInRange && !wasInRange)
+            {
+                // Debug.Log($"ActivateSwitch {name}: Player entered range (Direct interaction mode)");
+            }
+            else if (!_playerInRange && wasInRange)
+            {
+                // Debug.Log($"ActivateSwitch {name}: Player left range (Direct interaction mode)");
+            }
+        }
+    }
+
+    private void UpdateInteractableEffect()
+    {
+        if (_interactableEffectVisual != null)
+        {
+            // Show effect only if:
+            // 1. Player is in range
+            // 2. Switch hasn't been activated OR we're in toggle mode
+            // 3. If it's been activated and we're not in toggle mode, don't show
+            bool shouldShow = _playerInRange && 
+                            (!_hasBeenActivated || _toggleMode);
+            
+            _interactableEffectVisual.SetActive(shouldShow);
+        }
     }
 
     // CoguInteract
@@ -115,13 +162,13 @@ public class ActivateSwitch : CoguInteractable
         // Only allow Cogu interaction if a Cogu type is assigned
         if (UsesCoguInteraction())
         {
-            //Debug.Log($"ActivateSwitch {name}: Cogu interaction with type {AssignedCoguType}");
+            // Debug.Log($"ActivateSwitch {name}: Cogu interaction with type {AssignedCoguType}");
             HandleSwitchInteraction(this);
             Destroy(cogu.gameObject);
         }
         else
         {
-            //Debug.Log($"ActivateSwitch {name}: Cogu interaction not allowed - no Cogu type assigned");
+            // Debug.Log($"ActivateSwitch {name}: Cogu interaction not allowed - no Cogu type assigned");
         }
     }
 
@@ -141,7 +188,7 @@ public class ActivateSwitch : CoguInteractable
             }
             
             onActivate?.Invoke();
-            //Debug.Log($"ActivateSwitch {name} activated");
+            // Debug.Log($"ActivateSwitch {name} activated");
             
             // Mark that this object needs reset
             NeedReset = true;
@@ -162,7 +209,7 @@ public class ActivateSwitch : CoguInteractable
             }
             
             onDeactivate?.Invoke();
-            //Debug.Log($"ActivateSwitch {name} deactivated");
+            // Debug.Log($"ActivateSwitch {name} deactivated");
             
             // Mark that this object needs reset
             NeedReset = true;
@@ -181,7 +228,7 @@ public class ActivateSwitch : CoguInteractable
     private void SaveStateAtCheckpoint(Checkpoint checkpoint)
     {
         _checkpointSavedState = isActivated;
-        //Debug.Log($"ActivateSwitch {name}: Saved state at checkpoint: {_checkpointSavedState}");
+        // Debug.Log($"ActivateSwitch {name}: Saved state at checkpoint: {_checkpointSavedState}");
     }
 
     // Resetable Implementation
@@ -194,7 +241,7 @@ public class ActivateSwitch : CoguInteractable
             // Determine what state to reset to based on checkpoint system
             bool targetState = _checkpointSavedState;
             
-            //Debug.Log($"Resetting ActivateSwitch {name} to checkpoint state: {targetState}");
+            // Debug.Log($"Resetting ActivateSwitch {name} to checkpoint state: {targetState}");
             
             // Reset to checkpoint saved state
             isActivated = targetState;
@@ -266,7 +313,7 @@ public class ActivateSwitch : CoguInteractable
         // Play lever sound effect
         GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
         
-        //Debug.Log($"ActivateSwitch {name}: Lever activation handled");
+        // Debug.Log($"ActivateSwitch {name}: Lever activation handled");
     }
 
     private void HandleLeverDeactivation()
@@ -285,6 +332,17 @@ public class ActivateSwitch : CoguInteractable
             _leverSwitchable.Disable();
         }
         
-        //Debug.Log($"ActivateSwitch {name}: Lever deactivation handled");
+        // Debug.Log($"ActivateSwitch {name}: Lever deactivation handled");
     }
+#if UNITY_EDITOR
+    // Gizmos for debugging
+    protected override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
+
+        Vector3 origin = _detectionOrigin != null ? _detectionOrigin.position : transform.position;
+        Gizmos.color = _playerInRange ? Color.green : Color.red;
+        Gizmos.DrawWireSphere(origin, _detectionRadius);
+    }
+#endif
 } 

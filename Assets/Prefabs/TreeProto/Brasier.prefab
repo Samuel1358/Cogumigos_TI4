@@ -50,13 +50,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _linkedCheckpoint: {fileID: 0}
   _assignedCoguType: 5
-  _interactDistance: 2
+  _interactDistance: 3
   _interactableEffectVisual: {fileID: 699994926121256513}
   _startActivated: 0
   _indicatorLight: {fileID: 0}
   _interactJustOnce: 1
   _toggleMode: 0
   _interactionKey: 101
+  _detectionRadius: 4
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  _detectionOrigin: {fileID: 0}
   _isLever: 0
   _leverAnimator: {fileID: 0}
   _leverSwitchable: {fileID: 0}
