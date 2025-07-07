@@ -19,6 +19,7 @@ public class Lever : Switch
         _interaction.Assign(_switchable, Activate);
 
         // NullReferenceException
+        //Debug.Log(_area);
         //Debug.Log(_interaction);
         _area.Assign(_interaction);
 
@@ -29,16 +30,19 @@ public class Lever : Switch
     // Inherit Methods
     protected override void Activate(Switchable obj) 
     {
+        Debug.Log("LEVER - " + _interaction);
+        Debug.Log("LEVER - " + _area._interaction);
         if (_once)
             return;
 
+        Debug.Log("LEVER - pass");
         if (_switchable != null){
             _switchable.Activate();
             _once = true;
             _leverAnimator.SetTrigger("ChengeActivate");
             GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
 
-            //Debug.Log("LEVER - active");
+            Debug.Log("LEVER - active");
         }
 
         _onInteract?.Invoke();

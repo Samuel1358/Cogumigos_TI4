@@ -6,7 +6,7 @@ public class InteractingArea : ResetableBase
 {
     private PlayerInputActions _inputActions;
 
-    [SerializeField] private Interaction _interaction;
+    [SerializeField] public Interaction _interaction;
     [SerializeField] private GameObject _visualInfo;
     [SerializeField] private float _visualOffset = 1.5f; // Altura do texto acima do objeto
     [SerializeField] private bool _useAutoPositioning = false; // Se deve posicionar automaticamente ou usar a posição do prefab
@@ -90,8 +90,10 @@ public class InteractingArea : ResetableBase
     // Private Methods
     private void InteractAction(CallbackContext callbackContext)
     {
+        Debug.Log("InteractAction");
         if (_player != null)
         {
+            Debug.Log("InteractAction - " + _interaction);
             _interaction.Interact(_player);
             _isInteracted = true;
             _inputActions.Player.Interact.started -= InteractAction;
