@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.33238167, g: 0.35312918, b: 0.4415095, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -93,8 +93,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: b75e55393898cfc4cae9f650f82e60e3, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: 6c37d120be6bcf94988aedc256109a80, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 9a93413b9c9763847918bda84b037992, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -125391,7 +125391,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6463187000976042926, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 2685782560307986894, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 6912937201101311247, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 6358334898424887423, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 8771806912608633146, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 1337051019328134134, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 8493378267412615558, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 8712873650094198822, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
+    - {fileID: 8815393263369904155, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1495317e866f6e43b3c9231710ae693, type: 3}
