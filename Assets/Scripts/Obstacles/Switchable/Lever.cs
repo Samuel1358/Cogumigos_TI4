@@ -6,6 +6,7 @@ public class Lever : Switch
     [SerializeField] private Switchable _switchable;
     [SerializeField] private InteractingArea _area;
     [SerializeField] private Animator _leverAnimator;
+    [SerializeField] private bool _interactJustOnce = true;
     private LeverInteraction _interaction;
     private bool _once = false;
 
@@ -32,7 +33,7 @@ public class Lever : Switch
     {
         Debug.Log("LEVER - " + _interaction);
         Debug.Log("LEVER - " + _area._interaction);
-        if (_once)
+        if ((_interactJustOnce) ? _once : false)
             return;
 
         Debug.Log("LEVER - pass");
