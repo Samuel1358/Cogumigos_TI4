@@ -109,6 +109,7 @@ public class Cogu : MonoBehaviour
     {
         GameIniciator.Instance.CoguManagerInstance.RemoveCogu(this);
         GameIniciator.Instance.RespawnControllerInstance.OnPlayerRespawn -= SelfDestruction;
-        _castter.IsAbleCast = true;
+        if (_castter != null)
+            _castter.IsAbleCast = true;
     }
 }
