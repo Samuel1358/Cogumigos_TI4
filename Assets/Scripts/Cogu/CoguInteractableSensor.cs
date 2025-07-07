@@ -4,11 +4,12 @@ using UnityEngine;
 public class CoguInteractableSensor : MonoBehaviour
 {
     [SerializeField] private CoguCastter _coguCastter;
+    [SerializeField] private bool _soloWithCogu;
     private List<CoguInteractable> _interactables = new List<CoguInteractable>();
 
     private void Update()
     {
-        if (_coguCastter.CoguCount <= 0)
+        if ((_soloWithCogu) ? _coguCastter.CoguCount <= 0 : false)
             return;
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, _coguCastter.InteractRadius, _coguCastter.InteractableLayer);
@@ -31,13 +32,13 @@ public class CoguInteractableSensor : MonoBehaviour
             {
                 interactable.SetActiveInteractableEffectVisual(false);
                 _interactables.Remove(interactable);
+                Debug.Log("SENSOR - remove - " + interactable.gameObject);
             }
         }
     }
 
     private void Verify(CoguInteractable interactable, List<CoguInteractable> inList)
-    {
-        Debug.Log("REMOVABLE - verify");       
+    {      
         if (_interactables.Contains(interactable))
         {
             inList.Add(interactable);
@@ -48,7 +49,7 @@ public class CoguInteractableSensor : MonoBehaviour
 
             interactable.SetActiveInteractableEffectVisual(true);
             _interactables.Add(interactable);
-            Debug.Log("REMOVABLE - add - " + interactable.gameObject);
+            Debug.Log("SENSOR - add - " + interactable.gameObject);
         }
     }
 }
