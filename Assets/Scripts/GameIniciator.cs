@@ -27,8 +27,9 @@ public class GameIniciator : MonoBehaviour {
     }
 
     public void LoadScenes(int sceneIndex) {
+        DOTween.KillAll();
         if (sceneIndex == 0) LoadMenuScene();
-        else {
+        else {           
             LoadGameScene(sceneIndex);
         }
     }

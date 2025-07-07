@@ -34,6 +34,8 @@ public abstract class CoguInteractable : ResetableBase
 
     public void SetActiveInteractableEffectVisual(bool value)
     {
+        if (!_isAvailable)
+            return;
         _interactableEffectVisual.SetActive(value);
     }
 

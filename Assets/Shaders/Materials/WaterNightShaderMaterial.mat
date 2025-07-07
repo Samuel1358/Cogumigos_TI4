@@ -33,7 +33,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _ReflectionColor
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -63,13 +63,13 @@ Material:
     - _NormalMapSize: 167.6
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smooth: 1.02
-    - _Transparency: 0.7
+    - _Smooth: 1.55
+    - _Transparency: 0.1
     - _TransparencyMask: 0
     m_Colors:
     - _NormalMapVelocity: {r: 0, g: 0, b: 0, a: 0}
-    - _ReflectionColor: {r: 0.017641952, g: 0.04091521, b: 0.07618539, a: 0}
-    - _WaterColor: {r: 0.08223567, g: 0.12584552, b: 0.52830184, a: 0}
+    - _ReflectionColor: {r: 0.0073424703, g: 0.023273408, b: 0.047169805, a: 0}
+    - _WaterColor: {r: 0.013527942, g: 0.026787343, b: 0.1509434, a: 0}
     - _WaterVelocity: {r: 0.01, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -21,12 +21,12 @@ public class RespawnController : MonoBehaviour {
     }
 
     private void ResetObjects() {
-        Debug.Log($"RespawnController: ResetObjects chamado - {ResetablesTraps.Count} objetos para resetar");
+        //Debug.Log($"RespawnController: ResetObjects chamado - {ResetablesTraps.Count} objetos para resetar");
         foreach (IResetable trap in ResetablesTraps) {
-            Debug.Log($"RespawnController: Resetando objeto {trap.GetType().Name} - {trap}");
+            //Debug.Log($"RespawnController: Resetando objeto {trap.GetType().Name} - {trap}");
             trap.ResetObject();
         }
-        Debug.Log("RespawnController: ResetObjects concluído");
+        //Debug.Log("RespawnController: ResetObjects concluído");
     }
 
     public void SetActiveCheckPoint(Checkpoint newCheckpoint) {

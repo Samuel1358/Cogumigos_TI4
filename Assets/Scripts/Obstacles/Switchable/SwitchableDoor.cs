@@ -139,11 +139,9 @@ public class SwitchableDoor : Switchable
 
     // Resetable
     public override void ResetObject()
-    {
-        
+    {       
         if (NeedReset)
         {
-            Debug.Log("DoorReset");
             transform.position = _initialTransform;
 
             NeedReset = false;

@@ -71,7 +71,7 @@ public class LightSwitch : MonoBehaviour
         if (_activateSwitch != null)
         {
             SyncWithSwitch();
-            Debug.Log($"LightSwitch {name}: Re-synchronized with switch after respawn. Switch state: {_activateSwitch.isActivated}");
+            //Debug.Log($"LightSwitch {name}: Re-synchronized with switch after respawn. Switch state: {_activateSwitch.isActivated}");
         }
     }
 
@@ -87,14 +87,14 @@ public class LightSwitch : MonoBehaviour
         if (_light != null)
         {
             _light.enabled = true;
-            Debug.Log($"Light {_light.name} turned ON by switch");
+            //Debug.Log($"Light {_light.name} turned ON by switch");
             //GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.COGU_VELA);
         }
         
         if (_flameEffect != null)
         {
             _flameEffect.SetActive(true);
-            Debug.Log($"FlameEffect {_flameEffect.name} activated by switch");
+            //Debug.Log($"FlameEffect {_flameEffect.name} activated by switch");
         }
     }
 
@@ -103,13 +103,13 @@ public class LightSwitch : MonoBehaviour
         if (_light != null)
         {
             _light.enabled = false;
-            Debug.Log($"Light {_light.name} turned OFF by switch");
+            //Debug.Log($"Light {_light.name} turned OFF by switch");
         }
         
         if (_flameEffect != null)
         {
             _flameEffect.SetActive(false);
-            Debug.Log($"FlameEffect {_flameEffect.name} deactivated by switch");
+            //Debug.Log($"FlameEffect {_flameEffect.name} deactivated by switch");
         }
     }
 

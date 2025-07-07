@@ -64,7 +64,7 @@ public class LightPuzzleManager : MonoBehaviour
     {
         if (_puzzleStages == null || _puzzleStages.Length == 0)
         {
-            Debug.LogError("Nenhuma etapa configurada no LightPuzzleManager!");
+            //Debug.LogError("Nenhuma etapa configurada no LightPuzzleManager!");
             return;
         }
         
@@ -131,7 +131,7 @@ public class LightPuzzleManager : MonoBehaviour
             
         if (_showDebugInfo)
         {
-            Debug.Log($"Stage {stageIndex} target activated: {_puzzleStages[stageIndex].stageName}");
+            //Debug.Log($"Stage {stageIndex} target activated: {_puzzleStages[stageIndex].stageName}");
         }
         
         // Não avança automaticamente - espera pela interação com a alavanca
@@ -147,7 +147,7 @@ public class LightPuzzleManager : MonoBehaviour
             
         if (_showDebugInfo)
         {
-            Debug.Log($"Stage {stageIndex} target deactivated: {_puzzleStages[stageIndex].stageName}");
+            //Debug.Log($"Stage {stageIndex} target deactivated: {_puzzleStages[stageIndex].stageName}");
         }
     }
 
@@ -158,7 +158,7 @@ public class LightPuzzleManager : MonoBehaviour
     {
         if (stageIndex < 0 || stageIndex >= _puzzleStages.Length)
         {
-            Debug.LogError($"Índice de etapa inválido: {stageIndex}");
+            //Debug.LogError($"Índice de etapa inválido: {stageIndex}");
             return;
         }
         
@@ -185,7 +185,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Starting stage {stageIndex}: {currentStage.stageName}");
+            //Debug.Log($"Starting stage {stageIndex}: {currentStage.stageName}");
         }
         
         // Ativa apenas o emissor da etapa atual
@@ -214,7 +214,7 @@ public class LightPuzzleManager : MonoBehaviour
         {
             if (_showDebugInfo)
             {
-                Debug.Log($"Lever activated for stage {stageIndex}, but current stage is {_currentStageIndex} or transitioning");
+                //Debug.Log($"Lever activated for stage {stageIndex}, but current stage is {_currentStageIndex} or transitioning");
             }
             return;
         }
@@ -223,7 +223,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Stage {_currentStageIndex} lever activated: {currentStage.stageName}");
+            //Debug.Log($"Stage {_currentStageIndex} lever activated: {currentStage.stageName}");
         }
         
         // Inicia corrotina com atraso de 1 segundo antes de completar a etapa
@@ -237,7 +237,7 @@ public class LightPuzzleManager : MonoBehaviour
     {
         if (_showDebugInfo)
         {
-            Debug.Log($"Starting 1 second delay before stage transition...");
+            //Debug.Log($"Starting 1 second delay before stage transition...");
         }
         
         // Aguarda 1 segundo
@@ -245,7 +245,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Delay completed, proceeding with stage completion");
+            //Debug.Log($"Delay completed, proceeding with stage completion");
         }
         
         CompleteCurrentStage();
@@ -271,7 +271,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Stage {_currentStageIndex} completed!");
+            //Debug.Log($"Stage {_currentStageIndex} completed!");
         }
         
         // Verifica se é a última etapa
@@ -303,7 +303,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log("PUZZLE COMPLETED!");
+            //Debug.Log("PUZZLE COMPLETED!");
         }
     }
 
@@ -372,7 +372,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Stage {stageIndex} rise animation completed: {stage.stageName}");
+            //Debug.Log($"Stage {stageIndex} rise animation completed: {stage.stageName}");
         }
     }
 
@@ -385,7 +385,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Transitioning from stage {fromStage} to stage {toStage}");
+            //Debug.Log($"Transitioning from stage {fromStage} to stage {toStage}");
         }
         
         var currentStageObjects = _puzzleStages[fromStage].stageObjects;
@@ -445,7 +445,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log($"Stage {fromStage} objects disabled after animation");
+            //Debug.Log($"Stage {fromStage} objects disabled after animation");
         }
         
         _isTransitioning = false;
@@ -479,7 +479,7 @@ public class LightPuzzleManager : MonoBehaviour
                 
                 if (_showDebugInfo)
                 {
-                    Debug.Log($"Stage {i} objects disabled and hidden: {stage.stageName}");
+                    //Debug.Log($"Stage {i} objects disabled and hidden: {stage.stageName}");
                 }
             }
         }
@@ -535,7 +535,7 @@ public class LightPuzzleManager : MonoBehaviour
         
         if (_showDebugInfo)
         {
-            Debug.Log("Puzzle reset to initial state");
+            //Debug.Log("Puzzle reset to initial state");
         }
     }
 

@@ -261,7 +261,7 @@ MonoBehaviour:
   <InventoryCanvas>k__BackingField: {fileID: 4186289488877092499}
   <PauseCanvas>k__BackingField: {fileID: 3650991085095743018}
   <GameOverCanvas>k__BackingField: {fileID: 7923017239752894351}
-  <InGameCanvasObjects>k__BackingField: []
+  <IsGamePaused>k__BackingField: 0
   _dialogPanel: {fileID: 8738243484903242799}
   _speakerPortrait: {fileID: 0}
   _speakerNameText: {fileID: 0}
@@ -1485,6 +1485,18 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -8842731382459715422, guid: b13dee354c11eae4498aa81f3541ce4f, type: 2}
+    - target: {fileID: 2488717133453938278, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
+      propertyPath: CollectableDataSOs.Array.size
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488717133453938278, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
+      propertyPath: 'CollectableDataSOs.Array.data[27]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 27d23e379bcc5734ab1b7a67a9d4f91b, type: 2}
+    - target: {fileID: 2488717133453938278, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
+      propertyPath: 'CollectableDataSOs.Array.data[28]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 5adf9ba48e9c8c24292b5c11daefe19f, type: 2}
     - target: {fileID: 2531967026696242334, guid: bf14d584f9b19e542834cd8553499a91, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
