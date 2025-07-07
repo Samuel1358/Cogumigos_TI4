@@ -76,9 +76,7 @@ public class ActivateSwitch : CoguInteractable
     }
 
     private void Update()
-    {
-        UpdateInteractableEffect();
-        
+    {        
         // Handle direct interaction input (only if no Cogu type is assigned)
         if (UsesDirectInteraction() && _playerInRange && Input.GetKeyDown(_interactionKey))
         {
@@ -109,21 +107,6 @@ public class ActivateSwitch : CoguInteractable
         
         Debug.Log($"ActivateSwitch {name}: Direct interaction triggered");
         HandleSwitchInteraction(this);
-    }
-
-    private void UpdateInteractableEffect()
-    {
-        if (_interactableEffectVisual != null)
-        {
-            // Show effect only if:
-            // 1. Player is in range
-            // 2. Switch hasn't been activated OR we're in toggle mode
-            // 3. If it's been activated and we're not in toggle mode, don't show
-            bool shouldShow = _playerInRange && 
-                            (!_hasBeenActivated || _toggleMode);
-            
-            _interactableEffectVisual.SetActive(shouldShow);
-        }
     }
 
     // CoguInteract
