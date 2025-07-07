@@ -54,20 +54,20 @@ public class CoguCastter : MonoBehaviour, IResetable
     // Public Methods
     public void SendCogu(CallbackContext callbackContext)
     {
-        Debug.Log(01);
+        //Debug.Log(01);
         if (_coguCount <= 0 || !_isAbleCast)
             return;
 
         _isAbleCast = false;
 
-        Debug.Log(02);
+        //Debug.Log(02);
         Collider[] colliders = Physics.OverlapSphere(transform.position, _interactRadius, _interactableLayer, QueryTriggerInteraction.Collide);
         foreach (Collider obj in colliders)
         {
-            Debug.Log(03);
+            //Debug.Log(03);
             if (obj.TryGetComponent(out CoguInteractable interactable))
             {
-                Debug.Log(04);
+                //Debug.Log(04);
                 Vector3 interactableDir = new Vector3(Camera.main.transform.position.x - interactable.transform.position.x, 0, Camera.main.transform.position.z - interactable.transform.position.z);
                 Vector3 fowardDir = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
                 if (-Vector3.Dot(fowardDir, interactableDir.normalized) < 1f - _fieldOfView)
@@ -82,13 +82,12 @@ public class CoguCastter : MonoBehaviour, IResetable
                 if (!interactable.IsAvailable)
                     continue;
 
-                Debug.Log("COGU CAST - send cogu");
+                //Debug.Log("COGU CAST - send cogu");
                 _coguType = interactable.AssignedCoguType;
                 _coguInteractable = interactable;
 
                 _player.PlayerAnimator.SetBool("IsThrowing", true);
 
-                //TweenHandler.Timer(1f, () => { if (!_isAbleCast) { _isAbleCast = true; Debug.Log("COGU CAST - tween timer"); } });
                 TweenHandler.Timer(0.3f, () => CastCogu());
                 return;
             }
@@ -99,7 +98,7 @@ public class CoguCastter : MonoBehaviour, IResetable
 
     public void CastCogu()
     {
-        Debug.Log("COGU CAST - public cogu cast");
+        //Debug.Log("COGU CAST - public cogu cast");
         CastCogu(_coguType, _coguInteractable);
 
         _coguType = CoguType.None;
@@ -111,30 +110,30 @@ public class CoguCastter : MonoBehaviour, IResetable
     {
         if (type == CoguType.None)
         {
-            Debug.Log("COGU CAST - type none");
+            //Debug.Log("COGU CAST - type none");
             _isAbleCast = true;
             return;
         }
 
         if (interactable == null)
         {
-            Debug.Log("COGU CAST - interactable null");
+            //Debug.Log("COGU CAST - interactable null");
             _isAbleCast = true;
             return;
         }
 
         if (!interactable.IsAvailable)
         {
-            Debug.Log("COGU CAST - interactable not available");
-            Debug.Log(interactable.IsAvailable);
+            //Debug.Log("COGU CAST - interactable not available");
+            //Debug.Log(interactable.IsAvailable);
             _isAbleCast = true;
             return;
         }
 
-        Debug.Log("COGU CAST - private cogu cast");
+        //Debug.Log("COGU CAST - private cogu cast");
         if (GameIniciator.Instance.CoguManagerInstance.TryGetCoguVariant(type, out Cogu variant))
         {
-            Debug.Log("COGU CAST - cast");
+            //Debug.Log("COGU CAST - cast");
             Cogu cogu = Instantiate(variant.gameObject, _castPoint.transform.position, Quaternion.identity).GetComponent<Cogu>();
             cogu.Initialize(interactable, this);
             _coguCount--;
