@@ -115,7 +115,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 968013529446226017}
@@ -133,12 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f8ee230583b0b48ab2ac2bd6d56ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAmplitude: 0.5
-  zAmplitude: 0.3
-  xSpeed: 1
-  zSpeed: 0.8
-  rotationAmplitude: 2
-  rotationSpeed: 0.5
+  xAmplitude: 0
+  zAmplitude: 0
+  xSpeed: 0
+  zSpeed: 0
+  rotationAmplitude: 0
+  rotationSpeed: 0
   isControlledByWaypoints: 0
   playerLayer:
     serializedVersion: 2
@@ -177,4 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d341a86a311b3294ea0c07287c20a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lillypad: {fileID: 2749691048955528630}
+  _onCollide:
+    m_PersistentCalls:
+      m_Calls: []
