@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlueMirrorShaderMat
+  m_Name: NightPinkMirrorShaderMat
   m_Shader: {fileID: -6465566751694194690, guid: afa39c882a439a44e9d09efe49654a08, type: 3}
-  m_Parent: {fileID: 2100000, guid: e28f9b03ec1d67a4984a98bdcc30acb4, type: 2}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -23,13 +23,32 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Alpha: 0.95
+    - _BottonLine: 0.51
+    - _Metallic: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Smoothness: 0.13
+    - _TopLine: 0.58
     m_Colors:
-    - _BaseColor: {r: 0.2865059, g: 1.6367441, b: 3.040146, a: 1}
-    - _BottonColor: {r: 4.390082, g: 2.7352123, b: 8.564354, a: 1}
-    - _TopColor: {r: 4.9946, g: 20.915033, b: 22.713541, a: 1}
+    - _BaseColor: {r: 1.0592737, g: 0.099826835, b: 0.65472937, a: 1}
+    - _BottonColor: {r: 1.2167859, g: 0.7547973, b: 0.3845503, a: 1}
+    - _TopColor: {r: 1.4980392, g: 0.32504606, b: 0.5658653, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &4798963655270981286

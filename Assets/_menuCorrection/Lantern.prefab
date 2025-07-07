@@ -297,13 +297,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7680522723577645535, guid: 4ee87ef579a618442a6c5839fba77571, type: 3}
+      propertyPath: m_Name
+      value: LanternLight
+      objectReference: {fileID: 0}
     - target: {fileID: 9107028708704384870, guid: 4ee87ef579a618442a6c5839fba77571, type: 3}
       propertyPath: m_Range
-      value: 3.73
+      value: 16.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107028708704384870, guid: 4ee87ef579a618442a6c5839fba77571, type: 3}
+      propertyPath: m_Intensity
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9107028708704384870, guid: 4ee87ef579a618442a6c5839fba77571, type: 3}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
