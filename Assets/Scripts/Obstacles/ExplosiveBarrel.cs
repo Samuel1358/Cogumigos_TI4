@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class ExplosiveBarrel : ResetableBase {
     [SerializeField] private float _timeToExplode;
@@ -9,6 +10,7 @@ public class ExplosiveBarrel : ResetableBase {
     [SerializeField] private Color _finalColor;
     [SerializeField] private GameObject _visual;
     [SerializeField] private Transform _explosionRadiusVisual;
+    [SerializeField] private UnityEvent _onBreak;
     private bool _willExplodePlayer;
     private bool _wasExploded;
     private SphereCollider _collider;
@@ -28,6 +30,7 @@ public class ExplosiveBarrel : ResetableBase {
 
     private void OnTriggerEnter(Collider other) {
         if (!_wasExploded) {
+            _onBreak.Invoke();
             StartCoroutine(ExplosionAfterColdown());
             _material.DOColor(_finalColor, _timeToExplode);
             _visual.transform.DOScale(_finalScale, _timeToExplode);
@@ -44,7 +47,6 @@ public class ExplosiveBarrel : ResetableBase {
     }
 
     public override void ResetObject() {
-        //base.ResetObject();
 
         _visual.SetActive(true);
         _willExplodePlayer = false;
