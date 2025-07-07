@@ -32,7 +32,7 @@ public class CoguInteractableSensor : MonoBehaviour
             {
                 interactable.SetActiveInteractableEffectVisual(false);
                 _interactables.Remove(interactable);
-                Debug.Log("SENSOR - remove - " + interactable.gameObject);
+                //Debug.Log("SENSOR - remove - " + interactable.gameObject);
             }
         }
     }
@@ -49,7 +49,7 @@ public class CoguInteractableSensor : MonoBehaviour
 
             interactable.SetActiveInteractableEffectVisual(true);
             _interactables.Add(interactable);
-            Debug.Log("SENSOR - add - " + interactable.gameObject);
+            //Debug.Log("SENSOR - add - " + interactable.gameObject);
         }
     }
 }

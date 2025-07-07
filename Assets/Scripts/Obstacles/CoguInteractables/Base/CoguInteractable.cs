@@ -35,7 +35,6 @@ public abstract class CoguInteractable : ResetableBase
     public void SetActiveInteractableEffectVisual(bool value)
     {
         _interactableEffectVisual.SetActive(value);
-        Debug.Log(_interactableEffectVisual.activeSelf);
     }
 
     // Inherit Public Methods
