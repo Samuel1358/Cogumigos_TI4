@@ -10,6 +10,8 @@ public class InteractingArea : ResetableBase
     [SerializeField] private GameObject _visualInfo;
     [SerializeField] private float _visualOffset = 1.5f; // Altura do texto acima do objeto
     [SerializeField] private bool _useAutoPositioning = false; // Se deve posicionar automaticamente ou usar a posição do prefab
+    [SerializeField] private bool _interactJustOnce = true;
+    private bool _once = false;
 
     private Collider _collider;
     private Player _player;
@@ -94,9 +96,12 @@ public class InteractingArea : ResetableBase
             _isInteracted = true;
             _inputActions.Player.Interact.started -= InteractAction;
 
+            if (_interactJustOnce)
+                _once = true;
+
             // visual - só desativa permanentemente se for interação única
             // para objetos de múltiplas interações, o feedback será gerenciado pelo OnTriggerExit
-            if (_visualInfo != null && _interaction.InteractJustOnce)
+            if (_visualInfo != null)
                 _visualInfo.SetActive(false);
 
             NeedReset = true;
@@ -122,13 +127,17 @@ public class InteractingArea : ResetableBase
             if (player == null)
                 return;
 
+            if (_interactJustOnce)
+                if (_once)
+                    return;
+
             // visual - mostra sempre para objetos que podem ser interagidos múltiplas vezes
             // ou apenas se ainda não foi interagido para objetos de interação única
             if (_visualInfo != null && (_interaction.InteractJustOnce ? !_isInteracted : true))
                 _visualInfo.SetActive(true);
 
             _inputActions.Player.Interact.started += InteractAction;
-            _player = player;
+            _player = player;            
         }
     }
 
