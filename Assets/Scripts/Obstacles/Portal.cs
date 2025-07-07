@@ -18,7 +18,8 @@ public class Portal : MonoBehaviour {
 
     private void Start()
     {
-        _effect.SetFloat("TeleportCD", _timeToActivate);
+        if (_effect != null)
+            _effect.SetFloat("TeleportCD", _timeToActivate);
     }
 
     public Portal LinkedPortal {

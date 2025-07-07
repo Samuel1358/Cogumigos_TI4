@@ -27,12 +27,12 @@ public class CoguInteractableSensor : MonoBehaviour
             return;
 
         // InvalidOperationException
-        foreach (CoguInteractable interactable in _interactables)
+        for (int i = _interactables.Count - 1; i >= 0; i--/*CoguInteractable interactable in _interactables*/)
         {
-            if (!aux.Contains(interactable))
+            if (!aux.Contains(_interactables[i]))
             {
-                interactable.SetActiveInteractableEffectVisual(false);
-                _interactables.Remove(interactable);
+                _interactables[i].SetActiveInteractableEffectVisual(false);
+                _interactables.Remove(_interactables[i]);
                 //Debug.Log("SENSOR - remove - " + interactable.gameObject);
             }
         }

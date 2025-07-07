@@ -18,6 +18,8 @@ public class Lever : Switch
         _interaction = ScriptableObject.CreateInstance<LeverInteraction>();
         _interaction.Assign(_switchable, Activate);
 
+        // NullReferenceException
+        //Debug.Log(_interaction);
         _area.Assign(_interaction);
 
         //UnityAction testeAction = () => Debug.Log("");
@@ -36,7 +38,7 @@ public class Lever : Switch
             _leverAnimator.SetTrigger("ChengeActivate");
             GameIniciator.Instance.AudioManagerInstance.PlaySFX(SoundEffectNames.LEVER);
 
-            Debug.Log("LEVER - active");
+            //Debug.Log("LEVER - active");
         }
 
         _onInteract?.Invoke();
