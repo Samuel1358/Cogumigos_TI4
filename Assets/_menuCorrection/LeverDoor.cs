@@ -17,6 +17,6 @@ public class LeverDoor : Switchable {
     }
 
     public override void ResetObject() {
-        transform.position = Origin;
+        //transform.position = Origin;
     }
 }
