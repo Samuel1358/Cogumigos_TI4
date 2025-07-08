@@ -14,7 +14,7 @@ public class CheatsUI : MonoBehaviour
     [SerializeField] private Toggle _infinityJumpToggle;
     [SerializeField] private Toggle _imortalToggle;
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         _inputActions = new CheatsInputs();
         _uiActions = _inputActions.UI;
@@ -34,7 +34,7 @@ public class CheatsUI : MonoBehaviour
     {
         GameIniciator.Instance.CheatsInstance.onShiftInfinityJump += OnShiftInfinityJump;
         GameIniciator.Instance.CheatsInstance.onShiftImortal += OnShiftImortal;
-    }
+    }*/
 
     // Input
     private void OpenCloseAction(CallbackContext callbackContext)
@@ -73,11 +73,11 @@ public class CheatsUI : MonoBehaviour
 
     private void OnToggleInfinityJump(bool value)
     {
-        GameIniciator.Instance.CheatsInstance.ShiftInfinityJump();
+        //GameIniciator.Instance.CheatsInstance.ShiftInfinityJump();
     }
 
     private void OnToggleImortal(bool value)
     {
-        GameIniciator.Instance.CheatsInstance.ShiftImortal();
+        //GameIniciator.Instance.CheatsInstance.ShiftImortal();
     }
 }

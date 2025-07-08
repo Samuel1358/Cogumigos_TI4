@@ -9,8 +9,8 @@ public class Cheats : MonoBehaviour
     private CheatsInputs.CheatsActions _cheatsActions;
     
     // Fields
-    private bool _infinityJump;
-    private bool _imortal;
+    private bool _infinityJump = false;
+    private bool _imortal = false;
 
     public Action onShiftInfinityJump;
     public Action onShiftImortal;
@@ -19,7 +19,7 @@ public class Cheats : MonoBehaviour
     public bool InfinityJump { get { return _infinityJump; } }
     public bool Imortal { get { return _imortal; } }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         _inputActions = new CheatsInputs();
         _cheatsActions = _inputActions.Cheats;
@@ -43,7 +43,7 @@ public class Cheats : MonoBehaviour
         _cheatsActions.Imortal.started -= ShiftImortalAction;
 
         _cheatsActions.Disable();
-    }
+    }*/
 
     #region // Public Methods
 
