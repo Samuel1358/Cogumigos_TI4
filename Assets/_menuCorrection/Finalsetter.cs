@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Finalsetter : MonoBehaviour
@@ -8,6 +9,9 @@ public class Finalsetter : MonoBehaviour
     [SerializeField] private CollectablePageDialog _trueFinl;
     [SerializeField] private CollectablePageDialog _fakeFinal;
     [SerializeField] private PersistenteCollectableDataSO[] CollectableDataSOs;
+    [SerializeField] private TextMeshProUGUI _gameOverTextField;
+    [SerializeField] private string _goodText;
+    [SerializeField] private string _badText;
     private bool _goodFinal;
 
     private void OnTriggerEnter(Collider other) {
@@ -20,10 +24,12 @@ public class Finalsetter : MonoBehaviour
         if (_goodFinal) {
             _rightDoor.Activate();
             _leftDoor.Activate();
+            _gameOverTextField.text = _goodText;
             _trueFinl.gameObject.SetActive(true);
         }
         else {
             _centerDoor.Activate();
+            _gameOverTextField.text = _badText;
             _fakeFinal.gameObject.SetActive(true);
         }
     }
