@@ -13,6 +13,11 @@ public class Finalsetter : MonoBehaviour {
     [SerializeField] private string _badText;
     private bool _goodFinal;
 
+    private void Awake() {
+        _fakeFinal.gameObject.SetActive(false);
+        _trueFinl.gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other) {
         _goodFinal = true;
         foreach (PersistenteCollectableDataSO collectableBaseSO in CollectableDataSOs) {
