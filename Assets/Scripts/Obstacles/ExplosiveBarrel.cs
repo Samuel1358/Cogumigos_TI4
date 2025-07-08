@@ -7,7 +7,6 @@ public class ExplosiveBarrel : ResetableBase {
     [SerializeField] private float _timeToExplode;
     [SerializeField] private float _timeToReload;
     [SerializeField] private float _finalScale;
-    [SerializeField] private Color _finalColor;
     [SerializeField] private GameObject _visual;
     [SerializeField] private Transform _explosionRadiusVisual;
     [SerializeField] private UnityEvent _onBreak;
@@ -16,7 +15,6 @@ public class ExplosiveBarrel : ResetableBase {
     private bool _wasExploded;
     private SphereCollider _collider;
     private Material _material;
-    private Color _initinalColor;
     private Vector3 _initinalExplosionRadius;
 
     private void Awake() {
@@ -24,7 +22,6 @@ public class ExplosiveBarrel : ResetableBase {
         _willExplodePlayer = false;
         _collider = GetComponent<SphereCollider>();
         _material = GetComponentInChildren<MeshRenderer>().material;
-        _initinalColor = _material.color;
         _initinalExplosionRadius = _explosionRadiusVisual.localScale;
         _explosionRadiusVisual.localScale = new Vector3(0.01f, 0.01f, 0.01f);
     }
@@ -32,7 +29,6 @@ public class ExplosiveBarrel : ResetableBase {
     private void OnTriggerEnter(Collider other) {
         if (!_wasExploded) {           
             StartCoroutine(ExplosionAfterColdown());
-            _material.DOColor(_finalColor, _timeToExplode);
             _visual.transform.DOScale(_finalScale, _timeToExplode);
             _explosionRadiusVisual.DOScale(_initinalExplosionRadius, _timeToExplode);
             _willExplodePlayer = true;
@@ -64,7 +60,6 @@ public class ExplosiveBarrel : ResetableBase {
         }
         _visual.transform.localScale = new Vector3(1f, 1f, 1f);
         _explosionRadiusVisual.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-        _material.color = _initinalColor;
         yield return new WaitForSeconds(_timeToReload);
         _onRespawn.Invoke();
         _visual.SetActive(true);

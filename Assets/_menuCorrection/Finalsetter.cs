@@ -1,8 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class Finalsetter : MonoBehaviour
-{
+public class Finalsetter : MonoBehaviour {
     [SerializeField] private FinalDoor _leftDoor;
     [SerializeField] private FinalDoor _centerDoor;
     [SerializeField] private FinalDoor _rightDoor;
@@ -16,9 +15,14 @@ public class Finalsetter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         _goodFinal = true;
-        foreach(PersistenteCollectableDataSO collectableBaseSO in CollectableDataSOs) {
-            if (!collectableBaseSO.VerifyCollected()) {
+        foreach (PersistenteCollectableDataSO collectableBaseSO in CollectableDataSOs) {
+            if (!collectableBaseSO.VerifyState()) {
                 _goodFinal = false;
+            }
+            else {
+                if (!collectableBaseSO.VerifyCollected()) {
+                    _goodFinal = false;
+                }
             }
         }
         if (_goodFinal) {
